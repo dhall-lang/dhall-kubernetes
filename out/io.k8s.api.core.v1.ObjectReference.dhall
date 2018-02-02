@@ -1,7 +1,7 @@
 {
-  apiVersion : (Optional (Text)) ,
+  apiVersion : (Text) ,
   fieldPath : (Optional (Text)) ,
-  kind : (Optional (Text)) ,
+  kind : (Text) ,
   name : (Optional (Text)) ,
   namespace : (Optional (Text)) ,
   resourceVersion : (Optional (Text)) ,

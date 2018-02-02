@@ -1,4 +1,4 @@
 {
-  apiVersion : (Optional (Text)) ,
+  apiVersion : (Text) ,
   fieldPath : (Text) ,
 }

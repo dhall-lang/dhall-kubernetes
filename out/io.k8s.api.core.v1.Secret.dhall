@@ -1,8 +1,8 @@
 {
-  apiVersion : (Optional (Text)) ,
+  apiVersion : (Text) ,
   data : (Optional ((∀(a : Type) → a))) ,
-  kind : (Optional (Text)) ,
-  metadata : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)) ,
+  kind : (Text) ,
+  metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall) ,
   stringData : (Optional ((∀(a : Type) → a))) ,
   type : (Optional (Text)) ,
 }

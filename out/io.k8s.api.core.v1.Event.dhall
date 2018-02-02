@@ -1,11 +1,11 @@
 {
   action : (Optional (Text)) ,
-  apiVersion : (Optional (Text)) ,
+  apiVersion : (Text) ,
   count : (Optional (Integer)) ,
   eventTime : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall)) ,
   firstTimestamp : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall)) ,
   involvedObject : (./io.k8s.api.core.v1.ObjectReference.dhall) ,
-  kind : (Optional (Text)) ,
+  kind : (Text) ,
   lastTimestamp : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall)) ,
   message : (Optional (Text)) ,
   metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall) ,

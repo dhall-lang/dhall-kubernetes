@@ -3,6 +3,6 @@
   diskName : (Text) ,
   diskURI : (Text) ,
   fsType : (Optional (Text)) ,
-  kind : (Optional (Text)) ,
+  kind : (Text) ,
   readOnly : (Optional (Bool)) ,
 }

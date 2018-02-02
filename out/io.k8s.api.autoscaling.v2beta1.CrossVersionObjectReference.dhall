@@ -1,5 +1,5 @@
 {
-  apiVersion : (Optional (Text)) ,
+  apiVersion : (Text) ,
   kind : (Text) ,
   name : (Text) ,
 }
