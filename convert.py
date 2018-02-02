@@ -27,22 +27,39 @@ def get_typ(props, required):
         return 'Optional ({})'.format(x)
 
 url = 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json'
+
+# See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+# because k8s API allows PUTS etc with partial data, it's not clear from the data types OR the API which
+# fields are required for A POST... so we resort to .. RTFM
+always_required = {'apiVersion', 'kind', 'metadata'}
+
+
+required_for = {
+        'io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta': {'name'},
+}
+
 def main():
     spec = requests.get(url).json()
 
     for modelName, modelSpec in spec['definitions'].items():
         with open('out/' + modelName + '.dhall', 'w') as f:
-            f.write('{\n')
+            if 'type' in modelSpec:
+                f.write('{}\n'.format(get_typ(modelSpec, {'type'})))
+            else:
+                f.write('{\n')
 
-            required = set(modelSpec.get('required', []))
+                required = set(modelSpec.get('required', [])) | always_required
+                if modelName in required_for.keys():
+                    required |= required_for[modelName]
 
-            properties = modelSpec.get('properties', {})
 
-            for propName, propVal in properties.items():
-                typ = get_typ(propVal, propName in required)
-                f.write("  {} : ({}) ,\n".format(propName, typ))
+                properties = modelSpec.get('properties', {})
 
-            f.write('}')
+                for propName, propVal in properties.items():
+                    typ = get_typ(propVal, propName in required)
+                    f.write("  {} : ({}) ,\n".format(propName, typ))
+
+                f.write('}')
 
 if __name__ == '__main__':
     main()

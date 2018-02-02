@@ -9,7 +9,7 @@
   generation : (Optional (Integer)) ,
   initializers : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall)) ,
   labels : (Optional ((∀(a : Type) → a))) ,
-  name : (Optional (Text)) ,
+  name : (Text) ,
   namespace : (Optional (Text)) ,
   ownerReferences : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall)) ,
   resourceVersion : (Optional (Text)) ,
