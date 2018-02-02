@@ -1,5 +1,6 @@
 {
   collisionCount : (Optional (Integer)) ,
+  conditions : (Optional (./io.k8s.api.apps.v1beta2.DaemonSetCondition.dhall)) ,
   currentNumberScheduled : (Integer) ,
   desiredNumberScheduled : (Integer) ,
   numberAvailable : (Optional (Integer)) ,

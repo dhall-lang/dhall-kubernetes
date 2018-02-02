@@ -7,4 +7,5 @@
   parameters : (Optional ((∀(a : Type) → a))) ,
   provisioner : (Text) ,
   reclaimPolicy : (Optional (Text)) ,
+  volumeBindingMode : (Optional (Text)) ,
 }

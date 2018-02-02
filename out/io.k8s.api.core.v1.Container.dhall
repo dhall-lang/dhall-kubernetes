@@ -3,7 +3,7 @@
   command : (Optional (Text)) ,
   env : (Optional (./io.k8s.api.core.v1.EnvVar.dhall)) ,
   envFrom : (Optional (./io.k8s.api.core.v1.EnvFromSource.dhall)) ,
-  image : (Text) ,
+  image : (Optional (Text)) ,
   imagePullPolicy : (Optional (Text)) ,
   lifecycle : (Optional (./io.k8s.api.core.v1.Lifecycle.dhall)) ,
   livenessProbe : (Optional (./io.k8s.api.core.v1.Probe.dhall)) ,
@@ -17,6 +17,7 @@
   terminationMessagePath : (Optional (Text)) ,
   terminationMessagePolicy : (Optional (Text)) ,
   tty : (Optional (Bool)) ,
+  volumeDevices : (Optional (./io.k8s.api.core.v1.VolumeDevice.dhall)) ,
   volumeMounts : (Optional (./io.k8s.api.core.v1.VolumeMount.dhall)) ,
   workingDir : (Optional (Text)) ,
 }

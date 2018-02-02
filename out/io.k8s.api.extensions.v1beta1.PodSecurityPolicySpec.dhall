@@ -1,6 +1,7 @@
 {
   allowPrivilegeEscalation : (Optional (Bool)) ,
   allowedCapabilities : (Optional (Text)) ,
+  allowedFlexVolumes : (Optional (./io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall)) ,
   allowedHostPaths : (Optional (./io.k8s.api.extensions.v1beta1.AllowedHostPath.dhall)) ,
   defaultAddCapabilities : (Optional (Text)) ,
   defaultAllowPrivilegeEscalation : (Optional (Bool)) ,

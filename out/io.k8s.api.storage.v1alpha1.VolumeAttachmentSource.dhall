@@ -1,0 +1,3 @@
+{
+  persistentVolumeName : (Optional (Text)) ,
+}

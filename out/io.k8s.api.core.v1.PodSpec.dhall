@@ -3,6 +3,7 @@
   affinity : (Optional (./io.k8s.api.core.v1.Affinity.dhall)) ,
   automountServiceAccountToken : (Optional (Bool)) ,
   containers : (./io.k8s.api.core.v1.Container.dhall) ,
+  dnsConfig : (Optional (./io.k8s.api.core.v1.PodDNSConfig.dhall)) ,
   dnsPolicy : (Optional (Text)) ,
   hostAliases : (Optional (./io.k8s.api.core.v1.HostAlias.dhall)) ,
   hostIPC : (Optional (Bool)) ,
