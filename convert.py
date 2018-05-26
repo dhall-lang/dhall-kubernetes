@@ -44,9 +44,9 @@ def main():
     spec = requests.get(url).json()
 
     for modelName, modelSpec in spec['definitions'].items():
-        with open('out/' + modelName + '.dhall', 'w') as f:
+        with open('types/' + modelName + '.dhall', 'w') as f:
             if 'type' in modelSpec:
-                f.write('{}\n'.format(get_typ(modelSpec, {'type'})))
+                f.write('{}\n'.format(get_typ(modelSpec, True)))
             else:
                 first = True
 
