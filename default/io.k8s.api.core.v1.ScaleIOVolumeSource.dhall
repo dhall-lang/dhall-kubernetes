@@ -1,12 +1,12 @@
-\(gateway : (Text)) -> \(secretRef : (../types/io.k8s.api.core.v1.LocalObjectReference.dhall)) -> \(system : (Text)) -> 
+\(_params : {gateway : (Text), secretRef : (../types/io.k8s.api.core.v1.LocalObjectReference.dhall), system : (Text)}) ->
 { fsType = ([] : Optional (Text))
-, gateway = gateway
+, gateway = _params.gateway
 , protectionDomain = ([] : Optional (Text))
 , readOnly = ([] : Optional (Bool))
-, secretRef = secretRef
+, secretRef = _params.secretRef
 , sslEnabled = ([] : Optional (Bool))
 , storageMode = ([] : Optional (Text))
 , storagePool = ([] : Optional (Text))
-, system = system
+, system = _params.system
 , volumeName = ([] : Optional (Text))
 }

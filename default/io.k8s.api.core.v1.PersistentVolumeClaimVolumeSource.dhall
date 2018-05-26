@@ -1,4 +1,4 @@
-\(claimName : (Text)) -> 
-{ claimName = claimName
+\(_params : {claimName : (Text)}) ->
+{ claimName = _params.claimName
 , readOnly = ([] : Optional (Bool))
 }

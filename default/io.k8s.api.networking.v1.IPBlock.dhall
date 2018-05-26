@@ -1,4 +1,4 @@
-\(cidr : (Text)) -> 
-{ cidr = cidr
+\(_params : {cidr : (Text)}) ->
+{ cidr = _params.cidr
 , except = ([] : Optional (Text))
 }

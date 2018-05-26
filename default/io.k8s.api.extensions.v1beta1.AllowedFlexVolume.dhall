@@ -1,3 +1,3 @@
-\(driver : (Text)) -> 
-{ driver = driver
+\(_params : {driver : (Text)}) ->
+{ driver = _params.driver
 }

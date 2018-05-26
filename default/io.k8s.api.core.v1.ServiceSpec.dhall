@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { clusterIP = ([] : Optional (Text))
 , externalIPs = ([] : Optional (Text))
 , externalName = ([] : Optional (Text))

@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { conditions = ([] : Optional (../types/io.k8s.api.core.v1.PodCondition.dhall))
 , containerStatuses = ([] : Optional (../types/io.k8s.api.core.v1.ContainerStatus.dhall))
 , hostIP = ([] : Optional (Text))

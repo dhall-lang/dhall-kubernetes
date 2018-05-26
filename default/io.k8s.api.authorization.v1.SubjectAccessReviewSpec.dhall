@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { extra = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , groups = ([] : Optional (Text))
 , nonResourceAttributes = ([] : Optional (../types/io.k8s.api.authorization.v1.NonResourceAttributes.dhall))

@@ -1,7 +1,7 @@
-\(registry : (Text)) -> \(volume : (Text)) -> 
+\(_params : {registry : (Text), volume : (Text)}) ->
 { group = ([] : Optional (Text))
 , readOnly = ([] : Optional (Bool))
-, registry = registry
+, registry = _params.registry
 , user = ([] : Optional (Text))
-, volume = volume
+, volume = _params.volume
 }

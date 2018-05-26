@@ -1,8 +1,8 @@
-\(diskName : (Text)) -> \(diskURI : (Text)) -> \(kind : (Text)) -> 
+\(_params : {diskName : (Text), diskURI : (Text), kind : (Text)}) ->
 { cachingMode = ([] : Optional (Text))
-, diskName = diskName
-, diskURI = diskURI
+, diskName = _params.diskName
+, diskURI = _params.diskURI
 , fsType = ([] : Optional (Text))
-, kind = kind
+, kind = _params.kind
 , readOnly = ([] : Optional (Bool))
 }

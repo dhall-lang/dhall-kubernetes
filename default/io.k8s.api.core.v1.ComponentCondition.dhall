@@ -1,6 +1,6 @@
-\(status : (Text)) -> \(type : (Text)) -> 
+\(_params : {status : (Text), type : (Text)}) ->
 { error = ([] : Optional (Text))
 , message = ([] : Optional (Text))
-, status = status
-, type = type
+, status = _params.status
+, type = _params.type
 }

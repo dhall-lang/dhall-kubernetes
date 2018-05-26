@@ -1,4 +1,4 @@
-\(name : (Text)) -> 
+\(_params : {name : (Text)}) ->
 { awsElasticBlockStore = ([] : Optional (../types/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall))
 , azureDisk = ([] : Optional (../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall))
 , azureFile = ([] : Optional (../types/io.k8s.api.core.v1.AzureFileVolumeSource.dhall))
@@ -15,7 +15,7 @@
 , glusterfs = ([] : Optional (../types/io.k8s.api.core.v1.GlusterfsVolumeSource.dhall))
 , hostPath = ([] : Optional (../types/io.k8s.api.core.v1.HostPathVolumeSource.dhall))
 , iscsi = ([] : Optional (../types/io.k8s.api.core.v1.ISCSIVolumeSource.dhall))
-, name = name
+, name = _params.name
 , nfs = ([] : Optional (../types/io.k8s.api.core.v1.NFSVolumeSource.dhall))
 , persistentVolumeClaim = ([] : Optional (../types/io.k8s.api.core.v1.PersistentVolumeClaimVolumeSource.dhall))
 , photonPersistentDisk = ([] : Optional (../types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall))

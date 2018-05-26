@@ -1,5 +1,5 @@
-\(apiVersion : (Text)) -> \(kind : (Text)) -> \(name : (Text)) -> 
-{ apiVersion = apiVersion
-, kind = kind
-, name = name
+\(_params : {apiVersion : (Text), kind : (Text), name : (Text)}) ->
+{ apiVersion = _params.apiVersion
+, kind = _params.kind
+, name = _params.name
 }

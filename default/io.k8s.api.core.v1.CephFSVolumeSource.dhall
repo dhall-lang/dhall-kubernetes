@@ -1,5 +1,5 @@
-\(monitors : (Text)) -> 
-{ monitors = monitors
+\(_params : {monitors : (Text)}) ->
+{ monitors = _params.monitors
 , path = ([] : Optional (Text))
 , readOnly = ([] : Optional (Bool))
 , secretFile = ([] : Optional (Text))

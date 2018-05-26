@@ -1,5 +1,5 @@
-\(driver : (Text)) -> 
-{ driver = driver
+\(_params : {driver : (Text)}) ->
+{ driver = _params.driver
 , fsType = ([] : Optional (Text))
 , options = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , readOnly = ([] : Optional (Bool))

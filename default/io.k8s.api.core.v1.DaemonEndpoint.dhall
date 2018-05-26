@@ -1,3 +1,3 @@
-\(Port : (Integer)) -> 
-{ Port = Port
+\(_params : {Port : (Integer)}) ->
+{ Port = _params.Port
 }

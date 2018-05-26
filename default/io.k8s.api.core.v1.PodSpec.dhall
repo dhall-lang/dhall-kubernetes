@@ -1,8 +1,8 @@
-\(containers : (../types/io.k8s.api.core.v1.Container.dhall)) -> 
+\(_params : {containers : (../types/io.k8s.api.core.v1.Container.dhall)}) ->
 { activeDeadlineSeconds = ([] : Optional (Integer))
 , affinity = ([] : Optional (../types/io.k8s.api.core.v1.Affinity.dhall))
 , automountServiceAccountToken = ([] : Optional (Bool))
-, containers = containers
+, containers = _params.containers
 , dnsConfig = ([] : Optional (../types/io.k8s.api.core.v1.PodDNSConfig.dhall))
 , dnsPolicy = ([] : Optional (Text))
 , hostAliases = ([] : Optional (../types/io.k8s.api.core.v1.HostAlias.dhall))

@@ -1,5 +1,5 @@
-\(specReplicasPath : (Text)) -> \(statusReplicasPath : (Text)) -> 
+\(_params : {specReplicasPath : (Text), statusReplicasPath : (Text)}) ->
 { labelSelectorPath = ([] : Optional (Text))
-, specReplicasPath = specReplicasPath
-, statusReplicasPath = statusReplicasPath
+, specReplicasPath = _params.specReplicasPath
+, statusReplicasPath = _params.statusReplicasPath
 }

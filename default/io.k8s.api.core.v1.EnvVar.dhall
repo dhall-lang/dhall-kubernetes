@@ -1,5 +1,5 @@
-\(name : (Text)) -> 
-{ name = name
+\(_params : {name : (Text)}) ->
+{ name = _params.name
 , value = ([] : Optional (Text))
 , valueFrom = ([] : Optional (../types/io.k8s.api.core.v1.EnvVarSource.dhall))
 }

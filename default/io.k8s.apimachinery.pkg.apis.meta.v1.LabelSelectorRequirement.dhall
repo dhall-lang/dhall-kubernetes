@@ -1,5 +1,5 @@
-\(key : (Text)) -> \(operator : (Text)) -> 
-{ key = key
-, operator = operator
+\(_params : {key : (Text), operator : (Text)}) ->
+{ key = _params.key
+, operator = _params.operator
 , values = ([] : Optional (Text))
 }

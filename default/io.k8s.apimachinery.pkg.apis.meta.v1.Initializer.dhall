@@ -1,3 +1,3 @@
-\(name : (Text)) -> 
-{ name = name
+\(_params : {name : (Text)}) ->
+{ name = _params.name
 }

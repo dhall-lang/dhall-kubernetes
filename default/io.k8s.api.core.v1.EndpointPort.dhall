@@ -1,5 +1,5 @@
-\(port : (Integer)) -> 
+\(_params : {port : (Integer)}) ->
 { name = ([] : Optional (Text))
-, port = port
+, port = _params.port
 , protocol = ([] : Optional (Text))
 }

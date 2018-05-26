@@ -1,4 +1,4 @@
-\(devicePath : (Text)) -> \(name : (Text)) -> 
-{ devicePath = devicePath
-, name = name
+\(_params : {devicePath : (Text), name : (Text)}) ->
+{ devicePath = _params.devicePath
+, name = _params.name
 }

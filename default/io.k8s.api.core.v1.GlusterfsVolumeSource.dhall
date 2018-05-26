@@ -1,5 +1,5 @@
-\(endpoints : (Text)) -> \(path : (Text)) -> 
-{ endpoints = endpoints
-, path = path
+\(_params : {endpoints : (Text), path : (Text)}) ->
+{ endpoints = _params.endpoints
+, path = _params.path
 , readOnly = ([] : Optional (Bool))
 }

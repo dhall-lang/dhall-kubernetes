@@ -1,5 +1,5 @@
-\(key : (Text)) -> 
-{ key = key
+\(_params : {key : (Text)}) ->
+{ key = _params.key
 , name = ([] : Optional (Text))
 , optional = ([] : Optional (Bool))
 }

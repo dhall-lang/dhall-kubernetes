@@ -1,4 +1,4 @@
-\(rule : (Text)) -> 
-{ rule = rule
+\(_params : {rule : (Text)}) ->
+{ rule = _params.rule
 , seLinuxOptions = ([] : Optional (../types/io.k8s.api.core.v1.SELinuxOptions.dhall))
 }

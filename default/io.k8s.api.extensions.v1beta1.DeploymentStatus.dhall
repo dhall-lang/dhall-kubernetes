@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { availableReplicas = ([] : Optional (Integer))
 , collisionCount = ([] : Optional (Integer))
 , conditions = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.DeploymentCondition.dhall))

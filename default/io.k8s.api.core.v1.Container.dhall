@@ -1,4 +1,4 @@
-\(name : (Text)) -> 
+\(_params : {name : (Text)}) ->
 { args = ([] : Optional (Text))
 , command = ([] : Optional (Text))
 , env = ([] : Optional (../types/io.k8s.api.core.v1.EnvVar.dhall))
@@ -7,7 +7,7 @@
 , imagePullPolicy = ([] : Optional (Text))
 , lifecycle = ([] : Optional (../types/io.k8s.api.core.v1.Lifecycle.dhall))
 , livenessProbe = ([] : Optional (../types/io.k8s.api.core.v1.Probe.dhall))
-, name = name
+, name = _params.name
 , ports = ([] : Optional (../types/io.k8s.api.core.v1.ContainerPort.dhall))
 , readinessProbe = ([] : Optional (../types/io.k8s.api.core.v1.Probe.dhall))
 , resources = ([] : Optional (../types/io.k8s.api.core.v1.ResourceRequirements.dhall))

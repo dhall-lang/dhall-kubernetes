@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { configSource = ([] : Optional (../types/io.k8s.api.core.v1.NodeConfigSource.dhall))
 , externalID = ([] : Optional (Text))
 , podCIDR = ([] : Optional (Text))
