@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.apps.v1.StatefulSetSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.apps.v1.StatefulSetStatus.dhall))
-}
+} : ../types/io.k8s.api.apps.v1.StatefulSet.dhall

@@ -4,4 +4,4 @@
 , secretRef = ([] : Optional (../types/io.k8s.api.core.v1.ObjectReference.dhall))
 , volumeName = ([] : Optional (Text))
 , volumeNamespace = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.StorageOSPersistentVolumeSource.dhall

@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.NetworkPolicySpec.dhall))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.NetworkPolicy.dhall

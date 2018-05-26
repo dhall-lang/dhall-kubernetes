@@ -3,4 +3,4 @@
 , items = _params.items
 , kind = _params.kind
 , metadata = _params.metadata
-}
+} : ../types/io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfigurationList.dhall

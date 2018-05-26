@@ -4,4 +4,4 @@
 , name = _params.name
 , readOnly = ([] : Optional (Bool))
 , subPath = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.VolumeMount.dhall

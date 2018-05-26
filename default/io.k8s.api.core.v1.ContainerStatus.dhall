@@ -7,4 +7,4 @@
 , ready = _params.ready
 , restartCount = _params.restartCount
 , state = ([] : Optional (../types/io.k8s.api.core.v1.ContainerState.dhall))
-}
+} : ../types/io.k8s.api.core.v1.ContainerStatus.dhall

@@ -3,4 +3,4 @@
 , initializers = ([] : Optional (../types/io.k8s.api.admissionregistration.v1alpha1.Initializer.dhall))
 , kind = _params.kind
 , metadata = _params.metadata
-}
+} : ../types/io.k8s.api.admissionregistration.v1alpha1.InitializerConfiguration.dhall

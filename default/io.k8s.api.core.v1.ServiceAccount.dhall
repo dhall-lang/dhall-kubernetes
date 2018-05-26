@@ -5,4 +5,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , secrets = ([] : Optional (../types/io.k8s.api.core.v1.ObjectReference.dhall))
-}
+} : ../types/io.k8s.api.core.v1.ServiceAccount.dhall

@@ -5,4 +5,4 @@
 , preferredVersion = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery.dhall))
 , serverAddressByClientCIDRs = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR.dhall))
 , versions = _params.versions
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup.dhall

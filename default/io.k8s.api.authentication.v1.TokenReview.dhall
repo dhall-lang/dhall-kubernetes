@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = _params.spec
 , status = ([] : Optional (../types/io.k8s.api.authentication.v1.TokenReviewStatus.dhall))
-}
+} : ../types/io.k8s.api.authentication.v1.TokenReview.dhall

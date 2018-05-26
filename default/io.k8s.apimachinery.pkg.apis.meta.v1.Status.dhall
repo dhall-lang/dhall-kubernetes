@@ -7,4 +7,4 @@
 , metadata = _params.metadata
 , reason = ([] : Optional (Text))
 , status = ([] : Optional (Text))
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.Status.dhall

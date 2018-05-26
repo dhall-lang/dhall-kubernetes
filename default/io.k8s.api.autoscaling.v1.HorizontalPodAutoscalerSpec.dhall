@@ -3,4 +3,4 @@
 , minReplicas = ([] : Optional (Integer))
 , scaleTargetRef = _params.scaleTargetRef
 , targetCPUUtilizationPercentage = ([] : Optional (Integer))
-}
+} : ../types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerSpec.dhall

@@ -26,4 +26,4 @@
 , terminationGracePeriodSeconds = ([] : Optional (Integer))
 , tolerations = ([] : Optional (../types/io.k8s.api.core.v1.Toleration.dhall))
 , volumes = ([] : Optional (../types/io.k8s.api.core.v1.Volume.dhall))
-}
+} : ../types/io.k8s.api.core.v1.PodSpec.dhall

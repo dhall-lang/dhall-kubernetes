@@ -7,4 +7,4 @@
 , readOnly = ([] : Optional (Bool))
 , volumeAttributes = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , volumeHandle = _params.volumeHandle
-}
+} : ../types/io.k8s.api.core.v1.CSIPersistentVolumeSource.dhall

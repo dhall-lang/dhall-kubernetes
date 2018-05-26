@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , roleRef = _params.roleRef
 , subjects = ([] : Optional (../types/io.k8s.api.rbac.v1beta1.Subject.dhall))
-}
+} : ../types/io.k8s.api.rbac.v1beta1.ClusterRoleBinding.dhall

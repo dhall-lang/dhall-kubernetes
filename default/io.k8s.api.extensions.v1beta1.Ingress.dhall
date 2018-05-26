@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.IngressSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.IngressStatus.dhall))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.Ingress.dhall

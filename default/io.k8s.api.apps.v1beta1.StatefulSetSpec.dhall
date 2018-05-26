@@ -7,4 +7,4 @@
 , template = _params.template
 , updateStrategy = ([] : Optional (../types/io.k8s.api.apps.v1beta1.StatefulSetUpdateStrategy.dhall))
 , volumeClaimTemplates = ([] : Optional (../types/io.k8s.api.core.v1.PersistentVolumeClaim.dhall))
-}
+} : ../types/io.k8s.api.apps.v1beta1.StatefulSetSpec.dhall

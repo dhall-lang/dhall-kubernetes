@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.core.v1.NodeSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.core.v1.NodeStatus.dhall))
-}
+} : ../types/io.k8s.api.core.v1.Node.dhall

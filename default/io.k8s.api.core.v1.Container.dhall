@@ -20,4 +20,4 @@
 , volumeDevices = ([] : Optional (../types/io.k8s.api.core.v1.VolumeDevice.dhall))
 , volumeMounts = ([] : Optional (../types/io.k8s.api.core.v1.VolumeMount.dhall))
 , workingDir = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.Container.dhall

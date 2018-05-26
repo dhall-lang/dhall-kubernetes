@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.ReplicaSetSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.ReplicaSetStatus.dhall))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.ReplicaSet.dhall

@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.core.v1.PodSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.core.v1.PodStatus.dhall))
-}
+} : ../types/io.k8s.api.core.v1.Pod.dhall

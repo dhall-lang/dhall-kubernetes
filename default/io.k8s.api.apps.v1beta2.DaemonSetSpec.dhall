@@ -4,4 +4,4 @@
 , selector = _params.selector
 , template = _params.template
 , updateStrategy = ([] : Optional (../types/io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy.dhall))
-}
+} : ../types/io.k8s.api.apps.v1beta2.DaemonSetSpec.dhall

@@ -9,4 +9,4 @@
 , storagePool = ([] : Optional (Text))
 , system = _params.system
 , volumeName = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.ScaleIOVolumeSource.dhall

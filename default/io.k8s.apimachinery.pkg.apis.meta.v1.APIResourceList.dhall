@@ -3,4 +3,4 @@
 , groupVersion = _params.groupVersion
 , kind = _params.kind
 , resources = _params.resources
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList.dhall

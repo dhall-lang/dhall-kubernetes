@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.batch.v1.JobSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.batch.v1.JobStatus.dhall))
-}
+} : ../types/io.k8s.api.batch.v1.Job.dhall

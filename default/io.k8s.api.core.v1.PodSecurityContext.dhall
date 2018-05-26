@@ -5,4 +5,4 @@
 , runAsUser = ([] : Optional (Integer))
 , seLinuxOptions = ([] : Optional (../types/io.k8s.api.core.v1.SELinuxOptions.dhall))
 , supplementalGroups = ([] : Optional (Integer))
-}
+} : ../types/io.k8s.api.core.v1.PodSecurityContext.dhall

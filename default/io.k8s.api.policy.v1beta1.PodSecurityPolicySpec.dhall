@@ -17,4 +17,4 @@
 , seLinux = _params.seLinux
 , supplementalGroups = _params.supplementalGroups
 , volumes = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.policy.v1beta1.PodSecurityPolicySpec.dhall

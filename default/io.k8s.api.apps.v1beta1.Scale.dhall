@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.apps.v1beta1.ScaleSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.apps.v1beta1.ScaleStatus.dhall))
-}
+} : ../types/io.k8s.api.apps.v1beta1.Scale.dhall

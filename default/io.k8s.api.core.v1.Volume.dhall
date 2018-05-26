@@ -27,4 +27,4 @@
 , secret = ([] : Optional (../types/io.k8s.api.core.v1.SecretVolumeSource.dhall))
 , storageos = ([] : Optional (../types/io.k8s.api.core.v1.StorageOSVolumeSource.dhall))
 , vsphereVolume = ([] : Optional (../types/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource.dhall))
-}
+} : ../types/io.k8s.api.core.v1.Volume.dhall

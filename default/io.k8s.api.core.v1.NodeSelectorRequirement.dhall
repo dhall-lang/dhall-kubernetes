@@ -2,4 +2,4 @@
 { key = _params.key
 , operator = _params.operator
 , values = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.NodeSelectorRequirement.dhall

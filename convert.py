@@ -112,7 +112,7 @@ def main():
                         val = get_default(propVal, False)
                     f.write(" {} = {}\n".format(propName, val))
 
-                f.write('}\n')
+                f.write('} : ../types/' + modelName + '.dhall\n')
 
 if __name__ == '__main__':
     main()

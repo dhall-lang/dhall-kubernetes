@@ -9,4 +9,4 @@
 , numberUnavailable = ([] : Optional (Integer))
 , observedGeneration = ([] : Optional (Integer))
 , updatedNumberScheduled = ([] : Optional (Integer))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.DaemonSetStatus.dhall

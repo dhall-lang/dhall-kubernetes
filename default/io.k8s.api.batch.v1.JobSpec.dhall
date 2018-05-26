@@ -6,4 +6,4 @@
 , parallelism = ([] : Optional (Integer))
 , selector = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall))
 , template = _params.template
-}
+} : ../types/io.k8s.api.batch.v1.JobSpec.dhall

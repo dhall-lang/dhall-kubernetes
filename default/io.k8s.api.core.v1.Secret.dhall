@@ -5,4 +5,4 @@
 , metadata = _params.metadata
 , stringData = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , type = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.Secret.dhall

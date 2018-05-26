@@ -6,4 +6,4 @@
 , namespace = ([] : Optional (Text))
 , resourceVersion = ([] : Optional (Text))
 , uid = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.ObjectReference.dhall

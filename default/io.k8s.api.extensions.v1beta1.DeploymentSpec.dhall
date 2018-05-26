@@ -8,4 +8,4 @@
 , selector = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall))
 , strategy = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.DeploymentStrategy.dhall))
 , template = _params.template
-}
+} : ../types/io.k8s.api.extensions.v1beta1.DeploymentSpec.dhall

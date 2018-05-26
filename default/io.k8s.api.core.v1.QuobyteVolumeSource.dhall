@@ -4,4 +4,4 @@
 , registry = _params.registry
 , user = ([] : Optional (Text))
 , volume = _params.volume
-}
+} : ../types/io.k8s.api.core.v1.QuobyteVolumeSource.dhall

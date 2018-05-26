@@ -8,4 +8,4 @@
 , major = _params.major
 , minor = _params.minor
 , platform = _params.platform
-}
+} : ../types/io.k8s.apimachinery.pkg.version.Info.dhall

@@ -5,4 +5,4 @@
 , providerID = ([] : Optional (Text))
 , taints = ([] : Optional (../types/io.k8s.api.core.v1.Taint.dhall))
 , unschedulable = ([] : Optional (Bool))
-}
+} : ../types/io.k8s.api.core.v1.NodeSpec.dhall
