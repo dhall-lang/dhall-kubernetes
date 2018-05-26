@@ -1,3 +1,0 @@
-{
-  revision : (Optional (Integer)) ,
-}

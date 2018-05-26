@@ -1,6 +1,0 @@
-{
-  apiVersion : (Text) ,
-  items : (./io.k8s.api.batch.v1beta1.CronJob.dhall) ,
-  kind : (Text) ,
-  metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall) ,
-}

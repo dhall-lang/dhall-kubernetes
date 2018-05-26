@@ -1,3 +1,0 @@
-{
-  uid : (Optional (Text)) ,
-}

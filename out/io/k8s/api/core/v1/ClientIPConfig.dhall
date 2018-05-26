@@ -1,3 +1,0 @@
-{
-  timeoutSeconds : (Optional (Integer)) ,
-}

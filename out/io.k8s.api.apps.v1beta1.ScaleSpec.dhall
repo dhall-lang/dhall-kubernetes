@@ -1,0 +1,2 @@
+{ replicas : (Optional (Integer))
+}

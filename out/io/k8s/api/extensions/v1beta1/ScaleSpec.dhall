@@ -1,3 +1,0 @@
-{
-  replicas : (Optional (Integer)) ,
-}

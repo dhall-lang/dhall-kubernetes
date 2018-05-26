@@ -1,4 +1,0 @@
-{
-  groupVersion : (Text) ,
-  version : (Text) ,
-}

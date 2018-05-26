@@ -1,8 +1,0 @@
-{
-  active : (Optional (Integer)) ,
-  completionTime : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall)) ,
-  conditions : (Optional (./io.k8s.api.batch.v1.JobCondition.dhall)) ,
-  failed : (Optional (Integer)) ,
-  startTime : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall)) ,
-  succeeded : (Optional (Integer)) ,
-}

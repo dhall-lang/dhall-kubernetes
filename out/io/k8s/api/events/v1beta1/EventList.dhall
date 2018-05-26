@@ -1,6 +1,0 @@
-{
-  apiVersion : (Text) ,
-  items : (./io.k8s.api.events.v1beta1.Event.dhall) ,
-  kind : (Text) ,
-  metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall) ,
-}

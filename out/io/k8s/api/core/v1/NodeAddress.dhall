@@ -1,4 +1,0 @@
-{
-  address : (Text) ,
-  type : (Text) ,
-}
