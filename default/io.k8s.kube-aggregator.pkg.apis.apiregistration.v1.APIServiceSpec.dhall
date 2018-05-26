@@ -6,4 +6,4 @@
 , service = _params.service
 , version = ([] : Optional (Text))
 , versionPriority = _params.versionPriority
-}
+} : ../types/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceSpec.dhall

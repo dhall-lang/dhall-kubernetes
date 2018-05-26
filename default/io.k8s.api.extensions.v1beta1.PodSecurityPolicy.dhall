@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.PodSecurityPolicySpec.dhall))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.PodSecurityPolicy.dhall

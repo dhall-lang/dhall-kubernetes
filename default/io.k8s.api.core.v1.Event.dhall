@@ -16,4 +16,4 @@
 , series = ([] : Optional (../types/io.k8s.api.core.v1.EventSeries.dhall))
 , source = ([] : Optional (../types/io.k8s.api.core.v1.EventSource.dhall))
 , type = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.Event.dhall

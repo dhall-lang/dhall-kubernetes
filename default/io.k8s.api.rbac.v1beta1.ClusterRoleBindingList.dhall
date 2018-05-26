@@ -3,4 +3,4 @@
 , items = _params.items
 , kind = _params.kind
 , metadata = _params.metadata
-}
+} : ../types/io.k8s.api.rbac.v1beta1.ClusterRoleBindingList.dhall

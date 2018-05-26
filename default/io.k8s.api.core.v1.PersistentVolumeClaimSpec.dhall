@@ -5,4 +5,4 @@
 , storageClassName = ([] : Optional (Text))
 , volumeMode = ([] : Optional (Text))
 , volumeName = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.PersistentVolumeClaimSpec.dhall

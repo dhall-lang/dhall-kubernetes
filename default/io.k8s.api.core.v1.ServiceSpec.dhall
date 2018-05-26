@@ -12,4 +12,4 @@
 , sessionAffinity = ([] : Optional (Text))
 , sessionAffinityConfig = ([] : Optional (../types/io.k8s.api.core.v1.SessionAffinityConfig.dhall))
 , type = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.ServiceSpec.dhall

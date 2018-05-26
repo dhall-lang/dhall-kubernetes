@@ -8,4 +8,4 @@
 , singularName = _params.singularName
 , verbs = _params.verbs
 , version = ([] : Optional (Text))
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource.dhall

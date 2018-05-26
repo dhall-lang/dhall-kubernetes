@@ -3,4 +3,4 @@
 , kind = _params.kind
 , serverAddressByClientCIDRs = _params.serverAddressByClientCIDRs
 , versions = _params.versions
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.APIVersions.dhall

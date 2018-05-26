@@ -7,4 +7,4 @@
 , selector = _params.selector
 , strategy = ([] : Optional (../types/io.k8s.api.apps.v1beta2.DeploymentStrategy.dhall))
 , template = _params.template
-}
+} : ../types/io.k8s.api.apps.v1beta2.DeploymentSpec.dhall

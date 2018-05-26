@@ -10,4 +10,4 @@
 , phase = ([] : Optional (Text))
 , volumesAttached = ([] : Optional (../types/io.k8s.api.core.v1.AttachedVolume.dhall))
 , volumesInUse = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.NodeStatus.dhall

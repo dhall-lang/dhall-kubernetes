@@ -5,4 +5,4 @@
 , disruptionsAllowed = _params.disruptionsAllowed
 , expectedPods = _params.expectedPods
 , observedGeneration = ([] : Optional (Integer))
-}
+} : ../types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.dhall

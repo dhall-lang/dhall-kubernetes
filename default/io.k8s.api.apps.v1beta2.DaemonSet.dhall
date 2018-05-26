@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.apps.v1beta2.DaemonSetSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.apps.v1beta2.DaemonSetStatus.dhall))
-}
+} : ../types/io.k8s.api.apps.v1beta2.DaemonSet.dhall

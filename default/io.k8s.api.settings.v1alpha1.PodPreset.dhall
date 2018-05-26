@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.settings.v1alpha1.PodPresetSpec.dhall))
-}
+} : ../types/io.k8s.api.settings.v1alpha1.PodPreset.dhall

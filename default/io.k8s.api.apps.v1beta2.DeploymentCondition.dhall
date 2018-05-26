@@ -5,4 +5,4 @@
 , reason = ([] : Optional (Text))
 , status = _params.status
 , type = _params.type
-}
+} : ../types/io.k8s.api.apps.v1beta2.DeploymentCondition.dhall

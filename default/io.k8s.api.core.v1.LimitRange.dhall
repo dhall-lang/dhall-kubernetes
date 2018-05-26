@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.core.v1.LimitRangeSpec.dhall))
-}
+} : ../types/io.k8s.api.core.v1.LimitRange.dhall

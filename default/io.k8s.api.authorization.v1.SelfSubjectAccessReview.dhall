@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = _params.spec
 , status = ([] : Optional (../types/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.dhall))
-}
+} : ../types/io.k8s.api.authorization.v1.SelfSubjectAccessReview.dhall

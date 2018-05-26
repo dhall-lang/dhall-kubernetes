@@ -10,4 +10,4 @@
 , readOnly = ([] : Optional (Bool))
 , secretRef = ([] : Optional (../types/io.k8s.api.core.v1.LocalObjectReference.dhall))
 , targetPortal = _params.targetPortal
-}
+} : ../types/io.k8s.api.core.v1.ISCSIVolumeSource.dhall

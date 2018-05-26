@@ -16,4 +16,4 @@
 , reportingInstance = ([] : Optional (Text))
 , series = ([] : Optional (../types/io.k8s.api.events.v1beta1.EventSeries.dhall))
 , type = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.events.v1beta1.Event.dhall

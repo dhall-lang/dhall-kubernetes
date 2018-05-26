@@ -3,4 +3,4 @@
 , replicas = ([] : Optional (Integer))
 , selector = _params.selector
 , template = ([] : Optional (../types/io.k8s.api.core.v1.PodTemplateSpec.dhall))
-}
+} : ../types/io.k8s.api.apps.v1beta2.ReplicaSetSpec.dhall

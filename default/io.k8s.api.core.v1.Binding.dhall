@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , target = _params.target
-}
+} : ../types/io.k8s.api.core.v1.Binding.dhall

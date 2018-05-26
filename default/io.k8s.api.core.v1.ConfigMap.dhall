@@ -4,4 +4,4 @@
 , data = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , kind = _params.kind
 , metadata = _params.metadata
-}
+} : ../types/io.k8s.api.core.v1.ConfigMap.dhall

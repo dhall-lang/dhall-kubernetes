@@ -3,4 +3,4 @@
 , message = ([] : Optional (Text))
 , reason = ([] : Optional (Text))
 , type = _params.type
-}
+} : ../types/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition.dhall

@@ -3,4 +3,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , rules = _params.rules
-}
+} : ../types/io.k8s.api.rbac.v1.Role.dhall

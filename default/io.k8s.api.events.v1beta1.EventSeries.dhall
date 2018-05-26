@@ -2,4 +2,4 @@
 { count = _params.count
 , lastObservedTime = _params.lastObservedTime
 , state = _params.state
-}
+} : ../types/io.k8s.api.events.v1beta1.EventSeries.dhall

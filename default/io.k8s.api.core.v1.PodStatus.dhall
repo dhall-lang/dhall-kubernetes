@@ -10,4 +10,4 @@
 , qosClass = ([] : Optional (Text))
 , reason = ([] : Optional (Text))
 , startTime = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
-}
+} : ../types/io.k8s.api.core.v1.PodStatus.dhall

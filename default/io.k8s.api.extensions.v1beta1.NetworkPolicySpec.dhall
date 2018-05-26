@@ -3,4 +3,4 @@
 , ingress = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.NetworkPolicyIngressRule.dhall))
 , podSelector = _params.podSelector
 , policyTypes = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.NetworkPolicySpec.dhall

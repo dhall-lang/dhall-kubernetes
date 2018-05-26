@@ -29,4 +29,4 @@
 , storageos = ([] : Optional (../types/io.k8s.api.core.v1.StorageOSPersistentVolumeSource.dhall))
 , volumeMode = ([] : Optional (Text))
 , vsphereVolume = ([] : Optional (../types/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource.dhall))
-}
+} : ../types/io.k8s.api.core.v1.PersistentVolumeSpec.dhall

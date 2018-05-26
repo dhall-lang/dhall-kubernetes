@@ -4,4 +4,4 @@
 , reason = ([] : Optional (Text))
 , status = _params.status
 , type = _params.type
-}
+} : ../types/io.k8s.api.apps.v1.DaemonSetCondition.dhall

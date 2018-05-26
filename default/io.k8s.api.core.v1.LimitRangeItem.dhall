@@ -5,4 +5,4 @@
 , maxLimitRequestRatio = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , min = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , type = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.LimitRangeItem.dhall

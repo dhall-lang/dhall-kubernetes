@@ -7,4 +7,4 @@
 , replicas = ([] : Optional (Integer))
 , unavailableReplicas = ([] : Optional (Integer))
 , updatedReplicas = ([] : Optional (Integer))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.DeploymentStatus.dhall

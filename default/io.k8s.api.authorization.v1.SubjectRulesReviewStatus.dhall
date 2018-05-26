@@ -3,4 +3,4 @@
 , incomplete = _params.incomplete
 , nonResourceRules = _params.nonResourceRules
 , resourceRules = _params.resourceRules
-}
+} : ../types/io.k8s.api.authorization.v1.SubjectRulesReviewStatus.dhall

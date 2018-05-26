@@ -4,4 +4,4 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , revision = _params.revision
-}
+} : ../types/io.k8s.api.apps.v1beta1.ControllerRevision.dhall

@@ -5,4 +5,4 @@
 , kind = _params.kind
 , name = _params.name
 , uid = _params.uid
-}
+} : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall

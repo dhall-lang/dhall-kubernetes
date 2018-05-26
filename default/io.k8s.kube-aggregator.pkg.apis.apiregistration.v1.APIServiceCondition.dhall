@@ -4,4 +4,4 @@
 , reason = ([] : Optional (Text))
 , status = _params.status
 , type = _params.type
-}
+} : ../types/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition.dhall

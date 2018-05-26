@@ -4,4 +4,4 @@
 , metadata = _params.metadata
 , spec = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.DeploymentSpec.dhall))
 , status = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.DeploymentStatus.dhall))
-}
+} : ../types/io.k8s.api.extensions.v1beta1.Deployment.dhall

@@ -8,4 +8,4 @@
 , provisioner = _params.provisioner
 , reclaimPolicy = ([] : Optional (Text))
 , volumeBindingMode = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.storage.v1.StorageClass.dhall

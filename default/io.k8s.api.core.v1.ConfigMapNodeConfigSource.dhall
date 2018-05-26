@@ -4,4 +4,4 @@
 , namespace = _params.namespace
 , resourceVersion = ([] : Optional (Text))
 , uid = ([] : Optional (Text))
-}
+} : ../types/io.k8s.api.core.v1.ConfigMapNodeConfigSource.dhall

@@ -2,4 +2,4 @@
 { acceptedNames = _params.acceptedNames
 , conditions = _params.conditions
 , storedVersions = _params.storedVersions
-}
+} : ../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus.dhall

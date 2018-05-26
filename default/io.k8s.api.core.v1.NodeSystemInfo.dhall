@@ -9,4 +9,4 @@
 , operatingSystem = _params.operatingSystem
 , osImage = _params.osImage
 , systemUUID = _params.systemUUID
-}
+} : ../types/io.k8s.api.core.v1.NodeSystemInfo.dhall

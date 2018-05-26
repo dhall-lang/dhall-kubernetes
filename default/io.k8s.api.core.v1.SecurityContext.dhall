@@ -7,4 +7,4 @@
 , runAsNonRoot = ([] : Optional (Bool))
 , runAsUser = ([] : Optional (Integer))
 , seLinuxOptions = ([] : Optional (../types/io.k8s.api.core.v1.SELinuxOptions.dhall))
-}
+} : ../types/io.k8s.api.core.v1.SecurityContext.dhall
