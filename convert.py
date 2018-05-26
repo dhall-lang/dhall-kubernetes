@@ -1,5 +1,4 @@
 import requests
-import os
 
 def get_typ(props, required):
     if '$ref' in props:
@@ -36,15 +35,13 @@ always_required = {'apiVersion', 'kind', 'metadata'}
 
 
 required_for = {
-        'io/k8s/apimachinery/pkg/apis/meta/v1/ObjectMeta': {'name'},
+        'io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta': {'name'},
 }
 
 def main():
     spec = requests.get(url).json()
 
     for modelName, modelSpec in spec['definitions'].items():
-        modelName = "/".join(modelName.split("."))
-        os.makedirs('out/' + os.path.dirname(modelName), exist_ok = True)
         with open('out/' + modelName + '.dhall', 'w') as f:
             if 'type' in modelSpec:
                 f.write('{}\n'.format(get_typ(modelSpec, {'type'})))
