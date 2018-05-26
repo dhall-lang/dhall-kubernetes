@@ -1,4 +1,0 @@
-{
-  max : (Integer) ,
-  min : (Integer) ,
-}

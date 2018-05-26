@@ -1,0 +1,3 @@
+{ apiVersion : (Text)
+, fieldPath : (Text)
+}

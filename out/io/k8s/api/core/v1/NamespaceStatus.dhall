@@ -1,3 +1,0 @@
-{
-  phase : (Optional (Text)) ,
-}

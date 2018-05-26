@@ -1,4 +1,0 @@
-{
-  clientCIDR : (Text) ,
-  serverAddress : (Text) ,
-}

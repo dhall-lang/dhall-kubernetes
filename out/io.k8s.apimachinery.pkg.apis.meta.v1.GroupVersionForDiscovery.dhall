@@ -1,0 +1,3 @@
+{ groupVersion : (Text)
+, version : (Text)
+}

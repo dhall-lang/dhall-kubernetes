@@ -1,4 +1,0 @@
-{
-  name : (Text) ,
-  value : (Text) ,
-}

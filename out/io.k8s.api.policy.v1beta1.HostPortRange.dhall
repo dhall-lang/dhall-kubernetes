@@ -1,0 +1,3 @@
+{ max : (Integer)
+, min : (Integer)
+}
