@@ -46,7 +46,7 @@ def main():
             if 'type' in modelSpec:
                 f.write('{}\n'.format(get_typ(modelSpec, {'type'})))
             else:
-                f.write('{\n')
+                first = True
 
                 required = set(modelSpec.get('required', [])) | always_required
                 if modelName in required_for.keys():
@@ -56,10 +56,16 @@ def main():
                 properties = modelSpec.get('properties', {})
 
                 for propName, propVal in properties.items():
-                    typ = get_typ(propVal, propName in required)
-                    f.write("  {} : ({}) ,\n".format(propName, typ))
+                    if first:
+                        f.write('{')
+                    else:
+                        f.write(',')
+                    first = False
 
-                f.write('}')
+                    typ = get_typ(propVal, propName in required)
+                    f.write(" {} : ({})\n".format(propName, typ))
+
+                f.write('}\n')
 
 if __name__ == '__main__':
     main()
