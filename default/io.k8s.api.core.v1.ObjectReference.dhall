@@ -1,7 +1,7 @@
-\(apiVersion : (Text)) -> \(kind : (Text)) -> 
-{ apiVersion = apiVersion
+\(_params : {apiVersion : (Text), kind : (Text)}) ->
+{ apiVersion = _params.apiVersion
 , fieldPath = ([] : Optional (Text))
-, kind = kind
+, kind = _params.kind
 , name = ([] : Optional (Text))
 , namespace = ([] : Optional (Text))
 , resourceVersion = ([] : Optional (Text))

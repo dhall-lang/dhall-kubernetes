@@ -1,4 +1,4 @@
-\(names : (Text)) -> 
-{ names = names
+\(_params : {names : (Text)}) ->
+{ names = _params.names
 , sizeBytes = ([] : Optional (Integer))
 }

@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { allowPrivilegeEscalation = ([] : Optional (Bool))
 , capabilities = ([] : Optional (../types/io.k8s.api.core.v1.Capabilities.dhall))
 , privileged = ([] : Optional (Bool))

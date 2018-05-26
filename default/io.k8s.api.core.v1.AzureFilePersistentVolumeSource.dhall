@@ -1,6 +1,6 @@
-\(secretName : (Text)) -> \(shareName : (Text)) -> 
+\(_params : {secretName : (Text), shareName : (Text)}) ->
 { readOnly = ([] : Optional (Bool))
-, secretName = secretName
+, secretName = _params.secretName
 , secretNamespace = ([] : Optional (Text))
-, shareName = shareName
+, shareName = _params.shareName
 }

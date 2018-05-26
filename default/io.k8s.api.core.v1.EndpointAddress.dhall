@@ -1,6 +1,6 @@
-\(ip : (Text)) -> 
+\(_params : {ip : (Text)}) ->
 { hostname = ([] : Optional (Text))
-, ip = ip
+, ip = _params.ip
 , nodeName = ([] : Optional (Text))
 , targetRef = ([] : Optional (../types/io.k8s.api.core.v1.ObjectReference.dhall))
 }

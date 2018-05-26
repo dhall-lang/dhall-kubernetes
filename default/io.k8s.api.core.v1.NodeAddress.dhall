@@ -1,4 +1,4 @@
-\(address : (Text)) -> \(type : (Text)) -> 
-{ address = address
-, type = type
+\(_params : {address : (Text), type : (Text)}) ->
+{ address = _params.address
+, type = _params.type
 }

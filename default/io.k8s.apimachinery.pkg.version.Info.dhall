@@ -1,11 +1,11 @@
-\(buildDate : (Text)) -> \(compiler : (Text)) -> \(gitCommit : (Text)) -> \(gitTreeState : (Text)) -> \(gitVersion : (Text)) -> \(goVersion : (Text)) -> \(major : (Text)) -> \(minor : (Text)) -> \(platform : (Text)) -> 
-{ buildDate = buildDate
-, compiler = compiler
-, gitCommit = gitCommit
-, gitTreeState = gitTreeState
-, gitVersion = gitVersion
-, goVersion = goVersion
-, major = major
-, minor = minor
-, platform = platform
+\(_params : {buildDate : (Text), compiler : (Text), gitCommit : (Text), gitTreeState : (Text), gitVersion : (Text), goVersion : (Text), major : (Text), minor : (Text), platform : (Text)}) ->
+{ buildDate = _params.buildDate
+, compiler = _params.compiler
+, gitCommit = _params.gitCommit
+, gitTreeState = _params.gitTreeState
+, gitVersion = _params.gitVersion
+, goVersion = _params.goVersion
+, major = _params.major
+, minor = _params.minor
+, platform = _params.platform
 }

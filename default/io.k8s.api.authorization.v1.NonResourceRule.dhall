@@ -1,4 +1,4 @@
-\(verbs : (Text)) -> 
+\(_params : {verbs : (Text)}) ->
 { nonResourceURLs = ([] : Optional (Text))
-, verbs = verbs
+, verbs = _params.verbs
 }

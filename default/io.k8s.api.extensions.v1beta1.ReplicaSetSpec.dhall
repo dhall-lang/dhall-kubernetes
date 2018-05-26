@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { minReadySeconds = ([] : Optional (Integer))
 , replicas = ([] : Optional (Integer))
 , selector = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall))

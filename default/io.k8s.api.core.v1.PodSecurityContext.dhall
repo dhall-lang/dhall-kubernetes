@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { fsGroup = ([] : Optional (Integer))
 , runAsGroup = ([] : Optional (Integer))
 , runAsNonRoot = ([] : Optional (Bool))

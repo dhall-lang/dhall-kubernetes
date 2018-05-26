@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { $ref = ([] : Optional (Text))
 , $schema = ([] : Optional (Text))
 , additionalItems = ([] : Optional (../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall))

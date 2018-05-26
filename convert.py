@@ -93,11 +93,10 @@ def main():
 
                 # If there's any required props, we make it a lambda
                 if len(required) > 0:
-                    for propName, propVal in properties.items():
-                        if propName not in required:
-                            continue
-                        f.write('\({} : ({})) -> '.format(propName, get_typ(propVal, True, True)))
-                    f.write('\n')
+                    params = ['{} : ({})'.format(propName, get_typ(propVal, True, True))
+                              for propName, propVal in properties.items()
+                              if propName in required]
+                    f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
 
                 for propName, propVal in properties.items():
                     if first:
@@ -108,7 +107,7 @@ def main():
 
                     # If it's required we're passing it in as a parameter
                     if propName in required:
-                        val = propName
+                        val = "_params." + propName
                     else:
                         val = get_default(propVal, False)
                     f.write(" {} = {}\n".format(propName, val))

@@ -1,5 +1,5 @@
-\(key : (Text)) -> \(path : (Text)) -> 
-{ key = key
+\(_params : {key : (Text), path : (Text)}) ->
+{ key = _params.key
 , mode = ([] : Optional (Integer))
-, path = path
+, path = _params.path
 }

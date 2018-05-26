@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { apiGroups = ([] : Optional (Text))
 , apiVersions = ([] : Optional (Text))
 , operations = ([] : Optional (Text))

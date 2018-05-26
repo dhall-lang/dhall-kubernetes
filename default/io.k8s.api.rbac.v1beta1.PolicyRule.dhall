@@ -1,7 +1,7 @@
-\(verbs : (Text)) -> 
+\(_params : {verbs : (Text)}) ->
 { apiGroups = ([] : Optional (Text))
 , nonResourceURLs = ([] : Optional (Text))
 , resourceNames = ([] : Optional (Text))
 , resources = ([] : Optional (Text))
-, verbs = verbs
+, verbs = _params.verbs
 }

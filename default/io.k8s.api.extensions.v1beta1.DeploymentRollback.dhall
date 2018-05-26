@@ -1,7 +1,7 @@
-\(apiVersion : (Text)) -> \(kind : (Text)) -> \(name : (Text)) -> \(rollbackTo : (../types/io.k8s.api.extensions.v1beta1.RollbackConfig.dhall)) -> 
-{ apiVersion = apiVersion
-, kind = kind
-, name = name
-, rollbackTo = rollbackTo
+\(_params : {apiVersion : (Text), kind : (Text), name : (Text), rollbackTo : (../types/io.k8s.api.extensions.v1beta1.RollbackConfig.dhall)}) ->
+{ apiVersion = _params.apiVersion
+, kind = _params.kind
+, name = _params.name
+, rollbackTo = _params.rollbackTo
 , updatedAnnotations = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 }

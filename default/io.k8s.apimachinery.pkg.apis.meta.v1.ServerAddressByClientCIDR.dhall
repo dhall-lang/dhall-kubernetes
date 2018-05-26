@@ -1,4 +1,4 @@
-\(clientCIDR : (Text)) -> \(serverAddress : (Text)) -> 
-{ clientCIDR = clientCIDR
-, serverAddress = serverAddress
+\(_params : {clientCIDR : (Text), serverAddress : (Text)}) ->
+{ clientCIDR = _params.clientCIDR
+, serverAddress = _params.serverAddress
 }

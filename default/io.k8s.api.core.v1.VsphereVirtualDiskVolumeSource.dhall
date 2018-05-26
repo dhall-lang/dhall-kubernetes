@@ -1,6 +1,6 @@
-\(volumePath : (Text)) -> 
+\(_params : {volumePath : (Text)}) ->
 { fsType = ([] : Optional (Text))
 , storagePolicyID = ([] : Optional (Text))
 , storagePolicyName = ([] : Optional (Text))
-, volumePath = volumePath
+, volumePath = _params.volumePath
 }

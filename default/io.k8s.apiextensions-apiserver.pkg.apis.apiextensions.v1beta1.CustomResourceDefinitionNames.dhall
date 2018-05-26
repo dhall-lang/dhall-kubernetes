@@ -1,8 +1,8 @@
-\(kind : (Text)) -> \(plural : (Text)) -> 
+\(_params : {kind : (Text), plural : (Text)}) ->
 { categories = ([] : Optional (Text))
-, kind = kind
+, kind = _params.kind
 , listKind = ([] : Optional (Text))
-, plural = plural
+, plural = _params.plural
 , shortNames = ([] : Optional (Text))
 , singular = ([] : Optional (Text))
 }

@@ -1,5 +1,5 @@
-\(repository : (Text)) -> 
+\(_params : {repository : (Text)}) ->
 { directory = ([] : Optional (Text))
-, repository = repository
+, repository = _params.repository
 , revision = ([] : Optional (Text))
 }

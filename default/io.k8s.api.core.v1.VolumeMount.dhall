@@ -1,7 +1,7 @@
-\(mountPath : (Text)) -> \(name : (Text)) -> 
-{ mountPath = mountPath
+\(_params : {mountPath : (Text), name : (Text)}) ->
+{ mountPath = _params.mountPath
 , mountPropagation = ([] : Optional (Text))
-, name = name
+, name = _params.name
 , readOnly = ([] : Optional (Bool))
 , subPath = ([] : Optional (Text))
 }

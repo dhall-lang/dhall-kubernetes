@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { addresses = ([] : Optional (../types/io.k8s.api.core.v1.NodeAddress.dhall))
 , allocatable = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , capacity = ([] : Optional ((List {mapKey : Text, mapValue : Text})))

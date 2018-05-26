@@ -1,5 +1,5 @@
-\(containerPort : (Integer)) -> 
-{ containerPort = containerPort
+\(_params : {containerPort : (Integer)}) ->
+{ containerPort = _params.containerPort
 , hostIP = ([] : Optional (Text))
 , hostPort = ([] : Optional (Integer))
 , name = ([] : Optional (Text))

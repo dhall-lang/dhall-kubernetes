@@ -1,6 +1,6 @@
-\(maxReplicas : (Integer)) -> \(scaleTargetRef : (../types/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference.dhall)) -> 
-{ maxReplicas = maxReplicas
+\(_params : {maxReplicas : (Integer), scaleTargetRef : (../types/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference.dhall)}) ->
+{ maxReplicas = _params.maxReplicas
 , metrics = ([] : Optional (../types/io.k8s.api.autoscaling.v2beta1.MetricSpec.dhall))
 , minReplicas = ([] : Optional (Integer))
-, scaleTargetRef = scaleTargetRef
+, scaleTargetRef = _params.scaleTargetRef
 }

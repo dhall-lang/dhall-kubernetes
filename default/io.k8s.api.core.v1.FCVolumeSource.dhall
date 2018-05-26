@@ -1,4 +1,4 @@
-
+\(_params : {}) ->
 { fsType = ([] : Optional (Text))
 , lun = ([] : Optional (Integer))
 , readOnly = ([] : Optional (Bool))

@@ -1,5 +1,5 @@
-\(path : (Text)) -> \(server : (Text)) -> 
-{ path = path
+\(_params : {path : (Text), server : (Text)}) ->
+{ path = _params.path
 , readOnly = ([] : Optional (Bool))
-, server = server
+, server = _params.server
 }

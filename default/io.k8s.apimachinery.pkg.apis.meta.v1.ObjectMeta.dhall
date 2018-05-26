@@ -1,4 +1,4 @@
-\(name : (Text)) -> 
+\(_params : {name : (Text)}) ->
 { annotations = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , clusterName = ([] : Optional (Text))
 , creationTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
@@ -9,7 +9,7 @@
 , generation = ([] : Optional (Integer))
 , initializers = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall))
 , labels = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
-, name = name
+, name = _params.name
 , namespace = ([] : Optional (Text))
 , ownerReferences = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall))
 , resourceVersion = ([] : Optional (Text))

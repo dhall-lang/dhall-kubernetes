@@ -1,6 +1,6 @@
-\(pdName : (Text)) -> 
+\(_params : {pdName : (Text)}) ->
 { fsType = ([] : Optional (Text))
 , partition = ([] : Optional (Integer))
-, pdName = pdName
+, pdName = _params.pdName
 , readOnly = ([] : Optional (Bool))
 }

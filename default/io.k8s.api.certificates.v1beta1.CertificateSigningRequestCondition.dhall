@@ -1,6 +1,6 @@
-\(type : (Text)) -> 
+\(_params : {type : (Text)}) ->
 { lastUpdateTime = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , message = ([] : Optional (Text))
 , reason = ([] : Optional (Text))
-, type = type
+, type = _params.type
 }

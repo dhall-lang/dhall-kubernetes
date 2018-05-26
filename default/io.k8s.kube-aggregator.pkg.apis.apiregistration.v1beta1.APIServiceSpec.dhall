@@ -1,9 +1,9 @@
-\(groupPriorityMinimum : (Integer)) -> \(service : (../types/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.ServiceReference.dhall)) -> \(versionPriority : (Integer)) -> 
+\(_params : {groupPriorityMinimum : (Integer), service : (../types/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.ServiceReference.dhall), versionPriority : (Integer)}) ->
 { caBundle = ([] : Optional (Text))
 , group = ([] : Optional (Text))
-, groupPriorityMinimum = groupPriorityMinimum
+, groupPriorityMinimum = _params.groupPriorityMinimum
 , insecureSkipTLSVerify = ([] : Optional (Bool))
-, service = service
+, service = _params.service
 , version = ([] : Optional (Text))
-, versionPriority = versionPriority
+, versionPriority = _params.versionPriority
 }

@@ -1,4 +1,4 @@
-\(pdID : (Text)) -> 
+\(_params : {pdID : (Text)}) ->
 { fsType = ([] : Optional (Text))
-, pdID = pdID
+, pdID = _params.pdID
 }

@@ -1,4 +1,4 @@
-\(max : (Integer)) -> \(min : (Integer)) -> 
-{ max = max
-, min = min
+\(_params : {max : (Integer), min : (Integer)}) ->
+{ max = _params.max
+, min = _params.min
 }

@@ -1,5 +1,5 @@
-\(apiGroup : (Text)) -> \(kind : (Text)) -> \(name : (Text)) -> 
-{ apiGroup = apiGroup
-, kind = kind
-, name = name
+\(_params : {apiGroup : (Text), kind : (Text), name : (Text)}) ->
+{ apiGroup = _params.apiGroup
+, kind = _params.kind
+, name = _params.name
 }

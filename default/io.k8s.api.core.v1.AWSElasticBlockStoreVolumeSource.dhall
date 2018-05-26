@@ -1,6 +1,6 @@
-\(volumeID : (Text)) -> 
+\(_params : {volumeID : (Text)}) ->
 { fsType = ([] : Optional (Text))
 , partition = ([] : Optional (Integer))
 , readOnly = ([] : Optional (Bool))
-, volumeID = volumeID
+, volumeID = _params.volumeID
 }

@@ -1,6 +1,6 @@
-\(kind : (Text)) -> \(name : (Text)) -> 
+\(_params : {kind : (Text), name : (Text)}) ->
 { apiGroup = ([] : Optional (Text))
-, kind = kind
-, name = name
+, kind = _params.kind
+, name = _params.name
 , namespace = ([] : Optional (Text))
 }
