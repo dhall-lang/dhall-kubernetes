@@ -6,7 +6,7 @@ def get_typ(props, required):
     elif 'type' in props:
         typ = props['type']
         if typ == 'object':
-            x =  '(∀(a : Type) → a)'
+            x =  '(List {mapKey : Text, mapValue : Text})'
         elif typ == 'array':
             x = get_typ(props['items'], True)
         else:
