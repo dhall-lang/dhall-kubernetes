@@ -1,2 +1,2 @@
 \(_params : {}) ->
-} : ../types/io.k8s.kubernetes.pkg.apis.storage.v1beta1.StorageClass.dhall
+{=} : ../types/io.k8s.kubernetes.pkg.apis.storage.v1beta1.StorageClass.dhall

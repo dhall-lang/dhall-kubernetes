@@ -1,2 +1,2 @@
 \(_params : {}) ->
-} : ../types/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.ReplicaSetList.dhall
+{=} : ../types/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.ReplicaSetList.dhall
