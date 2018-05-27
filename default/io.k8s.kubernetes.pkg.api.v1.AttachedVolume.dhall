@@ -1,2 +1,2 @@
 \(_params : {}) ->
-} : ../types/io.k8s.kubernetes.pkg.api.v1.AttachedVolume.dhall
+{=} : ../types/io.k8s.kubernetes.pkg.api.v1.AttachedVolume.dhall

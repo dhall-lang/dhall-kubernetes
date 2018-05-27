@@ -60,31 +60,20 @@ def main():
             if 'type' in modelSpec:
                 f.write('{}\n'.format(get_typ(modelSpec, True)))
             else:
-                first = True
-
                 required = set(modelSpec.get('required', [])) | always_required
                 if modelName in required_for.keys():
                     required |= required_for[modelName]
 
                 properties = modelSpec.get('properties', {})
 
-                for propName, propVal in properties.items():
-                    if first:
-                        f.write('{')
-                    else:
-                        f.write(',')
-                    first = False
+                fields = [" {} : ({})\n".format(propName, get_typ(propVal, propName in required))
+                          for propName, propVal in properties.items()]
+                f.write('{' + ','.join(fields) + '}\n')
 
-                    typ = get_typ(propVal, propName in required)
-                    f.write(" {} : ({})\n".format(propName, typ))
-
-                f.write('}\n')
         with open('default/' + modelName + '.dhall', 'w') as f:
             if 'type' in modelSpec:
                 f.write('\(a : {}) -> a\n'.format(get_typ(modelSpec, True, True)))
             else:
-                first = True
-
                 required = set(modelSpec.get('required', [])) | always_required
                 if modelName in required_for.keys():
                     required |= required_for[modelName]
@@ -98,21 +87,18 @@ def main():
                               if propName in required]
                     f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
 
-                for propName, propVal in properties.items():
-                    if first:
-                        f.write('{')
-                    else:
-                        f.write(',')
-                    first = False
+                # If it's required we're passing it in as a parameter
+                KVs = [(propName, "_params." + propName)
+                       if propName in required
+                       else (propName, get_default(propVal, False))
+                       for propName, propVal in properties.items()]
 
-                    # If it's required we're passing it in as a parameter
-                    if propName in required:
-                        val = "_params." + propName
-                    else:
-                        val = get_default(propVal, False)
-                    f.write(" {} = {}\n".format(propName, val))
-
-                f.write('} : ../types/' + modelName + '.dhall\n')
+                # If there's no fields, should be an empty record
+                if len(KVs) > 0:
+                    formatted = [" {} = {}\n".format(k, v) for k, v in KVs]
+                else:
+                    formatted = '='
+                f.write('{' + ','.join(formatted) + '} : ../types/' + modelName + '.dhall\n')
 
 if __name__ == '__main__':
     main()
