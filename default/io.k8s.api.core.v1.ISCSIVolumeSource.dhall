@@ -6,7 +6,7 @@
 , iqn = _params.iqn
 , iscsiInterface = ([] : Optional (Text))
 , lun = _params.lun
-, portals = ([] : Optional (Text))
+, portals = ([] : Optional (List Text))
 , readOnly = ([] : Optional (Bool))
 , secretRef = ([] : Optional (../types/io.k8s.api.core.v1.LocalObjectReference.dhall))
 , targetPortal = _params.targetPortal

@@ -1,4 +1,4 @@
-\(_params : {monitors : (Text)}) ->
+\(_params : {monitors : (List Text)}) ->
 { monitors = _params.monitors
 , path = ([] : Optional (Text))
 , readOnly = ([] : Optional (Bool))

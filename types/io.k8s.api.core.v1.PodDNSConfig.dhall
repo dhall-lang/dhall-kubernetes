@@ -1,4 +1,4 @@
-{ nameservers : (Optional (Text))
-, options : (Optional (./io.k8s.api.core.v1.PodDNSConfigOption.dhall))
-, searches : (Optional (Text))
+{ nameservers : (Optional (List Text))
+, options : (Optional (List ./io.k8s.api.core.v1.PodDNSConfigOption.dhall))
+, searches : (Optional (List Text))
 }

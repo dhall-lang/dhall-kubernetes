@@ -1,17 +1,17 @@
-\(_params : {containers : (../types/io.k8s.api.core.v1.Container.dhall)}) ->
+\(_params : {containers : (List ../types/io.k8s.api.core.v1.Container.dhall)}) ->
 { activeDeadlineSeconds = ([] : Optional (Integer))
 , affinity = ([] : Optional (../types/io.k8s.api.core.v1.Affinity.dhall))
 , automountServiceAccountToken = ([] : Optional (Bool))
 , containers = _params.containers
 , dnsConfig = ([] : Optional (../types/io.k8s.api.core.v1.PodDNSConfig.dhall))
 , dnsPolicy = ([] : Optional (Text))
-, hostAliases = ([] : Optional (../types/io.k8s.api.core.v1.HostAlias.dhall))
+, hostAliases = ([] : Optional (List ../types/io.k8s.api.core.v1.HostAlias.dhall))
 , hostIPC = ([] : Optional (Bool))
 , hostNetwork = ([] : Optional (Bool))
 , hostPID = ([] : Optional (Bool))
 , hostname = ([] : Optional (Text))
-, imagePullSecrets = ([] : Optional (../types/io.k8s.api.core.v1.LocalObjectReference.dhall))
-, initContainers = ([] : Optional (../types/io.k8s.api.core.v1.Container.dhall))
+, imagePullSecrets = ([] : Optional (List ../types/io.k8s.api.core.v1.LocalObjectReference.dhall))
+, initContainers = ([] : Optional (List ../types/io.k8s.api.core.v1.Container.dhall))
 , nodeName = ([] : Optional (Text))
 , nodeSelector = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , priority = ([] : Optional (Integer))
@@ -24,6 +24,6 @@
 , shareProcessNamespace = ([] : Optional (Bool))
 , subdomain = ([] : Optional (Text))
 , terminationGracePeriodSeconds = ([] : Optional (Integer))
-, tolerations = ([] : Optional (../types/io.k8s.api.core.v1.Toleration.dhall))
-, volumes = ([] : Optional (../types/io.k8s.api.core.v1.Volume.dhall))
+, tolerations = ([] : Optional (List ../types/io.k8s.api.core.v1.Toleration.dhall))
+, volumes = ([] : Optional (List ../types/io.k8s.api.core.v1.Volume.dhall))
 } : ../types/io.k8s.api.core.v1.PodSpec.dhall

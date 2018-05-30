@@ -1,6 +1,6 @@
-\(_params : {verbs : (Text)}) ->
-{ apiGroups = ([] : Optional (Text))
-, resourceNames = ([] : Optional (Text))
-, resources = ([] : Optional (Text))
+\(_params : {verbs : (List Text)}) ->
+{ apiGroups = ([] : Optional (List Text))
+, resourceNames = ([] : Optional (List Text))
+, resources = ([] : Optional (List Text))
 , verbs = _params.verbs
 } : ../types/io.k8s.api.authorization.v1beta1.ResourceRule.dhall

@@ -1,5 +1,4 @@
-\(_params : {}) ->
-{ accessModes = ([] : Optional (Text))
+{ accessModes = ([] : Optional (List Text))
 , awsElasticBlockStore = ([] : Optional (../types/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall))
 , azureDisk = ([] : Optional (../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall))
 , azureFile = ([] : Optional (../types/io.k8s.api.core.v1.AzureFilePersistentVolumeSource.dhall))
@@ -16,7 +15,7 @@
 , hostPath = ([] : Optional (../types/io.k8s.api.core.v1.HostPathVolumeSource.dhall))
 , iscsi = ([] : Optional (../types/io.k8s.api.core.v1.ISCSIPersistentVolumeSource.dhall))
 , local = ([] : Optional (../types/io.k8s.api.core.v1.LocalVolumeSource.dhall))
-, mountOptions = ([] : Optional (Text))
+, mountOptions = ([] : Optional (List Text))
 , nfs = ([] : Optional (../types/io.k8s.api.core.v1.NFSVolumeSource.dhall))
 , nodeAffinity = ([] : Optional (../types/io.k8s.api.core.v1.VolumeNodeAffinity.dhall))
 , persistentVolumeReclaimPolicy = ([] : Optional (Text))

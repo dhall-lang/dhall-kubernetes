@@ -1,4 +1,3 @@
-\(_params : {}) ->
 { minReadySeconds = ([] : Optional (Integer))
 , replicas = ([] : Optional (Integer))
 , selector = ([] : Optional ((List {mapKey : Text, mapValue : Text})))

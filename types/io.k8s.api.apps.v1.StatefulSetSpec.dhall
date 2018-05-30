@@ -5,5 +5,5 @@
 , serviceName : (Text)
 , template : (./io.k8s.api.core.v1.PodTemplateSpec.dhall)
 , updateStrategy : (Optional (./io.k8s.api.apps.v1.StatefulSetUpdateStrategy.dhall))
-, volumeClaimTemplates : (Optional (./io.k8s.api.core.v1.PersistentVolumeClaim.dhall))
+, volumeClaimTemplates : (Optional (List ./io.k8s.api.core.v1.PersistentVolumeClaim.dhall))
 }

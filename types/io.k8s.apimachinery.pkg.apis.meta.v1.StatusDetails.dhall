@@ -1,4 +1,4 @@
-{ causes : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause.dhall))
+{ causes : (Optional (List ./io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause.dhall))
 , group : (Optional (Text))
 , kind : (Text)
 , name : (Optional (Text))

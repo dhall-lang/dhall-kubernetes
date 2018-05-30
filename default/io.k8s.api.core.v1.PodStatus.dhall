@@ -1,8 +1,7 @@
-\(_params : {}) ->
-{ conditions = ([] : Optional (../types/io.k8s.api.core.v1.PodCondition.dhall))
-, containerStatuses = ([] : Optional (../types/io.k8s.api.core.v1.ContainerStatus.dhall))
+{ conditions = ([] : Optional (List ../types/io.k8s.api.core.v1.PodCondition.dhall))
+, containerStatuses = ([] : Optional (List ../types/io.k8s.api.core.v1.ContainerStatus.dhall))
 , hostIP = ([] : Optional (Text))
-, initContainerStatuses = ([] : Optional (../types/io.k8s.api.core.v1.ContainerStatus.dhall))
+, initContainerStatuses = ([] : Optional (List ../types/io.k8s.api.core.v1.ContainerStatus.dhall))
 , message = ([] : Optional (Text))
 , nominatedNodeName = ([] : Optional (Text))
 , phase = ([] : Optional (Text))

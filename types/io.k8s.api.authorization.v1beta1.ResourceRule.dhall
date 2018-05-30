@@ -1,5 +1,5 @@
-{ apiGroups : (Optional (Text))
-, resourceNames : (Optional (Text))
-, resources : (Optional (Text))
-, verbs : (Text)
+{ apiGroups : (Optional (List Text))
+, resourceNames : (Optional (List Text))
+, resources : (Optional (List Text))
+, verbs : (List Text)
 }

@@ -1,7 +1,6 @@
-\(_params : {}) ->
 { availableReplicas = ([] : Optional (Integer))
 , collisionCount = ([] : Optional (Integer))
-, conditions = ([] : Optional (../types/io.k8s.api.apps.v1.DeploymentCondition.dhall))
+, conditions = ([] : Optional (List ../types/io.k8s.api.apps.v1.DeploymentCondition.dhall))
 , observedGeneration = ([] : Optional (Integer))
 , readyReplicas = ([] : Optional (Integer))
 , replicas = ([] : Optional (Integer))

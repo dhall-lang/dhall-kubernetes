@@ -1,4 +1,4 @@
-\(_params : {image : (Text), monitors : (Text)}) ->
+\(_params : {image : (Text), monitors : (List Text)}) ->
 { fsType = ([] : Optional (Text))
 , image = _params.image
 , keyring = ([] : Optional (Text))
