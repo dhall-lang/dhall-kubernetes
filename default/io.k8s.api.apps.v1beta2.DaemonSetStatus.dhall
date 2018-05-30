@@ -1,6 +1,6 @@
 \(_params : {currentNumberScheduled : (Integer), desiredNumberScheduled : (Integer), numberMisscheduled : (Integer), numberReady : (Integer)}) ->
 { collisionCount = ([] : Optional (Integer))
-, conditions = ([] : Optional (../types/io.k8s.api.apps.v1beta2.DaemonSetCondition.dhall))
+, conditions = ([] : Optional (List ../types/io.k8s.api.apps.v1beta2.DaemonSetCondition.dhall))
 , currentNumberScheduled = _params.currentNumberScheduled
 , desiredNumberScheduled = _params.desiredNumberScheduled
 , numberAvailable = ([] : Optional (Integer))

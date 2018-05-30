@@ -1,4 +1,4 @@
-\(_params : {apiVersion : (Text), kind : (Text), serverAddressByClientCIDRs : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR.dhall), versions : (Text)}) ->
+\(_params : {apiVersion : (Text), kind : (Text), serverAddressByClientCIDRs : (List ../types/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR.dhall), versions : (List Text)}) ->
 { apiVersion = _params.apiVersion
 , kind = _params.kind
 , serverAddressByClientCIDRs = _params.serverAddressByClientCIDRs

@@ -1,6 +1,6 @@
 \(_params : {replicas : (Integer)}) ->
 { collisionCount = ([] : Optional (Integer))
-, conditions = ([] : Optional (../types/io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall))
+, conditions = ([] : Optional (List ../types/io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall))
 , currentReplicas = ([] : Optional (Integer))
 , currentRevision = ([] : Optional (Text))
 , observedGeneration = ([] : Optional (Integer))

@@ -1,3 +1,3 @@
-{ add : (Optional (Text))
-, drop : (Optional (Text))
+{ add : (Optional (List Text))
+, drop : (Optional (List Text))
 }

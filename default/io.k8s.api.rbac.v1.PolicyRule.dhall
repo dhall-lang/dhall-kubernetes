@@ -1,7 +1,7 @@
-\(_params : {verbs : (Text)}) ->
-{ apiGroups = ([] : Optional (Text))
-, nonResourceURLs = ([] : Optional (Text))
-, resourceNames = ([] : Optional (Text))
-, resources = ([] : Optional (Text))
+\(_params : {verbs : (List Text)}) ->
+{ apiGroups = ([] : Optional (List Text))
+, nonResourceURLs = ([] : Optional (List Text))
+, resourceNames = ([] : Optional (List Text))
+, resources = ([] : Optional (List Text))
 , verbs = _params.verbs
 } : ../types/io.k8s.api.rbac.v1.PolicyRule.dhall

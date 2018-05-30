@@ -1,4 +1,4 @@
 { key : (Text)
 , operator : (Text)
-, values : (Optional (Text))
+, values : (Optional (List Text))
 }

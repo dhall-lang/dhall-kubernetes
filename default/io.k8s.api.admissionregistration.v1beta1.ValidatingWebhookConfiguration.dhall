@@ -2,5 +2,5 @@
 { apiVersion = _params.apiVersion
 , kind = _params.kind
 , metadata = _params.metadata
-, webhooks = ([] : Optional (../types/io.k8s.api.admissionregistration.v1beta1.Webhook.dhall))
+, webhooks = ([] : Optional (List ../types/io.k8s.api.admissionregistration.v1beta1.Webhook.dhall))
 } : ../types/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration.dhall

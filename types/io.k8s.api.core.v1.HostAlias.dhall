@@ -1,3 +1,3 @@
-{ hostnames : (Optional (Text))
+{ hostnames : (Optional (List Text))
 , ip : (Optional (Text))
 }

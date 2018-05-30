@@ -2,6 +2,6 @@
 , externalID : (Optional (Text))
 , podCIDR : (Optional (Text))
 , providerID : (Optional (Text))
-, taints : (Optional (./io.k8s.api.core.v1.Taint.dhall))
+, taints : (Optional (List ./io.k8s.api.core.v1.Taint.dhall))
 , unschedulable : (Optional (Bool))
 }

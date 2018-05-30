@@ -1,6 +1,6 @@
 { fsType : (Optional (Text))
 , lun : (Optional (Integer))
 , readOnly : (Optional (Bool))
-, targetWWNs : (Optional (Text))
-, wwids : (Optional (Text))
+, targetWWNs : (Optional (List Text))
+, wwids : (Optional (List Text))
 }

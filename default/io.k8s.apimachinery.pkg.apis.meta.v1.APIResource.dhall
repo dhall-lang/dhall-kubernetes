@@ -1,10 +1,10 @@
-\(_params : {kind : (Text), name : (Text), namespaced : (Bool), singularName : (Text), verbs : (Text)}) ->
-{ categories = ([] : Optional (Text))
+\(_params : {kind : (Text), name : (Text), namespaced : (Bool), singularName : (Text), verbs : (List Text)}) ->
+{ categories = ([] : Optional (List Text))
 , group = ([] : Optional (Text))
 , kind = _params.kind
 , name = _params.name
 , namespaced = _params.namespaced
-, shortNames = ([] : Optional (Text))
+, shortNames = ([] : Optional (List Text))
 , singularName = _params.singularName
 , verbs = _params.verbs
 , version = ([] : Optional (Text))

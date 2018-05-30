@@ -1,3 +1,3 @@
-{ names : (Text)
+{ names : (List Text)
 , sizeBytes : (Optional (Integer))
 }

@@ -1,5 +1,5 @@
 { collisionCount : (Optional (Integer))
-, conditions : (Optional (./io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall))
+, conditions : (Optional (List ./io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall))
 , currentReplicas : (Optional (Integer))
 , currentRevision : (Optional (Text))
 , observedGeneration : (Optional (Integer))

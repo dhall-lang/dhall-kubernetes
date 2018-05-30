@@ -1,4 +1,4 @@
-{ monitors : (Text)
+{ monitors : (List Text)
 , path : (Optional (Text))
 , readOnly : (Optional (Bool))
 , secretFile : (Optional (Text))

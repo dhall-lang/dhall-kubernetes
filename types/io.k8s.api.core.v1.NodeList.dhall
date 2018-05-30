@@ -1,5 +1,5 @@
 { apiVersion : (Text)
-, items : (./io.k8s.api.core.v1.Node.dhall)
+, items : (List ./io.k8s.api.core.v1.Node.dhall)
 , kind : (Text)
 , metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)
 }

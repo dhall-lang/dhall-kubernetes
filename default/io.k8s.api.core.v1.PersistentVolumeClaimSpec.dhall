@@ -1,5 +1,4 @@
-\(_params : {}) ->
-{ accessModes = ([] : Optional (Text))
+{ accessModes = ([] : Optional (List Text))
 , resources = ([] : Optional (../types/io.k8s.api.core.v1.ResourceRequirements.dhall))
 , selector = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall))
 , storageClassName = ([] : Optional (Text))

@@ -1,6 +1,5 @@
-\(_params : {}) ->
 { defaultMode = ([] : Optional (Integer))
-, items = ([] : Optional (../types/io.k8s.api.core.v1.KeyToPath.dhall))
+, items = ([] : Optional (List ../types/io.k8s.api.core.v1.KeyToPath.dhall))
 , optional = ([] : Optional (Bool))
 , secretName = ([] : Optional (Text))
 } : ../types/io.k8s.api.core.v1.SecretVolumeSource.dhall

@@ -1,3 +1,3 @@
 { hard : (Optional ((List {mapKey : Text, mapValue : Text})))
-, scopes : (Optional (Text))
+, scopes : (Optional (List Text))
 }

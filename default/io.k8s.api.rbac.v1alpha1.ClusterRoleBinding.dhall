@@ -3,5 +3,5 @@
 , kind = _params.kind
 , metadata = _params.metadata
 , roleRef = _params.roleRef
-, subjects = ([] : Optional (../types/io.k8s.api.rbac.v1alpha1.Subject.dhall))
+, subjects = ([] : Optional (List ../types/io.k8s.api.rbac.v1alpha1.Subject.dhall))
 } : ../types/io.k8s.api.rbac.v1alpha1.ClusterRoleBinding.dhall

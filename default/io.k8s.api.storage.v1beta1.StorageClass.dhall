@@ -3,7 +3,7 @@
 , apiVersion = _params.apiVersion
 , kind = _params.kind
 , metadata = _params.metadata
-, mountOptions = ([] : Optional (Text))
+, mountOptions = ([] : Optional (List Text))
 , parameters = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , provisioner = _params.provisioner
 , reclaimPolicy = ([] : Optional (Text))

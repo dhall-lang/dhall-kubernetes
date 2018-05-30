@@ -1,4 +1,4 @@
-\(_params : {conditions : (../types/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerCondition.dhall), currentMetrics : (../types/io.k8s.api.autoscaling.v2beta1.MetricStatus.dhall), currentReplicas : (Integer), desiredReplicas : (Integer)}) ->
+\(_params : {conditions : (List ../types/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerCondition.dhall), currentMetrics : (List ../types/io.k8s.api.autoscaling.v2beta1.MetricStatus.dhall), currentReplicas : (Integer), desiredReplicas : (Integer)}) ->
 { conditions = _params.conditions
 , currentMetrics = _params.currentMetrics
 , currentReplicas = _params.currentReplicas
