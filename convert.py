@@ -81,7 +81,7 @@ def main():
                 properties = modelSpec.get('properties', {})
 
                 # If there's any required props, we make it a lambda
-                if len(required) > 0:
+                if len([k for k in properties if k in required]) > 0:
                     params = ['{} : ({})'.format(propName, get_typ(propVal, True, True))
                               for propName, propVal in properties.items()
                               if propName in required]
