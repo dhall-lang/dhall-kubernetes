@@ -14,7 +14,7 @@ def get_typ(props, required, importing_from_default=False):
         if typ == 'object':
             x =  '(List {mapKey : Text, mapValue : Text})'
         elif typ == 'array':
-            x = get_typ(props['items'], True, importing_from_default)
+            x = "List " + get_typ(props['items'], True, importing_from_default)
         else:
             mapping = {
                 'string' : 'Text',
