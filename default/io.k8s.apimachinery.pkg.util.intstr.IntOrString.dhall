@@ -1,1 +1,1 @@
-\(a : Text) -> a
+\(a : Integer) -> a

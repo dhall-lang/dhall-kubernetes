@@ -1,1 +1,1 @@
-Text
+Integer
