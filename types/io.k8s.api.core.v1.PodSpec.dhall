@@ -15,6 +15,7 @@
 , nodeSelector : (Optional ((List {mapKey : Text, mapValue : Text})))
 , priority : (Optional (Integer))
 , priorityClassName : (Optional (Text))
+, readinessGates : (Optional (List ./io.k8s.api.core.v1.PodReadinessGate.dhall))
 , restartPolicy : (Optional (Text))
 , schedulerName : (Optional (Text))
 , securityContext : (Optional (./io.k8s.api.core.v1.PodSecurityContext.dhall))

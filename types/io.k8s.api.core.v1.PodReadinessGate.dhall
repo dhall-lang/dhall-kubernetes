@@ -1,0 +1,2 @@
+{ conditionType : (Text)
+}

@@ -3,8 +3,10 @@
 , allowedCapabilities = ([] : Optional (List Text))
 , allowedFlexVolumes = ([] : Optional (List ../types/io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall))
 , allowedHostPaths = ([] : Optional (List ../types/io.k8s.api.extensions.v1beta1.AllowedHostPath.dhall))
+, allowedUnsafeSysctls = ([] : Optional (List Text))
 , defaultAddCapabilities = ([] : Optional (List Text))
 , defaultAllowPrivilegeEscalation = ([] : Optional (Bool))
+, forbiddenSysctls = ([] : Optional (List Text))
 , fsGroup = _params.fsGroup
 , hostIPC = ([] : Optional (Bool))
 , hostNetwork = ([] : Optional (Bool))
