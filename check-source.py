@@ -29,8 +29,8 @@ for default_file in default_files:
         print('Skipping {}'.format(default_file))
         continue
     print('Checking {}'.format(default_file))
-    cmd = 'dhall resolve <<< {file}'.format(file=default_file)
-    result = run(cmd, shell=True, stdout=DEVNULL, stderr=PIPE)
+    cmd = ['/bin/bash', '-c', 'cat <<< {file}'.format(file=default_file)]
+    result = run(cmd, shell=False, stdout=DEVNULL, stderr=PIPE)
     if result.returncode != 0:
         print(result.stderr.decode('utf-8'))
         failure_files.add(default_file)
