@@ -1,2 +1,2 @@
-{ Port : (Integer)
+{ Port : (Natural)
 }

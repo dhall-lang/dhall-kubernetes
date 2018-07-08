@@ -1,8 +1,8 @@
 { concurrencyPolicy : (Optional (Text))
-, failedJobsHistoryLimit : (Optional (Integer))
+, failedJobsHistoryLimit : (Optional (Natural))
 , jobTemplate : (./io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall)
 , schedule : (Text)
-, startingDeadlineSeconds : (Optional (Integer))
-, successfulJobsHistoryLimit : (Optional (Integer))
+, startingDeadlineSeconds : (Optional (Natural))
+, successfulJobsHistoryLimit : (Optional (Natural))
 , suspend : (Optional (Bool))
 }

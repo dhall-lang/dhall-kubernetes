@@ -1,6 +1,6 @@
 { action : (Optional (Text))
 , apiVersion : (Text)
-, count : (Optional (Integer))
+, count : (Optional (Natural))
 , eventTime : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall))
 , firstTimestamp : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , involvedObject : (./io.k8s.api.core.v1.ObjectReference.dhall)

@@ -3,6 +3,6 @@
 , group = ([] : Optional (Text))
 , kind = _params.kind
 , name = ([] : Optional (Text))
-, retryAfterSeconds = ([] : Optional (Integer))
+, retryAfterSeconds = ([] : Optional (Natural))
 , uid = ([] : Optional (Text))
 } : ../types/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall

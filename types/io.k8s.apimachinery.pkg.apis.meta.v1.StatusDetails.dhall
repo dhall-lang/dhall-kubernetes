@@ -2,6 +2,6 @@
 , group : (Optional (Text))
 , kind : (Text)
 , name : (Optional (Text))
-, retryAfterSeconds : (Optional (Integer))
+, retryAfterSeconds : (Optional (Natural))
 , uid : (Optional (Text))
 }

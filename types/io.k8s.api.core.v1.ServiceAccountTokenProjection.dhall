@@ -1,4 +1,4 @@
 { audience : (Optional (Text))
-, expirationSeconds : (Optional (Integer))
+, expirationSeconds : (Optional (Natural))
 , path : (Text)
 }

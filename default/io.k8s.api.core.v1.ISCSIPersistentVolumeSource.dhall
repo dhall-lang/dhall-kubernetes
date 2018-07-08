@@ -1,4 +1,4 @@
-\(_params : {iqn : (Text), lun : (Integer), targetPortal : (Text)}) ->
+\(_params : {iqn : (Text), lun : (Natural), targetPortal : (Text)}) ->
 { chapAuthDiscovery = ([] : Optional (Bool))
 , chapAuthSession = ([] : Optional (Bool))
 , fsType = ([] : Optional (Text))

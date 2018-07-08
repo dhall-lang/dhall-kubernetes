@@ -1,9 +1,9 @@
 \(_params : {jobTemplate : (../types/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall), schedule : (Text)}) ->
 { concurrencyPolicy = ([] : Optional (Text))
-, failedJobsHistoryLimit = ([] : Optional (Integer))
+, failedJobsHistoryLimit = ([] : Optional (Natural))
 , jobTemplate = _params.jobTemplate
 , schedule = _params.schedule
-, startingDeadlineSeconds = ([] : Optional (Integer))
-, successfulJobsHistoryLimit = ([] : Optional (Integer))
+, startingDeadlineSeconds = ([] : Optional (Natural))
+, successfulJobsHistoryLimit = ([] : Optional (Natural))
 , suspend = ([] : Optional (Bool))
 } : ../types/io.k8s.api.batch.v1beta1.CronJobSpec.dhall

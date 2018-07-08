@@ -1,6 +1,6 @@
 { action : (Optional (Text))
 , apiVersion : (Text)
-, deprecatedCount : (Optional (Integer))
+, deprecatedCount : (Optional (Natural))
 , deprecatedFirstTimestamp : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , deprecatedLastTimestamp : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , deprecatedSource : (Optional (./io.k8s.api.core.v1.EventSource.dhall))

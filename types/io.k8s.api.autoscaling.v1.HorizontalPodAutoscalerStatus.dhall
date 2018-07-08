@@ -1,6 +1,6 @@
-{ currentCPUUtilizationPercentage : (Optional (Integer))
-, currentReplicas : (Integer)
-, desiredReplicas : (Integer)
+{ currentCPUUtilizationPercentage : (Optional (Natural))
+, currentReplicas : (Natural)
+, desiredReplicas : (Natural)
 , lastScaleTime : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
-, observedGeneration : (Optional (Integer))
+, observedGeneration : (Optional (Natural))
 }

@@ -1,4 +1,4 @@
-\(_params : {replicas : (Integer)}) ->
+\(_params : {replicas : (Natural)}) ->
 { replicas = _params.replicas
 , selector = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , targetSelector = ([] : Optional (Text))

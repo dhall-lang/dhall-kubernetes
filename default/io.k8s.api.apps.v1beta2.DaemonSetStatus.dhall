@@ -1,12 +1,12 @@
-\(_params : {currentNumberScheduled : (Integer), desiredNumberScheduled : (Integer), numberMisscheduled : (Integer), numberReady : (Integer)}) ->
-{ collisionCount = ([] : Optional (Integer))
+\(_params : {currentNumberScheduled : (Natural), desiredNumberScheduled : (Natural), numberMisscheduled : (Natural), numberReady : (Natural)}) ->
+{ collisionCount = ([] : Optional (Natural))
 , conditions = ([] : Optional (List ../types/io.k8s.api.apps.v1beta2.DaemonSetCondition.dhall))
 , currentNumberScheduled = _params.currentNumberScheduled
 , desiredNumberScheduled = _params.desiredNumberScheduled
-, numberAvailable = ([] : Optional (Integer))
+, numberAvailable = ([] : Optional (Natural))
 , numberMisscheduled = _params.numberMisscheduled
 , numberReady = _params.numberReady
-, numberUnavailable = ([] : Optional (Integer))
-, observedGeneration = ([] : Optional (Integer))
-, updatedNumberScheduled = ([] : Optional (Integer))
+, numberUnavailable = ([] : Optional (Natural))
+, observedGeneration = ([] : Optional (Natural))
+, updatedNumberScheduled = ([] : Optional (Natural))
 } : ../types/io.k8s.api.apps.v1beta2.DaemonSetStatus.dhall

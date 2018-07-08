@@ -1,4 +1,4 @@
 { key : (Text)
-, mode : (Optional (Integer))
+, mode : (Optional (Natural))
 , path : (Text)
 }

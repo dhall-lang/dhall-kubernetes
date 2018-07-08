@@ -1,5 +1,5 @@
-{ minReadySeconds : (Optional (Integer))
-, replicas : (Optional (Integer))
+{ minReadySeconds : (Optional (Natural))
+, replicas : (Optional (Natural))
 , selector : (./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall)
 , template : (Optional (./io.k8s.api.core.v1.PodTemplateSpec.dhall))
 }

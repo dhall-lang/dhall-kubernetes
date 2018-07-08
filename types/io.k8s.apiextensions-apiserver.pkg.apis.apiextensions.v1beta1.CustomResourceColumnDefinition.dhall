@@ -2,6 +2,6 @@
 , description : (Optional (Text))
 , format : (Optional (Text))
 , name : (Text)
-, priority : (Optional (Integer))
+, priority : (Optional (Natural))
 , type : (Text)
 }

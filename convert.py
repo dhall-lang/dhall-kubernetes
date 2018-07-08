@@ -19,7 +19,7 @@ def get_typ(props, required, importing_from_default=False):
             mapping = {
                 'string' : 'Text',
                 'boolean': 'Bool',
-                'integer': 'Integer',
+                'integer': 'Natural',
                 'number': 'Double',
             }
             x = mapping[typ]

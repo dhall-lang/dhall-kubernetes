@@ -1,2 +1,2 @@
-{ timeoutSeconds : (Optional (Integer))
+{ timeoutSeconds : (Optional (Natural))
 }
