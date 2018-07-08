@@ -1,7 +1,7 @@
-\(_params : {apiVersion : (Text), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
+{ apiVersion = ("v1" : Text)
 , data = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
-, kind = _params.kind
+, kind = ("Secret" : Text)
 , metadata = _params.metadata
 , stringData = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
 , type = ([] : Optional (Text))

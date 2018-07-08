@@ -1,8 +1,8 @@
-\(_params : {apiVersion : (Text), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
+{ apiVersion = ("v1" : Text)
 , code = ([] : Optional (Integer))
 , details = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall))
-, kind = _params.kind
+, kind = ("Status" : Text)
 , message = ([] : Optional (Text))
 , metadata = _params.metadata
 , reason = ([] : Optional (Text))

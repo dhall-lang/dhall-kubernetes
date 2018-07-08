@@ -1,6 +1,6 @@
-\(_params : {apiVersion : (Text), items : (List ../types/io.k8s.api.rbac.v1alpha1.RoleBinding.dhall), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {items : (List ../types/io.k8s.api.rbac.v1alpha1.RoleBinding.dhall), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
+{ apiVersion = ("rbac.authorization.k8s.io/v1alpha1" : Text)
 , items = _params.items
-, kind = _params.kind
+, kind = ("RoleBindingList" : Text)
 , metadata = _params.metadata
 } : ../types/io.k8s.api.rbac.v1alpha1.RoleBindingList.dhall

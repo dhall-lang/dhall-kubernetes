@@ -1,6 +1,6 @@
-\(_params : {apiVersion : (Text), items : (List ../types/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration.dhall), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {items : (List ../types/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration.dhall), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)}) ->
+{ apiVersion = ("admissionregistration.k8s.io/v1beta1" : Text)
 , items = _params.items
-, kind = _params.kind
+, kind = ("ValidatingWebhookConfigurationList" : Text)
 , metadata = _params.metadata
 } : ../types/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfigurationList.dhall

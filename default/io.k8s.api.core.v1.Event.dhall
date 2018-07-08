@@ -1,11 +1,11 @@
-\(_params : {apiVersion : (Text), involvedObject : (../types/io.k8s.api.core.v1.ObjectReference.dhall), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
+\(_params : {involvedObject : (../types/io.k8s.api.core.v1.ObjectReference.dhall), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
 { action = ([] : Optional (Text))
-, apiVersion = _params.apiVersion
+, apiVersion = ("v1" : Text)
 , count = ([] : Optional (Integer))
 , eventTime = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall))
 , firstTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , involvedObject = _params.involvedObject
-, kind = _params.kind
+, kind = ("Event" : Text)
 , lastTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , message = ([] : Optional (Text))
 , metadata = _params.metadata

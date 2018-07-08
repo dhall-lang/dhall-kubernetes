@@ -1,6 +1,6 @@
-\(_params : {apiVersion : (Text), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), rules : (List ../types/io.k8s.api.rbac.v1alpha1.PolicyRule.dhall)}) ->
-{ apiVersion = _params.apiVersion
-, kind = _params.kind
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), rules : (List ../types/io.k8s.api.rbac.v1alpha1.PolicyRule.dhall)}) ->
+{ apiVersion = ("rbac.authorization.k8s.io/v1alpha1" : Text)
+, kind = ("Role" : Text)
 , metadata = _params.metadata
 , rules = _params.rules
 } : ../types/io.k8s.api.rbac.v1alpha1.Role.dhall
