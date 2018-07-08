@@ -3,6 +3,17 @@
 Dhall bindings to Kubernetes.
 This will let you typecheck, template and modularize your Kubernetes definitions with [Dhall][dhall-lang].
 
+## Prerequisites
+
+**NOTE**: `dhall-kubernetes` requires at least version `1.14.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell).
+
+You can install the latest version with the following:
+```bash
+stack install dhall dhall-json --resolver=nightly
+```
+
+For a version compatible with a previous version, check out [this commit](https://github.com/dhall-lang/dhall-kubernetes/tree/b2357dcfa42a008efa203a850163d26f0d106e01).
+
 ## Quick start
 
 In the `types` folder you'll find the types for the Kubernetes definitions. E.g. [here's][Deployment] the type for a Deployment.
