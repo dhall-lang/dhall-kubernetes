@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: haskell:8.2
+        environment:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - stack-dhall-v1.15.1
+      - run:
+          name: Install dependencies
+          command: |
+            apt-get -qq update
+            apt-get -qqy install netbase python3
+            stack upgrade
+            export PATH=~/.local/bin:$PATH
+            stack --skip-ghc-check --system-ghc install dhall-1.15.1
+      - save_cache:
+          key: stack-dhall-v1.15.1
+          paths: [ ~/.stack ]
+          when: always
+      - run:
+          name: Test
+          command: |
+            python3 check-source.py

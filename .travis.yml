@@ -1,0 +1,25 @@
+sude: false
+
+language: haskell
+
+ghc:
+  - 8.2
+
+addons:
+  apt:
+    update: true
+    packages:
+      - python3
+
+cache:
+  directories:
+    - $HOME/.stack
+
+install:
+  - mkdir -p ~/.local/bin
+  - export PATH=~/.local/bin:$PATH
+  - travis_retry curl -sSL https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  - stack --skip-ghc-check --system-ghc install dhall-1.15.1
+
+script:
+  - python3 check-source.py
