@@ -1,3 +1,3 @@
-{ max : (Integer)
-, min : (Integer)
+{ max : (Natural)
+, min : (Natural)
 }

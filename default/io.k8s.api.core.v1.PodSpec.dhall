@@ -1,5 +1,5 @@
 \(_params : {containers : (List ../types/io.k8s.api.core.v1.Container.dhall)}) ->
-{ activeDeadlineSeconds = ([] : Optional (Integer))
+{ activeDeadlineSeconds = ([] : Optional (Natural))
 , affinity = ([] : Optional (../types/io.k8s.api.core.v1.Affinity.dhall))
 , automountServiceAccountToken = ([] : Optional (Bool))
 , containers = _params.containers
@@ -14,7 +14,7 @@
 , initContainers = ([] : Optional (List ../types/io.k8s.api.core.v1.Container.dhall))
 , nodeName = ([] : Optional (Text))
 , nodeSelector = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
-, priority = ([] : Optional (Integer))
+, priority = ([] : Optional (Natural))
 , priorityClassName = ([] : Optional (Text))
 , readinessGates = ([] : Optional (List ../types/io.k8s.api.core.v1.PodReadinessGate.dhall))
 , restartPolicy = ([] : Optional (Text))
@@ -24,7 +24,7 @@
 , serviceAccountName = ([] : Optional (Text))
 , shareProcessNamespace = ([] : Optional (Bool))
 , subdomain = ([] : Optional (Text))
-, terminationGracePeriodSeconds = ([] : Optional (Integer))
+, terminationGracePeriodSeconds = ([] : Optional (Natural))
 , tolerations = ([] : Optional (List ../types/io.k8s.api.core.v1.Toleration.dhall))
 , volumes = ([] : Optional (List ../types/io.k8s.api.core.v1.Volume.dhall))
 } : ../types/io.k8s.api.core.v1.PodSpec.dhall

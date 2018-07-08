@@ -1,4 +1,4 @@
 { name : (Optional (Text))
-, port : (Integer)
+, port : (Natural)
 , protocol : (Optional (Text))
 }

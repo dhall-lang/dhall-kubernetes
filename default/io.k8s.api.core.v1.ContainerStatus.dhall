@@ -1,4 +1,4 @@
-\(_params : {image : (Text), imageID : (Text), name : (Text), ready : (Bool), restartCount : (Integer)}) ->
+\(_params : {image : (Text), imageID : (Text), name : (Text), ready : (Bool), restartCount : (Natural)}) ->
 { containerID = ([] : Optional (Text))
 , image = _params.image
 , imageID = _params.imageID

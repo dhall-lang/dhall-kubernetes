@@ -1,7 +1,7 @@
 \(_params : {involvedObject : (../types/io.k8s.api.core.v1.ObjectReference.dhall), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
 { action = ([] : Optional (Text))
 , apiVersion = ("v1" : Text)
-, count = ([] : Optional (Integer))
+, count = ([] : Optional (Natural))
 , eventTime = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall))
 , firstTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , involvedObject = _params.involvedObject

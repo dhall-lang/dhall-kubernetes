@@ -1,5 +1,5 @@
 { apiVersion : (Text)
-, code : (Optional (Integer))
+, code : (Optional (Natural))
 , details : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall))
 , kind : (Text)
 , message : (Optional (Text))

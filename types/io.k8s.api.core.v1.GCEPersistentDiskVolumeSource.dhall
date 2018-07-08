@@ -1,5 +1,5 @@
 { fsType : (Optional (Text))
-, partition : (Optional (Integer))
+, partition : (Optional (Natural))
 , pdName : (Text)
 , readOnly : (Optional (Bool))
 }

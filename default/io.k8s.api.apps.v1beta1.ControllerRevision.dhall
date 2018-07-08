@@ -1,4 +1,4 @@
-\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), revision : (Integer)}) ->
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), revision : (Natural)}) ->
 { apiVersion = ("apps/v1beta1" : Text)
 , data = ([] : Optional (../types/io.k8s.apimachinery.pkg.runtime.RawExtension.dhall))
 , kind = ("ControllerRevision" : Text)

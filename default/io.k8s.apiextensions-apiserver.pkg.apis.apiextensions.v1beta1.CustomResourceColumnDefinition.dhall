@@ -3,6 +3,6 @@
 , description = ([] : Optional (Text))
 , format = ([] : Optional (Text))
 , name = _params.name
-, priority = ([] : Optional (Integer))
+, priority = ([] : Optional (Natural))
 , type = _params.type
 } : ../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceColumnDefinition.dhall
