@@ -32,12 +32,51 @@ def get_typ(props, required, importing_from_default=False):
         return 'Optional ({})'.format(x)
 
 
-def get_default(props, required):
-    if required:
-        raise ValueError('Required values should not have defaults')
+def get_default(prop, required, value):
+    if required and not value:
+        raise ValueError('Missing value for required property')
 
-    x = get_typ(props, required, True)
-    return '([] : {})'.format(x)
+    x = get_typ(prop, required, True)
+    if value:
+        return '("{}" : {})'.format(value, x)
+    else:
+        return '([] : {})'.format(x)
+
+
+def get_static_data(modelSpec):
+    """
+    Return a dictionary of static values that all objects of this model
+    have.
+
+    This applies only to kubernetes resources where ``kind`` and
+    ``apiVersion`` are statically determined by the resource. See the
+    `Kubernetes OpenAPI Spec Readme`__.
+
+    For example for a v1 Deployment we return
+
+    ::
+        {
+          'kind': 'Deployment',
+          'apiVersion': 'apps/v1'
+        }
+
+    .. __: https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/README.md#x-kubernetes-group-version-kind
+
+    """
+    if 'x-kubernetes-group-version-kind' in modelSpec:
+        values = modelSpec['x-kubernetes-group-version-kind']
+        if len(values) == 1:
+            group = values[0].get('group', '')
+            if group:
+                group = group + '/'
+            return {
+                'kind': values[0]['kind'],
+                'apiVersion': group + values[0]['version']
+            }
+        else:
+            return {}
+    else:
+        return {}
 
 
 url = 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json'
@@ -80,18 +119,21 @@ def main():
 
                 properties = modelSpec.get('properties', {})
 
+                resource_data = get_static_data(modelSpec)
+                param_names = required - set(resource_data.keys())
+
                 # If there's any required props, we make it a lambda
                 if len([k for k in properties if k in required]) > 0:
                     params = ['{} : ({})'.format(propName, get_typ(propVal, True, True))
                               for propName, propVal in properties.items()
-                              if propName in required]
+                              if propName in param_names]
                     f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
 
                 # If it's required we're passing it in as a parameter
                 KVs = [(propName, "_params." + propName)
-                       if propName in required
-                       else (propName, get_default(propVal, False))
-                       for propName, propVal in properties.items()]
+                       if propName in param_names
+                       else (propName, get_default(propDef, propName in required, resource_data.get(propName, None)))
+                       for propName, propDef in properties.items()]
 
                 # If there's no fields, should be an empty record
                 if len(KVs) > 0:

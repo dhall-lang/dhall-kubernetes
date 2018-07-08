@@ -4,7 +4,7 @@
 , azureFile : (Optional (./io.k8s.api.core.v1.AzureFilePersistentVolumeSource.dhall))
 , capacity : (Optional ((List {mapKey : Text, mapValue : Text})))
 , cephfs : (Optional (./io.k8s.api.core.v1.CephFSPersistentVolumeSource.dhall))
-, cinder : (Optional (./io.k8s.api.core.v1.CinderVolumeSource.dhall))
+, cinder : (Optional (./io.k8s.api.core.v1.CinderPersistentVolumeSource.dhall))
 , claimRef : (Optional (./io.k8s.api.core.v1.ObjectReference.dhall))
 , csi : (Optional (./io.k8s.api.core.v1.CSIPersistentVolumeSource.dhall))
 , fc : (Optional (./io.k8s.api.core.v1.FCVolumeSource.dhall))

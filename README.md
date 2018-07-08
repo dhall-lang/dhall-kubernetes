@@ -91,9 +91,7 @@ in let spec = defaultSpec
 
 -- and here's the Deployment
 in defaultDeployment
-{ apiVersion = "extensions/v1beta1"
-, kind = "Deployment"
-, metadata = defaultMeta { name = fooService.name }
+{ metadata = defaultMeta { name = fooService.name }
 } //
 { spec = Some Spec spec } : Deployment
 
@@ -200,9 +198,7 @@ in let spec = defaultSpec //
 }
 
 in defaultIngress
-{ apiVersion = "extensions/v1beta1"
-, kind = "Ingress"
-, metadata = defaultMeta
+{ metadata = defaultMeta
   { name = "nginx" } //
   { annotations = annotations }
 } //

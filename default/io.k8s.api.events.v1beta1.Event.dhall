@@ -1,12 +1,12 @@
-\(_params : {apiVersion : (Text), eventTime : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
+\(_params : {eventTime : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)}) ->
 { action = ([] : Optional (Text))
-, apiVersion = _params.apiVersion
+, apiVersion = ("events.k8s.io/v1beta1" : Text)
 , deprecatedCount = ([] : Optional (Integer))
 , deprecatedFirstTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , deprecatedLastTimestamp = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall))
 , deprecatedSource = ([] : Optional (../types/io.k8s.api.core.v1.EventSource.dhall))
 , eventTime = _params.eventTime
-, kind = _params.kind
+, kind = ("Event" : Text)
 , metadata = _params.metadata
 , note = ([] : Optional (Text))
 , reason = ([] : Optional (Text))

@@ -1,8 +1,8 @@
-\(_params : {apiVersion : (Text), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), value : (Integer)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), value : (Integer)}) ->
+{ apiVersion = ("scheduling.k8s.io/v1alpha1" : Text)
 , description = ([] : Optional (Text))
 , globalDefault = ([] : Optional (Bool))
-, kind = _params.kind
+, kind = ("PriorityClass" : Text)
 , metadata = _params.metadata
 , value = _params.value
 } : ../types/io.k8s.api.scheduling.v1alpha1.PriorityClass.dhall

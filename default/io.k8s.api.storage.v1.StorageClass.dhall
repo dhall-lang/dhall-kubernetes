@@ -1,7 +1,8 @@
-\(_params : {apiVersion : (Text), kind : (Text), metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), provisioner : (Text)}) ->
+\(_params : {metadata : (../types/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall), provisioner : (Text)}) ->
 { allowVolumeExpansion = ([] : Optional (Bool))
-, apiVersion = _params.apiVersion
-, kind = _params.kind
+, allowedTopologies = ([] : Optional (List ../types/io.k8s.api.core.v1.TopologySelectorTerm.dhall))
+, apiVersion = ("storage.k8s.io/v1" : Text)
+, kind = ("StorageClass" : Text)
 , metadata = _params.metadata
 , mountOptions = ([] : Optional (List Text))
 , parameters = ([] : Optional ((List {mapKey : Text, mapValue : Text})))
