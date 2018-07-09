@@ -79,6 +79,16 @@ def get_static_data(modelSpec):
         return {}
 
 
+def labelize(propName):
+    """
+    If a propName contains a `$`, we have to return a quoted label
+    """
+    if "$" in propName:
+        return "`" + propName + "`"
+    else:
+        return propName
+
+
 url = 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json'
 
 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
@@ -105,7 +115,7 @@ def main():
 
                 properties = modelSpec.get('properties', {})
 
-                fields = [" {} : ({})\n".format(propName, get_typ(propVal, propName in required))
+                fields = [" {} : ({})\n".format(labelize(propName), get_typ(propVal, propName in required))
                           for propName, propVal in properties.items()]
                 f.write('{' + ','.join(fields) + '}\n')
 
@@ -124,7 +134,7 @@ def main():
 
                 # If there's any required props, we make it a lambda
                 if len([k for k in properties if k in required]) > 0:
-                    params = ['{} : ({})'.format(propName, get_typ(propVal, True, True))
+                    params = ['{} : ({})'.format(labelize(propName), get_typ(propVal, True, True))
                               for propName, propVal in properties.items()
                               if propName in param_names]
                     f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
@@ -137,7 +147,7 @@ def main():
 
                 # If there's no fields, should be an empty record
                 if len(KVs) > 0:
-                    formatted = [" {} = {}\n".format(k, v) for k, v in KVs]
+                    formatted = [" {} = {}\n".format(labelize(k), v) for k, v in KVs]
                 else:
                     formatted = '='
                 f.write('{' + ','.join(formatted) + '} : ../types/' + modelName + '.dhall\n')

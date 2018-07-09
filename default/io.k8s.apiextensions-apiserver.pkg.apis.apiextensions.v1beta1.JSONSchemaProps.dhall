@@ -1,5 +1,5 @@
-{ $ref = ([] : Optional (Text))
-, $schema = ([] : Optional (Text))
+{ `$ref` = ([] : Optional (Text))
+, `$schema` = ([] : Optional (Text))
 , additionalItems = ([] : Optional (../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall))
 , additionalProperties = ([] : Optional (../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall))
 , allOf = ([] : Optional (List ../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall))
