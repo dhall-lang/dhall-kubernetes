@@ -85,7 +85,7 @@ def labelize(propName):
     If a propName doesn't match the 'simple-label' grammar, we return a quoted label
     See: https://github.com/dhall-lang/dhall-lang/blob/1d2912067658fdbbc17696fc86f057d6f91712b9/standard/dhall.abnf#L125
     """
-    if not re.match("^[a-zA-Z_][\w\-/]*$", propName):
+    if not re.match("^[a-zA-Z_][a-zA-Z0-9_\-/]*$", propName):
         return "`" + propName + "`"
     else:
         return propName
