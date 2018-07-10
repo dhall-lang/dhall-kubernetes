@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests
+import re
 
 def get_typ(props, required, importing_from_default=False):
     if '$ref' in props:
@@ -81,9 +82,10 @@ def get_static_data(modelSpec):
 
 def labelize(propName):
     """
-    If a propName contains a `$`, we have to return a quoted label
+    If a propName doesn't match the 'simple-label' grammar, we return a quoted label
+    See: https://github.com/dhall-lang/dhall-lang/blob/1d2912067658fdbbc17696fc86f057d6f91712b9/standard/dhall.abnf#L125
     """
-    if "$" in propName:
+    if not re.match("^[a-zA-Z_][\w\-/]*$", propName):
         return "`" + propName + "`"
     else:
         return propName
