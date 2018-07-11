@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests
+import re
 
 def get_typ(props, required, importing_from_default=False):
     if '$ref' in props:
@@ -79,6 +80,17 @@ def get_static_data(modelSpec):
         return {}
 
 
+def labelize(propName):
+    """
+    If a propName doesn't match the 'simple-label' grammar, we return a quoted label
+    See: https://github.com/dhall-lang/dhall-lang/blob/1d2912067658fdbbc17696fc86f057d6f91712b9/standard/dhall.abnf#L125
+    """
+    if not re.match("^[a-zA-Z_][a-zA-Z0-9_\-/]*$", propName):
+        return "`" + propName + "`"
+    else:
+        return propName
+
+
 url = 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json'
 
 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
@@ -105,7 +117,7 @@ def main():
 
                 properties = modelSpec.get('properties', {})
 
-                fields = [" {} : ({})\n".format(propName, get_typ(propVal, propName in required))
+                fields = [" {} : ({})\n".format(labelize(propName), get_typ(propVal, propName in required))
                           for propName, propVal in properties.items()]
                 f.write('{' + ','.join(fields) + '}\n')
 
@@ -124,7 +136,7 @@ def main():
 
                 # If there's any required props, we make it a lambda
                 if len([k for k in properties if k in required]) > 0:
-                    params = ['{} : ({})'.format(propName, get_typ(propVal, True, True))
+                    params = ['{} : ({})'.format(labelize(propName), get_typ(propVal, True, True))
                               for propName, propVal in properties.items()
                               if propName in param_names]
                     f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
@@ -137,7 +149,7 @@ def main():
 
                 # If there's no fields, should be an empty record
                 if len(KVs) > 0:
-                    formatted = [" {} = {}\n".format(k, v) for k, v in KVs]
+                    formatted = [" {} = {}\n".format(labelize(k), v) for k, v in KVs]
                 else:
                     formatted = '='
                 f.write('{' + ','.join(formatted) + '} : ../types/' + modelName + '.dhall\n')

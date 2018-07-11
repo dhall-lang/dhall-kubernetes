@@ -1,5 +1,5 @@
-{ $ref : (Optional (Text))
-, $schema : (Optional (Text))
+{ `$ref` : (Optional (Text))
+, `$schema` : (Optional (Text))
 , additionalItems : (Optional (./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall))
 , additionalProperties : (Optional (./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall))
 , allOf : (Optional (List ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall))
