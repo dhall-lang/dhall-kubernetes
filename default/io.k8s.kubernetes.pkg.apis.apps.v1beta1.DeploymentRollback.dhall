@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.apps.v1beta1.DeploymentRollback.dhall
+./io.k8s.api.apps.v1beta1.DeploymentRollback.dhall

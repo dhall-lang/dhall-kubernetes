@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.api.v1.ReplicationControllerStatus.dhall
+./io.k8s.api.core.v1.ReplicationControllerStatus.dhall

@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.policy.v1beta1.PodDisruptionBudget.dhall
+./io.k8s.api.policy.v1beta1.PodDisruptionBudget.dhall

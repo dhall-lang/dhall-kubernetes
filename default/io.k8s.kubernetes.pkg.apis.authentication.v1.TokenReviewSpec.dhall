@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.authentication.v1.TokenReviewSpec.dhall
+./io.k8s.api.authentication.v1.TokenReviewSpec.dhall

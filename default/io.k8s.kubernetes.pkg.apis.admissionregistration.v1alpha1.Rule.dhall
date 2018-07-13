@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.Rule.dhall
+./io.k8s.api.admissionregistration.v1alpha1.Rule.dhall

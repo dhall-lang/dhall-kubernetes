@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.api.v1.LoadBalancerIngress.dhall
+./io.k8s.api.core.v1.LoadBalancerIngress.dhall

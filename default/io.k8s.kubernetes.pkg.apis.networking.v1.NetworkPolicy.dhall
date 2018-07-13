@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.networking.v1.NetworkPolicy.dhall
+./io.k8s.api.networking.v1.NetworkPolicy.dhall

@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.batch.v1.JobCondition.dhall
+./io.k8s.api.batch.v1.JobCondition.dhall

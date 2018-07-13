@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.authorization.v1.SelfSubjectAccessReviewSpec.dhall
+./io.k8s.api.authorization.v1.SelfSubjectAccessReviewSpec.dhall
