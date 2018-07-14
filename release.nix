@@ -9,69 +9,24 @@ let
     outputSha256 = "1nilhz6rhfg3ckp8yfmgy6v3q6spbyxfg0yn8rc2ydyn7119h4fn";
   };
 
-  overlay = pkgsNew: pkgsOld: {
-    check-source = pkgsNew.writeText "check-source.py" ''
-        # Typecheck and resolve all Dhall files in the ./default directory.
-        #
-        # Exit with 1 if at least one file fails to check.
-        #
-        # Some files are ingnored because they have existing errors.
+  pkgs = import nixpkgs {};
 
-        import sys
-        from glob import glob
-        from subprocess import run, DEVNULL, PIPE
+  dhall-kubernetes-smoketests =
+    pkgs.runCommand
+      "all-generated-files-compile"
+      { nativeBuildInputs = [
+          pkgs.python3
+          pkgs.bash
+          pkgs.dhall
+          pkgs.glibcLocales
+        ];
+      }
+      ''
+        cd ${./.}
+        LC_ALL=en_US.UTF-8 python3 ${./check-source.py}
 
-        # We skip tests for the following set of files
-        ignored_failures = {
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionList.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool.dhall',
-            './default/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray.dhall',
-        }
-
-        default_files = glob('./default/*.dhall')
-        failure_files = set()
-        for default_file in default_files:
-            if default_file in ignored_failures:
-                print('Skipping {}'.format(default_file))
-                continue
-            print('Checking {}'.format(default_file))
-            cmd = '${pkgsNew.dhall}/bin/dhall resolve <<< {file}'.format(file=default_file)
-            result = run(cmd, shell=True, executable="${pkgsNew.bash}/bin/bash", stdout=DEVNULL, stderr=PIPE)
-            if result.returncode != 0:
-                print(result.stderr.decode('utf-8'))
-                failure_files.add(default_file)
-
-        if len(failure_files) > 0:
-            print('The following files failed to check:')
-            for failure_file in failure_files:
-                print('  ' + failure_file)
-            sys.exit(1)
-    '';
-
-    dhall-kubernetes-smoketests =
-      pkgsNew.runCommand
-        "all-generated-files-compile"
-        { nativeBuildInputs = [
-            pkgsNew.python3
-            pkgsNew.bash
-            pkgsNew.dhall
-          ];
-        }
-        ''
-          cd ${./.}
-          export LANG="en_US.utf8"
-          LC_ALL=en_US.UTF-8 python3 ${pkgsNew.check-source}
-
-          touch $out
-        '';
-  };
-
-  pkgs = import nixpkgs { config = {}; overlays = [ overlay ]; };
+        touch $out
+      '';
 
   # Derivation that trivially depends on the current directory so that Hydra's
   # pull request builder always posts a GitHub status on each revision
@@ -82,7 +37,7 @@ in
       name = "dhall-kubernetes";
 
       constituents = [
-        pkgs.dhall-kubernetes-smoketests
+        dhall-kubernetes-smoketests
         pwd
       ];
     };
