@@ -3,8 +3,10 @@
 import requests
 import re
 
-
-url = 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json'
+kubernetes_tag = 'v1.11.0'
+url = \
+    'https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json' \
+    .format(tag=kubernetes_tag)
 
 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 # because k8s API allows PUTS etc with partial data, it's not clear from the data types OR the API which
