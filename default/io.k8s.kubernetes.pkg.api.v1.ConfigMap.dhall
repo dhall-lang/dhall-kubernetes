@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.api.v1.ConfigMap.dhall
+./io.k8s.api.core.v1.ConfigMap.dhall

@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.autoscaling.v1.CrossVersionObjectReference.dhall
+./io.k8s.api.autoscaling.v1.CrossVersionObjectReference.dhall

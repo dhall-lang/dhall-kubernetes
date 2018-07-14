@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.api.v1.PersistentVolumeSpec.dhall
+./io.k8s.api.core.v1.PersistentVolumeSpec.dhall

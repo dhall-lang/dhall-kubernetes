@@ -3,45 +3,77 @@
 import requests
 import re
 
-def get_typ(props, required, importing_from_default=False):
-    if '$ref' in props:
-        if importing_from_default:
-            relative = "../types/"
-        else:
-            relative = "./"
-        x = relative + '{}.dhall'.format(props['$ref'].split('/')[2])
-    elif 'type' in props:
-        typ = props['type']
+kubernetes_tag = 'v1.11.0'
+url = \
+    'https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json' \
+    .format(tag=kubernetes_tag)
+
+# See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+# because k8s API allows PUTS etc with partial data, it's not clear from the data types OR the API which
+# fields are required for A POST... so we resort to .. RTFM
+always_required = {'apiVersion', 'kind', 'metadata'}
+
+
+required_for = {
+    'io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta': {'name'},
+}
+
+
+def schema_path_from_ref(prefix, ref):
+    return '{}/{}.dhall'.format(prefix, ref.split('/')[2])
+
+def required_properties (schema_name, schema):
+    required = set(schema.get('required', [])) | always_required
+    if schema_name in required_for.keys():
+        required |= required_for[schema_name]
+    return required
+
+
+def build_type(schema, path_prefix, schema_name=None):
+    """
+    Take an OpenAPI Schema Object and return a corresponding Dhall type.
+
+    If the schema is a reference we translate the reference path to a
+    Dhall path and return that path. The ``path_prefix`` argument is
+    prepended to the returned path.
+    """
+    if '$ref' in schema:
+        return schema_path_from_ref(path_prefix, schema['$ref'])
+    elif 'type' in schema:
+        typ = schema['type']
         if typ == 'object':
-            x =  '(List {mapKey : Text, mapValue : Text})'
+            return '(List {mapKey : Text, mapValue : Text})'
         elif typ == 'array':
-            x = "List " + get_typ(props['items'], True, importing_from_default)
+            return 'List {}'.format(build_type(schema['items'], path_prefix))
         else:
-            mapping = {
+            return {
                 'string' : 'Text',
                 'boolean': 'Bool',
                 'integer': 'Natural',
                 'number': 'Double',
-            }
-            x = mapping[typ]
+            }[typ]
+    elif 'properties' in schema:
+        required = required_properties(schema_name, schema)
+        fields = []
+        for propName, propSpec in schema['properties'].items():
+            propType = build_type(propSpec, path_prefix)
+            if propName not in required:
+                propType = 'Optional ({})'.format(propType)
+            fields.append(' {} : ({})\n'.format(labelize(propName), propType))
+        return '{' + ','.join(fields) + '}'
     else:
-        raise ValueError('No type found')
-
-    if required:
-        return x
-    else:
-        return 'Optional ({})'.format(x)
+        # There are empty schemas that only have a description.
+        return '{}'
 
 
 def get_default(prop, required, value):
-    if required and not value:
-        raise ValueError('Missing value for required property')
-
-    x = get_typ(prop, required, True)
-    if value:
-        return '("{}" : {})'.format(value, x)
+    typ = build_type(prop, '../types')
+    if not required:
+        return '([] : Optional ({}))'.format(typ)
+    elif value:
+        return '("{}" : {})'.format(value, typ)
     else:
-        return '([] : {})'.format(x)
+        raise ValueError('Missing value for required property')
 
 
 def get_static_data(modelSpec):
@@ -91,44 +123,20 @@ def labelize(propName):
         return propName
 
 
-kubernetes_tag = 'v1.11.0'
-url = \
-    'https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json' \
-    .format(tag=kubernetes_tag)
-
-# See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
-# because k8s API allows PUTS etc with partial data, it's not clear from the data types OR the API which
-# fields are required for A POST... so we resort to .. RTFM
-always_required = {'apiVersion', 'kind', 'metadata'}
-
-
-required_for = {
-        'io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta': {'name'},
-}
-
 def main():
     spec = requests.get(url).json()
 
     for modelName, modelSpec in spec['definitions'].items():
         with open('types/' + modelName + '.dhall', 'w') as f:
-            if 'type' in modelSpec:
-                f.write('{}\n'.format(get_typ(modelSpec, True)))
-            else:
-                required = set(modelSpec.get('required', [])) | always_required
-                if modelName in required_for.keys():
-                    required |= required_for[modelName]
-
-                properties = modelSpec.get('properties', {})
-
-                fields = [" {} : ({})\n".format(labelize(propName), get_typ(propVal, propName in required))
-                          for propName, propVal in properties.items()]
-                f.write('{' + ','.join(fields) + '}\n')
-
+            f.write('{}\n'.format(build_type(modelSpec, '.', modelName)))
         with open('default/' + modelName + '.dhall', 'w') as f:
             if 'type' in modelSpec:
-                f.write('\(a : {}) -> a\n'.format(get_typ(modelSpec, True, True)))
+                f.write('\(a : {}) -> a\n'.format(build_type(modelSpec, '../types')))
+            elif '$ref' in modelSpec:
+                path = schema_path_from_ref('.', modelSpec['$ref'])
+                f.write('{}\n'.format(path))
             else:
-                required = set(modelSpec.get('required', [])) | always_required
+                required = required_properties(modelName, modelSpec)
                 if modelName in required_for.keys():
                     required |= required_for[modelName]
 
@@ -139,7 +147,7 @@ def main():
 
                 # If there's any required props, we make it a lambda
                 if len([k for k in properties if k in required]) > 0:
-                    params = ['{} : ({})'.format(labelize(propName), get_typ(propVal, True, True))
+                    params = ['{} : ({})'.format(labelize(propName), build_type(propVal, '../types'))
                               for propName, propVal in properties.items()
                               if propName in param_names]
                     f.write('\(_params : {' + ', '.join(params) + '}) ->\n')

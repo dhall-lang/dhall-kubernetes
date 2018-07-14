@@ -1,1 +1,1 @@
-{=} : ../types/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.IngressStatus.dhall
+./io.k8s.api.extensions.v1beta1.IngressStatus.dhall
