@@ -1,1 +1,1 @@
-Text
+< Int : Natural | String : Text >
