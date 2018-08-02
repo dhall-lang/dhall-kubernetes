@@ -96,8 +96,8 @@ in let spec = defaultSpec
       ]})
   }
 } //
-{ replicas = Some Integer 2
-, revisionHistoryLimit = Some Integer 10
+{ replicas = Some Natural 2
+, revisionHistoryLimit = Some Natural 10
 }
 
 -- and here's the Deployment
