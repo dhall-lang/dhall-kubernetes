@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    spec:
+      containers:
+      - image: your-container-service.io/foo:1.0.1
+        imagePullPolicy: Always
+        name: foo
+        ports:
+        - containerPort: 8080
+    metadata:
+      name: foo
+      labels:
+        app: foo
+  replicas: 2
+metadata:
+  name: foo
