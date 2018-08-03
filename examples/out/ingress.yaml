@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          servicePort: '80'
+          serviceName: foo
+    host: foo.example.com
+  - http:
+      paths:
+      - backend:
+          servicePort: '80'
+          serviceName: default
+    host: default.example.com
+  tls:
+  - hosts:
+    - foo.example.com
+    secretName: foo-certificate
+  - hosts:
+    - default.example.com
+    secretName: default-certificate
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.allow-http: 'false'
+  name: nginx
