@@ -5,13 +5,13 @@ spec:
   - http:
       paths:
       - backend:
-          servicePort: '80'
+          servicePort: 80
           serviceName: foo
     host: foo.example.com
   - http:
       paths:
       - backend:
-          servicePort: '80'
+          servicePort: 80
           serviceName: default
     host: default.example.com
   tls:
