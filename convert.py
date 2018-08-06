@@ -45,6 +45,9 @@ def build_type(schema, path_prefix, schema_name=None):
             return '(List {mapKey : Text, mapValue : Text})'
         elif typ == 'array':
             return 'List {}'.format(build_type(schema['items'], path_prefix))
+        # Fix for the funny format parameters they use in Kube
+        elif typ == 'string' and 'format' in schema and schema['format'] == 'int-or-string':
+            return '< Int : Natural | String : Text >'
         else:
             return {
                 'string' : 'Text',
@@ -131,7 +134,13 @@ def main():
             f.write('{}\n'.format(build_type(modelSpec, '.', modelName)))
         with open('default/' + modelName + '.dhall', 'w') as f:
             if 'type' in modelSpec:
-                f.write('\(a : {}) -> a\n'.format(build_type(modelSpec, '../types')))
+                typ = build_type(modelSpec, '../types')
+                # In case we have a union, we make the constructors for it
+                if typ[0] == '<':
+                    f.write('constructors {}\n'.format(typ))
+                # Otherwise we just output the identity
+                else:
+                    f.write('\(a : {}) -> a\n'.format(typ))
             elif '$ref' in modelSpec:
                 path = schema_path_from_ref('.', modelSpec['$ref'])
                 f.write('{}\n'.format(path))
@@ -145,8 +154,9 @@ def main():
                 resource_data = get_static_data(modelSpec)
                 param_names = required - set(resource_data.keys())
 
-                # If there's any required props, we make it a lambda
-                if len([k for k in properties if k in required]) > 0:
+                # If there's multiple required props, we make it a lambda
+                requiredProps = [k for k in properties if k in required]
+                if len(requiredProps) > 0:
                     params = ['{} : ({})'.format(labelize(propName), build_type(propVal, '../types'))
                               for propName, propVal in properties.items()
                               if propName in param_names]

@@ -1,1 +1,1 @@
-\(a : Text) -> a
+constructors < Int : Natural | String : Text >

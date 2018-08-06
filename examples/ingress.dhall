@@ -12,6 +12,7 @@ in let Ingress = ../types/io.k8s.api.extensions.v1beta1.Ingress.dhall
 in let defaultIngress = ../default/io.k8s.api.extensions.v1beta1.Ingress.dhall
 in let defaultMeta    = ../default/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 in let defaultSpec    = ../default/io.k8s.api.extensions.v1beta1.IngressSpec.dhall
+in let IntOrString    = ../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
 
 -- Our Service type
 in let Service = ./Service.dhall
@@ -27,7 +28,7 @@ in let makeRule = \(service : Service) ->
   { host = Some Text service.host
   , http = Some RuleVal
     { paths = [ { backend = { serviceName = service.name
-                            , servicePort = "80"
+                            , servicePort = IntOrString.Int 80
                             }
                 , path = None Text
         }]}}
