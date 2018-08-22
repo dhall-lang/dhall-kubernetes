@@ -1,3 +1,4 @@
+{ src, ... }:
 let
   pkgs = import ./nixpkgs.nix;
 
@@ -43,6 +44,14 @@ let
         LC_ALL=en_US.UTF-8 ./scripts/build-examples.py $out
       '';
 
+  # Derivation that trivially depends on the input source code revision.
+  # As this is included in the "dhall-lang" aggregate, it forces every
+  # commit to have a corresponding GitHub status check, even if the
+  # commit doesn't make any changes (which can happen when merging
+  # master in).
+  rev = pkgs.runCommand "rev" {} ''echo "${src.rev}" > $out'';
+
+
 in {
   dhall-kubernetes = pkgs.releaseTools.aggregate {
     name = "dhall-kubernetes";
@@ -50,6 +59,7 @@ in {
       generatedFilesCompile
       validateExamples
       buildReadme
+      rev
     ];
   };
 }
