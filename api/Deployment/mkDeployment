@@ -1,0 +1,150 @@
+-- Prelude
+   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/package.dhall
+in let map  = Prelude.`List`.map
+in let Some = Prelude.`Optional`.Some
+in let None = Prelude.`Optional`.None
+in let kv   = Prelude.JSON.keyText
+
+-- Kubernetes types and defaults
+in let Types   = ./RawTypes
+in let default = ./RawDefaults
+
+-- Types for dynamic records
+in let KV     = { mapKey : Text, mapValue : Text }
+in let ListKV = List KV
+
+in let mkContainer : ∀(container : ./Container) → Types.Container =
+
+  λ(container : ./Container) →
+
+  let mkProbe =
+    λ(probe : ./Probe) →
+
+    Some Types.Probe
+    (default.probe //
+      { initialDelaySeconds = Some Natural probe.initial
+      , periodSeconds = Some Natural probe.period
+      , httpGet = Some Types.HttpGet
+          (default.httpGet
+            { port = default.Int probe.port } //
+            { path = Some Text probe.path
+            })
+      })
+
+
+  in let mkEnvVar =
+    λ(var : KV) →
+
+    default.envVar
+      { name  = var.mapKey } //
+      { value = Some Text var.mapValue }
+
+
+  in default.container
+    { name = container.name } //
+    { image = Some Text "${container.imageName}:${container.imageVersion}"
+    , imagePullPolicy = Some Text container.imagePullPolicy
+    , ports = Optional/fold
+        Natural
+        container.port
+        (Optional (List Types.ContainerPort))
+        (λ(port : Natural) → Some (List Types.ContainerPort)
+          [(default.containerPort { containerPort = port })])
+        (None (List Types.ContainerPort))
+    , resources = Some Types.Resources
+      { limits   = Some ListKV [kv "cpu" "${Natural/show container.maxCPU}m"]
+      , requests = Some ListKV [kv "cpu" "${Natural/show container.minCPU}m"]
+      }
+    -- Poll the container to see if the it's alive or we should restart it
+    , livenessProbe = Optional/fold
+        ./Probe
+        container.livenessProbe
+        (Optional Types.Probe)
+        mkProbe
+        (None Types.Probe)
+    -- Poll the container to see that it's ready for requests
+    , readinessProbe = Optional/fold
+        ./Probe
+        container.readinessProbe
+        (Optional Types.Probe)
+        mkProbe
+        (None Types.Probe)
+    , env = Some (List Types.EnvVar)
+        (map { mapKey : Text , mapValue : Text } Types.EnvVar mkEnvVar container.envVars)
+    }
+
+
+in let mkEmptyVolume =
+  λ(vol : { name : Text }) →
+
+  default.volume
+    { name = vol.name } //
+    { emptyDir = Some Types.EmptyVolume default.emptyVolume }
+
+
+in let mkSecretVolume =
+  λ(vol : { name : Text }) →
+
+  default.volume
+    { name = vol.name } //
+    { secret = Some Types.SecretVolume
+        (default.secretVolume // { secretName = Some Text vol.name } )
+    }
+
+
+in let mkPathVolume =
+  λ(vol : { name : Text, path : Text }) →
+
+  default.volume
+    { name = vol.name } //
+    { hostPath = Some Types.PathVolume
+        (default.pathVolume { path = vol.path })
+    }
+
+
+in let mkDeployment : ∀(deployment : ./Deployment) → Types.Deployment =
+
+  λ(deployment : ./Deployment) →
+
+     let selector = Some ListKV [kv "app" deployment.name]
+
+  in let emptyVolumes = map { name : Text } Types.Volume mkEmptyVolume deployment.emptyVolumes
+  in let secretVolumes = map { name : Text } Types.Volume mkSecretVolume deployment.secretVolumes
+  in let pathVolumes = map { name : Text, path : Text } Types.Volume mkPathVolume deployment.pathVolumes
+  in let volumes = Some (List Types.Volume) (emptyVolumes # secretVolumes # pathVolumes)
+
+  in let spec = default.spec
+  { selector = default.selector // { matchLabels = selector }
+  , template = default.template
+    { metadata = default.meta
+      { name = deployment.name } // { labels = selector }
+    } //
+    { spec = Some Types.PodSpec (default.podSpec
+      { containers = map ./Container Types.Container mkContainer deployment.containers
+      } //
+      { volumes = volumes
+      })
+    }
+  } //
+  { replicas = Some Natural deployment.replicas
+  -- Don't keep all the ReplicaSets
+  , revisionHistoryLimit = Some Natural deployment.revisionHistoryLimit
+  , strategy = Some Types.Strategy
+    -- Control the RollingUpdate so the app is always available. For more info see:
+    -- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+    { type = Some Text "RollingUpdate"
+    , rollingUpdate = Some Types.RollingUpdate
+      { maxSurge       = Some Types.IntOrString (default.Int deployment.maxSurge)
+      , maxUnavailable = Some Types.IntOrString (default.Int deployment.maxUnavailable)
+      }
+    }
+  }
+
+  in default.deployment
+  { metadata = default.meta { name = deployment.name }
+  } //
+  { spec = Some Types.Spec spec
+  }
+
+
+in mkDeployment
