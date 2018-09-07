@@ -46,8 +46,8 @@ ${../examples/service-foo.dhall as Text}
 
 We can then make a Deployment object for this service:
 ```haskell
--- examples/deployment.dhall
-${../examples/deployment.dhall as Text}
+-- examples/deploymentRaw.dhall
+${../examples/deploymentRaw.dhall as Text}
 ```
 
 We convert it to yaml with:
@@ -58,8 +58,8 @@ dhall-to-yaml --omitNull < deployment.dhall
 
 And we get:
 ```yaml
--- examples/out/deployment.yaml
-${../examples/out/deployment.yaml as Text}
+-- examples/out/deploymentRaw.yaml
+${../examples/out/deploymentRaw.yaml as Text}
 ```
 
 
@@ -69,8 +69,8 @@ Let's say we now want to generate an Ingress definition (for an Nginx Ingress)
 that contains TLS certs and routes for every service. It would be something like
 this:
 ```haskell
--- examples/ingress.dhall
-${../examples/ingress.dhall as Text}
+-- examples/ingressRaw.dhall
+${../examples/ingressRaw.dhall as Text}
 ```
 
 As usual we get the yaml out by running:
@@ -81,8 +81,8 @@ dhall-to-yaml --omitNull < ingress.yaml.dhall
 
 And we get:
 ```yaml
--- examples/out/ingress.yaml
-${../examples/out/ingress.yaml as Text}
+-- examples/out/ingressRaw.yaml
+${../examples/out/ingressRaw.yaml as Text}
 ```
 
 ## Development

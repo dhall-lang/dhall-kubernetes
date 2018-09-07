@@ -53,7 +53,7 @@ So a configuration for a service might look like this:
 
 We can then make a Deployment object for this service:
 ```haskell
--- examples/deployment.dhall
+-- examples/deploymentRaw.dhall
 -- Prelude imports
    let map    = https://raw.githubusercontent.com/dhall-lang/Prelude/e44284bc37a5808861dacd4c8bd13d18411cb961/List/map
 in let Some   = https://raw.githubusercontent.com/dhall-lang/Prelude/c79c2bc3c46f129cc5b6d594ce298a381bcae92c/Optional/Some
@@ -120,7 +120,7 @@ dhall-to-yaml --omitNull < deployment.dhall
 
 And we get:
 ```yaml
--- examples/out/deployment.yaml
+-- examples/out/deploymentRaw.yaml
 apiVersion: apps/v1beta2
 kind: Deployment
 spec:
@@ -153,7 +153,7 @@ Let's say we now want to generate an Ingress definition (for an Nginx Ingress)
 that contains TLS certs and routes for every service. It would be something like
 this:
 ```haskell
--- examples/ingress.dhall
+-- examples/ingressRaw.dhall
 -- Prelude imports
    let map    = https://raw.githubusercontent.com/dhall-lang/Prelude/e44284bc37a5808861dacd4c8bd13d18411cb961/List/map
 in let Some   = https://raw.githubusercontent.com/dhall-lang/Prelude/c79c2bc3c46f129cc5b6d594ce298a381bcae92c/Optional/Some
@@ -237,7 +237,7 @@ dhall-to-yaml --omitNull < ingress.yaml.dhall
 
 And we get:
 ```yaml
--- examples/out/ingress.yaml
+-- examples/out/ingressRaw.yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 spec:

@@ -1,6 +1,6 @@
 { name            = "CHANGEME"
 , imageName       = "SOME_IMAGE"
-, imageVersion    = "0.1"
+, imageTag        = "0.1"
 , imagePullPolicy = "Always"
 , minCPU          = 10
 , maxCPU          = 500

@@ -87,7 +87,7 @@ in let mkContainer : ./Container → Types.Container =
 
   default.container
     { name = container.name } //
-    { image = Some Text "${container.imageName}:${container.imageVersion}"
+    { image = Some Text "${container.imageName}:${container.imageTag}"
     , imagePullPolicy = Some Text container.imagePullPolicy
     , ports = Optional/fold
         Natural

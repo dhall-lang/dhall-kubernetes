@@ -1,6 +1,6 @@
 { name            : Text
 , imageName       : Text
-, imageVersion    : Text
+, imageTag        : Text
 , imagePullPolicy : Text
 , minCPU          : Natural
 , maxCPU          : Natural
