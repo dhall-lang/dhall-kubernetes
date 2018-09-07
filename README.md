@@ -274,8 +274,15 @@ metadata:
 ### Tests
 
 All tests are defined in `release.nix`. We run these tests in CI in a [Hydra
-project][hydra-project]. You can run the tests locally with `nix build --no-link
-release.nix`.
+project][hydra-project].
+
+You can run the tests locally with the following somewhat magic command:
+```bash
+nix-build --no-link -E 'with import <nixpkgs> {}; callPackage ./release.nix { src.rev = ""; }'
+```
+
+It is so because `release.nix` expects Hydra to provide the git revision in `src.rev`,
+but locally we don't have/want that, so we just call the function with an empty string.
 
 ### Changing the README
 
