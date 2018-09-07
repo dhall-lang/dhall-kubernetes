@@ -8,7 +8,7 @@ let config =
       //
       { name = "nginx"
       , imageName = "nginx"
-      , imageVersion = "1.5.3"
+      , imageVersion = "1.15.3"
       , port = [ 80 ] : Optional Natural
       }
     ]
