@@ -17,40 +17,35 @@ in let defaultSelector      = ../default/io.k8s.apimachinery.pkg.apis.meta.v1.La
 in let defaultContainer     = ../default/io.k8s.api.core.v1.Container.dhall
 in let defaultContainerPort = ../default/io.k8s.api.core.v1.ContainerPort.dhall
 
-
 {-
 
-Here we define the Service type.
+Here we import the Config type.
 It's going to be the input to our mkDeployment function,
-and contains our "configuration"
+and contains the configuration for the Deployment.
 
 -}
-in let Service =
-  { name    : Text
-  , host    : Text
-  , version : Text
-  }
+in let Config = ./Config.dhall
 
 
 -- So here we define a function that outputs a Deployment
-in let mkDeployment : Service -> Deployment =
+in let mkDeployment : Config -> Deployment =
 
-  \(service : Service) ->
+  \(deployment : Config) ->
 
      let selector = Some (List { mapKey : Text, mapValue : Text })
-                      [{ mapKey = "app", mapValue = service.name }]
+                      [{ mapKey = "app", mapValue = deployment.name }]
 
   in let spec = defaultSpec
     { selector = defaultSelector // { matchLabels = selector }
     , template = defaultTemplate
       { metadata = defaultMeta
-        { name = service.name } // { labels = selector }
+        { name = deployment.name } // { labels = selector }
       } //
       { spec = Some PodSpec (defaultPodSpec
         { containers = [
           defaultContainer
-            { name = service.name } //
-            { image = Some Text "your-container-service.io/${service.name}:${service.version}"
+            { name = deployment.name } //
+            { image = Some Text "your-container-service.io/${deployment.name}:${deployment.version}"
             , imagePullPolicy = Some Text "Always"
             , ports = Some (List ContainerPort)
                 [(defaultContainerPort {containerPort = 8080})]
@@ -64,22 +59,22 @@ in let mkDeployment : Service -> Deployment =
     }
 
   in defaultDeployment
-    { metadata = defaultMeta { name = service.name }
+    { metadata = defaultMeta { name = deployment.name }
     } //
     { spec = Some Spec spec } : Deployment
 
 
 {-
 
-..and to keep the example self contained we import our service here.
+..and to keep the example self contained we import our config here.
 A more modular approach would be to just define a function to make
 the Deployment in this file, and then apply the right configuration
 at the command line or in another Dhall file.
 
-E.g.: `dhall-to-yaml --omitNull <<< "./examples/deploymentRaw.dhall ./examples/myService.dhall"`
+E.g.: `dhall-to-yaml --omitNull <<< "./examples/deploymentRaw.dhall ./myConfig.dhall"`
 
 -}
-in let myService = ./myService.dhall
+in let myConfig = ./myConfig.dhall
 
 -- and here we apply the deployment-making function to our config
-in mkDeployment myService
+in mkDeployment myConfig

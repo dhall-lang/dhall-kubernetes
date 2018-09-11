@@ -15,58 +15,67 @@ in let defaultSpec    = ../default/io.k8s.api.extensions.v1beta1.IngressSpec.dha
 in let IntOrString    = ../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
 
 -- Our Service type
-in let Service = ./Service.dhall
+in let Service = ./Config.dhall
+in let Config = { services : List Service }
 
--- Given a service, make a TLS definition with their host and certificate
-in let makeTLS = \(service : Service) ->
-  { hosts = Some (List Text) [ service.host ]
-  , secretName = Some Text "${service.name}-certificate"
-  }
+-- A function to generate an ingress given a configuration
+in let mkIngress : Config -> Ingress =
 
--- Given a service, make an Ingress Rule
-in let makeRule = \(service : Service) ->
-  { host = Some Text service.host
-  , http = Some RuleVal
-    { paths = [ { backend = { serviceName = service.name
-                            , servicePort = IntOrString.Int 80
-                            }
-                , path = None Text
-        }]}}
+  \(config : Config) ->
 
--- Nginx ingress requires a default service as a catchall
-in let defaultService =
-  { name = "default"
-  , host = "default.example.com"
-  , version = " 1.0"
-  }
+  -- Given a service, make a TLS definition with their host and certificate
+     let makeTLS = \(service : Service) ->
+    { hosts = Some (List Text) [ service.host ]
+    , secretName = Some Text "${service.name}-certificate"
+    }
 
--- List of services
-in let fooService = ./service-foo.dhall
-in let services =
-[ fooService
-, defaultService
-]
+  -- Given a service, make an Ingress Rule
+  in let makeRule = \(service : Service) ->
+    { host = Some Text service.host
+    , http = Some RuleVal
+      { paths = [ { backend = { serviceName = service.name
+                              , servicePort = IntOrString.Int 80
+                              }
+                  , path = None Text
+                  }
+				]
+      }
+	}
 
--- Some metadata annotations
--- NOTE: `dhall-to-yaml` will generate a record with arbitrary keys from a list
--- of records where mapKey is the key and mapValue is the value of that key
-in let genericRecord = List { mapKey : Text, mapValue : Text }
-in let kv = \(k : Text) -> \(v : Text) -> { mapKey = k, mapValue = v }
+  -- Nginx ingress requires a default service as a catchall
+  in let defaultService =
+    { name = "default"
+    , host = "default.example.com"
+    , version = " 1.0"
+    }
 
-in let annotations = Some genericRecord
-[ kv "kubernetes.io/ingress.class"      "nginx"
-, kv "kubernetes.io/ingress.allow-http" "false"
-]
+  -- List of services
+  in let services = config.services # [ defaultService ]
 
--- Generate spec from services
-in let spec = defaultSpec //
-{ tls   = Some (List TLS)  (map Service TLS  makeTLS  services)
-, rules = Some (List Rule) (map Service Rule makeRule services)
-}
+  -- Some metadata annotations
+  -- NOTE: `dhall-to-yaml` will generate a record with arbitrary keys from a list
+  -- of records where mapKey is the key and mapValue is the value of that key
+  in let genericRecord = List { mapKey : Text, mapValue : Text }
+  in let kv = \(k : Text) -> \(v : Text) -> { mapKey = k, mapValue = v }
 
-in defaultIngress
-{ metadata = defaultMeta
-  { name = "nginx" } //
-  { annotations = annotations }
-} //
-{ spec = Some Spec spec } : Ingress
+  in let annotations = Some genericRecord
+    [ kv "kubernetes.io/ingress.class"      "nginx"
+    , kv "kubernetes.io/ingress.allow-http" "false"
+    ]
+
+  -- Generate spec from services
+  in let spec = defaultSpec //
+    { tls   = Some (List TLS)  (map Service TLS  makeTLS  services)
+    , rules = Some (List Rule) (map Service Rule makeRule services)
+    }
+
+  in defaultIngress
+    { metadata = defaultMeta
+      { name = "nginx" } //
+      { annotations = annotations }
+    } //
+    { spec = Some Spec spec }
+
+
+-- Here we import our example service, and generate the ingress with it
+in mkIngress { services = [ ./myConfig.dhall ] }
