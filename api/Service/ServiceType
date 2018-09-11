@@ -1,0 +1,5 @@
+< ClusterIP    : {}
+| NodePort     : {}
+| LoadBalancer : {}
+| ExternalName : {}
+>

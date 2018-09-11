@@ -1,9 +1,0 @@
-let intOrString = ../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
-in
-{ service = ../default/io.k8s.api.core.v1.Service.dhall
-, spec    = ../default/io.k8s.api.core.v1.ServiceSpec.dhall
-, port    = ../default/io.k8s.api.core.v1.ServicePort.dhall
-, meta    = ../default/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
-, Int     = intOrString.Int
-, String  = intOrString.String
-}

@@ -1,0 +1,5 @@
+{ Service     = ../../types/io.k8s.api.core.v1.Service.dhall
+, Spec        = ../../types/io.k8s.api.core.v1.ServiceSpec.dhall
+, Port        = ../../types/io.k8s.api.core.v1.ServicePort.dhall
+, IntOrString = ../../types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
+}
