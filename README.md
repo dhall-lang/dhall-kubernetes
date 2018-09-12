@@ -23,7 +23,8 @@ all while being non-Turing complete, strongly typed and [strongly normalizing][n
 (i.e.: reduces everything to a normal form, no matter how much abstraction you build),
 so saving you from the *"oh-noes-I-made-my-config-in-code-and-now-its-too-abstract"* nightmare.
 
-For a Dhall Tutorial, see [here][dhall-tutorial].
+For a Dhall Tutorial, see the [readme of the project][dhall-lang],
+or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
