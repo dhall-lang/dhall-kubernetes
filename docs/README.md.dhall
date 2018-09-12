@@ -2,7 +2,7 @@
 # `dhall-kubernetes`
 
 `dhall-kubernetes` contains [Dhall][dhall-lang] bindings to [Kubernetes][kubernetes],
-and lets you generate Kubernetes objects definitions from Dhall expressions.
+so you can generate Kubernetes objects definitions from Dhall expressions.
 This will let you easily typecheck, template and modularize your Kubernetes definitions.
 
 ## Why do I need this
@@ -13,7 +13,7 @@ around, you'll encounter several issues:
   things don't stand out that much
 2. Ok I have a bunch of objects that'll need to be configured together, how do I share data?
 3. I'd like to reuse an object for different environments, but I cannot make it parametric..
-4. I'd really love to reuse parts of some definitions in other definitions
+4. In general, I'd really love to reuse parts of some definitions in other definitions
 5. Oh no, I typoed a key and I had to wait until I pushed to the cluster to get an error back :(
 
 The natural tendency is to reach for a templating language + a programming language to orchestrate that + some more configuration for it...
@@ -22,7 +22,7 @@ But this is just really messy (been there), and we can do better.
 Dhall solves all of this, being a programming language with builtin templating,
 all while being non-Turing complete, strongly typed and [strongly normalizing][normalization]
 (i.e.: reduces everything to a normal form, no matter how much abstraction you build),
-so saving you from the "oh-I-made-my-config-in-code-and-now-its-too-abstract" nightmare.
+so saving you from the *"oh-noes-I-made-my-config-in-code-and-now-its-too-abstract"* nightmare.
 
 ## Prerequisites
 
@@ -37,15 +37,15 @@ For a version compatible with a previous version, check out [this commit](https:
 
 ## Quick start - main API
 
-We provide a simple API for the most common cases (For a list, see the [api][api] folder).
+We provide a simple API for the most common cases (For a list, see the [api](./api) folder).
 
-Let's say we'd like to configure a Deployment containing an `nginx`.
+Let's say we'd like to configure a Deployment exposing an `nginx` webserver.
 In the following example, we:
 1. Define a `config` for our service, by merging a [default config][default-deployment]
-  (with the Dhall operator `//`) to a record with our parameters.
+  (with the Dhall record-merge operator `//`) with a record with our parameters.
 2. In there we define the details of the Deployment we care about (note that we do the same
   "merging with defaults" operation for our container as well, so we don't have to specify
-  all the data)
+  all the parameters)
 3. We call the [`mkDeployment`][mkDeployment] function on our `config`
 
 ```haskell
@@ -61,7 +61,7 @@ dhall-to-yaml --omitNull < deployment.dhall
 
 And we get:
 ```yaml
--- examples/out/deployment.yaml
+## examples/out/deployment.yaml
 ${../examples/out/deployment.yaml as Text}
 ```
 
@@ -71,17 +71,17 @@ If the main API is not enough (e.g. the object you'd like to generate is not in 
 you can just fall back on using the raw Types and defaults the library provides
 (and Pull Request here your program afterwards!).
 
-Let's say we want to generate an Ingress definition (for an Nginx Ingress)
+Let's say we want to generate an Ingress definition (for an [Nginx Ingress][nginx-ingress])
 that contains TLS certs and routes for every service.
 For more examples of using this API see the [`./examples` folder](./examples).
 
-In the `types` folder you'll find the types for the Kubernetes definitions. E.g.
+In the [`types`](./types) folder you'll find the types for the Kubernetes definitions. E.g.
 [here's][Ingress] the type for the Ingress.
 
 Since _most_ of the fields in all definitions are optional, for better
 ergonomics while coding Dhall we also generate default values for all types, in
-the `default` folder.  When some fields are required, the default value is a
-function whose input is a record of required fields, that returns the object
+the [`default`](./default) folder.  When some fields are required, the default value
+is a function whose input is a record of required fields, that returns the object
 with these fields set. E.g. the default for the Ingress is [this
 function][Ingress-default].
 
@@ -102,6 +102,8 @@ We can now expose this service out to the world with the Ingress:
 
 ```haskell
 -- examples/ingressRaw.dhall
+
+
 ${../examples/ingressRaw.dhall as Text}
 ```
 
@@ -113,7 +115,7 @@ dhall-to-yaml --omitNull < ingress.yaml.dhall
 
 Result:
 ```yaml
--- examples/out/ingressRaw.yaml
+## examples/out/ingressRaw.yaml
 ${../examples/out/ingressRaw.yaml as Text}
 ```
 
@@ -142,11 +144,11 @@ to run `scripts/build-readme.sh`.
 
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
-[Indress]: https://github.com/dhall-lang/dhall-kubernetes/blob/master/types/io.k8s.api.extensions.v1beta1.Ingress.dhall
-[Ingress-default]: https://github.com/dhall-lang/dhall-kubernetes/blob/master/default/io.k8s.api.extensions.v1beta1.Ingress.dhall
 [kubernetes]: https://kubernetes.io/
 [normalization]: https://en.wikipedia.org/wiki/Normalization_property_(abstract_rewriting)
-[api]: https://github.com/dhall-lang/dhall-kubernetes/tree/master/api
-[default-deployment]: https://github.com/dhall-lang/dhall-kubernetes/blob/master/api/Deployment/default
-[mkDeployment]: https://github.com/dhall-lang/dhall-kubernetes/blob/master/api/Deployment/mkDeployment
+[nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[default-deployment]: ./api/Deployment/default
+[mkDeployment]: ./api/Deployment/mkDeployment
+[Ingress]: ./types/io.k8s.api.extensions.v1beta1.Ingress.dhall
+[Ingress-default]: ./default/io.k8s.api.extensions.v1beta1.Ingress.dhall
 ''
