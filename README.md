@@ -23,6 +23,8 @@ all while being non-Turing complete, strongly typed and [strongly normalizing][n
 (i.e.: reduces everything to a normal form, no matter how much abstraction you build),
 so saving you from the *"oh-noes-I-made-my-config-in-code-and-now-its-too-abstract"* nightmare.
 
+For a Dhall Tutorial, see [here][dhall-tutorial].
+
 ## Prerequisites
 
 **NOTE**: `dhall-kubernetes` requires at least version `1.14.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell).
@@ -34,7 +36,7 @@ stack install dhall dhall-json --resolver=nightly
 
 For a version compatible with a previous version, check out [this commit](https://github.com/dhall-lang/dhall-kubernetes/tree/b2357dcfa42a008efa203a850163d26f0d106e01).
 
-## Quick start - main API
+## Quickstart - main API
 
 We provide a simple API for the most common cases (For a list, see the [api](./api) folder).
 
@@ -315,6 +317,7 @@ to run `scripts/build-readme.sh`.
 [kubernetes]: https://kubernetes.io/
 [normalization]: https://en.wikipedia.org/wiki/Normalization_property_(abstract_rewriting)
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[dhall-tutorial]: http://hackage.haskell.org/package/dhall-1.17.0/docs/Dhall-Tutorial.html
 [default-deployment]: ./api/Deployment/default
 [mkDeployment]: ./api/Deployment/mkDeployment
 [Ingress]: ./types/io.k8s.api.extensions.v1beta1.Ingress.dhall
