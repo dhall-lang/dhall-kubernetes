@@ -38,9 +38,9 @@ in let mkIngress : Config -> Ingress =
                               }
                   , path = None Text
                   }
-				]
+                ]
       }
-	}
+    }
 
   -- Nginx ingress requires a default service as a catchall
   in let defaultService =
