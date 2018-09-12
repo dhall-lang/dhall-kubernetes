@@ -1,7 +1,7 @@
 -- Prelude imports
-   let map    = https://raw.githubusercontent.com/dhall-lang/Prelude/e44284bc37a5808861dacd4c8bd13d18411cb961/List/map
-in let Some   = https://raw.githubusercontent.com/dhall-lang/Prelude/c79c2bc3c46f129cc5b6d594ce298a381bcae92c/Optional/Some
-in let None   = https://raw.githubusercontent.com/dhall-lang/Prelude/c79c2bc3c46f129cc5b6d594ce298a381bcae92c/Optional/None
+   let map    = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/List/map
+in let Some   = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/Optional/Some
+in let None   = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/Optional/None
 
 -- dhall-kubernetes types and defaults
 in let TLS     = ../types/io.k8s.api.extensions.v1beta1.IngressTLS.dhall
