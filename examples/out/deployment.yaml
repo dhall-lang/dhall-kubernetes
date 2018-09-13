@@ -1,22 +1,35 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 spec:
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 20
   selector:
     matchLabels:
-      app: foo
+      app: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 0
+    type: RollingUpdate
   template:
     spec:
       containers:
-      - image: your-container-service.io/foo:1.0.1
+      - image: nginx:1.15.3
         imagePullPolicy: Always
-        name: foo
+        env: []
+        volumeMounts: []
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 10m
+        name: nginx
         ports:
-        - containerPort: 8080
+        - containerPort: 80
+      volumes: []
     metadata:
-      name: foo
+      name: nginx
       labels:
-        app: foo
+        app: nginx
   replicas: 2
 metadata:
-  name: foo
+  name: nginx

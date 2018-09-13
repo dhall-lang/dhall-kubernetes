@@ -1,0 +1,10 @@
+{ name                 = "CHANGEME"
+, replicas             = 1
+, revisionHistoryLimit = 20
+, maxSurge             = 5
+, maxUnavailable       = 0
+, containers           = [] : List ./Container
+, emptyVolumes         = [] : List { name : Text }
+, secretVolumes        = [] : List { name : Text }
+, pathVolumes          = [] : List { name : Text, path : Text }
+} : ./Deployment

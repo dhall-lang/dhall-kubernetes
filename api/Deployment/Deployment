@@ -1,0 +1,10 @@
+{ name                 : Text
+, replicas             : Natural
+, revisionHistoryLimit : Natural
+, maxSurge             : Natural
+, maxUnavailable       : Natural
+, containers           : List ./Container
+, emptyVolumes         : List { name : Text }
+, secretVolumes        : List { name : Text }
+, pathVolumes          : List { name : Text, path : Text }
+}

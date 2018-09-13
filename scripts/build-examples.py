@@ -15,8 +15,10 @@ import sys
 
 examples_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'examples'))
 examples = [
+    'deploymentRaw',
+    'ingressRaw',
     'deployment',
-    'ingress'
+    'service'
 ]
 
 TERM_FAIL = '\033[91m'
