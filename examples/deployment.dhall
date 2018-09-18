@@ -1,11 +1,11 @@
     let config =
-            ./../api/Deployment/default sha256:8962c123d535ca22b9a732bab99b3b61d62d8fc78ba1ec67bd8eb7df4ea9d711
+            ./../api/Deployment/default -- sha256:8962c123d535ca22b9a732bab99b3b61d62d8fc78ba1ec67bd8eb7df4ea9d711
           ⫽ { name =
                 "nginx"
             , replicas =
                 2
             , containers =
-                [   ./../api/Deployment/defaultContainer sha256:c502cc1d14729d0dd973f9a545c050ac46cb25940f493f998a668a4cca4846eb
+                [   ./../api/Deployment/defaultContainer -- sha256:c502cc1d14729d0dd973f9a545c050ac46cb25940f493f998a668a4cca4846eb
                   ⫽ { name =
                         "nginx"
                     , imageName =
