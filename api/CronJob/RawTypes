@@ -1,0 +1,6 @@
+{ CronJob = ../../types/io.k8s.api.batch.v1beta1.CronJob.dhall
+, Spec    = ../../types/io.k8s.api.batch.v1beta1.CronJobSpec.dhall
+, JobSpec = ../../types/io.k8s.api.batch.v1.JobSpec.dhall
+, PodSpec = ../../types/io.k8s.api.core.v1.PodSpec.dhall
+, EnvVar  = ../../types/io.k8s.api.core.v1.EnvVar.dhall
+}

@@ -1,0 +1,8 @@
+{ cronjob   = ../../default/io.k8s.api.batch.v1beta1.CronJob.dhall
+, spec      = ../../default/io.k8s.api.batch.v1beta1.CronJobSpec.dhall
+, jobSpec   = ../../default/io.k8s.api.batch.v1.JobSpec.dhall
+, podSpec   = ../../default/io.k8s.api.core.v1.PodSpec.dhall
+, container = ../../default/io.k8s.api.core.v1.Container.dhall
+, envVar    = ../../default/io.k8s.api.core.v1.EnvVar.dhall
+, meta      = ../../default/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
+}
