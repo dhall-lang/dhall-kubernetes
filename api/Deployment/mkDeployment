@@ -1,5 +1,5 @@
 -- Prelude
-   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/master/package.dhall
+   let Prelude = ../../Prelude/package.dhall
 in let map  = Prelude.`List`.map
 in let kv   = Prelude.JSON.keyText
 
