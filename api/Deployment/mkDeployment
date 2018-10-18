@@ -1,8 +1,6 @@
 -- Prelude
-   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/package.dhall
+   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/v3.0.0/package.dhall
 in let map  = Prelude.`List`.map
-in let Some = Prelude.`Optional`.Some
-in let None = Prelude.`Optional`.None
 in let kv   = Prelude.JSON.keyText
 
 -- Kubernetes types and defaults
@@ -18,14 +16,14 @@ in let mkProbe : ./Probe → Optional Types.Probe =
 
   λ(probe : ./Probe) →
 
-  Some Types.Probe
+  Some
     (default.probe //
-      { initialDelaySeconds = Some Natural probe.initial
-      , periodSeconds = Some Natural probe.period
-      , httpGet = Some Types.HttpGet
+      { initialDelaySeconds = Some probe.initial
+      , periodSeconds = Some probe.period
+      , httpGet = Some
         (default.httpGet
             { port = default.Int probe.port } //
-            { path = Some Text probe.path
+            { path = Some probe.path
             })
       })
 
@@ -36,7 +34,7 @@ in let mkEnvVar : KV → Types.EnvVar =
 
   default.envVar
     { name  = var.mapKey } //
-    { value = Some Text var.mapValue }
+    { value = Some var.mapValue }
 
 
 in let mkEmptyVolume : { name : Text } → Types.Volume =
@@ -45,7 +43,7 @@ in let mkEmptyVolume : { name : Text } → Types.Volume =
 
   default.volume
     { name = vol.name } //
-    { emptyDir = Some Types.EmptyVolume default.emptyVolume }
+    { emptyDir = Some default.emptyVolume }
 
 
 in let mkSecretVolume : { name : Text } → Types.Volume =
@@ -54,8 +52,8 @@ in let mkSecretVolume : { name : Text } → Types.Volume =
 
   default.volume
     { name = vol.name } //
-    { secret = Some Types.SecretVolume
-        (default.secretVolume // { secretName = Some Text vol.name } )
+    { secret = Some
+        (default.secretVolume // { secretName = Some vol.name } )
     }
 
 
@@ -65,7 +63,7 @@ in let mkPathVolume : { name : Text, path : Text } → Types.Volume =
 
   default.volume
     { name = vol.name } //
-    { hostPath = Some Types.PathVolume
+    { hostPath = Some
         (default.pathVolume { path = vol.path })
     }
 
@@ -87,21 +85,21 @@ in let mkContainer : ./Container → Types.Container =
 
   default.container
     { name = container.name } //
-    { image = Some Text "${container.imageName}:${container.imageTag}"
-    , imagePullPolicy = Some Text container.imagePullPolicy
+    { image = Some "${container.imageName}:${container.imageTag}"
+    , imagePullPolicy = Some container.imagePullPolicy
     , ports = Optional/fold
         Natural
         container.port
         (Optional (List Types.ContainerPort))
-        (λ(port : Natural) → Some (List Types.ContainerPort)
+        (λ(port : Natural) → Some
           [(default.containerPort { containerPort = port })])
         (None (List Types.ContainerPort))
-    , resources = Some Types.Resources
-      { limits   = Some ListKV [kv "cpu" "${Natural/show container.maxCPU}m"]
-      , requests = Some ListKV [kv "cpu" "${Natural/show container.minCPU}m"]
+    , resources = Some
+      { limits   = Some [kv "cpu" "${Natural/show container.maxCPU}m"]
+      , requests = Some [kv "cpu" "${Natural/show container.minCPU}m"]
       }
     , command = container.command
-    , volumeMounts = Some (List Types.Mount)
+    , volumeMounts = Some
         (map ./Mount Types.Mount mkMount container.mounts)
     -- Poll the container to see if the it's alive or we should restart it
     , livenessProbe = Optional/fold
@@ -117,7 +115,7 @@ in let mkContainer : ./Container → Types.Container =
         (Optional Types.Probe)
         mkProbe
         (None Types.Probe)
-    , env = Some (List Types.EnvVar)
+    , env = Some
         (map { mapKey : Text , mapValue : Text } Types.EnvVar mkEnvVar container.envVars)
     }
 
@@ -126,12 +124,12 @@ in let mkDeployment : ./Deployment → Types.Deployment =
 
   λ(deployment : ./Deployment) →
 
-     let selector = Some ListKV [kv "app" deployment.name]
+     let selector = Some [kv "app" deployment.name]
 
   in let emptyVolumes = map { name : Text } Types.Volume mkEmptyVolume deployment.emptyVolumes
   in let secretVolumes = map { name : Text } Types.Volume mkSecretVolume deployment.secretVolumes
   in let pathVolumes = map { name : Text, path : Text } Types.Volume mkPathVolume deployment.pathVolumes
-  in let volumes = Some (List Types.Volume) (emptyVolumes # secretVolumes # pathVolumes)
+  in let volumes = Some (emptyVolumes # secretVolumes # pathVolumes)
 
   in let spec = default.spec
   { selector = default.selector // { matchLabels = selector }
@@ -139,23 +137,23 @@ in let mkDeployment : ./Deployment → Types.Deployment =
     { metadata = default.meta
       { name = deployment.name } // { labels = selector }
     } //
-    { spec = Some Types.PodSpec (default.podSpec
+    { spec = Some (default.podSpec
       { containers = map ./Container Types.Container mkContainer deployment.containers
       } //
       { volumes = volumes
       })
     }
   } //
-  { replicas = Some Natural deployment.replicas
+  { replicas = Some deployment.replicas
   -- Don't keep all the ReplicaSets
-  , revisionHistoryLimit = Some Natural deployment.revisionHistoryLimit
-  , strategy = Some Types.Strategy
+  , revisionHistoryLimit = Some deployment.revisionHistoryLimit
+  , strategy = Some
     -- Control the RollingUpdate so the app is always available. For more info see:
     -- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-    { type = Some Text "RollingUpdate"
-    , rollingUpdate = Some Types.RollingUpdate
-      { maxSurge       = Some Types.IntOrString (default.Int deployment.maxSurge)
-      , maxUnavailable = Some Types.IntOrString (default.Int deployment.maxUnavailable)
+    { type = Some "RollingUpdate"
+    , rollingUpdate = Some
+      { maxSurge       = Some (default.Int deployment.maxSurge)
+      , maxUnavailable = Some (default.Int deployment.maxUnavailable)
       }
     }
   }
@@ -163,7 +161,7 @@ in let mkDeployment : ./Deployment → Types.Deployment =
   in default.deployment
   { metadata = default.meta { name = deployment.name }
   } //
-  { spec = Some Types.Spec spec
+  { spec = Some spec
   }
 
 

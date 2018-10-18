@@ -6,9 +6,9 @@ let
     pkgs.git
     pkgs.python3
     pkgs.bash
-    pkgs.dhall
-    pkgs.dhall-json
-    pkgs.dhall-text
+    pkgs.dhall_1_18_0
+    pkgs.dhall-json_1_2_4
+    pkgs.dhall-text_1_0_13
     pkgs.glibcLocales
   ];
 
