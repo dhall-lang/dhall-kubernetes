@@ -8,7 +8,7 @@ let
     pkgs.bash
     pkgs.dhall_1_18_0
     pkgs.dhall-json_1_2_4
-    pkgs.dhall-text_1_0_13
+    pkgs.haskellPackages.dhall-text_1_0_13
     pkgs.glibcLocales
   ];
 
