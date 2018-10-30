@@ -6,7 +6,7 @@ let
     pkgs.git
     pkgs.python3
     pkgs.bash
-    pkgs.dhall_1_18_0
+    pkgs.haskellPackages.dhall_1_18_0
     pkgs.haskellPackages.dhall-json_1_2_4
     pkgs.haskellPackages.dhall-text_1_0_13
     pkgs.glibcLocales
