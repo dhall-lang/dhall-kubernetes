@@ -34,7 +34,7 @@ in let mkIngress : Config -> Ingress =
 	  { paths = [ { backend = { serviceName = service.name
 							  , servicePort = IntOrString.Int 80
 							  }
-				  , path = None
+				  , path = None Text
 				  }
 				]
 	  }
