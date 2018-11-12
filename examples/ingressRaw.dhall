@@ -22,30 +22,31 @@ in let mkIngress : Config -> Ingress =
   \(config : Config) ->
 
   -- Given a service, make a TLS definition with their host and certificate
-	 let makeTLS = \(service : Service) ->
-	{ hosts = Some [ service.host ]
-	, secretName = Some "${service.name}-certificate"
-	}
+     let makeTLS = \(service : Service) ->
+    { hosts = Some [ service.host ]
+    , secretName = Some "${service.name}-certificate"
+    }
 
   -- Given a service, make an Ingress Rule
   in let makeRule = \(service : Service) ->
-	{ host = Some service.host
-	, http = Some
-	  { paths = [ { backend = { serviceName = service.name
-							  , servicePort = IntOrString.Int 80
-							  }
-				  , path = None Text
-				  }
-				]
-	  }
-	}
+    { host = Some service.host
+    , http = Some
+        { paths = [ { backend =
+                        { serviceName = service.name
+                        , servicePort = IntOrString.Int 80
+                        }
+                    , path = None Text
+                    }
+                  ]
+        }
+    }
 
   -- Nginx ingress requires a default service as a catchall
   in let defaultService =
-	{ name = "default"
-	, host = "default.example.com"
-	, version = " 1.0"
-	}
+    { name = "default"
+    , host = "default.example.com"
+    , version = " 1.0"
+    }
 
   -- List of services
   in let services = config.services # [ defaultService ]
@@ -57,22 +58,22 @@ in let mkIngress : Config -> Ingress =
   in let kv = \(k : Text) -> \(v : Text) -> { mapKey = k, mapValue = v }
 
   in let annotations = Some
-	[ kv "kubernetes.io/ingress.class"      "nginx"
-	, kv "kubernetes.io/ingress.allow-http" "false"
-	]
+    [ kv "kubernetes.io/ingress.class"      "nginx"
+    , kv "kubernetes.io/ingress.allow-http" "false"
+    ]
 
   -- Generate spec from services
   in let spec = defaultSpec //
-	{ tls   = Some (map Service TLS  makeTLS  services)
-	, rules = Some (map Service Rule makeRule services)
-	}
+    { tls   = Some (map Service TLS  makeTLS  services)
+    , rules = Some (map Service Rule makeRule services)
+    }
 
   in defaultIngress
-	{ metadata = defaultMeta
-	  { name = "nginx" } //
-	  { annotations = annotations }
-	} //
-	{ spec = Some spec }
+    { metadata = defaultMeta
+      { name = "nginx" } //
+      { annotations = annotations }
+    } //
+    { spec = Some spec }
 
 
 -- Here we import our example service, and generate the ingress with it

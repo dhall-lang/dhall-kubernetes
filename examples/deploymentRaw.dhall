@@ -30,34 +30,34 @@ in let mkDeployment : Config -> Deployment =
 
   \(deployment : Config) ->
 
-	 let selector = Some [{ mapKey = "app", mapValue = deployment.name }]
+     let selector = Some [{ mapKey = "app", mapValue = deployment.name }]
 
   in let spec = defaultSpec
-	{ selector = defaultSelector // { matchLabels = selector }
-	, template = defaultTemplate
-	  { metadata = defaultMeta
-		{ name = deployment.name } // { labels = selector }
-	  } //
-	  { spec = Some (defaultPodSpec
-		{ containers = [
-		  defaultContainer
-			{ name = deployment.name } //
-			{ image = Some "your-container-service.io/${deployment.name}:${deployment.version}"
-			, imagePullPolicy = Some "Always"
-			, ports = Some [(defaultContainerPort {containerPort = 8080})]
-			}
-		  ]
-		})
-	  }
-	} //
-	{ replicas = Some 2
-	, revisionHistoryLimit = Some 10
-	}
+    { selector = defaultSelector // { matchLabels = selector }
+    , template = defaultTemplate
+      { metadata = defaultMeta
+        { name = deployment.name } // { labels = selector }
+      } //
+      { spec = Some (defaultPodSpec
+        { containers = [
+          defaultContainer
+            { name = deployment.name } //
+            { image = Some "your-container-service.io/${deployment.name}:${deployment.version}"
+            , imagePullPolicy = Some "Always"
+            , ports = Some [(defaultContainerPort {containerPort = 8080})]
+            }
+          ]
+        })
+      }
+    } //
+    { replicas = Some 2
+    , revisionHistoryLimit = Some 10
+    }
 
   in defaultDeployment
-	{ metadata = defaultMeta { name = deployment.name }
-	} //
-	{ spec = Some spec } : Deployment
+    { metadata = defaultMeta { name = deployment.name }
+    } //
+    { spec = Some spec } : Deployment
 
 
 {-
