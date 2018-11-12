@@ -1,6 +1,5 @@
 -- Prelude
-   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/v2.0.0/package.dhall
-in let Some = Prelude.`Optional`.Some
+   let Prelude = https://raw.githubusercontent.com/dhall-lang/Prelude/v3.0.0/package.dhall
 in let kv   = Prelude.JSON.keyText
 
 -- Kubernetes types and defaults
@@ -16,12 +15,12 @@ in let mkService : ./Service → Types.Service =
 
   λ(service : ./Service) →
 
-     let selector = Some ListKV [kv "app" service.name]
+     let selector = Some [kv "app" service.name]
 
   in let meta = default.meta
   { name = service.name } //
   { labels = selector
-  , annotations = Some ListKV service.annotations
+  , annotations = Some service.annotations
   }
 
   -- Handlers for the ServiceType union
@@ -33,11 +32,11 @@ in let mkService : ./Service → Types.Service =
     }
 
   in let spec = default.spec //
-  { type = Some Text (merge handlers service.type : Text)
-  , ports = Some (List Types.Port)
+  { type = Some (merge handlers service.type : Text)
+  , ports = Some
     [ default.port
       { port = service.outPort } //
-      { targetPort = Some Types.IntOrString (default.Int service.containerPort) }
+      { targetPort = Some (default.Int service.containerPort) }
     ]
   , selector = selector
   }
@@ -45,7 +44,7 @@ in let mkService : ./Service → Types.Service =
   in default.service
   { metadata = meta
   } //
-  { spec = Some Types.Spec spec
+  { spec = Some spec
   } : Types.Service
 
 in mkService
