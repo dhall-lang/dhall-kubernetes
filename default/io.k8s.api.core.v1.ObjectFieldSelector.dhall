@@ -1,4 +1,4 @@
-\(_params : {apiVersion : (Text), fieldPath : (Text)}) ->
-{ apiVersion = _params.apiVersion
+\(_params : {fieldPath : (Text)}) ->
+{ apiVersion = ([] : Optional (Text))
 , fieldPath = _params.fieldPath
 } : ../types/io.k8s.api.core.v1.ObjectFieldSelector.dhall
