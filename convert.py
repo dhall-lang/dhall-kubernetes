@@ -17,6 +17,9 @@ always_required = {'apiVersion', 'kind', 'metadata'}
 required_for = {
     'io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta': {'name'},
 }
+not_required_for = {
+    'io.k8s.api.core.v1.ObjectFieldSelector': {'apiVersion'},
+}
 
 
 def schema_path_from_ref(prefix, ref):
@@ -26,6 +29,8 @@ def required_properties (schema_name, schema):
     required = set(schema.get('required', [])) | always_required
     if schema_name in required_for.keys():
         required |= required_for[schema_name]
+    if schema_name in not_required_for.keys():
+        required -= not_required_for[schema_name]
     return required
 
 
