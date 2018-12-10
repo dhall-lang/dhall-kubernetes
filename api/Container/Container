@@ -4,10 +4,10 @@
 , imagePullPolicy : Text
 , minCPU          : Natural
 , maxCPU          : Natural
-, mounts          : List ./Mount
+, mounts          : List (../common/types).Mount
 , envVars         : List { mapKey : Text, mapValue : Text }
-, port            : Optional Natural
-, command         : Optional (List Text)
-, livenessProbe   : Optional ./Probe
-, readinessProbe  : Optional ./Probe
+, ports           : List Natural
+, command         : List Text
+, livenessProbe   : Optional (../common/types).Probe
+, readinessProbe  : Optional (../common/types).Probe
 }

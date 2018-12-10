@@ -1,0 +1,74 @@
+let Prelude     = ../../Prelude
+in let map      = Prelude.`List`.map
+in let Opt/map  = Prelude.`Optional`.map
+in let kv       = Prelude.JSON.keyText
+in let types    = ../common/types
+in let defaults = ../common/defaults
+
+in let mkEnvVar : types.KV → types.EnvVar =
+
+  λ(var : types.KV) →
+
+    defaults.envVar
+      { name  = var.mapKey } //
+      { value = Some var.mapValue }
+
+
+in let mkMount : types.Mount → types.MountRaw =
+
+  λ(mount : types.Mount) →
+
+    defaults.mount
+      { mountPath = mount.mountPath
+      , name = mount.name
+      } //
+      { readOnly = mount.readOnly }
+
+
+in let mkContainerPort : Natural → types.ContainerPort =
+
+  λ(port : Natural) →
+
+    defaults.containerPort
+	  { containerPort = port }
+
+
+in let mkProbe : types.Probe → types.ProbeRaw =
+
+  λ(probe : types.Probe) →
+
+    defaults.probe //
+      { initialDelaySeconds = Some probe.initial
+      , periodSeconds = Some probe.period
+      , httpGet = Some
+          (defaults.httpGet
+            { port = defaults.Int probe.port } //
+            { path = Some probe.path })
+      }
+
+
+in let mkContainer : ./Container → types.Container =
+
+  λ(container : ./Container) →
+
+    defaults.container
+      { name = container.name } //
+      { image = Some "${container.imageName}:${container.imageTag}"
+      , imagePullPolicy = Some container.imagePullPolicy
+      , ports = Some
+          (map Natural types.ContainerPort mkContainerPort container.ports)
+      , resources = Some
+          { limits   = Some [kv "cpu" "${Natural/show container.maxCPU}m"]
+          , requests = Some [kv "cpu" "${Natural/show container.minCPU}m"]
+          }
+      , command = Some container.command
+      , env = Some (map types.KV types.EnvVar mkEnvVar container.envVars)
+      , volumeMounts = Some (map types.Mount types.MountRaw mkMount container.mounts)
+      -- Poll the container to see if the it's alive or we should restart it
+      , livenessProbe = (Opt/map types.Probe types.ProbeRaw mkProbe container.livenessProbe)
+      -- Poll the container to see that it's ready for requests
+      , readinessProbe = (Opt/map types.Probe types.ProbeRaw mkProbe container.readinessProbe)
+      }
+
+
+in mkContainer

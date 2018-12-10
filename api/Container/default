@@ -1,0 +1,13 @@
+{ name            = "CHANGEME"
+, imageName       = "SOME_IMAGE"
+, imageTag        = "0.1"
+, imagePullPolicy = "Always"
+, minCPU          = 10
+, maxCPU          = 500
+, mounts          = [] : List (../common/types).Mount
+, envVars         = [] : List { mapKey : Text, mapValue : Text }
+, ports           = [] : List Natural
+, command         = [] : List Text
+, livenessProbe   = [] : Optional (../common/types).Probe
+, readinessProbe  = [] : Optional (../common/types).Probe
+} : ./Container

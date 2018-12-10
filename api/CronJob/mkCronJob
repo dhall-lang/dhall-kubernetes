@@ -1,0 +1,37 @@
+let map  = (../../Prelude).`List`.map
+
+-- Kubernetes types and defaults
+in let Types   = ./RawTypes
+in let default = ./RawDefaults
+
+
+in let mkCronJob : ./CronJob → Types.CronJob =
+
+  λ(cronjob : ./CronJob) →
+
+    let spec = default.spec
+      { schedule = cronjob.schedule
+      , jobTemplate =
+          { metadata  = default.meta { name = cronjob.name }
+          , spec = Some (default.jobSpec
+              { template =
+                  { metadata = default.meta { name = cronjob.name }
+                  , spec = Some (default.podSpec
+                      { containers = map
+                          ../Container/Container
+                          Types.Container
+                          ../Container/mkContainer
+                          cronjob.containers
+                      } // { restartPolicy = Some "OnFailure" })
+                  }
+              } // { backoffLimit = Some 2 })
+          }
+      }
+
+    in default.cronjob
+	  { metadata = default.meta { name = cronjob.name }
+	  } //
+	  { spec = Some spec } : Types.CronJob
+
+
+in mkCronJob

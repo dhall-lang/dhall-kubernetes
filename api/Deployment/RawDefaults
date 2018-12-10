@@ -1,6 +1,6 @@
-let intOrString = ../../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
-in
+let IntOrString = ../../types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
 
+in
 { deployment    = ../../default/io.k8s.api.apps.v1.Deployment.dhall
 , container     = ../../default/io.k8s.api.core.v1.Container.dhall
 , containerPort = ../../default/io.k8s.api.core.v1.ContainerPort.dhall
@@ -17,7 +17,6 @@ in
 , pathVolume    = ../../default/io.k8s.api.core.v1.HostPathVolumeSource.dhall
 , meta          = ../../default/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , selector      = ../../default/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
-, intOrString   = intOrString
-, Int           = intOrString.Int
-, String        = intOrString.String
+, Int           = IntOrString.Int
+, String        = IntOrString.String
 }

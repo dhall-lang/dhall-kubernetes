@@ -1,0 +1,11 @@
+{ HttpGet       = ../../types/io.k8s.api.core.v1.HTTPGetAction.dhall
+, Container     = ../../types/io.k8s.api.core.v1.Container.dhall
+, ContainerPort = ../../types/io.k8s.api.core.v1.ContainerPort.dhall
+, EnvVar        = ../../types/io.k8s.api.core.v1.EnvVar.dhall
+, IntOrString   = ../../types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
+, MountRaw      = ../../types/io.k8s.api.core.v1.VolumeMount.dhall
+, ProbeRaw      = ../../types/io.k8s.api.core.v1.Probe.dhall
+, Mount         = ./Mount
+, Probe         = ./Probe
+, KV            = ./KV
+}

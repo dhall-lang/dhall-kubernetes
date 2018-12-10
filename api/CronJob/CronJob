@@ -1,0 +1,4 @@
+{ name : Text
+, schedule : Text
+, containers : List ../Container/Container
+}
