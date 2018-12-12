@@ -7,6 +7,7 @@
 , DeploymentStrategy = ../types/io.k8s.api.apps.v1.DeploymentStrategy.dhall
 , EmptyVolume        = ../types/io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
 , EnvVar             = ../types/io.k8s.api.core.v1.EnvVar.dhall
+, Handler            = ../types/io.k8s.api.core.v1.Handler.dhall
 , HttpGet            = ../types/io.k8s.api.core.v1.HTTPGetAction.dhall
 , IntOrString        = ../types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
 , JobSpec            = ../types/io.k8s.api.batch.v1.JobSpec.dhall
@@ -21,4 +22,7 @@
 , ServiceSpec        = ../types/io.k8s.api.core.v1.ServiceSpec.dhall
 , Volume             = ../types/io.k8s.api.core.v1.Volume.dhall
 , VolumeMount        = ../types/io.k8s.api.core.v1.VolumeMount.dhall
+
+-- Additional useful types
+, KV = { mapKey : Text, mapValue : Text }
 }

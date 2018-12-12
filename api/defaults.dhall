@@ -8,6 +8,7 @@
 , deploymentStrategy = ../default/io.k8s.api.apps.v1.DeploymentStrategy.dhall
 , emptyVolume        = ../default/io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
 , envVar             = ../default/io.k8s.api.core.v1.EnvVar.dhall
+, handler            = ../default/io.k8s.api.core.v1.Handler.dhall
 , httpGet            = ../default/io.k8s.api.core.v1.HTTPGetAction.dhall
 , int                = (../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall).Int
 , jobSpec            = ../default/io.k8s.api.batch.v1.JobSpec.dhall
