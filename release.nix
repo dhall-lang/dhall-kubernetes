@@ -1,4 +1,4 @@
-{ src, ... }:
+{ src ? { rev = ""; }, ... }:
 let
   pkgs = import ./nixpkgs.nix;
 
