@@ -295,9 +295,10 @@ metadata:
 All tests are defined in `release.nix`. We run these tests in CI in a [Hydra
 project][hydra-project].
 
-You can run the tests locally with the following somewhat magic command:
+You can run the tests locally with the following command:
+
 ```bash
-nix-build --no-link -E 'with import <nixpkgs> {}; callPackage ./release.nix { }'
+nix build --file ./release.nix
 ```
 
 ### Changing the README
