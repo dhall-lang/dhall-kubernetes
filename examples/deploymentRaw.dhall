@@ -1,5 +1,5 @@
 -- Prelude imports
-   let map    = https://raw.githubusercontent.com/dhall-lang/Prelude/e44284bc37a5808861dacd4c8bd13d18411cb961/List/map
+   let map = (../Prelude.dhall).`List`.map
 
 -- import dhall-kubernetes types and defaults
 in let Deployment    = ../types/io.k8s.api.apps.v1beta2.Deployment.dhall
