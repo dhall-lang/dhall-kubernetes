@@ -1,1 +1,1 @@
-constructors < Int : Natural | String : Text >
+< Int : Natural | String : Text >

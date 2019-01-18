@@ -28,12 +28,12 @@ or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
-**NOTE**: `dhall-kubernetes` requires at least version `1.18.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
-(version `3.0.0` of the language).
+**NOTE**: `dhall-kubernetes` requires at least version `1.20.1` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
+(version `5.0.0` of the language).
 
 You can install the latest version with the following:
 ```bash
-stack install dhall-1.18.0 dhall-json-1.2.4 --resolver=nightly-2018-11-12
+stack install dhall-1.20.1 dhall-json-1.2.6 --resolver=nightly-2019-01-17
 ```
 
 ## Quickstart - main API
@@ -177,7 +177,7 @@ in let Ingress = ../types/io.k8s.api.extensions.v1beta1.Ingress.dhall
 in let defaultIngress = ../default/io.k8s.api.extensions.v1beta1.Ingress.dhall
 in let defaultMeta    = ../default/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 in let defaultSpec    = ../default/io.k8s.api.extensions.v1beta1.IngressSpec.dhall
-in let IntOrString    = ../default/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
+in let IntOrString    = ../types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
 
 -- Our Service type
 in let Service = ./Config.dhall

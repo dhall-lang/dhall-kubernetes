@@ -142,7 +142,7 @@ def main():
                 typ = build_type(modelSpec, '../types')
                 # In case we have a union, we make the constructors for it
                 if typ[0] == '<':
-                    f.write('constructors {}\n'.format(typ))
+                    f.write('{}\n'.format(typ))
                 # Otherwise we just output the identity
                 else:
                     f.write('\(a : {}) -> a\n'.format(typ))
