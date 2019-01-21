@@ -2,5 +2,5 @@
 , annotations   = [] : List { mapKey : Text, mapValue : Text }
 , containerPort = 8080
 , outPort       = 80
-, type          = (constructors ./ServiceType).NodePort {=}
+, type          = (./ServiceType).NodePort {=}
 }
