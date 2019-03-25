@@ -3,7 +3,7 @@
 import requests
 import re
 
-kubernetes_tag = 'v1.11.0'
+kubernetes_tag = 'v1.13.4'
 url = \
     'https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json' \
     .format(tag=kubernetes_tag)

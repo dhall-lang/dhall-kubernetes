@@ -1,6 +1,7 @@
 { allowPrivilegeEscalation = ([] : Optional (Bool))
 , capabilities = ([] : Optional (../types/io.k8s.api.core.v1.Capabilities.dhall))
 , privileged = ([] : Optional (Bool))
+, procMount = ([] : Optional (Text))
 , readOnlyRootFilesystem = ([] : Optional (Bool))
 , runAsGroup = ([] : Optional (Natural))
 , runAsNonRoot = ([] : Optional (Bool))

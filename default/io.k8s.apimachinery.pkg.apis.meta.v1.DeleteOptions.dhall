@@ -1,5 +1,6 @@
 \(_params : {apiVersion : (Text), kind : (Text)}) ->
 { apiVersion = _params.apiVersion
+, dryRun = ([] : Optional (List Text))
 , gracePeriodSeconds = ([] : Optional (Natural))
 , kind = _params.kind
 , orphanDependents = ([] : Optional (Bool))
