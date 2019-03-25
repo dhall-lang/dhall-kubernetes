@@ -4,8 +4,8 @@
 }:
 mkDerivation {
   pname = "dhall-json";
-  version = "1.2.6";
-  sha256 = "9989a705a780ccc8b40f242e5dcb8949ade590a0180ae9559bffa25d829d2838";
+  version = "1.2.7";
+  sha256 = "11fca18fceacbff9f3b3ca86012f45b82fe9d52d2e689cfec434841a6e63e3f1";
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
