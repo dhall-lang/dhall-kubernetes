@@ -141,6 +141,10 @@ The build script `./scripts/build-readme.sh` inlines source code from the
 `examples` directory. If you make changes to the readme or the examples you need
 to run `scripts/build-readme.sh`.
 
+## Projects Using `dhall-kubernetes`
+
+* [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
+
 
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
@@ -152,4 +156,6 @@ to run `scripts/build-readme.sh`.
 [mkDeployment]: ./api/Deployment/mkDeployment
 [Ingress]: ./types/io.k8s.api.extensions.v1beta1.Ingress.dhall
 [Ingress-default]: ./default/io.k8s.api.extensions.v1beta1.Ingress.dhall
+[prometheus-operator]: https://github.com/coreos/prometheus-operator
+[dhall-prometheus-operator]: https://github.com/coralogix/dhall-prometheus-operator
 ''
