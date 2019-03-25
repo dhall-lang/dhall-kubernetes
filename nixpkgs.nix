@@ -11,9 +11,9 @@ let
     packageOverrides = pkgs: rec {
       haskellPackages = pkgs.haskellPackages.override {
         overrides = haskellPackagesNew: haskellPackagesOld: rec {
-          dhall = haskellPackagesNew.callPackage ./nix/dhall-1.20.1.nix {};
-          dhall-json = haskellPackagesNew.callPackage ./nix/dhall-json-1.2.6.nix {};
-          dhall-text = haskellPackagesNew.callPackage ./nix/dhall-text-1.0.15.nix {};
+          dhall = haskellPackagesNew.callPackage ./nix/dhall-1.21.0.nix {};
+          dhall-json = haskellPackagesNew.callPackage ./nix/dhall-json-1.2.7.nix {};
+          dhall-text = haskellPackagesNew.callPackage ./nix/dhall-text-1.0.16.nix {};
           megaparsec = haskellPackagesNew.callPackage ./nix/megaparsec-7.0.2.nix {};
           repline = haskellPackagesNew.callPackage ./nix/repline-0.2.0.0.nix {};
         };
