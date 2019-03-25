@@ -1,4 +1,5 @@
 { additionalPrinterColumns : (Optional (List ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceColumnDefinition.dhall))
+, conversion : (Optional (./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceConversion.dhall))
 , group : (Text)
 , names : (./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames.dhall)
 , scope : (Text)

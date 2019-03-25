@@ -1,4 +1,5 @@
 { apiVersion : (Text)
+, dryRun : (Optional (List Text))
 , gracePeriodSeconds : (Optional (Natural))
 , kind : (Text)
 , orphanDependents : (Optional (Bool))

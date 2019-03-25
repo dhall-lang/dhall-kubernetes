@@ -11,7 +11,7 @@
 , flexVolume : (Optional (./io.k8s.api.core.v1.FlexPersistentVolumeSource.dhall))
 , flocker : (Optional (./io.k8s.api.core.v1.FlockerVolumeSource.dhall))
 , gcePersistentDisk : (Optional (./io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall))
-, glusterfs : (Optional (./io.k8s.api.core.v1.GlusterfsVolumeSource.dhall))
+, glusterfs : (Optional (./io.k8s.api.core.v1.GlusterfsPersistentVolumeSource.dhall))
 , hostPath : (Optional (./io.k8s.api.core.v1.HostPathVolumeSource.dhall))
 , iscsi : (Optional (./io.k8s.api.core.v1.ISCSIPersistentVolumeSource.dhall))
 , local : (Optional (./io.k8s.api.core.v1.LocalVolumeSource.dhall))

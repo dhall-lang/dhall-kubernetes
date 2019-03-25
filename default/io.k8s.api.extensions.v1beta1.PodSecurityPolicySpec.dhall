@@ -3,6 +3,7 @@
 , allowedCapabilities = ([] : Optional (List Text))
 , allowedFlexVolumes = ([] : Optional (List ../types/io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall))
 , allowedHostPaths = ([] : Optional (List ../types/io.k8s.api.extensions.v1beta1.AllowedHostPath.dhall))
+, allowedProcMountTypes = ([] : Optional (List Text))
 , allowedUnsafeSysctls = ([] : Optional (List Text))
 , defaultAddCapabilities = ([] : Optional (List Text))
 , defaultAllowPrivilegeEscalation = ([] : Optional (Bool))
@@ -15,6 +16,7 @@
 , privileged = ([] : Optional (Bool))
 , readOnlyRootFilesystem = ([] : Optional (Bool))
 , requiredDropCapabilities = ([] : Optional (List Text))
+, runAsGroup = ([] : Optional (../types/io.k8s.api.extensions.v1beta1.RunAsGroupStrategyOptions.dhall))
 , runAsUser = _params.runAsUser
 , seLinux = _params.seLinux
 , supplementalGroups = _params.supplementalGroups

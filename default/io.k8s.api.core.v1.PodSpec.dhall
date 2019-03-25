@@ -5,6 +5,7 @@
 , containers = _params.containers
 , dnsConfig = ([] : Optional (../types/io.k8s.api.core.v1.PodDNSConfig.dhall))
 , dnsPolicy = ([] : Optional (Text))
+, enableServiceLinks = ([] : Optional (Bool))
 , hostAliases = ([] : Optional (List ../types/io.k8s.api.core.v1.HostAlias.dhall))
 , hostIPC = ([] : Optional (Bool))
 , hostNetwork = ([] : Optional (Bool))
@@ -18,6 +19,7 @@
 , priorityClassName = ([] : Optional (Text))
 , readinessGates = ([] : Optional (List ../types/io.k8s.api.core.v1.PodReadinessGate.dhall))
 , restartPolicy = ([] : Optional (Text))
+, runtimeClassName = ([] : Optional (Text))
 , schedulerName = ([] : Optional (Text))
 , securityContext = ([] : Optional (../types/io.k8s.api.core.v1.PodSecurityContext.dhall))
 , serviceAccount = ([] : Optional (Text))
