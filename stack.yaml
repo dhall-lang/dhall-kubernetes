@@ -1,0 +1,6 @@
+resolver: lts-13.04
+packages:
+- .
+extra-deps:
+- dhall-1.21.0
+# - directory-1.3.3.2

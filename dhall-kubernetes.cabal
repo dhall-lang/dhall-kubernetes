@@ -1,0 +1,39 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b14c41b799401d0abc8bd9a0550ce28c2b6ddef5724209c3d7514f759a5defa4
+
+name:           dhall-kubernetes
+version:        0.1.0.0
+category:       Web
+homepage:       https://github.com/githubuser/dhall-kubernetes#readme
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2019 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+executable dhall-kubernetes
+  main-is: Main.hs
+  other-modules:
+      Paths_dhall_kubernetes
+  hs-source-dirs:
+      src
+  default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleContexts ConstraintKinds ApplicativeDo
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , containers
+    , dhall
+    , http-conduit
+    , microlens
+    , prettyprinter
+    , text
+    , vector
+  default-language: Haskell2010
