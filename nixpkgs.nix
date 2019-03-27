@@ -1,6 +1,6 @@
 let
-  rev = "19013d809297cb9dbba69bda24e52a2833f4e05a";
-  outputSha256 = "148nqqyb39xmxlnw4vgqin2s7ywq51yi64d2hqmd6pk2gqnhmpv9";
+  rev = "796a8764ab85746f916e2cc8f6a9a5fc6d4d03ac";
+  outputSha256 = "1m57gsr9r96gip2wdvdzbkj8zxf47rg3lrz35yi352x1mzj3by3x";
 
   nixpkgs = builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz";
@@ -9,6 +9,8 @@ let
 
   config = {
     packageOverrides = pkgs: rec {
+      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+      kubernetes-openapi-spec = pkgs.callPackage ./nix/kubernetes-openapi-spec.nix {};
       haskellPackages = pkgs.haskellPackages.override {
         overrides = haskellPackagesNew: haskellPackagesOld: rec {
           dhall = haskellPackagesNew.callPackage ./nix/dhall-1.21.0.nix {};
