@@ -12,5 +12,5 @@ stdenv.mkDerivation {
     patchShebangs ./scripts/build-examples.py
     patchShebangs ./scripts/check-source.py
   '';
-  src = ./.;
+  src = ./..;
 }
