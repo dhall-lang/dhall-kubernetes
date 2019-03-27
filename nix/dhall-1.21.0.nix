@@ -15,6 +15,7 @@ mkDerivation {
   sha256 = "9b22cc6f7694ef2f5d5d6fa66727044622b9905b2a9da0cdf376c75ad3b9df0e";
   isLibrary = true;
   isExecutable = true;
+  doCheck = false;
   libraryHaskellDepends = [
     aeson aeson-pretty ansi-terminal base bytestring case-insensitive
     cborg cborg-json containers contravariant cryptonite Diff directory
