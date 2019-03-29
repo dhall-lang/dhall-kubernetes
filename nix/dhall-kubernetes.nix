@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   buildInputs =  [ dhall dhall-json dhall-text python3 glibcLocales ];
   preBuild = ''
     patchShebangs ./scripts/build-readme.sh
-    patchShebangs ./convert.py
+    patchShebangs ./scripts/convert.py
   '';
   preCheck = ''
     patchShebangs ./scripts/build-examples.py
