@@ -290,6 +290,15 @@ metadata:
 
 ## Development
 
+### Updating the nixpkgs snapshot (and kubernetes version)
+
+Run
+```bash
+./scripts/update-nixpkgs.sh
+./generate.sh
+```
+If the tests fail, rollback. If they don't then you have sucessfully upgraded!
+
 ### Tests
 
 All tests are defined in `release.nix`. We run these tests in CI in a [Hydra
