@@ -301,12 +301,15 @@ You can run the tests locally with the following command:
 nix build --file ./release.nix
 ```
 
-### Changing the README
+### Generating `types` `default` and `README.md`
 
-We build `README.md` from `docs/README.md.dhall` and check it into source control.
-The build script `./scripts/build-readme.sh` inlines source code from the
-`examples` directory. If you make changes to the readme or the examples you need
-to run `scripts/build-readme.sh`.
+Running `./generate.sh` will generate all dhall files from the kubernetes
+swagger specification, and copy them to `types` and `default`. It will also
+generate `README.md` from `docs/README.md.dhall`.
+
+If you make changes to `convert.py` or `docs/README.md.dhall`, you need
+to run this command afterwards.
+
 
 ## Projects Using `dhall-kubernetes`
 
