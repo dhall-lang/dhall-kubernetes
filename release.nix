@@ -1,4 +1,4 @@
-{ pkgs ? import ./nixpkgs.nix
+{ pkgs ? import ./nix/nixpkgs.nix
 , src ? { rev = ""; }
 , ... 
 }:
