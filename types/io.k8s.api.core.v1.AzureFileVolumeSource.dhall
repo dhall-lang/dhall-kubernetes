@@ -1,4 +1,1 @@
-{ readOnly : (Optional (Bool))
-, secretName : (Text)
-, shareName : (Text)
-}
+{ secretName : Text, shareName : Text, readOnly : Optional Bool }

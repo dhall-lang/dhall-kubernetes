@@ -1,3 +1,1 @@
-{ address : (Text)
-, type : (Text)
-}
+{ address : Text, type : Text }

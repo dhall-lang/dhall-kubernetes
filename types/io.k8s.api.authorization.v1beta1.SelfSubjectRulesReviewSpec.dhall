@@ -1,2 +1,1 @@
-{ namespace : (Optional (Text))
-}
+{ namespace : Optional Text }

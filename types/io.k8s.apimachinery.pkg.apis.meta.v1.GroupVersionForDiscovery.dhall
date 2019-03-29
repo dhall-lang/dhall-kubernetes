@@ -1,3 +1,1 @@
-{ groupVersion : (Text)
-, version : (Text)
-}
+{ groupVersion : Text, version : Text }

@@ -1,2 +1,1 @@
-{ uid : (Optional (Text))
-}
+{ uid : Optional Text }

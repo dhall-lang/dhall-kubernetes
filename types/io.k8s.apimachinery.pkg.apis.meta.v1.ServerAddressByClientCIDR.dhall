@@ -1,3 +1,1 @@
-{ clientCIDR : (Text)
-, serverAddress : (Text)
-}
+{ clientCIDR : Text, serverAddress : Text }

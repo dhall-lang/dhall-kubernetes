@@ -1,4 +1,1 @@
-{ apiGroup : (Optional (Text))
-, kind : (Text)
-, name : (Text)
-}
+{ kind : Text, name : Text, apiGroup : Optional Text }

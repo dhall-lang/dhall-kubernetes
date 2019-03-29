@@ -1,2 +1,1 @@
-{ phase : (Optional (Text))
-}
+{ phase : Optional Text }

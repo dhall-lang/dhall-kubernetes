@@ -1,4 +1,7 @@
-{ labelSelectorPath : (Optional (Text))
-, specReplicasPath : (Text)
-, statusReplicasPath : (Text)
+{ specReplicasPath :
+    Text
+, statusReplicasPath :
+    Text
+, labelSelectorPath :
+    Optional Text
 }

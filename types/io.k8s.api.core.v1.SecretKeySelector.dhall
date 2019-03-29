@@ -1,4 +1,1 @@
-{ key : (Text)
-, name : (Optional (Text))
-, optional : (Optional (Bool))
-}
+{ key : Text, name : Optional Text, optional : Optional Bool }

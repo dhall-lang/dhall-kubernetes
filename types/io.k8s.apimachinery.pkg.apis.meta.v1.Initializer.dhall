@@ -1,2 +1,1 @@
-{ name : (Text)
-}
+{ name : Text }

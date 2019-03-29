@@ -1,3 +1,1 @@
-{ description : (Optional (Text))
-, url : (Optional (Text))
-}
+{ description : Optional Text, url : Optional Text }

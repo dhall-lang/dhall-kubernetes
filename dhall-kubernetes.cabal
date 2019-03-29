@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b14c41b799401d0abc8bd9a0550ce28c2b6ddef5724209c3d7514f759a5defa4
+-- hash: dc10c16b9e6c44c9be6e2aafaf765a8df5b11aa5143d5adf3bbf5c85359db072
 
 name:           dhall-kubernetes
 version:        0.1.0.0
@@ -35,5 +35,6 @@ executable dhall-kubernetes
     , microlens
     , prettyprinter
     , text
+    , turtle
     , vector
   default-language: Haskell2010

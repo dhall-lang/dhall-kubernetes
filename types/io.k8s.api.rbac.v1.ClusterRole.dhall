@@ -1,6 +1,11 @@
-{ aggregationRule : (Optional (./io.k8s.api.rbac.v1.AggregationRule.dhall))
-, apiVersion : (Text)
-, kind : (Text)
-, metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall)
-, rules : (List ./io.k8s.api.rbac.v1.PolicyRule.dhall)
+{ apiVersion :
+    Text
+, kind :
+    Text
+, metadata :
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
+, rules :
+    List ./io.k8s.api.rbac.v1.PolicyRule.dhall
+, aggregationRule :
+    Optional ./io.k8s.api.rbac.v1.AggregationRule.dhall
 }

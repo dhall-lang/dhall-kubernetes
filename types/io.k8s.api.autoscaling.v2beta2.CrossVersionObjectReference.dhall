@@ -1,4 +1,1 @@
-{ apiVersion : (Text)
-, kind : (Text)
-, name : (Text)
-}
+{ apiVersion : Text, kind : Text, name : Text }

@@ -1,4 +1,1 @@
-{ fsType : (Optional (Text))
-, readOnly : (Optional (Bool))
-, volumeID : (Text)
-}
+{ volumeID : Text, fsType : Optional Text, readOnly : Optional Bool }

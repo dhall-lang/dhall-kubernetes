@@ -1,7 +1,13 @@
-{ extra : (Optional ((List {mapKey : Text, mapValue : Text})))
-, group : (Optional (List Text))
-, nonResourceAttributes : (Optional (./io.k8s.api.authorization.v1beta1.NonResourceAttributes.dhall))
-, resourceAttributes : (Optional (./io.k8s.api.authorization.v1beta1.ResourceAttributes.dhall))
-, uid : (Optional (Text))
-, user : (Optional (Text))
+{ extra :
+    List { mapKey : Text, mapValue : Text }
+, group :
+    List Text
+, nonResourceAttributes :
+    Optional ./io.k8s.api.authorization.v1beta1.NonResourceAttributes.dhall
+, resourceAttributes :
+    Optional ./io.k8s.api.authorization.v1beta1.ResourceAttributes.dhall
+, uid :
+    Optional Text
+, user :
+    Optional Text
 }

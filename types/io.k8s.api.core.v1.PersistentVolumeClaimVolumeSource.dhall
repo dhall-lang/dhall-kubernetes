@@ -1,3 +1,1 @@
-{ claimName : (Text)
-, readOnly : (Optional (Bool))
-}
+{ claimName : Text, readOnly : Optional Bool }

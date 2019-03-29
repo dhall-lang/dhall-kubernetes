@@ -1,6 +1,11 @@
-{ apiGroups : (Optional (List Text))
-, nonResourceURLs : (Optional (List Text))
-, resourceNames : (Optional (List Text))
-, resources : (Optional (List Text))
-, verbs : (List Text)
+{ apiGroups :
+    List Text
+, nonResourceURLs :
+    List Text
+, resourceNames :
+    List Text
+, resources :
+    List Text
+, verbs :
+    List Text
 }

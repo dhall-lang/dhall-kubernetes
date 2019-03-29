@@ -1,9 +1,17 @@
-{ apiVersion : (Text)
-, code : (Optional (Natural))
-, details : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall))
-, kind : (Text)
-, message : (Optional (Text))
-, metadata : (./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall)
-, reason : (Optional (Text))
-, status : (Optional (Text))
+{ apiVersion :
+    Text
+, kind :
+    Text
+, metadata :
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
+, code :
+    Optional Natural
+, details :
+    Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall
+, message :
+    Optional Text
+, reason :
+    Optional Text
+, status :
+    Optional Text
 }

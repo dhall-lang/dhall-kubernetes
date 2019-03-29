@@ -1,6 +1,11 @@
-{ kubeletConfigKey : (Text)
-, name : (Text)
-, namespace : (Text)
-, resourceVersion : (Optional (Text))
-, uid : (Optional (Text))
+{ kubeletConfigKey :
+    Text
+, name :
+    Text
+, namespace :
+    Text
+, resourceVersion :
+    Optional Text
+, uid :
+    Optional Text
 }

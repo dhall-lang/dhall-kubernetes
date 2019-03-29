@@ -1,2 +1,1 @@
-{ conditionType : (Text)
-}
+{ conditionType : Text }

@@ -1,4 +1,1 @@
-{ name : (Optional (Text))
-, port : (Natural)
-, protocol : (Optional (Text))
-}
+{ port : Natural, name : Optional Text, protocol : Optional Text }

@@ -35,6 +35,7 @@ dependencies:
   - containers
   - vector
   - prettyprinter
+  - turtle
 
 executables:
   dhall-kubernetes:

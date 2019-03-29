@@ -1,2 +1,1 @@
-{ finalizers : (Optional (List Text))
-}
+{ finalizers : List Text }

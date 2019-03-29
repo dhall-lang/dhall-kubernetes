@@ -1,3 +1,1 @@
-{ fsType : (Optional (Text))
-, path : (Text)
-}
+{ path : Text, fsType : Optional Text }

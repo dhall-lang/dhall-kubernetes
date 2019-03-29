@@ -1,7 +1,13 @@
-{ cachingMode : (Optional (Text))
-, diskName : (Text)
-, diskURI : (Text)
-, fsType : (Optional (Text))
-, kind : (Text)
-, readOnly : (Optional (Bool))
+{ diskName :
+    Text
+, diskURI :
+    Text
+, kind :
+    Text
+, cachingMode :
+    Optional Text
+, fsType :
+    Optional Text
+, readOnly :
+    Optional Bool
 }

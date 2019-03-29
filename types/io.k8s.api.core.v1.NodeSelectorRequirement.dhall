@@ -1,4 +1,1 @@
-{ key : (Text)
-, operator : (Text)
-, values : (Optional (List Text))
-}
+{ key : Text, operator : Text, values : List Text }

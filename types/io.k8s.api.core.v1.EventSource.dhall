@@ -1,3 +1,1 @@
-{ component : (Optional (Text))
-, host : (Optional (Text))
-}
+{ component : Optional Text, host : Optional Text }
