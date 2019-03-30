@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border-spacing: 0;
+    }
+
+    /* Modular scale with exponent 1.26, about 2^(1/3), so we get 2em in there,
+     which is convenient. 1.26 is also close to (golden ratio)^0.5.
+     0.63em
+     0.80em
+     1.00em
+     1.26em
+     1.59em
+     2.00em
+  */
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    html {
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.59em;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: auto 16rem 50rem auto;
+      grid-template-rows: 9rem auto;
+      grid-template-areas: "sidebar sidebar main x""sidebar sidebar main x";
+      margin: 0;
+      padding: 0;
+    }
+
+    article {
+      margin-top: 1.3rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1.59rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.9rem;
+    }
+
+    h2 {
+      font-size: 1.59rem;
+      margin-top: 3.38rem;
+      margin-bottom: 1.39rem;
+    }
+
+    code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.84rem;
+      line-height: 1.59rem;
+    }
+
+    h3>code {
+      /* Roboto Mono 500 is about as heavy as Inter semibold (600). */
+      font-weight: 500;
+    }
+
+    abbr {
+      text-transform: uppercase;
+      /* Downsize so caps are x-height, and compensate weight loss. */
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05rem;
+    }
+
+    sub,
+    sup {
+      /* Don't disturb the line height of normal text. */
+      line-height: 0rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    p>code,
+    a>code,
+    h3>code,
+    li>code,
+    td>code {
+      background-color: #f0f0f0;
+      padding: 0.13rem;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+      border-radius: 0.2rem;
+      line-height: 1rem;
+    }
+
+    h3 {
+      margin-top: 2.29rem;
+      margin-bottom: 0.89rem;
+    }
+
+    h3>code {
+      margin-left: -0.1rem;
+    }
+
+    p,
+    ul,
+    ol,
+    pre,
+    table {
+      /* Same space as line height, leave exactly one line blank. */
+      margin-bottom: 1.59em;
+    }
+
+    pre {
+      padding: 1.41rem;
+      padding-right: 0;
+      background-color: #f8f8f8;
+      border-radius: 0 0.2rem 0.2rem 0;
+      border-left: 0.3rem solid #d5d8e0;
+      overflow-x: auto;
+    }
+
+    pre>code {
+      margin-right: 1.41rem;
+      color: #555;
+    }
+
+    ul,
+    ol {
+      list-style-type: none;
+      counter-reset: item;
+    }
+
+    table {
+      font-variant-numeric: tabular-nums;
+    }
+
+    th,
+    td {
+      padding-right: 2rem;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    a {
+      color: #326ce5;
+      text-decoration: none;
+    }
+
+    main>ul li:before {
+      color: #555;
+      content: '\2022';
+      display: inline-block;
+      font-weight: 700;
+      margin-left: -0.9rem;
+      width: 0.9rem;
+    }
+
+    main>li {
+      margin-left: 0.87rem;
+    }
+
+    ol li:before {
+      content: counter(item);
+      display: inline-block;
+      font-weight: 700;
+      width: 0.8rem;
+      margin-left: -1.6rem;
+      padding-right: 0.8rem;
+    }
+
+    ol li {
+      margin-left: 1.6rem;
+      counter-increment: item;
+    }
+
+    #sidebar {
+      display: grid;
+      grid-area: sidebar;
+      grid-template-columns: auto 16rem;
+      grid-template-rows: 9rem auto;
+      grid-template-areas: "x logo""x toc";
+      background: #fafafa;
+    }
+
+    #sidebar>img {
+      height: 100%;
+      grid-area: logo;
+    }
+
+    /* Navigation */
+
+    #sidebar>nav {
+      grid-area: toc;
+    }
+
+    #sidebar>nav ul {
+      margin-bottom: 0;
+    }
+
+    #sidebar>nav li ul {
+      padding-top: 0.3rem;
+      padding-bottom: 0.4rem;
+    }
+
+    #sidebar>nav li.toc-section {
+      padding-top: 1.59rem;
+    }
+
+    #sidebar>nav li.current,
+    #sidebar>nav li ul {
+      border-right: 0.3em solid #d5d8e0;
+      padding-left: 1em;
+      margin-left: -1em;
+    }
+
+    #sidebar>nav .current a {
+      font-weight: 600;
+    }
+
+    #sidebar>nav li.toc-heading {
+      padding-left: 1em;
+    }
+
+    #breadcrumbs {
+      margin-bottom: 2.85rem;
+      word-spacing: 0.3em;
+      color: #78a;
+    }
+
+    #breadcrumbs a {
+      word-spacing: 0;
+      color: #78a;
+    }
+
+    #nav-prev-next {
+      margin-top: 3.18rem;
+      padding-bottom: 3.18rem;
+    }
+
+    #nav-prev,
+    #nav-next,
+    #repo-link {
+      display: inline-block;
+    }
+
+    #nav-prev {
+      float: left;
+    }
+
+    #nav-next,
+    #repo-link {
+      float: right;
+      text-align: right;
+    }
+
+    #nav-prev::before {
+      content: '\219e';
+      padding-right: 0.5em;
+    }
+
+    #nav-next::after {
+      content: '\21a0';
+      padding-left: 0.5em;
+    }
+
+    main {
+      grid-area: main;
+      min-height: 100%;
+      padding: 2rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+    @media screen and (max-width: 66rem) {
+      body {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+      }
+
+      #sidebar {
+        order: 2;
+        grid-column: 1;
+        grid-row: 2;
+        display: block;
+        padding: 2rem;
+      }
+
+      main {
+        width: 100%;
+        min-height: 0;
+        grid-row: 1;
+        grid-column: 1;
+        order: 1
+      }
+
+      #sidebar>img {
+        height: 5rem;
+      }
+
+      #sidebar>nav li.current,
+      #sidebar>nav li ul {
+        border-right: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+<body>
+  <div id="sidebar">
+    <img src="https://user-images.githubusercontent.com/628387/55276718-39b3df80-52f7-11e9-953a-98c9665a11e9.png" id="logo" />
+    <nav>
+      <ul>
+        <li class="toc-section"><a href="..">Overview</a></li>
+        <li class="toc-section"><a href="../intro/">User Guide</a></li>
+        <li class="toc-chapter
+              "><a href="../intro/">Introduction</a></li>
+        <li class="toc-chapter
+              "><a href="../apply/">Apply</a></li>
+        <li class="toc-chapter
+              "><a href="../config/">Secrets and ConfigMaps</a></li>
+        <li class="toc-chapter
+              "><a href="../images/">Container Images</a></li>
+        <li class="toc-section"><a href="./">Projects using Dhall</a></li>
+        </ul>
+    </nav>
+  </div>
+
+
+  <main>
+    <nav id="breadcrumbs">
+      <a href="..">Tako</a>
+      › <a href="./">Projects using Dhall</a>
+  <a id="repo-link" href="https://github.com/ruuda/tako/">GitHub</a>
+    </nav>
+    <article>
+      <h1 id="projects">Projects</h1>
+    </article>
+    <nav id="nav-prev-next">
+      <a id="nav-prev" href="../images/" title="Container Images">Previous</a>
+      </nav>
+    </main>
+</body>
+
+</html>
