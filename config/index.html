@@ -24,8 +24,7 @@
      2.00em
   */
 
-    html,
-    body {
+    html, body {
       height: 100%;
     }
 
@@ -33,16 +32,10 @@
       font-family: Roboto, sans-serif;
       font-size: 16px;
       line-height: 1.59em;
+   
     }
 
-    body {
-      display: grid;
-      grid-template-columns: auto 16rem 50rem auto;
-      grid-template-rows: 9rem auto;
-      grid-template-areas: "sidebar sidebar main x""sidebar sidebar main x";
-      margin: 0;
-      padding: 0;
-    }
+
 
     article {
       margin-top: 1.3rem;
@@ -190,6 +183,15 @@
       margin-left: 1.6rem;
       counter-increment: item;
     }
+    #content {
+      height: 100%;
+      display: grid;
+      grid-template-columns: auto 16rem 50rem auto;
+      grid-template-rows: 9rem auto;
+      grid-template-areas: "sidebar sidebar main main""sidebar sidebar main main";
+      margin: 0;
+      padding: 0;
+    }
 
     #sidebar {
       display: grid;
@@ -209,6 +211,17 @@
 
     #sidebar>nav {
       grid-area: toc;
+    }
+
+    #sidebar>nav .toc-section {
+      font-weight: 700;
+    }
+    #sidebar>nav .toc-section a {
+      color: #326ce5;
+    }
+
+    #sidebar>nav li a {
+      color: #78a;
     }
 
     #sidebar>nav ul {
@@ -237,6 +250,16 @@
 
     #sidebar>nav li.toc-heading {
       padding-left: 1em;
+    }
+
+
+    #lol {
+      display: grid;
+      grid-area: main;
+      grid-template-columns: 50rem auto;
+      grid-template-rows: 9rem auto;
+      grid-template-areas: "lol x" "lol x";
+      overflow: auto;
     }
 
     #breadcrumbs {
@@ -282,32 +305,28 @@
     }
 
     main {
-      grid-area: main;
-      min-height: 100%;
+      grid-area: lol;
+ 
       padding: 2rem;
       padding-left: 4rem;
       padding-right: 4rem;
     }
 
     @media screen and (max-width: 66rem) {
-      body {
-        grid-template-columns: 100%;
-        grid-template-rows: auto auto;
+      #content {
+        display: flex;
+        flex-direction: column; 
       }
 
       #sidebar {
         order: 2;
-        grid-column: 1;
-        grid-row: 2;
         display: block;
         padding: 2rem;
       }
 
-      main {
-        width: 100%;
-        min-height: 0;
-        grid-row: 1;
-        grid-column: 1;
+      #lol {
+        overflow: inherit;
+        min-height: initial;
         order: 1
       }
 
@@ -329,41 +348,44 @@
 </html>
 
 <body>
-  <div id="sidebar">
-    <img src="https://user-images.githubusercontent.com/628387/55276718-39b3df80-52f7-11e9-953a-98c9665a11e9.png" id="logo" />
-    <nav>
-      <ul>
-        <li class="toc-section"><a href="..">Overview</a></li>
-        <li class="toc-section"><a href="../intro/">User Guide</a></li>
-        <li class="toc-chapter
-              "><a href="../intro/">Introduction</a></li>
-        <li class="toc-chapter
-              "><a href="../apply/">Apply</a></li>
-        <li class="toc-chapter
-               current"><a href="./">Secrets and ConfigMaps</a></li>
-        <li class="toc-chapter
-              "><a href="../images/">Container Images</a></li>
-        <li class="toc-section"><a href="../projects/">Projects using Dhall</a></li>
-        </ul>
-    </nav>
-  </div>
+  <div id="content">
+    <div id="sidebar">
+      <img src="https://user-images.githubusercontent.com/628387/55276718-39b3df80-52f7-11e9-953a-98c9665a11e9.png" id="logo" />
+      <nav>
+          <ul>
+          <li class="toc-section"><a href="..">Overview</a></li>
+            <li class="toc-section"><a href="../intro/">User Guide</a></li>
+            <li class="toc-chapter
+                "><a href="../intro/">Introduction</a></li>
+              <li class="toc-chapter
+                "><a href="../apply/">Apply</a></li>
+              <li class="toc-chapter
+                 current"><a href="./">Secrets and ConfigMaps</a></li>
+              <li class="toc-chapter
+                "><a href="../images/">Container Images</a></li>
+              <li class="toc-section"><a href="../projects/">Projects using Dhall</a></li>
+            </ul>
+  </nav>
+    </div>
 
-
-  <main>
-    <nav id="breadcrumbs">
-      <a href="..">Tako</a>
-      › <a href="..">User Guide</a>
+    <div id="lol">
+    <main>
+      <nav id="breadcrumbs">
+        <a href="..">Dhall Kubernetes</a>
+        › <a href="..">User Guide</a>
   › <a href="./">Secrets and ConfigMaps</a>
-  <a id="repo-link" href="https://github.com/ruuda/tako/">GitHub</a>
-    </nav>
-    <article>
-      <h1 id="config">Config</h1>
-    </article>
-    <nav id="nav-prev-next">
-      <a id="nav-prev" href="../apply/" title="Apply">Previous</a>
-      <a id="nav-next" href="../images/" title="Container Images">Next</a>
+  <a id="repo-link" href="https://github.com/dhall-lang/dhall-kubernetes/">GitHub</a>
       </nav>
-    </main>
+      <article>
+        <h1 id="config">Config</h1>
+      </article>
+      <nav id="nav-prev-next">
+        <a id="nav-prev" href="../apply/" title="Apply">Previous</a>
+        <a id="nav-next" href="../images/" title="Container Images">Next</a>
+        </nav>
+      </main>
+  </div>
+  </div>
 </body>
 
 </html>
