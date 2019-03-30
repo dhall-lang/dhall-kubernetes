@@ -59,11 +59,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.71552618"
-     inkscape:cx="115.79027"
-     inkscape:cy="362.30382"
+     inkscape:zoom="4.0476273"
+     inkscape:cx="171.69319"
+     inkscape:cy="250.49799"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="g136"
      showgrid="false"
      inkscape:window-width="1600"
      inkscape:window-height="836"
@@ -87,7 +87,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -260,12 +260,12 @@
         </g>
       </g>
       <ellipse
-         style="fill:#ffffff;stroke-width:0.10837334"
+         style="fill:#ffffff;stroke-width:0.10822302"
          id="path185"
-         ry="1.2741634"
-         rx="3.1569881"
-         cy="22.716215"
-         cx="-10.088003" />
+         ry="1.2340015"
+         rx="3.250699"
+         cy="22.789036"
+         cx="-10.127467" />
     </g>
   </g>
 </svg>
