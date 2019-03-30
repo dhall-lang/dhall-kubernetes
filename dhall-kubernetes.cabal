@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8da8dd07fb9ef0855f93b603f307a548d6c970d01e569649a612e54af41f6939
+-- hash: 43e3cc8762c99d713bf07b751129324c921af2a790e62b237e764cd83675ddac
 
 name:           dhall-kubernetes
 version:        0.1.0.0
@@ -22,6 +22,9 @@ extra-source-files:
 executable dhall-kubernetes
   main-is: Main.hs
   other-modules:
+      Dhall.Kubernetes.Convert
+      Dhall.Kubernetes.Data
+      Dhall.Kubernetes.Types
       Paths_dhall_kubernetes
   hs-source-dirs:
       src
