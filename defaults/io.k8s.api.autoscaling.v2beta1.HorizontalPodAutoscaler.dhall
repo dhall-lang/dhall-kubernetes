@@ -5,7 +5,7 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerSpec.dhall
+    ./io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerSpec.dhall
 , status =
-    None ./io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerStatus.dhall
+    ./io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerStatus.dhall
 }

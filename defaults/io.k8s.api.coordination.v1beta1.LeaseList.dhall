@@ -3,7 +3,7 @@
 , kind =
     "LeaseList"
 , items =
-    [] : List ./io.k8s.api.coordination.v1beta1.Lease.dhall
+    [] : List ./../types/io.k8s.api.coordination.v1beta1.Lease.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

@@ -1,9 +1,9 @@
 { allowedCapabilities =
     [] : List Text
 , allowedFlexVolumes =
-    [] : List ./io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall
+    [] : List ./../types/io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall
 , allowedHostPaths =
-    [] : List ./io.k8s.api.extensions.v1beta1.AllowedHostPath.dhall
+    [] : List ./../types/io.k8s.api.extensions.v1beta1.AllowedHostPath.dhall
 , allowedProcMountTypes =
     [] : List Text
 , allowedUnsafeSysctls =
@@ -15,9 +15,11 @@
 , fsGroup =
     ./io.k8s.api.extensions.v1beta1.FSGroupStrategyOptions.dhall
 , hostPorts =
-    [] : List ./io.k8s.api.extensions.v1beta1.HostPortRange.dhall
+    [] : List ./../types/io.k8s.api.extensions.v1beta1.HostPortRange.dhall
 , requiredDropCapabilities =
     [] : List Text
+, runAsGroup =
+    ./io.k8s.api.extensions.v1beta1.RunAsGroupStrategyOptions.dhall
 , runAsUser =
     ./io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions.dhall
 , seLinux =
@@ -40,6 +42,4 @@
     None Bool
 , readOnlyRootFilesystem =
     None Bool
-, runAsGroup =
-    None ./io.k8s.api.extensions.v1beta1.RunAsGroupStrategyOptions.dhall
 }

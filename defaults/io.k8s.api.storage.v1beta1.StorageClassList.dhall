@@ -3,7 +3,7 @@
 , kind =
     "StorageClassList"
 , items =
-    [] : List ./io.k8s.api.storage.v1beta1.StorageClass.dhall
+    [] : List ./../types/io.k8s.api.storage.v1beta1.StorageClass.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

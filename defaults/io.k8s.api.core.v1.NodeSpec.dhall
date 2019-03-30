@@ -1,7 +1,7 @@
 { taints =
-    [] : List ./io.k8s.api.core.v1.Taint.dhall
+    [] : List ./../types/io.k8s.api.core.v1.Taint.dhall
 , configSource =
-    None ./io.k8s.api.core.v1.NodeConfigSource.dhall
+    None ./../types/io.k8s.api.core.v1.NodeConfigSource.dhall
 , externalID =
     None Text
 , podCIDR =

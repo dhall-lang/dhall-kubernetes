@@ -3,7 +3,7 @@
 , kind =
     "ClusterRoleBindingList"
 , items =
-    [] : List ./io.k8s.api.rbac.v1.ClusterRoleBinding.dhall
+    [] : List ./../types/io.k8s.api.rbac.v1.ClusterRoleBinding.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

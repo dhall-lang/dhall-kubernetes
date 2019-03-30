@@ -1,5 +1,5 @@
 { conditions =
-    [] : List ./io.k8s.api.core.v1.ReplicationControllerCondition.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ReplicationControllerCondition.dhall
 , availableReplicas =
     None Natural
 , fullyLabeledReplicas =

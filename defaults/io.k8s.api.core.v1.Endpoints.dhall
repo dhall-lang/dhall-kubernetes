@@ -1,9 +1,9 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "Endpoints"
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , subsets =
-    [] : List ./io.k8s.api.core.v1.EndpointSubset.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EndpointSubset.dhall
 }

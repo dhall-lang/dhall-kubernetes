@@ -1,7 +1,7 @@
-{ path :
+{ fieldRef :
+    ./io.k8s.api.core.v1.ObjectFieldSelector.dhall
+, path :
     Text
-, fieldRef :
-    Optional ./io.k8s.api.core.v1.ObjectFieldSelector.dhall
 , mode :
     Optional Natural
 , resourceFieldRef :

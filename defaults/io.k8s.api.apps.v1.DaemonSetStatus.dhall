@@ -1,5 +1,5 @@
 { conditions =
-    [] : List ./io.k8s.api.apps.v1.DaemonSetCondition.dhall
+    [] : List ./../types/io.k8s.api.apps.v1.DaemonSetCondition.dhall
 , collisionCount =
     None Natural
 , numberAvailable =

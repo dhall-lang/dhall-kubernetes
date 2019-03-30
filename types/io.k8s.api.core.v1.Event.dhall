@@ -6,6 +6,8 @@
     Text
 , metadata :
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
+, related :
+    ./io.k8s.api.core.v1.ObjectReference.dhall
 , action :
     Optional Text
 , count :
@@ -20,8 +22,6 @@
     Optional Text
 , reason :
     Optional Text
-, related :
-    Optional ./io.k8s.api.core.v1.ObjectReference.dhall
 , reportingComponent :
     Optional Text
 , reportingInstance :

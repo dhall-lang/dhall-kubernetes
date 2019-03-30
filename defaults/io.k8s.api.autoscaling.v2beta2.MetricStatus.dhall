@@ -1,9 +1,9 @@
 { external =
-    None ./io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus.dhall
+    ./io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus.dhall
 , object =
-    None ./io.k8s.api.autoscaling.v2beta2.ObjectMetricStatus.dhall
+    ./io.k8s.api.autoscaling.v2beta2.ObjectMetricStatus.dhall
 , pods =
-    None ./io.k8s.api.autoscaling.v2beta2.PodsMetricStatus.dhall
+    ./io.k8s.api.autoscaling.v2beta2.PodsMetricStatus.dhall
 , resource =
-    None ./io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus.dhall
+    None ./../types/io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus.dhall
 }

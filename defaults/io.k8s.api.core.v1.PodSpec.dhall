@@ -1,27 +1,29 @@
-{ containers =
-    [] : List ./io.k8s.api.core.v1.Container.dhall
+{ affinity =
+    ./io.k8s.api.core.v1.Affinity.dhall
+, containers =
+    [] : List ./../types/io.k8s.api.core.v1.Container.dhall
+, dnsConfig =
+    ./io.k8s.api.core.v1.PodDNSConfig.dhall
 , hostAliases =
-    [] : List ./io.k8s.api.core.v1.HostAlias.dhall
+    [] : List ./../types/io.k8s.api.core.v1.HostAlias.dhall
 , imagePullSecrets =
-    [] : List ./io.k8s.api.core.v1.LocalObjectReference.dhall
+    [] : List ./../types/io.k8s.api.core.v1.LocalObjectReference.dhall
 , initContainers =
-    [] : List ./io.k8s.api.core.v1.Container.dhall
+    [] : List ./../types/io.k8s.api.core.v1.Container.dhall
 , nodeSelector =
     [] : List { mapKey : Text, mapValue : Text }
 , readinessGates =
-    [] : List ./io.k8s.api.core.v1.PodReadinessGate.dhall
+    [] : List ./../types/io.k8s.api.core.v1.PodReadinessGate.dhall
+, securityContext =
+    ./io.k8s.api.core.v1.PodSecurityContext.dhall
 , tolerations =
-    [] : List ./io.k8s.api.core.v1.Toleration.dhall
+    [] : List ./../types/io.k8s.api.core.v1.Toleration.dhall
 , volumes =
-    [] : List ./io.k8s.api.core.v1.Volume.dhall
+    [] : List ./../types/io.k8s.api.core.v1.Volume.dhall
 , activeDeadlineSeconds =
     None Natural
-, affinity =
-    None ./io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken =
     None Bool
-, dnsConfig =
-    None ./io.k8s.api.core.v1.PodDNSConfig.dhall
 , dnsPolicy =
     None Text
 , enableServiceLinks =
@@ -46,8 +48,6 @@
     None Text
 , schedulerName =
     None Text
-, securityContext =
-    None ./io.k8s.api.core.v1.PodSecurityContext.dhall
 , serviceAccount =
     None Text
 , serviceAccountName =

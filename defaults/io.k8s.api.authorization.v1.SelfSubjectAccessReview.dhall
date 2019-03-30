@@ -7,5 +7,5 @@
 , spec =
     ./io.k8s.api.authorization.v1.SelfSubjectAccessReviewSpec.dhall
 , status =
-    None ./io.k8s.api.authorization.v1.SubjectAccessReviewStatus.dhall
+    None ./../types/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.dhall
 }

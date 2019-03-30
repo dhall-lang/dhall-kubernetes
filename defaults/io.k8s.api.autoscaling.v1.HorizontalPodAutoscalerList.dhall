@@ -3,7 +3,7 @@
 , kind =
     "HorizontalPodAutoscalerList"
 , items =
-    [] : List ./io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler.dhall
+    [] : List ./../types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

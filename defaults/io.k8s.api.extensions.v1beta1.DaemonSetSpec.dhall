@@ -1,13 +1,13 @@
-{ template =
+{ selector =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+, template =
     ./io.k8s.api.core.v1.PodTemplateSpec.dhall
 , minReadySeconds =
     None Natural
 , revisionHistoryLimit =
     None Natural
-, selector =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , templateGeneration =
     None Natural
 , updateStrategy =
-    None ./io.k8s.api.extensions.v1beta1.DaemonSetUpdateStrategy.dhall
+    None ./../types/io.k8s.api.extensions.v1beta1.DaemonSetUpdateStrategy.dhall
 }

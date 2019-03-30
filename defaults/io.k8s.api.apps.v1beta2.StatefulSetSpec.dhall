@@ -3,7 +3,7 @@
 , template =
     ./io.k8s.api.core.v1.PodTemplateSpec.dhall
 , volumeClaimTemplates =
-    [] : List ./io.k8s.api.core.v1.PersistentVolumeClaim.dhall
+    [] : List ./../types/io.k8s.api.core.v1.PersistentVolumeClaim.dhall
 , podManagementPolicy =
     None Text
 , replicas =
@@ -11,5 +11,5 @@
 , revisionHistoryLimit =
     None Natural
 , updateStrategy =
-    None ./io.k8s.api.apps.v1beta2.StatefulSetUpdateStrategy.dhall
+    None ./../types/io.k8s.api.apps.v1beta2.StatefulSetUpdateStrategy.dhall
 }

@@ -5,7 +5,7 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./io.k8s.api.batch.v2alpha1.CronJobSpec.dhall
+    ./io.k8s.api.batch.v2alpha1.CronJobSpec.dhall
 , status =
-    None ./io.k8s.api.batch.v2alpha1.CronJobStatus.dhall
+    ./io.k8s.api.batch.v2alpha1.CronJobStatus.dhall
 }

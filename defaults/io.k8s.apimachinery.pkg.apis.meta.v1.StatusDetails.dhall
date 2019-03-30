@@ -1,5 +1,5 @@
 { causes =
-    [] : List ./io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause.dhall
+    [] : List ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause.dhall
 , group =
     None Text
 , name =

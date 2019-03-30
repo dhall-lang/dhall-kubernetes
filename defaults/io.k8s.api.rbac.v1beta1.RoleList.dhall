@@ -3,7 +3,7 @@
 , kind =
     "RoleList"
 , items =
-    [] : List ./io.k8s.api.rbac.v1beta1.Role.dhall
+    [] : List ./../types/io.k8s.api.rbac.v1beta1.Role.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

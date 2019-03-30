@@ -1,5 +1,5 @@
 { from =
-    [] : List ./io.k8s.api.networking.v1.NetworkPolicyPeer.dhall
+    [] : List ./../types/io.k8s.api.networking.v1.NetworkPolicyPeer.dhall
 , ports =
-    [] : List ./io.k8s.api.networking.v1.NetworkPolicyPort.dhall
+    [] : List ./../types/io.k8s.api.networking.v1.NetworkPolicyPort.dhall
 }

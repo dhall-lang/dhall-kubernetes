@@ -18,6 +18,8 @@
     List ./io.k8s.api.extensions.v1beta1.HostPortRange.dhall
 , requiredDropCapabilities :
     List Text
+, runAsGroup :
+    ./io.k8s.api.extensions.v1beta1.RunAsGroupStrategyOptions.dhall
 , runAsUser :
     ./io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions.dhall
 , seLinux :
@@ -40,6 +42,4 @@
     Optional Bool
 , readOnlyRootFilesystem :
     Optional Bool
-, runAsGroup :
-    Optional ./io.k8s.api.extensions.v1beta1.RunAsGroupStrategyOptions.dhall
 }

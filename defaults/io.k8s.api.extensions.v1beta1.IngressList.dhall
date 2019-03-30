@@ -3,7 +3,7 @@
 , kind =
     "IngressList"
 , items =
-    [] : List ./io.k8s.api.extensions.v1beta1.Ingress.dhall
+    [] : List ./../types/io.k8s.api.extensions.v1beta1.Ingress.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

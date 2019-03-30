@@ -1,9 +1,7 @@
-{ currentValue =
-    ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+{ selector =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , target =
     ./io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference.dhall
 , averageValue =
-    None ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
-, selector =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+    None ./../types/io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
 }

@@ -7,5 +7,5 @@
 , spec :
     ./io.k8s.api.authorization.v1beta1.SelfSubjectRulesReviewSpec.dhall
 , status :
-    Optional ./io.k8s.api.authorization.v1beta1.SubjectRulesReviewStatus.dhall
+    ./io.k8s.api.authorization.v1beta1.SubjectRulesReviewStatus.dhall
 }

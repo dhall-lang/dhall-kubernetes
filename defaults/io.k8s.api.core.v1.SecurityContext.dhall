@@ -1,7 +1,7 @@
-{ allowPrivilegeEscalation =
+{ capabilities =
+    ./io.k8s.api.core.v1.Capabilities.dhall
+, allowPrivilegeEscalation =
     None Bool
-, capabilities =
-    None ./io.k8s.api.core.v1.Capabilities.dhall
 , privileged =
     None Bool
 , procMount =
@@ -15,5 +15,5 @@
 , runAsUser =
     None Natural
 , seLinuxOptions =
-    None ./io.k8s.api.core.v1.SELinuxOptions.dhall
+    None ./../types/io.k8s.api.core.v1.SELinuxOptions.dhall
 }

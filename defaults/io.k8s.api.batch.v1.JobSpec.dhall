@@ -1,4 +1,6 @@
-{ template =
+{ selector =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+, template =
     ./io.k8s.api.core.v1.PodTemplateSpec.dhall
 , activeDeadlineSeconds =
     None Natural
@@ -10,8 +12,6 @@
     None Bool
 , parallelism =
     None Natural
-, selector =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , ttlSecondsAfterFinished =
     None Natural
 }

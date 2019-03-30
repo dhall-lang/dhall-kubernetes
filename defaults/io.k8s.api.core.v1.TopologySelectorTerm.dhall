@@ -1,3 +1,4 @@
 { matchLabelExpressions =
-    [] : List ./io.k8s.api.core.v1.TopologySelectorLabelRequirement.dhall
+    [] : List
+         ./../types/io.k8s.api.core.v1.TopologySelectorLabelRequirement.dhall
 }

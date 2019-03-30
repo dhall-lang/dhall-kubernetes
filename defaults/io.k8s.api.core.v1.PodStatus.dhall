@@ -1,9 +1,9 @@
 { conditions =
-    [] : List ./io.k8s.api.core.v1.PodCondition.dhall
+    [] : List ./../types/io.k8s.api.core.v1.PodCondition.dhall
 , containerStatuses =
-    [] : List ./io.k8s.api.core.v1.ContainerStatus.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall
 , initContainerStatuses =
-    [] : List ./io.k8s.api.core.v1.ContainerStatus.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall
 , hostIP =
     None Text
 , message =
@@ -19,5 +19,5 @@
 , reason =
     None Text
 , startTime =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 }

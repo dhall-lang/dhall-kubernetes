@@ -1,5 +1,5 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "Binding"
 , metadata =

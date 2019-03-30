@@ -13,5 +13,5 @@
 , revisionHistoryLimit =
     None Natural
 , strategy =
-    None ./io.k8s.api.apps.v1.DeploymentStrategy.dhall
+    None ./../types/io.k8s.api.apps.v1.DeploymentStrategy.dhall
 }

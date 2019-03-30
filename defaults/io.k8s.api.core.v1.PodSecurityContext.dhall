@@ -1,7 +1,7 @@
 { supplementalGroups =
     [] : List Natural
 , sysctls =
-    [] : List ./io.k8s.api.core.v1.Sysctl.dhall
+    [] : List ./../types/io.k8s.api.core.v1.Sysctl.dhall
 , fsGroup =
     None Natural
 , runAsGroup =
@@ -11,5 +11,5 @@
 , runAsUser =
     None Natural
 , seLinuxOptions =
-    None ./io.k8s.api.core.v1.SELinuxOptions.dhall
+    None ./../types/io.k8s.api.core.v1.SELinuxOptions.dhall
 }

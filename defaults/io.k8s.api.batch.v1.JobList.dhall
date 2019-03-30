@@ -3,7 +3,7 @@
 , kind =
     "JobList"
 , items =
-    [] : List ./io.k8s.api.batch.v1.Job.dhall
+    [] : List ./../types/io.k8s.api.batch.v1.Job.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

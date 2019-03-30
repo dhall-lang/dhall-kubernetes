@@ -4,7 +4,7 @@
     "MutatingWebhookConfigurationList"
 , items =
     [] : List
-         ./io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfiguration.dhall
+         ./../types/io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfiguration.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

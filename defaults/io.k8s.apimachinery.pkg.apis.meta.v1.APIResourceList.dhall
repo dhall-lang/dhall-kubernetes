@@ -1,7 +1,7 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "APIResourceList"
 , resources =
-    [] : List ./io.k8s.apimachinery.pkg.apis.meta.v1.APIResource.dhall
+    [] : List ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource.dhall
 }

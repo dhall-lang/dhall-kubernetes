@@ -3,7 +3,7 @@
 , kind =
     "DeploymentList"
 , items =
-    [] : List ./io.k8s.api.apps.v1beta2.Deployment.dhall
+    [] : List ./../types/io.k8s.api.apps.v1beta2.Deployment.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

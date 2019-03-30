@@ -5,7 +5,7 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./io.k8s.api.batch.v1.JobSpec.dhall
+    ./io.k8s.api.batch.v1.JobSpec.dhall
 , status =
-    None ./io.k8s.api.batch.v1.JobStatus.dhall
+    ./io.k8s.api.batch.v1.JobStatus.dhall
 }

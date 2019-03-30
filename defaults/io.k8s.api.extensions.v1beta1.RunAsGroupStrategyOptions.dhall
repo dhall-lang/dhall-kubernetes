@@ -1,1 +1,1 @@
-{ ranges = [] : List ./io.k8s.api.extensions.v1beta1.IDRange.dhall }
+{ ranges = [] : List ./../types/io.k8s.api.extensions.v1beta1.IDRange.dhall }

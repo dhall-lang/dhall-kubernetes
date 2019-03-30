@@ -5,7 +5,7 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./io.k8s.api.apps.v1beta2.DeploymentSpec.dhall
+    ./io.k8s.api.apps.v1beta2.DeploymentSpec.dhall
 , status =
-    None ./io.k8s.api.apps.v1beta2.DeploymentStatus.dhall
+    ./io.k8s.api.apps.v1beta2.DeploymentStatus.dhall
 }

@@ -1,7 +1,7 @@
 { addresses =
-    [] : List ./io.k8s.api.core.v1.EndpointAddress.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EndpointAddress.dhall
 , notReadyAddresses =
-    [] : List ./io.k8s.api.core.v1.EndpointAddress.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EndpointAddress.dhall
 , ports =
-    [] : List ./io.k8s.api.core.v1.EndpointPort.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EndpointPort.dhall
 }

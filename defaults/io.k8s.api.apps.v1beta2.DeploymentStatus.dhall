@@ -1,5 +1,5 @@
 { conditions =
-    [] : List ./io.k8s.api.apps.v1beta2.DeploymentCondition.dhall
+    [] : List ./../types/io.k8s.api.apps.v1beta2.DeploymentCondition.dhall
 , availableReplicas =
     None Natural
 , collisionCount =

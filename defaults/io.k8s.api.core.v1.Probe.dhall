@@ -1,9 +1,9 @@
 { exec =
-    None ./io.k8s.api.core.v1.ExecAction.dhall
+    ./io.k8s.api.core.v1.ExecAction.dhall
+, httpGet =
+    ./io.k8s.api.core.v1.HTTPGetAction.dhall
 , failureThreshold =
     None Natural
-, httpGet =
-    None ./io.k8s.api.core.v1.HTTPGetAction.dhall
 , initialDelaySeconds =
     None Natural
 , periodSeconds =
@@ -11,7 +11,7 @@
 , successThreshold =
     None Natural
 , tcpSocket =
-    None ./io.k8s.api.core.v1.TCPSocketAction.dhall
+    None ./../types/io.k8s.api.core.v1.TCPSocketAction.dhall
 , timeoutSeconds =
     None Natural
 }

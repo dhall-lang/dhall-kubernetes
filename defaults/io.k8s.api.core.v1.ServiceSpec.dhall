@@ -3,7 +3,7 @@
 , loadBalancerSourceRanges =
     [] : List Text
 , ports =
-    [] : List ./io.k8s.api.core.v1.ServicePort.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ServicePort.dhall
 , selector =
     [] : List { mapKey : Text, mapValue : Text }
 , clusterIP =
@@ -21,7 +21,7 @@
 , sessionAffinity =
     None Text
 , sessionAffinityConfig =
-    None ./io.k8s.api.core.v1.SessionAffinityConfig.dhall
+    None ./../types/io.k8s.api.core.v1.SessionAffinityConfig.dhall
 , type =
     None Text
 }

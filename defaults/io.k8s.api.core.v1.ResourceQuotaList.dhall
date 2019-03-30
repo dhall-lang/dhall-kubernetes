@@ -1,9 +1,9 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "ResourceQuotaList"
 , items =
-    [] : List ./io.k8s.api.core.v1.ResourceQuota.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ResourceQuota.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

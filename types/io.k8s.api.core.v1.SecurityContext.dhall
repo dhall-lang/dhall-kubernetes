@@ -1,7 +1,7 @@
-{ allowPrivilegeEscalation :
+{ capabilities :
+    ./io.k8s.api.core.v1.Capabilities.dhall
+, allowPrivilegeEscalation :
     Optional Bool
-, capabilities :
-    Optional ./io.k8s.api.core.v1.Capabilities.dhall
 , privileged :
     Optional Bool
 , procMount :

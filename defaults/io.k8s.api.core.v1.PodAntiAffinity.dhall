@@ -1,5 +1,5 @@
 { preferredDuringSchedulingIgnoredDuringExecution =
-    [] : List ./io.k8s.api.core.v1.WeightedPodAffinityTerm.dhall
+    [] : List ./../types/io.k8s.api.core.v1.WeightedPodAffinityTerm.dhall
 , requiredDuringSchedulingIgnoredDuringExecution =
-    [] : List ./io.k8s.api.core.v1.PodAffinityTerm.dhall
+    [] : List ./../types/io.k8s.api.core.v1.PodAffinityTerm.dhall
 }

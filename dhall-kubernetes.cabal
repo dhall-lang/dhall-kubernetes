@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: dc10c16b9e6c44c9be6e2aafaf765a8df5b11aa5143d5adf3bbf5c85359db072
+-- hash: 8da8dd07fb9ef0855f93b603f307a548d6c970d01e569649a612e54af41f6939
 
 name:           dhall-kubernetes
 version:        0.1.0.0
@@ -25,7 +25,8 @@ executable dhall-kubernetes
       Paths_dhall_kubernetes
   hs-source-dirs:
       src
-  default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleContexts ConstraintKinds ApplicativeDo
+  default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleContexts FlexibleInstances ConstraintKinds ApplicativeDo
+  ghc-options: -Wall
   build-depends:
       aeson
     , base >=4.7 && <5

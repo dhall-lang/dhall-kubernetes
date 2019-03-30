@@ -3,29 +3,29 @@
 , command =
     [] : List Text
 , env =
-    [] : List ./io.k8s.api.core.v1.EnvVar.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EnvVar.dhall
 , envFrom =
-    [] : List ./io.k8s.api.core.v1.EnvFromSource.dhall
+    [] : List ./../types/io.k8s.api.core.v1.EnvFromSource.dhall
+, lifecycle =
+    ./io.k8s.api.core.v1.Lifecycle.dhall
+, livenessProbe =
+    ./io.k8s.api.core.v1.Probe.dhall
 , ports =
-    [] : List ./io.k8s.api.core.v1.ContainerPort.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ContainerPort.dhall
+, readinessProbe =
+    ./io.k8s.api.core.v1.Probe.dhall
+, resources =
+    ./io.k8s.api.core.v1.ResourceRequirements.dhall
+, securityContext =
+    ./io.k8s.api.core.v1.SecurityContext.dhall
 , volumeDevices =
-    [] : List ./io.k8s.api.core.v1.VolumeDevice.dhall
+    [] : List ./../types/io.k8s.api.core.v1.VolumeDevice.dhall
 , volumeMounts =
-    [] : List ./io.k8s.api.core.v1.VolumeMount.dhall
+    [] : List ./../types/io.k8s.api.core.v1.VolumeMount.dhall
 , image =
     None Text
 , imagePullPolicy =
     None Text
-, lifecycle =
-    None ./io.k8s.api.core.v1.Lifecycle.dhall
-, livenessProbe =
-    None ./io.k8s.api.core.v1.Probe.dhall
-, readinessProbe =
-    None ./io.k8s.api.core.v1.Probe.dhall
-, resources =
-    None ./io.k8s.api.core.v1.ResourceRequirements.dhall
-, securityContext =
-    None ./io.k8s.api.core.v1.SecurityContext.dhall
 , stdin =
     None Bool
 , stdinOnce =

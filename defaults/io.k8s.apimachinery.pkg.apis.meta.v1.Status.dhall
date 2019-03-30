@@ -1,13 +1,13 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "Status"
+, details =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 , code =
     None Natural
-, details =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall
 , message =
     None Text
 , reason =

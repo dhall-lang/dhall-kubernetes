@@ -5,7 +5,7 @@
 , metadata :
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec :
-    Optional ./io.k8s.api.core.v1.NamespaceSpec.dhall
+    ./io.k8s.api.core.v1.NamespaceSpec.dhall
 , status :
     Optional ./io.k8s.api.core.v1.NamespaceStatus.dhall
 }

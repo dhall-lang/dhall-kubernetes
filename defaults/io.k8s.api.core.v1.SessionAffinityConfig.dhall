@@ -1,1 +1,1 @@
-{ clientIP = None ./io.k8s.api.core.v1.ClientIPConfig.dhall }
+{ clientIP = None ./../types/io.k8s.api.core.v1.ClientIPConfig.dhall }

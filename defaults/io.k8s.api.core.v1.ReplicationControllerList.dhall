@@ -1,9 +1,9 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "ReplicationControllerList"
 , items =
-    [] : List ./io.k8s.api.core.v1.ReplicationController.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ReplicationController.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

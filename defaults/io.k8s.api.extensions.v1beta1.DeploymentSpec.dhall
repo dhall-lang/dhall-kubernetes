@@ -1,4 +1,6 @@
-{ template =
+{ selector =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+, template =
     ./io.k8s.api.core.v1.PodTemplateSpec.dhall
 , minReadySeconds =
     None Natural
@@ -11,9 +13,7 @@
 , revisionHistoryLimit =
     None Natural
 , rollbackTo =
-    None ./io.k8s.api.extensions.v1beta1.RollbackConfig.dhall
-, selector =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+    None ./../types/io.k8s.api.extensions.v1beta1.RollbackConfig.dhall
 , strategy =
-    None ./io.k8s.api.extensions.v1beta1.DeploymentStrategy.dhall
+    None ./../types/io.k8s.api.extensions.v1beta1.DeploymentStrategy.dhall
 }

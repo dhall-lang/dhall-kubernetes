@@ -1,9 +1,9 @@
 { apiVersion =
-    "/v1"
+    "v1"
 , kind =
     "ServiceAccountList"
 , items =
-    [] : List ./io.k8s.api.core.v1.ServiceAccount.dhall
+    [] : List ./../types/io.k8s.api.core.v1.ServiceAccount.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 }

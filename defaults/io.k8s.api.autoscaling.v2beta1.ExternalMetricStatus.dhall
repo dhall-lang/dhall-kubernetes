@@ -1,7 +1,5 @@
-{ currentValue =
-    ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+{ metricSelector =
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , currentAverageValue =
-    None ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
-, metricSelector =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+    None ./../types/io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
 }

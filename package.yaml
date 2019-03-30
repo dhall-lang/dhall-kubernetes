@@ -11,6 +11,9 @@ category:            Web
 extra-source-files:
 - README.md
 
+ghc-options:
+- -Wall
+
 default-extensions:
 - DeriveDataTypeable
 - DeriveGeneric
@@ -22,6 +25,7 @@ default-extensions:
 - ScopedTypeVariables
 - OverloadedStrings
 - FlexibleContexts
+- FlexibleInstances
 - ConstraintKinds
 - ApplicativeDo
 

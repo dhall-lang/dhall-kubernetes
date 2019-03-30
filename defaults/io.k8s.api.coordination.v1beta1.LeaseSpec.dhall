@@ -1,5 +1,5 @@
 { acquireTime =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
 , holderIdentity =
     None Text
 , leaseDurationSeconds =
@@ -7,5 +7,5 @@
 , leaseTransitions =
     None Natural
 , renewTime =
-    None ./io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
 }

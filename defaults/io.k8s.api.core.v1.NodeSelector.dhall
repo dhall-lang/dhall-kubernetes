@@ -1,1 +1,3 @@
-{ nodeSelectorTerms = [] : List ./io.k8s.api.core.v1.NodeSelectorTerm.dhall }
+{ nodeSelectorTerms =
+    [] : List ./../types/io.k8s.api.core.v1.NodeSelectorTerm.dhall
+}

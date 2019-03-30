@@ -1,9 +1,9 @@
 { configMap =
-    None ./io.k8s.api.core.v1.ConfigMapProjection.dhall
+    ./io.k8s.api.core.v1.ConfigMapProjection.dhall
 , downwardAPI =
-    None ./io.k8s.api.core.v1.DownwardAPIProjection.dhall
+    ./io.k8s.api.core.v1.DownwardAPIProjection.dhall
 , secret =
-    None ./io.k8s.api.core.v1.SecretProjection.dhall
+    ./io.k8s.api.core.v1.SecretProjection.dhall
 , serviceAccountToken =
-    None ./io.k8s.api.core.v1.ServiceAccountTokenProjection.dhall
+    None ./../types/io.k8s.api.core.v1.ServiceAccountTokenProjection.dhall
 }

@@ -7,5 +7,5 @@
 , spec =
     ./io.k8s.api.authentication.v1.TokenReviewSpec.dhall
 , status =
-    None ./io.k8s.api.authentication.v1.TokenReviewStatus.dhall
+    ./io.k8s.api.authentication.v1.TokenReviewStatus.dhall
 }
