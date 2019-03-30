@@ -7,30 +7,19 @@ import qualified Data.Text.Prettyprint.Doc.Render.Text as PrettyText
 import qualified Dhall.Core                            as Dhall
 import qualified Dhall.Format
 import qualified Dhall.Pretty
-import qualified Network.HTTP.Simple                   as HTTP
 import qualified Turtle
 
+import           Data.Aeson                            (decodeFileStrict)
 import           Data.Foldable                         (for_)
 import           Data.Text                             (Text)
+import           System.Environment                    (getArgs)
 
-import           Dhall.Kubernetes.Data (objectsWithCyclicImports)
+import qualified Dhall.Kubernetes.Convert              as Convert
+import           Dhall.Kubernetes.Data                 (objectsWithCyclicImports)
 import           Dhall.Kubernetes.Types
-import qualified Dhall.Kubernetes.Convert as Convert
 
 
-getSwagger :: IO Swagger
-getSwagger = do
-  -- Fetch and parse the Swagger spec
-  req <- HTTP.parseRequest swaggerUrl
-  res <- HTTP.httpJSON req
-  pure $ HTTP.getResponseBody res
-  where
-    kubernetesTag = "v1.13.4"
-
-    swaggerUrl = "https://raw.githubusercontent.com/kubernetes/kubernetes/"
-      <> kubernetesTag
-      <> "/api/openapi-spec/swagger.json"
-
+-- | Write and format a Dhall expression to a file
 writeDhall :: Turtle.FilePath -> Expr -> IO ()
 writeDhall path expr = do
   echoStr $ "Writing file '" <> Turtle.encodeString path <> "'"
@@ -54,15 +43,20 @@ echoStr = echo . Text.pack
 main :: IO ()
 main = do
   -- Get the Swagger spec
-  Swagger{..} <- getSwagger
+  args <- getArgs
+  Swagger{..} <- case args of
+    [file] -> do
+      swaggerFile <- decodeFileStrict file
+      case swaggerFile of
+        Nothing -> error "Unable to decode the Swagger file"
+        Just s  -> pure s
+    _ -> error "You need to provide a filename as first argument"
 
-
-   -- Convert to Dhall types in a Map
+  -- Convert to Dhall types in a Map
   let types = Convert.toTypes
         -- TODO: the objects we're filtering here are actually useful, but
         -- have cyclic imports so we don't include them for now
         $ Data.Map.withoutKeys definitions objectsWithCyclicImports
-
 
   -- Output to types
   Turtle.mktree "types"
@@ -70,10 +64,8 @@ main = do
     let path = "./types" Turtle.</> Turtle.fromText (name <> ".dhall")
     writeDhall path expr
 
-
   -- Convert from Dhall types to defaults
   let defaults = Data.Map.mapMaybeWithKey (Convert.toDefault definitions types) types
-
 
   -- Output to defaults
   Turtle.mktree "defaults"
