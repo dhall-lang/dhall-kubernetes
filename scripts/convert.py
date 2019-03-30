@@ -1,12 +1,8 @@
-#!/usr/bin/env python3
-
-import requests
+#! /usr/bin/env python3
+import json
 import re
+import sys
 
-kubernetes_tag = 'v1.13.4'
-url = \
-    'https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json' \
-    .format(tag=kubernetes_tag)
 
 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 # because k8s API allows PUTS etc with partial data, it's not clear from the data types OR the API which
@@ -132,53 +128,53 @@ def labelize(propName):
 
 
 def main():
-    spec = requests.get(url).json()
-
-    for modelName, modelSpec in spec['definitions'].items():
-        with open('types/' + modelName + '.dhall', 'w') as f:
-            f.write('{}\n'.format(build_type(modelSpec, '.', modelName)))
-        with open('default/' + modelName + '.dhall', 'w') as f:
-            if 'type' in modelSpec:
-                typ = build_type(modelSpec, '../types')
-                # In case we have a union, we make the constructors for it
-                if typ[0] == '<':
-                    f.write('{}\n'.format(typ))
-                # Otherwise we just output the identity
+    with open(sys.argv[1]) as specf:
+        spec = json.load(specf)
+        for modelName, modelSpec in spec['definitions'].items():
+            with open('types/' + modelName + '.dhall', 'w') as f:
+                f.write('{}\n'.format(build_type(modelSpec, '.', modelName)))
+            with open('default/' + modelName + '.dhall', 'w') as f:
+                if 'type' in modelSpec:
+                    typ = build_type(modelSpec, '../types')
+                    # In case we have a union, we make the constructors for it
+                    if typ[0] == '<':
+                        f.write('{}\n'.format(typ))
+                    # Otherwise we just output the identity
+                    else:
+                        f.write('\(a : {}) -> a\n'.format(typ))
+                elif '$ref' in modelSpec:
+                    path = schema_path_from_ref('.', modelSpec['$ref'])
+                    f.write('{}\n'.format(path))
                 else:
-                    f.write('\(a : {}) -> a\n'.format(typ))
-            elif '$ref' in modelSpec:
-                path = schema_path_from_ref('.', modelSpec['$ref'])
-                f.write('{}\n'.format(path))
-            else:
-                required = required_properties(modelName, modelSpec)
-                if modelName in required_for.keys():
-                    required |= required_for[modelName]
+                    required = required_properties(modelName, modelSpec)
+                    if modelName in required_for.keys():
+                        required |= required_for[modelName]
 
-                properties = modelSpec.get('properties', {})
+                    properties = modelSpec.get('properties', {})
 
-                resource_data = get_static_data(modelSpec)
-                param_names = required - set(resource_data.keys())
+                    resource_data = get_static_data(modelSpec)
+                    param_names = required - set(resource_data.keys())
 
-                # If there's multiple required props, we make it a lambda
-                requiredProps = [k for k in properties if k in required]
-                if len(requiredProps) > 0:
-                    params = ['{} : ({})'.format(labelize(propName), build_type(propVal, '../types'))
-                              for propName, propVal in properties.items()
-                              if propName in param_names]
-                    f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
+                    # If there's multiple required props, we make it a lambda
+                    requiredProps = [k for k in properties if k in required]
+                    if len(requiredProps) > 0:
+                        params = ['{} : ({})'.format(labelize(propName), build_type(propVal, '../types'))
+                                  for propName, propVal in properties.items()
+                                  if propName in param_names]
+                        f.write('\(_params : {' + ', '.join(params) + '}) ->\n')
 
-                # If it's required we're passing it in as a parameter
-                KVs = [(propName, "_params." + propName)
-                       if propName in param_names
-                       else (propName, get_default(propDef, propName in required, resource_data.get(propName, None)))
-                       for propName, propDef in properties.items()]
+                    # If it's required we're passing it in as a parameter
+                    KVs = [(propName, "_params." + propName)
+                           if propName in param_names
+                           else (propName, get_default(propDef, propName in required, resource_data.get(propName, None)))
+                           for propName, propDef in properties.items()]
 
-                # If there's no fields, should be an empty record
-                if len(KVs) > 0:
-                    formatted = [" {} = {}\n".format(labelize(k), v) for k, v in KVs]
-                else:
-                    formatted = '='
-                f.write('{' + ','.join(formatted) + '} : ../types/' + modelName + '.dhall\n')
+                    # If there's no fields, should be an empty record
+                    if len(KVs) > 0:
+                        formatted = [" {} = {}\n".format(labelize(k), v) for k, v in KVs]
+                    else:
+                        formatted = '='
+                    f.write('{' + ','.join(formatted) + '} : ../types/' + modelName + '.dhall\n')
 
 if __name__ == '__main__':
     main()
