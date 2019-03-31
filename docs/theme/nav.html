@@ -1,0 +1,8 @@
+{% if nav_item.active -%}
+› <a href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+  {% if nav_item.children -%}
+    {% for nav_item in nav_item.children -%}
+      {% include "nav.html" -%}
+    {% endfor -%}
+  {% endif -%}
+{% endif -%}
