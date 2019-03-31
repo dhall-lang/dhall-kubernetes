@@ -18,8 +18,9 @@ objectsWithCyclicImports = Set.fromList $ ModelName <$>
 
 
 -- | List of objects that we don't include in the defaults and types records.
---   The reason why we remove some is because of name clashes across versions.
---   So usually the rule for picking the object to keep is "the most recent"
+--   The reason why we remove some is because of name clashes across API versions.
+--   So usually the rule for picking the object to keep is "the most recent".
+--   Note: this is used only for composing the `types.dhall` and `defaults.dhall` files.
 excludedModels :: Set ModelName
 excludedModels = Set.fromList $ ModelName <$>
   [ "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIService"

@@ -73,10 +73,10 @@ main = do
     let path = "./defaults" Turtle.</> Turtle.fromText (name <> ".dhall")
     writeDhall path expr
 
-
   -- Output the types record, the defaults record, and the giant union type
-  let typesMap = Convert.getImportsMap "types" types types
-      defaultsMap = Convert.getImportsMap "defaults" types defaults
+  let objectNames = Data.Map.keys types
+      typesMap = Convert.getImportsMap objectNames "types" $ Data.Map.keys types
+      defaultsMap = Convert.getImportsMap objectNames "defaults" $ Data.Map.keys defaults
 
       typesRecordPath = "./types.dhall"
       typesUnionPath = "./typesUnion.dhall"

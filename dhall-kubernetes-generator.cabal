@@ -21,7 +21,7 @@ executable dhall-kubernetes
       Paths_dhall_kubernetes
   hs-source-dirs:
       src
-  default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleInstances ConstraintKinds ApplicativeDo
+  default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleInstances ConstraintKinds ApplicativeDo TupleSections
   ghc-options: -Wall
   build-depends:
     base          >= 4.8.2.0   && < 5    ,

@@ -15,24 +15,21 @@ import           Data.Text.Prettyprint.Doc (Pretty)
 import           GHC.Generics              (Generic)
 
 
-data BaseData = BaseData
-  { kind       :: Text
-  , apiVersion :: Text
-  } deriving (Generic, Show)
-
-{-|
+type Expr = Dhall.Expr Dhall.Src Dhall.Import
 
 
+{-| Type for the Swagger specification.
+
+There is such a type defined in the `swagger2` package, but Kubernetes' OpenAPI
+file doesn't conform to that, so here we implement a small version of that
+tailored to our needs.
 
 -}
-instance FromJSON BaseData where
-  parseJSON = withArray "array of values" $ \arr -> withObject "baseData" (\o -> do
-    group   <- o .:? "group" .!= ""
-    kind    <- o .: "kind"
-    version <- o .: "version"
-    let apiVersion = (if Text.null group then "" else group <> "/") <> version
-    pure BaseData{..})
-    (head $ Vector.toList arr)
+data Swagger = Swagger
+  { definitions :: Map ModelName Definition
+  } deriving (Generic, Show)
+
+instance FromJSON Swagger
 
 
 data Definition = Definition
@@ -58,19 +55,43 @@ instance FromJSON Definition where
     baseData    <- fmap join $ optional (o .:? "x-kubernetes-group-version-kind")
     pure Definition{..}
 
+
 newtype Ref = Ref { unRef :: Text }
   deriving (Generic, Show, FromJSON)
+
 
 newtype ModelName = ModelName { unModelName :: Text }
   deriving (Generic, Show, Ord, FromJSONKey, Eq, Pretty)
 
+
 newtype FieldName = FieldName { unFieldName :: Text }
   deriving (Generic, Show, FromJSON, FromJSONKey, Ord, Eq, Pretty)
 
-data Swagger = Swagger
-  { definitions :: Map ModelName Definition
+
+{-| This contains the static data that a Model might have
+
+This applies only to kubernetes resources where ``kind`` and
+``apiVersion`` are statically determined by the resource. See the
+`Kubernetes OpenAPI Spec Readme`:
+https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/README.md#x-kubernetes-group-version-kind
+
+For example for a v1 Deployment we have
+
+{ kind = "Deployment"
+, apiVersion = "apps/v1"
+}
+
+-}
+data BaseData = BaseData
+  { kind       :: Text
+  , apiVersion :: Text
   } deriving (Generic, Show)
 
-instance FromJSON Swagger
-
-type Expr = Dhall.Expr Dhall.Src Dhall.Import
+instance FromJSON BaseData where
+  parseJSON = withArray "array of values" $ \arr -> withObject "baseData" (\o -> do
+    group   <- o .:? "group" .!= ""
+    kind    <- o .: "kind"
+    version <- o .: "version"
+    let apiVersion = (if Text.null group then "" else group <> "/") <> version
+    pure BaseData{..})
+    (head $ Vector.toList arr)
