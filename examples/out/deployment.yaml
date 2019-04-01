@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 spec:
-  revisionHistoryLimit: 20
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: nginx
@@ -15,8 +15,6 @@ spec:
       containers:
       - image: nginx:1.15.3
         imagePullPolicy: Always
-        env: []
-        volumeMounts: []
         resources:
           limits:
             cpu: 500m
@@ -25,7 +23,6 @@ spec:
         name: nginx
         ports:
         - containerPort: 80
-      volumes: []
     metadata:
       name: nginx
       labels:
