@@ -12,7 +12,7 @@ build-type:     Simple
 extra-source-files:
     README.md
 
-executable dhall-kubernetes
+executable dhall-kubernetes-generator
   main-is: Main.hs
   other-modules:
       Dhall.Kubernetes.Convert
