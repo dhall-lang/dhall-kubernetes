@@ -1,1 +1,1 @@
-{ required : ./io.k8s.api.core.v1.NodeSelector.dhall }
+{ required : Optional ./io.k8s.api.core.v1.NodeSelector.dhall }

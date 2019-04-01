@@ -7,5 +7,5 @@
 , spec :
     ./io.k8s.api.storage.v1alpha1.VolumeAttachmentSpec.dhall
 , status :
-    ./io.k8s.api.storage.v1alpha1.VolumeAttachmentStatus.dhall
+    Optional ./io.k8s.api.storage.v1alpha1.VolumeAttachmentStatus.dhall
 }

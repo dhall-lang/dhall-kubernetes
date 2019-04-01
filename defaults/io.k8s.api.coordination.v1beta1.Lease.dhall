@@ -5,5 +5,5 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./../types/io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
+    ./io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
 }

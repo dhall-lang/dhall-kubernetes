@@ -7,5 +7,5 @@
 , spec =
     ./io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec.dhall
 , status =
-    ./io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.dhall
+    None ./../types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.dhall
 }

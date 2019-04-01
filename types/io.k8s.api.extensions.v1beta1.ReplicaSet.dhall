@@ -7,5 +7,5 @@
 , spec :
     ./io.k8s.api.extensions.v1beta1.ReplicaSetSpec.dhall
 , status :
-    ./io.k8s.api.extensions.v1beta1.ReplicaSetStatus.dhall
+    Optional ./io.k8s.api.extensions.v1beta1.ReplicaSetStatus.dhall
 }

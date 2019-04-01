@@ -1,4 +1,6 @@
-{ supplementalGroups =
+{ seLinuxOptions =
+    ./io.k8s.api.core.v1.SELinuxOptions.dhall
+, supplementalGroups =
     [] : List Natural
 , sysctls =
     [] : List ./../types/io.k8s.api.core.v1.Sysctl.dhall
@@ -10,6 +12,4 @@
     None Bool
 , runAsUser =
     None Natural
-, seLinuxOptions =
-    None ./../types/io.k8s.api.core.v1.SELinuxOptions.dhall
 }

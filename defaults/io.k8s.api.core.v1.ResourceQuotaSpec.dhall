@@ -1,7 +1,7 @@
 { hard =
     [] : List { mapKey : Text, mapValue : Text }
-, scopeSelector =
-    ./io.k8s.api.core.v1.ScopeSelector.dhall
 , scopes =
     [] : List Text
+, scopeSelector =
+    None ./../types/io.k8s.api.core.v1.ScopeSelector.dhall
 }

@@ -1,43 +1,41 @@
 { accessModes :
     List Text
-, azureDisk :
-    ./io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , capacity :
     List { mapKey : Text, mapValue : Text }
-, cephfs :
-    ./io.k8s.api.core.v1.CephFSPersistentVolumeSource.dhall
-, claimRef :
-    ./io.k8s.api.core.v1.ObjectReference.dhall
-, csi :
-    ./io.k8s.api.core.v1.CSIPersistentVolumeSource.dhall
-, fc :
-    ./io.k8s.api.core.v1.FCVolumeSource.dhall
-, flexVolume :
-    ./io.k8s.api.core.v1.FlexPersistentVolumeSource.dhall
-, iscsi :
-    ./io.k8s.api.core.v1.ISCSIPersistentVolumeSource.dhall
+, flocker :
+    ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
 , mountOptions :
     List Text
 , nodeAffinity :
     ./io.k8s.api.core.v1.VolumeNodeAffinity.dhall
-, rbd :
-    ./io.k8s.api.core.v1.RBDPersistentVolumeSource.dhall
 , storageos :
     ./io.k8s.api.core.v1.StorageOSPersistentVolumeSource.dhall
 , awsElasticBlockStore :
     Optional ./io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall
+, azureDisk :
+    Optional ./io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , azureFile :
     Optional ./io.k8s.api.core.v1.AzureFilePersistentVolumeSource.dhall
+, cephfs :
+    Optional ./io.k8s.api.core.v1.CephFSPersistentVolumeSource.dhall
 , cinder :
     Optional ./io.k8s.api.core.v1.CinderPersistentVolumeSource.dhall
-, flocker :
-    Optional ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
+, claimRef :
+    Optional ./io.k8s.api.core.v1.ObjectReference.dhall
+, csi :
+    Optional ./io.k8s.api.core.v1.CSIPersistentVolumeSource.dhall
+, fc :
+    Optional ./io.k8s.api.core.v1.FCVolumeSource.dhall
+, flexVolume :
+    Optional ./io.k8s.api.core.v1.FlexPersistentVolumeSource.dhall
 , gcePersistentDisk :
     Optional ./io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall
 , glusterfs :
     Optional ./io.k8s.api.core.v1.GlusterfsPersistentVolumeSource.dhall
 , hostPath :
     Optional ./io.k8s.api.core.v1.HostPathVolumeSource.dhall
+, iscsi :
+    Optional ./io.k8s.api.core.v1.ISCSIPersistentVolumeSource.dhall
 , local :
     Optional ./io.k8s.api.core.v1.LocalVolumeSource.dhall
 , nfs :
@@ -50,6 +48,8 @@
     Optional ./io.k8s.api.core.v1.PortworxVolumeSource.dhall
 , quobyte :
     Optional ./io.k8s.api.core.v1.QuobyteVolumeSource.dhall
+, rbd :
+    Optional ./io.k8s.api.core.v1.RBDPersistentVolumeSource.dhall
 , scaleIO :
     Optional ./io.k8s.api.core.v1.ScaleIOPersistentVolumeSource.dhall
 , storageClassName :

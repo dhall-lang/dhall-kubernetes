@@ -2,8 +2,6 @@
     List { mapKey : Text, mapValue : Text }
 , finalizers :
     List Text
-, initializers :
-    ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , labels :
     List { mapKey : Text, mapValue : Text }
 , name :
@@ -22,6 +20,8 @@
     Optional Text
 , generation :
     Optional Natural
+, initializers :
+    Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , namespace :
     Optional Text
 , resourceVersion :

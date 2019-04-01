@@ -1,5 +1,5 @@
 { metricSelector =
-    ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , targetAverageValue =
     None ./../types/io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
 , targetValue =

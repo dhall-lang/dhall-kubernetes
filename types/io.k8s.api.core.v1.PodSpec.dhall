@@ -2,8 +2,6 @@
     ./io.k8s.api.core.v1.Affinity.dhall
 , containers :
     List ./io.k8s.api.core.v1.Container.dhall
-, dnsConfig :
-    ./io.k8s.api.core.v1.PodDNSConfig.dhall
 , hostAliases :
     List ./io.k8s.api.core.v1.HostAlias.dhall
 , imagePullSecrets :
@@ -14,8 +12,6 @@
     List { mapKey : Text, mapValue : Text }
 , readinessGates :
     List ./io.k8s.api.core.v1.PodReadinessGate.dhall
-, securityContext :
-    ./io.k8s.api.core.v1.PodSecurityContext.dhall
 , tolerations :
     List ./io.k8s.api.core.v1.Toleration.dhall
 , volumes :
@@ -24,6 +20,8 @@
     Optional Natural
 , automountServiceAccountToken :
     Optional Bool
+, dnsConfig :
+    Optional ./io.k8s.api.core.v1.PodDNSConfig.dhall
 , dnsPolicy :
     Optional Text
 , enableServiceLinks :
@@ -48,6 +46,8 @@
     Optional Text
 , schedulerName :
     Optional Text
+, securityContext :
+    Optional ./io.k8s.api.core.v1.PodSecurityContext.dhall
 , serviceAccount :
     Optional Text
 , serviceAccountName :

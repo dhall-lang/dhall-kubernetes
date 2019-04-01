@@ -18,8 +18,6 @@
     [] : List ./../types/io.k8s.api.policy.v1beta1.HostPortRange.dhall
 , requiredDropCapabilities =
     [] : List Text
-, runAsGroup =
-    ./io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions.dhall
 , runAsUser =
     ./io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions.dhall
 , seLinux =
@@ -42,4 +40,6 @@
     None Bool
 , readOnlyRootFilesystem =
     None Bool
+, runAsGroup =
+    None ./../types/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions.dhall
 }

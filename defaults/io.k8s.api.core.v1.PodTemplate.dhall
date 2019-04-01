@@ -5,5 +5,5 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , template =
-    ./io.k8s.api.core.v1.PodTemplateSpec.dhall
+    None ./../types/io.k8s.api.core.v1.PodTemplateSpec.dhall
 }

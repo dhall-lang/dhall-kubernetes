@@ -1,5 +1,5 @@
 { nonResourceAttributes =
-    None ./../types/io.k8s.api.authorization.v1.NonResourceAttributes.dhall
+    ./io.k8s.api.authorization.v1.NonResourceAttributes.dhall
 , resourceAttributes =
-    None ./../types/io.k8s.api.authorization.v1.ResourceAttributes.dhall
+    ./io.k8s.api.authorization.v1.ResourceAttributes.dhall
 }

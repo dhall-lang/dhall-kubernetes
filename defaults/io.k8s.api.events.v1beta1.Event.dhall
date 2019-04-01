@@ -2,12 +2,10 @@
     "events.k8s.io/v1beta1"
 , kind =
     "Event"
+, deprecatedSource =
+    ./io.k8s.api.core.v1.EventSource.dhall
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
-, regarding =
-    ./io.k8s.api.core.v1.ObjectReference.dhall
-, related =
-    ./io.k8s.api.core.v1.ObjectReference.dhall
 , action =
     None Text
 , deprecatedCount =
@@ -16,12 +14,14 @@
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , deprecatedLastTimestamp =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
-, deprecatedSource =
-    None ./../types/io.k8s.api.core.v1.EventSource.dhall
 , note =
     None Text
 , reason =
     None Text
+, regarding =
+    None ./../types/io.k8s.api.core.v1.ObjectReference.dhall
+, related =
+    None ./../types/io.k8s.api.core.v1.ObjectReference.dhall
 , reportingController =
     None Text
 , reportingInstance =

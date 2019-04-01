@@ -1,7 +1,7 @@
 { configMapRef =
-    None ./../types/io.k8s.api.core.v1.ConfigMapEnvSource.dhall
+    ./io.k8s.api.core.v1.ConfigMapEnvSource.dhall
+, secretRef =
+    ./io.k8s.api.core.v1.SecretEnvSource.dhall
 , prefix =
     None Text
-, secretRef =
-    None ./../types/io.k8s.api.core.v1.SecretEnvSource.dhall
 }

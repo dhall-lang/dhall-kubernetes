@@ -3,9 +3,9 @@
 , groups :
     List Text
 , nonResourceAttributes :
-    Optional ./io.k8s.api.authorization.v1.NonResourceAttributes.dhall
+    ./io.k8s.api.authorization.v1.NonResourceAttributes.dhall
 , resourceAttributes :
-    Optional ./io.k8s.api.authorization.v1.ResourceAttributes.dhall
+    ./io.k8s.api.authorization.v1.ResourceAttributes.dhall
 , uid :
     Optional Text
 , user :

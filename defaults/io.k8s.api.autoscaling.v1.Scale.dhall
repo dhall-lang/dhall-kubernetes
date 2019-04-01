@@ -5,7 +5,7 @@
 , metadata =
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , spec =
-    None ./../types/io.k8s.api.autoscaling.v1.ScaleSpec.dhall
+    ./io.k8s.api.autoscaling.v1.ScaleSpec.dhall
 , status =
     None ./../types/io.k8s.api.autoscaling.v1.ScaleStatus.dhall
 }

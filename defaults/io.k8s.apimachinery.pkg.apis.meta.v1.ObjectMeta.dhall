@@ -2,8 +2,6 @@
     [] : List { mapKey : Text, mapValue : Text }
 , finalizers =
     [] : List Text
-, initializers =
-    ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , labels =
     [] : List { mapKey : Text, mapValue : Text }
 , ownerReferences =
@@ -21,6 +19,8 @@
     None Text
 , generation =
     None Natural
+, initializers =
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , namespace =
     None Text
 , resourceVersion =

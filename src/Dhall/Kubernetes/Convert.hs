@@ -5,7 +5,6 @@ module Dhall.Kubernetes.Convert
   ) where
 
 import qualified Data.List              as List
-import qualified Data.Map.Lazy
 import qualified Data.Map.Strict        as Data.Map
 import qualified Data.Set               as Set
 import qualified Data.Text              as Text
@@ -26,15 +25,19 @@ import           Dhall.Kubernetes.Types
 --   TLDR: because k8s API allows PUTS etc with partial data,
 --   it's not clear from the data types OR the API which
 --   fields are required for A POST...
-requiredFields :: ModelName -> Maybe (Set FieldName) -> Set FieldName
-requiredFields name required
+requiredFields :: Maybe ModelName -> Maybe (Set FieldName) -> Set FieldName
+requiredFields maybeName required
   = Set.difference
       (List.foldr Set.union (fromMaybe Set.empty required) [alwaysRequired, toAdd])
       toRemove
   where
     alwaysRequired = Set.fromList $ FieldName <$> [ "apiVersion", "kind", "metadata"]
-    toAdd = fromMaybe Set.empty $ Data.Map.lookup name requiredConstraints
-    toRemove = fromMaybe Set.empty $ Data.Map.lookup name notRequiredConstraints
+    toAdd = fromMaybe Set.empty $ do
+      name <- maybeName
+      Data.Map.lookup name requiredConstraints
+    toRemove = fromMaybe Set.empty $ do
+      name <- maybeName
+      Data.Map.lookup name notRequiredConstraints
 
     -- | Some models require keys that are not in the required set,
     --   but are in the docs or just work
@@ -48,6 +51,8 @@ requiredFields name required
     notRequiredConstraints = Data.Map.fromList
       [ ( ModelName "io.k8s.api.core.v1.ObjectFieldSelector"
         , Set.fromList [FieldName "apiVersion"])
+      , ( ModelName "io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
+        , Set.fromList [FieldName "kind"])
       ]
 
 
@@ -95,10 +100,43 @@ toTypes definitions = memo
     intOrString = Dhall.Union $ Dhall.Map.fromList
       [ ("Int", Dhall.Natural), ("String", Dhall.Text) ]
 
+    shouldBeRequired :: Maybe ModelName -> (Maybe FieldName, Expr) -> Bool
+    shouldBeRequired maybeParent (maybeField, expr) = or
+      -- | A field should not be optional if:
+      -- * the field name is in the 'required' list
+      [ case maybeField of
+          Just field -> Set.member field requiredNames
+          _ -> False
+      -- * the field value is somewhat a container, and "transitively emptiable"
+      --   (i.e. it could be an empty container, allowing dhall-to-yaml to throw
+      --   away the empty shell if so)
+      , case expr of
+          -- So if it's a record we recursively check that all its fields can be emptiable
+          (Dhall.Record kvs) -> not $ List.foldr (\a b -> or [a, b]) False
+            $ shouldBeRequired maybeParent
+            <$> (first (Just . FieldName))
+            <$> Dhall.Map.toList kvs
+          -- A list can indeed be empty
+          (Dhall.App Dhall.List _) -> True
+          -- An import requires us to recur on the toplevel Map of objects,
+          -- to check if the object we're dealing with is itself an emptiable container
+          (Dhall.Embed imp) ->
+            let maybeModelName = fmap ModelName (namespacedObjectFromImport imp)
+            in case maybeModelName >>= (\n -> Data.Map.lookup n memo) of
+                 Just e -> shouldBeRequired maybeModelName (Nothing, e)
+                 _      -> False
+          _ -> False
+      ]
+      where
+        requiredNames = requiredFields maybeParent $ do
+          name <- maybeParent
+          Definition{..} <- Data.Map.lookup name definitions
+          required
+
     -- | Convert a single Definition to a Dhall Type
     --   Note: we have the ModelName only if this is a top-level import
     convertToType :: Maybe ModelName -> Definition -> Expr
-    convertToType maybeName Definition{..} = case (ref, typ, properties) of
+    convertToType maybeModelName Definition{..} = case (ref, typ, properties) of
       -- If we point to a ref we just reference it via Import
       (Just r, _, _) -> Dhall.Embed $ mkImport [] $ (pathFromRef r <> ".dhall")
       -- Otherwise - if we have a 'type' - it's a basic type
@@ -113,43 +151,15 @@ toTypes definitions = memo
         other     -> error $ "Found missing Swagger type: " <> Text.unpack other
       -- Otherwise - if we have 'properties' - it's an object
       (_, _, Just props) ->
-        let requiredNames = case maybeName of
-              Just name -> requiredFields name required
-              Nothing   -> Set.empty
-
-            shouldBeRequired :: (ModelName, Expr) -> Bool
-            shouldBeRequired (name, expr) = or
-              -- | A field should not be optional if:
-              -- * the field name is in the 'required' list
-              [ Set.member (FieldName $ unModelName name) requiredNames
-              -- * the field value is somewhat a container, and "transitively emptiable"
-              --   (i.e. it could be an empty container, allowing dhall-to-yaml to throw
-              --   away the empty shell if so)
-              , case expr of
-                  -- So if it's a record we recursively check that all its fields can be emptiable
-                  (Dhall.Record kvs) -> List.foldr (\a b -> or [a, b]) False
-                    $ shouldBeRequired
-                    <$> (first ModelName)
-                    <$> Dhall.Map.toList kvs
-                  -- A list can indeed be empty
-                  (Dhall.App Dhall.List _) -> True
-                  -- An import requires us to recur on the toplevel Map of objects,
-                  -- to check if the object we're dealing with is itself an emptiable container
-                  (Dhall.Embed imp) ->
-                    let maybeModelName = fmap ModelName (namespacedObjectFromImport imp)
-                    in case (maybeModelName, maybeModelName >>= (\n -> Data.Map.Lazy.lookup n memo)) of
-                      (Just modelName, Just e) -> shouldBeRequired (modelName, e)
-                      _                        -> False
-                  _ -> False
-              ]
-
-            (required', optional')
-              = List.partition shouldBeRequired
-              $ Data.Map.toList
+        let (required', optional')
+              = Data.Map.partitionWithKey
+                (\k v -> shouldBeRequired maybeModelName (Just $ FieldName $ unModelName k, v))
               -- TODO: labelize
-              $ Data.Map.mapWithKey (\k -> convertToType (Just k)) props
+              $ Data.Map.mapWithKey (\_k -> convertToType Nothing) props
 
-            allFields = required' <> fmap (second $ Dhall.App Dhall.Optional) optional'
+            allFields
+              = Data.Map.toList required'
+              <> fmap (second $ Dhall.App Dhall.Optional) (Data.Map.toList optional')
 
         in Dhall.Record $ Dhall.Map.fromList $ fmap (first $ unModelName) allFields
       -- There are empty schemas that only have a description, so we return empty record

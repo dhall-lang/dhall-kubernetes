@@ -1,5 +1,7 @@
 { monitors =
     [] : List Text
+, secretRef =
+    ./io.k8s.api.core.v1.SecretReference.dhall
 , fsType =
     None Text
 , keyring =
@@ -8,8 +10,6 @@
     None Text
 , readOnly =
     None Bool
-, secretRef =
-    None ./../types/io.k8s.api.core.v1.SecretReference.dhall
 , user =
     None Text
 }

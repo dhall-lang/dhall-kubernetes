@@ -6,6 +6,8 @@
     List { mapKey : Text, mapValue : Text }
 , conditions :
     List ./io.k8s.api.core.v1.NodeCondition.dhall
+, daemonEndpoints :
+    ./io.k8s.api.core.v1.NodeDaemonEndpoints.dhall
 , images :
     List ./io.k8s.api.core.v1.ContainerImage.dhall
 , volumesAttached :
@@ -14,8 +16,6 @@
     List Text
 , config :
     Optional ./io.k8s.api.core.v1.NodeConfigStatus.dhall
-, daemonEndpoints :
-    Optional ./io.k8s.api.core.v1.NodeDaemonEndpoints.dhall
 , nodeInfo :
     Optional ./io.k8s.api.core.v1.NodeSystemInfo.dhall
 , phase :

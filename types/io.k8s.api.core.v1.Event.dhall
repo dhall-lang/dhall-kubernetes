@@ -6,8 +6,10 @@
     Text
 , metadata :
     ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
-, related :
-    ./io.k8s.api.core.v1.ObjectReference.dhall
+, series :
+    ./io.k8s.api.core.v1.EventSeries.dhall
+, source :
+    ./io.k8s.api.core.v1.EventSource.dhall
 , action :
     Optional Text
 , count :
@@ -22,14 +24,12 @@
     Optional Text
 , reason :
     Optional Text
+, related :
+    Optional ./io.k8s.api.core.v1.ObjectReference.dhall
 , reportingComponent :
     Optional Text
 , reportingInstance :
     Optional Text
-, series :
-    Optional ./io.k8s.api.core.v1.EventSeries.dhall
-, source :
-    Optional ./io.k8s.api.core.v1.EventSource.dhall
 , type :
     Optional Text
 }

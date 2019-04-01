@@ -1,35 +1,25 @@
-{ azureDisk =
-    ./io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
-, cephfs =
-    ./io.k8s.api.core.v1.CephFSVolumeSource.dhall
-, configMap =
-    ./io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
-, downwardAPI =
-    ./io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
-, fc =
-    ./io.k8s.api.core.v1.FCVolumeSource.dhall
-, flexVolume =
-    ./io.k8s.api.core.v1.FlexVolumeSource.dhall
-, iscsi =
-    ./io.k8s.api.core.v1.ISCSIVolumeSource.dhall
-, projected =
-    ./io.k8s.api.core.v1.ProjectedVolumeSource.dhall
-, rbd =
-    ./io.k8s.api.core.v1.RBDVolumeSource.dhall
-, scaleIO =
-    ./io.k8s.api.core.v1.ScaleIOVolumeSource.dhall
-, secret =
-    ./io.k8s.api.core.v1.SecretVolumeSource.dhall
+{ emptyDir =
+    ./io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
+, flocker =
+    ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
 , awsElasticBlockStore =
     None ./../types/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall
+, azureDisk =
+    None ./../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , azureFile =
     None ./../types/io.k8s.api.core.v1.AzureFileVolumeSource.dhall
+, cephfs =
+    None ./../types/io.k8s.api.core.v1.CephFSVolumeSource.dhall
 , cinder =
     None ./../types/io.k8s.api.core.v1.CinderVolumeSource.dhall
-, emptyDir =
-    None ./../types/io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
-, flocker =
-    None ./../types/io.k8s.api.core.v1.FlockerVolumeSource.dhall
+, configMap =
+    None ./../types/io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
+, downwardAPI =
+    None ./../types/io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
+, fc =
+    None ./../types/io.k8s.api.core.v1.FCVolumeSource.dhall
+, flexVolume =
+    None ./../types/io.k8s.api.core.v1.FlexVolumeSource.dhall
 , gcePersistentDisk =
     None ./../types/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall
 , gitRepo =
@@ -38,6 +28,8 @@
     None ./../types/io.k8s.api.core.v1.GlusterfsVolumeSource.dhall
 , hostPath =
     None ./../types/io.k8s.api.core.v1.HostPathVolumeSource.dhall
+, iscsi =
+    None ./../types/io.k8s.api.core.v1.ISCSIVolumeSource.dhall
 , nfs =
     None ./../types/io.k8s.api.core.v1.NFSVolumeSource.dhall
 , persistentVolumeClaim =
@@ -46,8 +38,16 @@
     None ./../types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall
 , portworxVolume =
     None ./../types/io.k8s.api.core.v1.PortworxVolumeSource.dhall
+, projected =
+    None ./../types/io.k8s.api.core.v1.ProjectedVolumeSource.dhall
 , quobyte =
     None ./../types/io.k8s.api.core.v1.QuobyteVolumeSource.dhall
+, rbd =
+    None ./../types/io.k8s.api.core.v1.RBDVolumeSource.dhall
+, scaleIO =
+    None ./../types/io.k8s.api.core.v1.ScaleIOVolumeSource.dhall
+, secret =
+    None ./../types/io.k8s.api.core.v1.SecretVolumeSource.dhall
 , storageos =
     None ./../types/io.k8s.api.core.v1.StorageOSVolumeSource.dhall
 , vsphereVolume =
