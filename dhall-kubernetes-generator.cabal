@@ -18,7 +18,6 @@ executable dhall-kubernetes
       Dhall.Kubernetes.Convert
       Dhall.Kubernetes.Data
       Dhall.Kubernetes.Types
-      Paths_dhall_kubernetes
   hs-source-dirs:
       src
   default-extensions: DeriveDataTypeable DeriveGeneric DerivingStrategies DuplicateRecordFields GeneralizedNewtypeDeriving LambdaCase RecordWildCards ScopedTypeVariables OverloadedStrings FlexibleInstances ConstraintKinds ApplicativeDo TupleSections
