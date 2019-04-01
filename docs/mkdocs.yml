@@ -6,9 +6,7 @@ theme:
   custom_dir: theme
 nav:
   - Overview: index.md
-  - User Guide:
-      - Introduction: intro.md
-      - Apply: apply.md
-      - Secrets and ConfigMaps: config.md
-      - Container Images: images.md
-  - Projects using Dhall: projects.md
+  # - Tutorial:
+  #     - Step 1:
+  #     - Step 2:
+  #    

@@ -1,4 +1,3 @@
-# Index
 # `dhall-kubernetes`
 
 `dhall-kubernetes` contains [Dhall][dhall-lang] bindings to [Kubernetes][kubernetes],
