@@ -1,6 +1,0 @@
-{ name          : Text
-, annotations   : List { mapKey : Text, mapValue : Text }
-, containerPort : Natural
-, outPort       : Natural
-, type          : ./ServiceType
-}
