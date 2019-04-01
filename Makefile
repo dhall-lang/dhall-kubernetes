@@ -10,6 +10,7 @@ check: build
 	mkdir -p tmp
 	# LC_ALL=en_US.UTF-8 ./scripts/build-examples.py tmp
 install: build
-	cp -r types default "${out}"
+	cp -r types defaults "${out}"
+	cp types.dhall defaults.dhall typesUnion.dhall "${out}"
 	cp README.md "${out}"
 

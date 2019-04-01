@@ -11,7 +11,7 @@
 }:
 let 
   # Ignore generated files
-  ignoreOutputs = name: type: !(lib.elem name (map toString [../README.md ../types ../default]));
+  ignoreOutputs = name: type: !(lib.elem name (map toString [../README.md ../types ../defaults]));
 in
 stdenv.mkDerivation {
   name = "dhall-kubernetes";
