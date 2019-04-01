@@ -4,7 +4,7 @@
 mkDerivation {
   pname = "dhall-kubernetes-generator";
   version = "0.1.0.0";
-  src = ./..;
+  src = ../dhall-kubernetes-generator;
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [
