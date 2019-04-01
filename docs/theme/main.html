@@ -5,8 +5,7 @@
   <meta charset="utf-8">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,500,700" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
       margin: 0;
@@ -34,8 +33,6 @@
       line-height: 1.59em;
    
     }
-
-
 
     article {
       margin-top: 1.3rem;
@@ -209,6 +206,9 @@
 
     /* Navigation */
 
+    #sidebar {
+      padding-top: 2rem;
+    }
     #sidebar>nav {
       grid-area: toc;
     }
@@ -307,28 +307,36 @@
     main {
       grid-area: lol;
  
-      padding: 2rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
       padding-left: 4rem;
       padding-right: 4rem;
     }
 
     @media screen and (max-width: 66rem) {
+
       #content {
         display: flex;
         flex-direction: column; 
       }
 
+      #sidebar img {
+        margin: 2rem;
+      }
+
       #sidebar {
         order: 2;
-        display: block;
-        padding: 2rem;
+        display: flex;
+        padding: 1rem;
+        padding-top: 0;
       }
 
       #lol {
+        max-width: 50rem;
         display: block;
         overflow: inherit;
         min-height: initial;
-        order: 1
+        order: 1;
       }
 
       #sidebar>img {
@@ -338,6 +346,12 @@
       #sidebar>nav li.current,
       #sidebar>nav li ul {
         border-right: none;
+      }
+    }
+
+    @media screen and (max-width:  33rem) {
+      main {
+        padding: 1rem;
       }
     }
   </style>
