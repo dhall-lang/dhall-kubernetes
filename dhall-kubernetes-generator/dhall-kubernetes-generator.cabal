@@ -8,8 +8,6 @@ maintainer:     fabrizio@ferrai.io
 copyright:      2019 Fabrizio Ferrai
 license:        BSD3
 build-type:     Simple
-extra-source-files:
-    README.md
 
 executable dhall-kubernetes-generator
   main-is: Main.hs

@@ -8,7 +8,6 @@ spec:
     port: 80
   type: NodePort
 metadata:
-  annotations: {}
   name: nginx
   labels:
     app: nginx
