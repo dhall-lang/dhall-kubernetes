@@ -46,16 +46,16 @@ In the following example, we:
 1. Import the Kubernetes definitions as Dhall Types (the `types.dhall` file) from the local repo.
    In your case you will want to replace the local path with a remote one, e.g.
    `https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/0a4f0b87fbdd4b679853c81ff804bde7b44336cf/types.dhall`.  
-   Note: the `sha256:..` is there so that:
+   Note: the `sha256:..` is applied to some imports so that:
      1. the import is cached locally after the first evaluation, with great time savings (and avoiding network calls)
      2. prevent execution if the content of the file changes. This is a security feature, and you
         can read more [in Dhall's "Security Guarantees" document][security-hashes]
 2. Import the defaults for the above types.  
    Since _most_ of the fields in any definition are optional, for better ergonomics while 
-   coding Dhall we have generated default values for all types, so we can just use the `// `
-   operator (record merge) to add our data to the default configuration.  
+   coding Dhall we have generated default values for all types, so we can just use the `//`
+   operator (right-biased record merge) to add our data to the default configuration.  
    The pattern looks something like this: `defaultValue // { ourDataHere = ..}` 
-3. Define the [Deployment][deployment] using this pattern (see the default [here][deployment-default])
+3. Define the [Deployment][deployment] using this pattern (see the default [here][default-deployment])
    and hardcoding the deployment details:
 
 ```haskell
@@ -110,12 +110,13 @@ in  deployment
 We then run this through `dhall-to-yaml` to generate our Kubernetes definition:
 
 ```bash
-dhall-to-yaml --omitEmpty < deployment.dhall
+dhall-to-yaml --omitEmpty < examples/deploymentSimple.dhall
 ```
 
 And we get:
 ```yaml
 ## examples/out/deploymentSimple.yaml
+
 apiVersion: apps/v1
 kind: Deployment
 spec:
@@ -152,12 +153,12 @@ containing stuff like TLS certs and routes for every service - see the [type][In
 
 Things to note in the following example:
 - we define the `Service` type inline in the file, but in your case you'll want to have a
-  separate `./Service.dhall` file (so you can share it)
+  separate `./Service.dhall` file (so you can share around the project)
 - we define functions to create the TLS definitions and the routes, so that we can `map`
   them over the list of services.
 - we also defined the list of `services` inline, but you should instead return the
   `mkIngress` function instead of applying it, so you can do something like
-  `dhall-to-yaml <<< "./mkIngress.dhall myServices.dhall"`
+  `dhall-to-yaml --omitEmpty <<< "./mkIngress.dhall ./myServices.dhall"`
 
 ```haskell
 -- examples/ingress.dhall
@@ -250,12 +251,13 @@ in  mkIngress services
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml --omitEmpty < ingress.yaml.dhall
+dhall-to-yaml --omitEmpty < examples/ingress.dhall
 ```
 
 Result:
 ```yaml
 ## examples/out/ingress.yaml
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 spec:
@@ -287,16 +289,43 @@ metadata:
 
 ```
 
-## Projects Using `dhall-kubernetes`
-
-* [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
-
-
 ## FAQ
 
 #### Can I generate a YAML file with many objects in it?
 
-It's usual that 
+It is usual for k8s YAML files to include multiple objects separated by `---` ("documents" in YAML lingo),
+so you might want to do it too.
+
+If the objects have the same type, this is very easy: you return a Dhall list containing the
+objects, and use the `--documents` flag, e.g.:
+
+```bash
+dhall-to-yaml --documents --omitEmpty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
+```
+
+If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
+However, since [k8s has a builtin `List` type for these cases][https://github.com/kubernetes/kubernetes/blob/master/hack/testdata/list.yaml],
+it's possible to use it together with the [union type of all k8s types that we generate][typesUnion].
+
+So if we want to deploy e.g. a Deployment and a Service together, we can do:
+
+```haskell
+let k8s = ./typesUnion.dhall
+
+in 
+{ apiVersion = "v1"
+, kind = "List"
+, items = 
+  [ k8s.Deployment ./my-deployment.dhall
+  , k8s.Service ./my-service.dhall
+  ]
+}
+```
+
+
+## Projects Using `dhall-kubernetes`
+
+* [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
 
 
 ## Development
@@ -335,6 +364,7 @@ to run this command afterwards.
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
 [dhall-website]: https://dhall-lang.org/
 [security-hashes]: https://github.com/dhall-lang/dhall-lang/wiki/Safety-guarantees#code-injection
+[typesUnion]: https://github.com/dhall-lang/dhall-kubernetes/blob/master/typesUnion.dhall
 [kubernetes]: https://kubernetes.io/
 [normalization]: https://en.wikipedia.org/wiki/Normalization_property_(abstract_rewriting)
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
