@@ -304,7 +304,7 @@ dhall-to-yaml --documents --omitEmpty <<< "let a = ./examples/deploymentSimple.d
 ```
 
 If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
-However, since [k8s has a builtin `List` type for these cases][https://github.com/kubernetes/kubernetes/blob/master/hack/testdata/list.yaml],
+However, since [k8s has a builtin `List` type for these cases](https://github.com/kubernetes/kubernetes/blob/master/hack/testdata/list.yaml),
 it's possible to use it together with the [union type of all k8s types that we generate][typesUnion].
 
 So if we want to deploy e.g. a Deployment and a Service together, we can do:
