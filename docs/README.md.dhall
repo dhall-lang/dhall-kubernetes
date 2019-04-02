@@ -1,6 +1,8 @@
 ''
 # `dhall-kubernetes`
 
+<img src="logo/dhall-kubernetes-logo.svg" alt="dhall-kubernetes logo" height="300px"/>
+
 `dhall-kubernetes` contains [Dhall][dhall-lang] bindings to [Kubernetes][kubernetes],
 so you can generate Kubernetes objects definitions from Dhall expressions.
 This will let you easily typecheck, template and modularize your Kubernetes definitions.
@@ -24,102 +26,111 @@ all while being non-Turing complete, strongly typed and [strongly normalizing][n
 (i.e.: reduces everything to a normal form, no matter how much abstraction you build),
 so saving you from the *"oh-noes-I-made-my-config-in-code-and-now-its-too-abstract"* nightmare.
 
-For a Dhall Tutorial, see the [readme of the project][dhall-lang],
+For a Dhall Tutorial, see [the website][dhall-website], or the [readme of the project][dhall-lang],
 or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
-**NOTE**: `dhall-kubernetes` requires at least version `1.20.1` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
-(version `5.0.0` of the language).
+**NOTE**: `dhall-kubernetes` requires at least version `1.21.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
+(version `6.0.0` of the language).
 
 You can install the latest version with the following:
 ```bash
-stack install dhall-1.20.1 dhall-json-1.2.6 --resolver=nightly-2019-01-17
+stack install dhall-1.21.0 dhall-json-1.2.7 --resolver=nightly-2019-04-01
 ```
 
-## Quickstart - main API
-
-We provide a simple API for the most common cases (For a list, see the [api](./api) folder).
+## Quickstart - a simple Deployment
 
 Let's say we'd like to configure a Deployment exposing an `nginx` webserver.
+
 In the following example, we:
-1. Define a `config` for our service, by merging a [default config][default-deployment]
-  (with the Dhall record-merge operator `//`) with a record with our parameters.
-2. In there we define the details of the Deployment we care about (note that we do the same
-  "merging with defaults" operation for our container as well, so we don't have to specify
-  all the parameters)
-3. We call the [`mkDeployment`][mkDeployment] function on our `config`
+1. Import the Kubernetes definitions as Dhall Types (the `types.dhall` file) from the local repo.
+   In your case you will want to replace the local path with a remote one, e.g.
+   `https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/0a4f0b87fbdd4b679853c81ff804bde7b44336cf/types.dhall`.  
+   Note: the `sha256:..` is there so that:
+     1. the import is cached locally after the first evaluation, with great time savings (and avoiding network calls)
+     2. prevent execution if the content of the file changes. This is a security feature, and you
+        can read more [in Dhall's "Security Guarantees" document][security-hashes]
+2. Import the defaults for the above types.  
+   Since _most_ of the fields in any definition are optional, for better ergonomics while 
+   coding Dhall we have generated default values for all types, so we can just use the `// `
+   operator (record merge) to add our data to the default configuration.  
+   The pattern looks something like this: `defaultValue // { ourDataHere = ..}` 
+3. Define the [Deployment][deployment] using this pattern (see the default [here][deployment-default])
+   and hardcoding the deployment details:
 
 ```haskell
--- examples/deployment.dhall
-${../examples/deployment.dhall as Text}
+-- examples/deploymentSimple.dhall
+
+${../examples/deploymentSimple.dhall as Text}
 ```
 
 We then run this through `dhall-to-yaml` to generate our Kubernetes definition:
 
 ```bash
-dhall-to-yaml --omitNull < deployment.dhall
+dhall-to-yaml --omitEmpty < deployment.dhall
 ```
 
 And we get:
 ```yaml
-## examples/out/deployment.yaml
-${../examples/out/deployment.yaml as Text}
+## examples/out/deploymentSimple.yaml
+${../examples/out/deploymentSimple.yaml as Text}
 ```
 
-## Advanced usage - raw API
+## More modular: defining an Ingress
 
-If the main API is not enough (e.g. the object you'd like to generate is not in the list),
-you can just fall back on using the raw Types and defaults the library provides
-(and Pull Request here your program afterwards!).
+The above is cool, but hardcoding data is not that cool.
 
-Let's say we want to generate an Ingress definition (for an [Nginx Ingress][nginx-ingress])
-that contains TLS certs and routes for every service.
-For more examples of using this API see the [`./examples` folder](./examples).
+So in a more realistic deployment you'll probably want to define:
+- some `MyService` type that contains the config settings relevant to your deployments
+- some functions parametrized by this type, so that you can produce objects to send to k8s
+  by just applying these functions to `MyService` objects
 
-In the [`types`](./types) folder you'll find the types for the Kubernetes definitions. E.g.
-[here's][Ingress] the type for the Ingress.
+This is useful because then you can define your `Service`s separately from the Kubernetes logic,
+and reuse those objects for configuring other things (e.g. configuring the services themselves, 
+templating documentation, configuring Terraform deployments, you name it).
 
-Since _most_ of the fields in all definitions are optional, for better
-ergonomics while coding Dhall we also generate default values for all types, in
-the [`default`](./default) folder.  When some fields are required, the default value
-is a function whose input is a record of required fields, that returns the object
-with these fields set. E.g. the default for the Ingress is [this
-function][Ingress-default].
+As an example of that, next we'll define an Ingress (an [Nginx Ingress][nginx-ingress] in this case),
+containing stuff like TLS certs and routes for every service - see the [type][Ingress] and [default][Ingress-default] for it.
 
-Let's say we have a Service with the following configuration:
-
-```haskell
--- examples/myConfig.dhall
-${../examples/myConfig.dhall as Text}
-```
-
-That has the following type:
-```haskell
--- examples/Config.dhall
-${../examples/Config.dhall as Text}
-```
-
-We can now expose this service out to the world with the Ingress:
+Things to note in the following example:
+- we define the `Service` type inline in the file, but in your case you'll want to have a
+  separate `./Service.dhall` file (so you can share it)
+- we define functions to create the TLS definitions and the routes, so that we can `map`
+  them over the list of services.
+- we also defined the list of `services` inline, but you should instead return the
+  `mkIngress` function instead of applying it, so you can do something like
+  `dhall-to-yaml <<< "./mkIngress.dhall myServices.dhall"`
 
 ```haskell
--- examples/ingressRaw.dhall
+-- examples/ingress.dhall
 
-
-${../examples/ingressRaw.dhall as Text}
+${../examples/ingress.dhall as Text}
 ```
 
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml --omitNull < ingress.yaml.dhall
+dhall-to-yaml --omitEmpty < ingress.yaml.dhall
 ```
 
 Result:
 ```yaml
-## examples/out/ingressRaw.yaml
-${../examples/out/ingressRaw.yaml as Text}
+## examples/out/ingress.yaml
+${../examples/out/ingress.yaml as Text}
 ```
+
+## Projects Using `dhall-kubernetes`
+
+* [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
+
+
+## FAQ
+
+#### Can I generate a YAML file with many objects in it?
+
+It's usual that 
+
 
 ## Development
 
@@ -153,19 +164,16 @@ If you make changes to `scripts/convert.py` or `docs/README.md.dhall`, you need
 to run this command afterwards.
 
 
-## Projects Using `dhall-kubernetes`
-
-* [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
-
-
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
+[dhall-website]: https://dhall-lang.org/
+[security-hashes]: https://github.com/dhall-lang/dhall-lang/wiki/Safety-guarantees#code-injection
 [kubernetes]: https://kubernetes.io/
 [normalization]: https://en.wikipedia.org/wiki/Normalization_property_(abstract_rewriting)
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
-[dhall-tutorial]: http://hackage.haskell.org/package/dhall-1.17.0/docs/Dhall-Tutorial.html
-[default-deployment]: ./api/Deployment/default
-[mkDeployment]: ./api/Deployment/mkDeployment
+[dhall-tutorial]: http://hackage.haskell.org/package/dhall-1.21.0/docs/Dhall-Tutorial.html
+[default-deployment]: ./defaults/io.k8s.api.apps.v1.Deployment.dhall
+[deployment]: ./types/io.k8s.api.apps.v1.Deployment.dhall
 [Ingress]: ./types/io.k8s.api.extensions.v1beta1.Ingress.dhall
 [Ingress-default]: ./default/io.k8s.api.extensions.v1beta1.Ingress.dhall
 [prometheus-operator]: https://github.com/coreos/prometheus-operator
