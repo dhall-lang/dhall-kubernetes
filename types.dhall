@@ -680,22 +680,34 @@
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceColumnDefinition.dhall
 , CustomResourceConversion =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceConversion.dhall
+, CustomResourceDefinition =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition.dhall
 , CustomResourceDefinitionCondition =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionCondition.dhall
+, CustomResourceDefinitionList =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionList.dhall
 , CustomResourceDefinitionNames =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames.dhall
+, CustomResourceDefinitionSpec =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec.dhall
 , CustomResourceDefinitionStatus =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus.dhall
+, CustomResourceDefinitionVersion =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion.dhall
 , CustomResourceSubresourceScale =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresourceScale.dhall
 , CustomResourceSubresourceStatus =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresourceStatus.dhall
 , CustomResourceSubresources =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources.dhall
+, CustomResourceValidation =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation.dhall
 , ExternalDocumentation =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation.dhall
 , JSON =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON.dhall
+, JSONSchemaProps =
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall
 , JSONSchemaPropsOrArray =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray.dhall
 , JSONSchemaPropsOrBool =

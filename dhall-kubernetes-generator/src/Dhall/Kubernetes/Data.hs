@@ -1,20 +1,17 @@
 module Dhall.Kubernetes.Data where
 
+import qualified Data.Map.Strict        as Data.Map
 import           Data.Set               (Set)
 import qualified Data.Set               as Set
 import           Dhall.Kubernetes.Types
 
 
--- | List of objects that have issues with cyclic imports
-objectsWithCyclicImports :: Set ModelName
-objectsWithCyclicImports = Set.fromList $ ModelName <$>
-  [ "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition"
-  , "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionList"
-  , "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec"
-  , "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation"
-  , "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion"
-  , "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
-  ]
+-- | This just removes the offending keys from the definition
+patchCyclicImports :: Definition -> Definition
+patchCyclicImports Definition{ properties = oldProps, .. } = Definition{..}
+  where
+    properties = fmap (\propsMap -> Data.Map.withoutKeys propsMap toRemove) oldProps
+    toRemove = Set.fromList $ ModelName <$> [ "allOf", "anyOf", "not", "oneOf" ]
 
 
 -- | List of objects that we don't include in the defaults and types records.
