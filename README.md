@@ -1,5 +1,7 @@
 # `dhall-kubernetes`
 
+<img src="logo/dhall-kubernetes-logo.svg" alt="dhall-kubernetes logo" height="300px"/>
+
 `dhall-kubernetes` contains [Dhall][dhall-lang] bindings to [Kubernetes][kubernetes],
 so you can generate Kubernetes objects definitions from Dhall expressions.
 This will let you easily typecheck, template and modularize your Kubernetes definitions.
