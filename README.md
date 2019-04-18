@@ -35,7 +35,7 @@ or the [full tutorial][dhall-tutorial].
 
 You can install the latest version with the following:
 ```bash
-stack install dhall-1.21.0 dhall-json-1.2.6 --resolver=nightly-2019-01-17
+stack install dhall-1.21.0 dhall-json-1.2.7 --resolver=nightly-2019-04-16
 ```
 
 ## Quickstart - main API
