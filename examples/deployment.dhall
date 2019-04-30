@@ -1,8 +1,8 @@
 let types =
-      ../types.dhall sha256:1ac84a230c0fdd003b4db05157b11329d273217cc6837083eb30c9288a67c87f
+      ../types.dhall sha256:29d8c4387540826a68775e9439e8d00f226d440a83dedf80ff877c612fa524a2
 
 let defaults =
-      ../defaults.dhall sha256:2e3d2b5d5fb52d08b078e803fa88ac1ed0f788c6a4d6342621a76eb77afe40f4
+      ../defaults.dhall sha256:7fb71a223f3aeb4f72824303f7cbfdd038bb2b7a7dc1f76db7e65031dad0523c
 
 let kv =
       ( ../Prelude.dhall).JSON.keyText
