@@ -83,6 +83,6 @@ main = do
       typesUnionPath = "./typesUnion.dhall"
       defaultsRecordPath = "./defaults.dhall"
 
-  writeDhall typesUnionPath (Dhall.Union typesMap)
+  writeDhall typesUnionPath (Dhall.Union $ fmap Just typesMap)
   writeDhall typesRecordPath (Dhall.RecordLit typesMap)
   writeDhall defaultsRecordPath (Dhall.RecordLit defaultsMap)

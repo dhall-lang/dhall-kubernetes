@@ -30,12 +30,12 @@ or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
-**NOTE**: `dhall-kubernetes` requires at least version `1.21.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
-(version `6.0.0` of the language).
+**NOTE**: `dhall-kubernetes` requires at least version `1.22.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
+(version `7.0.0` of the language).
 
 You can install the latest version with the following:
 ```bash
-stack install dhall-1.21.0 dhall-json-1.2.7 --resolver=nightly-2019-04-01
+stack install dhall-1.22.0 dhall-json-1.2.8 --resolver=nightly-2019-04-28
 ```
 
 ## Quickstart - a simple Deployment

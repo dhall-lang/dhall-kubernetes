@@ -97,7 +97,7 @@ toTypes definitions = memo
 
     kvList = Dhall.App Dhall.List $ Dhall.Record $ Dhall.Map.fromList
       [ ("mapKey", Dhall.Text), ("mapValue", Dhall.Text) ]
-    intOrString = Dhall.Union $ Dhall.Map.fromList
+    intOrString = Dhall.Union $ Dhall.Map.fromList $ fmap (second Just)
       [ ("Int", Dhall.Natural), ("String", Dhall.Text) ]
 
     shouldBeRequired :: Maybe ModelName -> (Maybe FieldName, Expr) -> Bool

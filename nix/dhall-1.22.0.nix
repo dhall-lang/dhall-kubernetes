@@ -1,21 +1,20 @@
 { mkDerivation, aeson, aeson-pretty, ansi-terminal, base
 , bytestring, case-insensitive, cborg, cborg-json, containers
 , contravariant, criterion, cryptonite, deepseq, Diff, directory
-, doctest, dotgen, exceptions, filepath, haskeline, http-client
-, http-client-tls, http-types, lens-family-core, megaparsec, memory
-, mockery, mtl, optparse-applicative, parsers, prettyprinter
-, prettyprinter-ansi-terminal, QuickCheck, quickcheck-instances
-, repline, scientific, serialise, stdenv, tasty, tasty-hunit
-, tasty-quickcheck, template-haskell, text, transformers
-, unordered-containers, uri-encode, vector
+, doctest, dotgen, exceptions, filepath, foldl, haskeline
+, http-client, http-client-tls, http-types, lens-family-core
+, megaparsec, memory, mockery, mtl, optparse-applicative, parsers
+, prettyprinter, prettyprinter-ansi-terminal, QuickCheck
+, quickcheck-instances, repline, scientific, serialise, stdenv
+, tasty, tasty-hunit, tasty-quickcheck, template-haskell, text
+, transformers, turtle, unordered-containers, uri-encode, vector
 }:
 mkDerivation {
   pname = "dhall";
-  version = "1.21.0";
-  sha256 = "9b22cc6f7694ef2f5d5d6fa66727044622b9905b2a9da0cdf376c75ad3b9df0e";
+  version = "1.22.0";
+  sha256 = "bf7782d99be9b5a99415b2a84d43a16c5a31ecdd4de5b8fd34daeee173df0039";
   isLibrary = true;
   isExecutable = true;
-  doCheck = false;
   libraryHaskellDepends = [
     aeson aeson-pretty ansi-terminal base bytestring case-insensitive
     cborg cborg-json containers contravariant cryptonite Diff directory
@@ -29,8 +28,9 @@ mkDerivation {
   executableHaskellDepends = [ base ];
   testHaskellDepends = [
     base bytestring cborg containers deepseq directory doctest filepath
-    mockery prettyprinter QuickCheck quickcheck-instances serialise
-    tasty tasty-hunit tasty-quickcheck text transformers vector
+    foldl mockery prettyprinter QuickCheck quickcheck-instances
+    serialise tasty tasty-hunit tasty-quickcheck text transformers
+    turtle vector
   ];
   benchmarkHaskellDepends = [
     base bytestring containers criterion directory serialise text
