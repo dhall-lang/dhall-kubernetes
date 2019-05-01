@@ -33,7 +33,7 @@ or the [full tutorial][dhall-tutorial].
 **NOTE**: `dhall-kubernetes` requires at least version `1.22.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
 (version `7.0.0` of the language).
 
-You can install the latest version with the following:
+You can install the latest version with the following [stack][stack] command:
 ```bash
 stack install dhall-1.22.0 dhall-json-1.2.8 --resolver=nightly-2019-04-28
 ```
@@ -62,10 +62,10 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let types =
-      ../types.dhall sha256:1ac84a230c0fdd003b4db05157b11329d273217cc6837083eb30c9288a67c87f
+      ../types.dhall sha256:29d8c4387540826a68775e9439e8d00f226d440a83dedf80ff877c612fa524a2
 
 let defaults =
-      ../defaults.dhall sha256:2e3d2b5d5fb52d08b078e803fa88ac1ed0f788c6a4d6342621a76eb77afe40f4
+      ../defaults.dhall sha256:7fb71a223f3aeb4f72824303f7cbfdd038bb2b7a7dc1f76db7e65031dad0523c
 
 let deployment
     : types.Deployment
@@ -170,10 +170,10 @@ let map = Prelude.`List`.map
 let kv = Prelude.JSON.keyText
 
 let types =
-      ../types.dhall sha256:1ac84a230c0fdd003b4db05157b11329d273217cc6837083eb30c9288a67c87f
+      ../types.dhall sha256:29d8c4387540826a68775e9439e8d00f226d440a83dedf80ff877c612fa524a2
 
 let defaults =
-      ../defaults.dhall sha256:2e3d2b5d5fb52d08b078e803fa88ac1ed0f788c6a4d6342621a76eb77afe40f4
+      ../defaults.dhall sha256:7fb71a223f3aeb4f72824303f7cbfdd038bb2b7a7dc1f76db7e65031dad0523c
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -360,6 +360,7 @@ If you make changes to `scripts/convert.py` or `docs/README.md.dhall`, you need
 to run this command afterwards.
 
 
+[stack]: https://haskellstack.org/
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
 [dhall-website]: https://dhall-lang.org/
