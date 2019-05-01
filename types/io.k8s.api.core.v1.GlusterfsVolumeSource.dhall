@@ -1,4 +1,1 @@
-{ endpoints : (Text)
-, path : (Text)
-, readOnly : (Optional (Bool))
-}
+{ endpoints : Text, path : Text, readOnly : Optional Bool }

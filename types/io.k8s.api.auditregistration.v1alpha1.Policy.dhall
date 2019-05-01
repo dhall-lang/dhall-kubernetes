@@ -1,3 +1,1 @@
-{ level : (Text)
-, stages : (Optional (List Text))
-}
+{ level : Text, stages : List Text }

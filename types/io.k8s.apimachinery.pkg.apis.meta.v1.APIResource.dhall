@@ -1,10 +1,19 @@
-{ categories : (Optional (List Text))
-, group : (Optional (Text))
-, kind : (Text)
-, name : (Text)
-, namespaced : (Bool)
-, shortNames : (Optional (List Text))
-, singularName : (Text)
-, verbs : (List Text)
-, version : (Optional (Text))
+{ categories :
+    List Text
+, kind :
+    Text
+, name :
+    Text
+, namespaced :
+    Bool
+, shortNames :
+    List Text
+, singularName :
+    Text
+, verbs :
+    List Text
+, group :
+    Optional Text
+, version :
+    Optional Text
 }

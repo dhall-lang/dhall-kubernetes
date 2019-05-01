@@ -1,8 +1,0 @@
-{ accessModes = ([] : Optional (List Text))
-, dataSource = ([] : Optional (../types/io.k8s.api.core.v1.TypedLocalObjectReference.dhall))
-, resources = ([] : Optional (../types/io.k8s.api.core.v1.ResourceRequirements.dhall))
-, selector = ([] : Optional (../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall))
-, storageClassName = ([] : Optional (Text))
-, volumeMode = ([] : Optional (Text))
-, volumeName = ([] : Optional (Text))
-} : ../types/io.k8s.api.core.v1.PersistentVolumeClaimSpec.dhall

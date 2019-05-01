@@ -1,4 +1,1 @@
-{ directory : (Optional (Text))
-, repository : (Text)
-, revision : (Optional (Text))
-}
+{ repository : Text, directory : Optional Text, revision : Optional Text }

@@ -1,12 +1,23 @@
-{ chapAuthDiscovery : (Optional (Bool))
-, chapAuthSession : (Optional (Bool))
-, fsType : (Optional (Text))
-, initiatorName : (Optional (Text))
-, iqn : (Text)
-, iscsiInterface : (Optional (Text))
-, lun : (Natural)
-, portals : (Optional (List Text))
-, readOnly : (Optional (Bool))
-, secretRef : (Optional (./io.k8s.api.core.v1.LocalObjectReference.dhall))
-, targetPortal : (Text)
+{ iqn :
+    Text
+, lun :
+    Natural
+, portals :
+    List Text
+, secretRef :
+    ./io.k8s.api.core.v1.LocalObjectReference.dhall
+, targetPortal :
+    Text
+, chapAuthDiscovery :
+    Optional Bool
+, chapAuthSession :
+    Optional Bool
+, fsType :
+    Optional Text
+, initiatorName :
+    Optional Text
+, iscsiInterface :
+    Optional Text
+, readOnly :
+    Optional Bool
 }

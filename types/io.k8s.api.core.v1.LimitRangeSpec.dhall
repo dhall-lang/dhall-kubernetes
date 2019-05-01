@@ -1,2 +1,1 @@
-{ limits : (List ./io.k8s.api.core.v1.LimitRangeItem.dhall)
-}
+{ limits : List ./io.k8s.api.core.v1.LimitRangeItem.dhall }

@@ -1,5 +1,0 @@
-{ initial : Natural
-, period  : Natural
-, port    : Natural
-, path    : Text
-}

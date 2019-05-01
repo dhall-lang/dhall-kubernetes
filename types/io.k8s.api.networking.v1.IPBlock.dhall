@@ -1,3 +1,1 @@
-{ cidr : (Text)
-, except : (Optional (List Text))
-}
+{ cidr : Text, except : List Text }

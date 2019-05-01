@@ -1,3 +1,1 @@
-{ pathPrefix : (Optional (Text))
-, readOnly : (Optional (Bool))
-}
+{ pathPrefix : Optional Text, readOnly : Optional Bool }

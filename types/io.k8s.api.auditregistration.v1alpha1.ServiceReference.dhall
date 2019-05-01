@@ -1,4 +1,1 @@
-{ name : (Text)
-, namespace : (Text)
-, path : (Optional (Text))
-}
+{ name : Text, namespace : Text, path : Optional Text }

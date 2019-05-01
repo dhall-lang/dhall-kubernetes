@@ -1,7 +1,13 @@
-{ categories : (Optional (List Text))
-, kind : (Text)
-, listKind : (Optional (Text))
-, plural : (Text)
-, shortNames : (Optional (List Text))
-, singular : (Optional (Text))
+{ categories :
+    List Text
+, kind :
+    Text
+, plural :
+    Text
+, shortNames :
+    List Text
+, listKind :
+    Optional Text
+, singular :
+    Optional Text
 }

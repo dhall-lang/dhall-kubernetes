@@ -1,7 +1,13 @@
-{ extra : (Optional ((List {mapKey : Text, mapValue : Text})))
-, groups : (Optional (List Text))
-, request : (Text)
-, uid : (Optional (Text))
-, usages : (Optional (List Text))
-, username : (Optional (Text))
+{ extra :
+    List { mapKey : Text, mapValue : Text }
+, groups :
+    List Text
+, request :
+    Text
+, usages :
+    List Text
+, uid :
+    Optional Text
+, username :
+    Optional Text
 }

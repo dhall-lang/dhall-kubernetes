@@ -1,2 +1,1 @@
-{ persistentVolumeName : (Optional (Text))
-}
+{ persistentVolumeName : Optional Text }

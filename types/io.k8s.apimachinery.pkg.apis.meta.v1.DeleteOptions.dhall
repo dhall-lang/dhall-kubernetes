@@ -1,8 +1,15 @@
-{ apiVersion : (Text)
-, dryRun : (Optional (List Text))
-, gracePeriodSeconds : (Optional (Natural))
-, kind : (Text)
-, orphanDependents : (Optional (Bool))
-, preconditions : (Optional (./io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions.dhall))
-, propagationPolicy : (Optional (Text))
+{ apiVersion :
+    Text
+, dryRun :
+    List Text
+, kind :
+    Text
+, preconditions :
+    ./io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions.dhall
+, gracePeriodSeconds :
+    Optional Natural
+, orphanDependents :
+    Optional Bool
+, propagationPolicy :
+    Optional Text
 }

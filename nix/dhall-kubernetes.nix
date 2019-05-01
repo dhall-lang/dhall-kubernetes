@@ -1,17 +1,26 @@
-{lib, stdenv, dhall, dhall-json, dhall-text, dhallPackages, kubernetes-openapi-spec, python3, glibcLocales}:
+{ dhall
+, dhall-json
+, dhallPackages
+, dhall-text
+, glibcLocales
+, haskellPackages
+, kubernetes-openapi-spec
+, lib
+, python3
+, stdenv
+}:
 let 
   # Ignore generated files
-  ignoreOutputs = name: type: !(lib.elem name (map toString [../README.md ../types ../default]));
+  ignoreOutputs = name: type: !(lib.elem name (map toString [../README.md ../types ../defaults]));
 in
 stdenv.mkDerivation {
   name = "dhall-kubernetes";
   DHALL_PRELUDE = "${dhallPackages.prelude}/package.dhall";
   OPENAPI_SPEC = "${kubernetes-openapi-spec}";
   doCheck = true;
-  buildInputs =  [ dhall dhall-json dhall-text python3 glibcLocales ];
+  buildInputs =  [ haskellPackages.dhall-kubernetes-generator dhall dhall-json dhall-text python3 glibcLocales ];
   preBuild = ''
     patchShebangs ./scripts/build-readme.sh
-    patchShebangs ./scripts/convert.py
   '';
   preCheck = ''
     patchShebangs ./scripts/build-examples.py

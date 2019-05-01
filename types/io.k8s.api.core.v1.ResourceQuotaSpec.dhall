@@ -1,4 +1,7 @@
-{ hard : (Optional ((List {mapKey : Text, mapValue : Text})))
-, scopeSelector : (Optional (./io.k8s.api.core.v1.ScopeSelector.dhall))
-, scopes : (Optional (List Text))
+{ hard :
+    List { mapKey : Text, mapValue : Text }
+, scopes :
+    List Text
+, scopeSelector :
+    Optional ./io.k8s.api.core.v1.ScopeSelector.dhall
 }

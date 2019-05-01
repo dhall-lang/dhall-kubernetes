@@ -15,9 +15,9 @@ import sys
 
 examples_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'examples'))
 examples = [
-    'deploymentRaw',
-    'ingressRaw',
+    'deploymentSimple',
     'deployment',
+    'ingress',
     'service'
 ]
 
@@ -46,7 +46,7 @@ def build_yaml (example, out_dir):
     print('Building {}'.format(source))
     target = os.path.join(out_dir, example + '.yaml')
     expected = os.path.join(examples_dir, 'out', example + '.yaml')
-    cmd = 'dhall-to-yaml --omitNull <<< "./{source}" >{target}'.format(source=source, target=target)
+    cmd = 'dhall-to-yaml --omitEmpty <<< "./{source}" >{target}'.format(source=source, target=target)
     run(cmd, shell=True, executable='bash', check=True)
     return check_clean(expected, target)
 

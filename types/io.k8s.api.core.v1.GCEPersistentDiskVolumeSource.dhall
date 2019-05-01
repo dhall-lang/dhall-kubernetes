@@ -1,5 +1,9 @@
-{ fsType : (Optional (Text))
-, partition : (Optional (Natural))
-, pdName : (Text)
-, readOnly : (Optional (Bool))
+{ pdName :
+    Text
+, fsType :
+    Optional Text
+, partition :
+    Optional Natural
+, readOnly :
+    Optional Bool
 }

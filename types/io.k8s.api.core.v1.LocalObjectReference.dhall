@@ -1,2 +1,1 @@
-{ name : (Optional (Text))
-}
+{ name : Optional Text }

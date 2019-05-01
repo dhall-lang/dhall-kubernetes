@@ -1,5 +1,9 @@
-{ maxReplicas : (Natural)
-, metrics : (Optional (List ./io.k8s.api.autoscaling.v2beta2.MetricSpec.dhall))
-, minReplicas : (Optional (Natural))
-, scaleTargetRef : (./io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference.dhall)
+{ maxReplicas :
+    Natural
+, metrics :
+    List ./io.k8s.api.autoscaling.v2beta2.MetricSpec.dhall
+, scaleTargetRef :
+    ./io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference.dhall
+, minReplicas :
+    Optional Natural
 }

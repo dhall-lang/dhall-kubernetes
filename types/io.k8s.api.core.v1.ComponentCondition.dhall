@@ -1,5 +1,1 @@
-{ error : (Optional (Text))
-, message : (Optional (Text))
-, status : (Text)
-, type : (Text)
-}
+{ status : Text, type : Text, error : Optional Text, message : Optional Text }

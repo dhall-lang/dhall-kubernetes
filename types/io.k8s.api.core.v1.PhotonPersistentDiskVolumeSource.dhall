@@ -1,3 +1,1 @@
-{ fsType : (Optional (Text))
-, pdID : (Text)
-}
+{ pdID : Text, fsType : Optional Text }

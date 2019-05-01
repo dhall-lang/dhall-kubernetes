@@ -1,3 +1,1 @@
-{ datasetName : (Optional (Text))
-, datasetUUID : (Optional (Text))
-}
+{ datasetName : Optional Text, datasetUUID : Optional Text }

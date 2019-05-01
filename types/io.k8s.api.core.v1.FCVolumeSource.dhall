@@ -1,6 +1,11 @@
-{ fsType : (Optional (Text))
-, lun : (Optional (Natural))
-, readOnly : (Optional (Bool))
-, targetWWNs : (Optional (List Text))
-, wwids : (Optional (List Text))
+{ targetWWNs :
+    List Text
+, wwids :
+    List Text
+, fsType :
+    Optional Text
+, lun :
+    Optional Natural
+, readOnly :
+    Optional Bool
 }

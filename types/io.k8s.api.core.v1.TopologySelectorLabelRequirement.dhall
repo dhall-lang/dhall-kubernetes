@@ -1,3 +1,1 @@
-{ key : (Text)
-, values : (List Text)
-}
+{ key : Text, values : List Text }

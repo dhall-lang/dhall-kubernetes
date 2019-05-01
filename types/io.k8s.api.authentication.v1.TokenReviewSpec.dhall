@@ -1,3 +1,1 @@
-{ audiences : (Optional (List Text))
-, token : (Optional (Text))
-}
+{ audiences : List Text, token : Optional Text }

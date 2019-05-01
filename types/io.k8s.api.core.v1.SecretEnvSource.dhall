@@ -1,3 +1,1 @@
-{ name : (Optional (Text))
-, optional : (Optional (Bool))
-}
+{ name : Optional Text, optional : Optional Bool }

@@ -1,6 +1,11 @@
-{ driver : (Text)
-, fsType : (Optional (Text))
-, options : (Optional ((List {mapKey : Text, mapValue : Text})))
-, readOnly : (Optional (Bool))
-, secretRef : (Optional (./io.k8s.api.core.v1.SecretReference.dhall))
+{ driver :
+    Text
+, options :
+    List { mapKey : Text, mapValue : Text }
+, secretRef :
+    ./io.k8s.api.core.v1.SecretReference.dhall
+, fsType :
+    Optional Text
+, readOnly :
+    Optional Bool
 }

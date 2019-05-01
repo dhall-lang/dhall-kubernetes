@@ -1,2 +1,1 @@
-{ driver : (Text)
-}
+{ driver : Text }

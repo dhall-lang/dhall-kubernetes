@@ -1,3 +1,1 @@
-{ path : (Optional (Text))
-, verb : (Optional (Text))
-}
+{ path : Optional Text, verb : Optional Text }

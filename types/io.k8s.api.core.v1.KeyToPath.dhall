@@ -1,4 +1,1 @@
-{ key : (Text)
-, mode : (Optional (Natural))
-, path : (Text)
-}
+{ key : Text, path : Text, mode : Optional Natural }

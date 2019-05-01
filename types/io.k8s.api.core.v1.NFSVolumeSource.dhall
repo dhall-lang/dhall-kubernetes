@@ -1,4 +1,1 @@
-{ path : (Text)
-, readOnly : (Optional (Bool))
-, server : (Text)
-}
+{ path : Text, server : Text, readOnly : Optional Bool }

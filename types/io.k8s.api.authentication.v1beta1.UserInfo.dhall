@@ -1,5 +1,9 @@
-{ extra : (Optional ((List {mapKey : Text, mapValue : Text})))
-, groups : (Optional (List Text))
-, uid : (Optional (Text))
-, username : (Optional (Text))
+{ extra :
+    List { mapKey : Text, mapValue : Text }
+, groups :
+    List Text
+, uid :
+    Optional Text
+, username :
+    Optional Text
 }

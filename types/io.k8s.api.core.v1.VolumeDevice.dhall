@@ -1,3 +1,1 @@
-{ devicePath : (Text)
-, name : (Text)
-}
+{ devicePath : Text, name : Text }

@@ -1,6 +1,11 @@
-{ mountPath : (Text)
-, mountPropagation : (Optional (Text))
-, name : (Text)
-, readOnly : (Optional (Bool))
-, subPath : (Optional (Text))
+{ mountPath :
+    Text
+, name :
+    Text
+, mountPropagation :
+    Optional Text
+, readOnly :
+    Optional Bool
+, subPath :
+    Optional Text
 }

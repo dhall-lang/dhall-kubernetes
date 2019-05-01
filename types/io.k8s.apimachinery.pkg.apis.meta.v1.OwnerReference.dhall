@@ -1,7 +1,13 @@
-{ apiVersion : (Text)
-, blockOwnerDeletion : (Optional (Bool))
-, controller : (Optional (Bool))
-, kind : (Text)
-, name : (Text)
-, uid : (Text)
+{ apiVersion :
+    Text
+, kind :
+    Text
+, name :
+    Text
+, uid :
+    Text
+, blockOwnerDeletion :
+    Optional Bool
+, controller :
+    Optional Bool
 }
