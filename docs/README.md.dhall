@@ -34,7 +34,7 @@ or the [full tutorial][dhall-tutorial].
 **NOTE**: `dhall-kubernetes` requires at least version `1.22.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
 (version `7.0.0` of the language).
 
-You can install the latest version with the following:
+You can install the latest version with the following [stack][stack] command:
 ```bash
 stack install dhall-1.22.0 dhall-json-1.2.8 --resolver=nightly-2019-04-28
 ```
@@ -193,6 +193,7 @@ If you make changes to `scripts/convert.py` or `docs/README.md.dhall`, you need
 to run this command afterwards.
 
 
+[stack]: https://haskellstack.org/
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
 [dhall-lang]: https://github.com/dhall-lang/dhall-lang
 [dhall-website]: https://dhall-lang.org/
