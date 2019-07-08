@@ -183,7 +183,7 @@ toDefault definitions types modelName = go
       (Dhall.Union _) -> Nothing
       -- Simple types should not have a default
       (Dhall.Text) -> Nothing
-      -- Lists should not have a default
+      -- Set lists to empty
       (Dhall.App Dhall.List typ) -> Just $ Dhall.ListLit (Just $ adjustImport typ) mempty
       -- But most of the times we are dealing with a record.
       -- Here we transform the record type in a value, transforming the keys in this way:
