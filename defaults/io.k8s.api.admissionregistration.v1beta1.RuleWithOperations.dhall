@@ -6,4 +6,6 @@
     [] : List Text
 , resources =
     [] : List Text
+, scope =
+    None Text
 }

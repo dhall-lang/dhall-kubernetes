@@ -5,7 +5,7 @@ README.md: docs/README.md.dhall
 	./scripts/build-readme.sh
 
 build:  README.md
-	mkdir -p types default
+	mkdir -p types defaults
 	dhall-kubernetes-generator "${OPENAPI_SPEC}"
 
 	dhall freeze --all --inplace ./types.dhall

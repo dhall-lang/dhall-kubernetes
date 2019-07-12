@@ -1,6 +1,6 @@
 #!/bin/sh
-rm -rf ./defaults ./types
 if dir=$(nix-build release.nix -A dhall-kubernetes --no-out-link); then
+  rm -rf ./defaults ./types
   cp -r "$dir"/defaults .
   chmod u+w ./defaults
   cp -r "$dir"/types .

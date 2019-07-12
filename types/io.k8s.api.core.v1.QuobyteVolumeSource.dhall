@@ -6,6 +6,8 @@
     Optional Text
 , readOnly :
     Optional Bool
+, tenant :
+    Optional Text
 , user :
     Optional Text
 }

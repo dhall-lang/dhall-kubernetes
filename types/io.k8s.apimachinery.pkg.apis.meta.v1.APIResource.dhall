@@ -14,6 +14,8 @@
     List Text
 , group :
     Optional Text
+, storageVersionHash :
+    Optional Text
 , version :
     Optional Text
 }

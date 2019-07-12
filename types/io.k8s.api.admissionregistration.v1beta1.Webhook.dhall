@@ -1,4 +1,6 @@
-{ clientConfig :
+{ admissionReviewVersions :
+    List Text
+, clientConfig :
     ./io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig.dhall
 , name :
     Text
@@ -10,4 +12,6 @@
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , sideEffects :
     Optional Text
+, timeoutSeconds :
+    Optional Natural
 }

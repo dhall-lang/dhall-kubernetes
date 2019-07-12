@@ -16,6 +16,8 @@
     Optional ./io.k8s.api.core.v1.CinderVolumeSource.dhall
 , configMap :
     Optional ./io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
+, csi :
+    Optional ./io.k8s.api.core.v1.CSIVolumeSource.dhall
 , downwardAPI :
     Optional ./io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
 , fc :
