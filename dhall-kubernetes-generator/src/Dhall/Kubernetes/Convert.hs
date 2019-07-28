@@ -185,6 +185,8 @@ toDefault definitions types modelName = go
       (Dhall.App Dhall.List _) -> Nothing
       -- Simple types should not have a default
       (Dhall.Text) -> Nothing
+      -- Set lists to empty
+      (Dhall.App Dhall.List typ) -> Just $ Dhall.ListLit (Just $ adjustImport typ) mempty
       -- But most of the times we are dealing with a record.
       -- Here we transform the record type in a value, transforming the keys in this way:
       -- * take the BaseData from definition and populate it
@@ -220,6 +222,13 @@ toDefault definitions types modelName = go
       -- We error out here because wildcards are bad, and we should know if
       -- we get something unexpected
       e -> error $ show modelName <> "\n\n" <> show e
+
+    -- | The imports that we get from the types are referring to the local folder,
+    --   but if we want to refer them from the defaults we need to adjust the path
+    adjustImport :: Expr -> Expr
+    adjustImport (Dhall.Embed imp) | Just file <- namespacedObjectFromImport imp
+      = Dhall.Embed $ mkImport ["types", ".."] (file <> ".dhall")
+    adjustImport other = other
 
     -- | The imports that we get from the types are referring to the local folder,
     --   but if we want to refer them from the defaults we need to adjust the path
