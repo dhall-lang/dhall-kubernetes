@@ -1,1 +1,1 @@
-{ uid : Optional Text }
+{ resourceVersion : Optional Text, uid : Optional Text }

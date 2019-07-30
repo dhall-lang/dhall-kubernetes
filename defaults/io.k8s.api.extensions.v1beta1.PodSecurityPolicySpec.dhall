@@ -1,4 +1,6 @@
-{ allowedCapabilities =
+{ allowedCSIDrivers =
+    [] : List ./../types/io.k8s.api.extensions.v1beta1.AllowedCSIDriver.dhall
+, allowedCapabilities =
     [] : List Text
 , allowedFlexVolumes =
     [] : List ./../types/io.k8s.api.extensions.v1beta1.AllowedFlexVolume.dhall

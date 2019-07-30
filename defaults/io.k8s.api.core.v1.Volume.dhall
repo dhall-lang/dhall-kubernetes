@@ -14,6 +14,8 @@
     None ./../types/io.k8s.api.core.v1.CinderVolumeSource.dhall
 , configMap =
     None ./../types/io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
+, csi =
+    None ./../types/io.k8s.api.core.v1.CSIVolumeSource.dhall
 , downwardAPI =
     None ./../types/io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
 , fc =

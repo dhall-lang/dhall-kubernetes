@@ -4,6 +4,9 @@
     [] : List Text
 , labels =
     [] : List { mapKey : Text, mapValue : Text }
+, managedFields =
+    [] : List
+         ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry.dhall
 , ownerReferences =
     [] : List
          ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall

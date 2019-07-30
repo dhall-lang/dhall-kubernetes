@@ -8,4 +8,6 @@
     Optional Bool
 , subPath :
     Optional Text
+, subPathExpr :
+    Optional Text
 }

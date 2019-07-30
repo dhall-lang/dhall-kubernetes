@@ -1,4 +1,6 @@
-{ clientConfig =
+{ admissionReviewVersions =
+    [] : List Text
+, clientConfig =
     ./io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig.dhall
 , rules =
     [] : List
@@ -9,4 +11,6 @@
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , sideEffects =
     None Text
+, timeoutSeconds =
+    None Natural
 }

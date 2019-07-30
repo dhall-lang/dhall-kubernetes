@@ -55,6 +55,8 @@
     None Double
 , multipleOf =
     None Double
+, nullable =
+    None Bool
 , pattern =
     None Text
 , title =

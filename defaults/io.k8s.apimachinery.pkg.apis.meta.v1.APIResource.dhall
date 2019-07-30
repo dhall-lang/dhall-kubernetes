@@ -6,6 +6,8 @@
     [] : List Text
 , group =
     None Text
+, storageVersionHash =
+    None Text
 , version =
     None Text
 }

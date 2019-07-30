@@ -55,6 +55,8 @@
     Optional Double
 , multipleOf :
     Optional Double
+, nullable :
+    Optional Bool
 , pattern :
     Optional Text
 , title :
