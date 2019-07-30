@@ -230,13 +230,6 @@ toDefault definitions types modelName = go
       = Dhall.Embed $ mkImport ["types", ".."] (file <> ".dhall")
     adjustImport other = other
 
-    -- | The imports that we get from the types are referring to the local folder,
-    --   but if we want to refer them from the defaults we need to adjust the path
-    adjustImport :: Expr -> Expr
-    adjustImport (Dhall.Embed imp) | Just file <- namespacedObjectFromImport imp
-      = Dhall.Embed $ mkImport ["types", ".."] (file <> ".dhall")
-    adjustImport other = other
-
 
 -- | Get a Dhall.Map filled with imports, for creating giant Records or Unions of types or defaults
 getImportsMap
