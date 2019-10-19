@@ -42,9 +42,7 @@ requiredFields maybeName required
     -- | Some models require keys that are not in the required set,
     --   but are in the docs or just work
     requiredConstraints = Data.Map.fromList
-      [ ( ModelName "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        , Set.fromList [FieldName "name"])
-      ]
+      [ ]
 
     -- | Some models should not require some keys, and this is not
     --   in the Swagger spec but just in the docs
