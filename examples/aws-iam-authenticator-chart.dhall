@@ -14,7 +14,7 @@ let heritage = "dhall"
 
 in  kubernetes.DaemonSet::{
     , metadata = kubernetes.ObjectMeta::{
-      , name = "AWS IAM authenticator metadata"
+      , name = fullName
       , labels = toMap
         { app = name
         , chart = chart
