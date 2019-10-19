@@ -2,6 +2,7 @@ module Dhall.Kubernetes.Convert
   ( toTypes
   , toDefault
   , getImportsMap
+  , mkImport
   ) where
 
 import qualified Data.List              as List
@@ -186,7 +187,7 @@ toDefault definitions types modelName = go
       -- Simple types should not have a default
       (Dhall.Text) -> Nothing
       -- Set lists to empty
-      (Dhall.App Dhall.List typ) -> Just $ Dhall.ListLit (Just $ adjustImport typ) mempty
+      -- (Dhall.App Dhall.List typ) -> Just $ Dhall.ListLit (Just $ adjustImport typ) mempty
       -- But most of the times we are dealing with a record.
       -- Here we transform the record type in a value, transforming the keys in this way:
       -- * take the BaseData from definition and populate it
