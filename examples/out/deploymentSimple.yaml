@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: nginx
 spec:
+  replicas: 2
   template:
+    metadata:
+      name: nginx
     spec:
       containers:
       - image: nginx:1.15.3
         name: nginx
         ports:
         - containerPort: 80
-    metadata:
-      name: nginx
-  replicas: 2
-metadata:
-  name: nginx

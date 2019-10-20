@@ -6,8 +6,6 @@
     List { mapKey : Text, mapValue : Text }
 , managedFields :
     List ./io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry.dhall
-, name :
-    Text
 , ownerReferences :
     List ./io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall
 , clusterName :
@@ -24,6 +22,8 @@
     Optional Natural
 , initializers :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
+, name :
+    Optional Text
 , namespace :
     Optional Text
 , resourceVersion :

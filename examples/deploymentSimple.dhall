@@ -1,14 +1,14 @@
 let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
+      ../types.dhall sha256:14b65f1f7e1eab5409a24f524f6bd455a2fdb07bbce99190c6086a2c63349f0f
 
 let defaults =
-      ../defaults.dhall sha256:4450e23dc81975d111650e06c0238862944bf699537af6cbacac9c7e471dfabe
+      ../defaults.dhall sha256:fbbb714a3c71bfaa51ec8d6a0fb85e0434b5b3d0e7f8ce77c16a2a2a2df2b0d5
 
 let deployment
     : types.Deployment
     =     defaults.Deployment
       //  { metadata =
-              defaults.ObjectMeta // { name = "nginx" }
+              defaults.ObjectMeta // { name = Some "nginx" }
           , spec =
               Some
               (     defaults.DeploymentSpec
@@ -17,7 +17,7 @@ let deployment
                     , template =
                             defaults.PodTemplateSpec
                         //  { metadata =
-                                defaults.ObjectMeta // { name = "nginx" }
+                                defaults.ObjectMeta // { name = Some "nginx" }
                             , spec =
                                 Some
                                 (     defaults.PodSpec

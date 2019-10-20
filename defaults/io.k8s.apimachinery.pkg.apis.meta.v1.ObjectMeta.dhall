@@ -24,6 +24,8 @@
     None Natural
 , initializers =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
+, name =
+    None Text
 , namespace =
     None Text
 , resourceVersion =
