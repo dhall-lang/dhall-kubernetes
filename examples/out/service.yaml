@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
-metadata:
-  labels:
-    app: nginx
-  name: nginx
 spec:
-  ports:
-  - port: 80
-    targetPort: 80
   selector:
     app: nginx
+  ports:
+  - targetPort: 80
+    port: 80
   type: NodePort
+metadata:
+  name: nginx
+  labels:
+    app: nginx
