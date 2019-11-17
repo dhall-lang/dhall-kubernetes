@@ -326,7 +326,7 @@ in
 ## Projects Using `dhall-kubernetes`
 
 * [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
-
+* [EarnestResearch/dhall-packages](https://github.com/EarnestResearch/dhall-packages): Provides dhall bindings for several dhall packages, including Kubernetes applications such as [argo](https://github.com/argoproj/argo), [argocd](https://github.com/argoproj/argo-cd), [ambassador](https://github.com/datawire/ambassador), [kubernetes-external-secrets](https://github.com/godaddy/kubernetes-external-secrets) and more.
 
 ## Development
 
