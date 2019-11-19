@@ -13,7 +13,7 @@ import qualified Dhall.Core             as Dhall
 import qualified Dhall.Map
 
 import           Data.Bifunctor         (first, second)
-import           Data.Maybe             (fromMaybe)
+import           Data.Maybe             (fromMaybe, mapMaybe)
 import           Data.Set               (Set)
 import           Data.Text              (Text)
 
@@ -234,11 +234,12 @@ toDefault definitions types modelName = go
 
 -- | Get a Dhall.Map filled with imports, for creating giant Records or Unions of types or defaults
 getImportsMap
-  :: [ModelName]             -- ^ A list of all the object names
+  :: DuplicateHandler        -- ^ Duplicate name handler
+  -> [ModelName]             -- ^ A list of all the object names
   -> Text                    -- ^ The folder we should get imports from
   -> [ModelName]             -- ^ List of the object names we want to include in the Map
   -> Dhall.Map.Map Text Expr
-getImportsMap objectNames folder toInclude
+getImportsMap duplicateNameHandler objectNames folder toInclude
   = Dhall.Map.fromList
   $ Data.Map.elems
   -- This intersection is here to "pick" common elements between "all the objects"
@@ -250,7 +251,7 @@ getImportsMap objectNames folder toInclude
   where
     -- | A map from namespaced names to simple ones (i.e. without the namespace)
     namespacedToSimple
-      = Data.Map.fromList $ fmap selectObject $ Data.Map.toList $ groupByObjectName objectNames
+      = Data.Map.fromList $ mapMaybe selectObject $ Data.Map.toList $ groupByObjectName objectNames
 
     -- | Given a list of fully namespaced bjects, it will group them by the
     --   object name
@@ -267,8 +268,8 @@ getImportsMap objectNames folder toInclude
     --   (because different API versions, and objects move around packages but k8s
     --   cannot break compatibility so we have all of them), so we have to select one
     --   (and we error out if it's not so after the filtering)
-    selectObject :: (Text, [ModelName]) -> (ModelName, Text)
-    selectObject (kind, namespacedNames) = (namespaced, kind)
+    selectObject :: (Text, [ModelName]) -> Maybe (ModelName, Text)
+    selectObject (kind, namespacedNames) = fmap (,kind) namespaced
       where
         filterFn modelName@(ModelName name) = not $ or
           -- The reason why we filter these two prefixes is that they are "internal"
@@ -281,5 +282,5 @@ getImportsMap objectNames folder toInclude
           ]
 
         namespaced = case filter filterFn namespacedNames of
-          [name] -> name
-          wrong  -> error $ "Got more than one key for "++ show kind ++"! See:\n" <> show wrong
+          [name] -> Just name
+          names  -> duplicateNameHandler (kind, names)
