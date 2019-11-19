@@ -15,11 +15,19 @@ import           Data.Aeson                            (decodeFileStrict)
 import           Data.Foldable                         (for_)
 import           Data.Text                             (Text)
 import           System.Environment                    (getArgs)
+import           Options.Applicative                   (Parser, ParserInfo)
+import qualified Options.Applicative
 
 import qualified Dhall.Kubernetes.Convert              as Convert
 import           Dhall.Kubernetes.Data                 (patchCyclicImports)
 import           Dhall.Kubernetes.Types
 
+
+-- | Top-level program options
+data Options = Options
+    { skipDuplicates :: Bool
+    , filename :: String
+    }
 
 -- | Write and format a Dhall expression to a file
 writeDhall :: Turtle.FilePath -> Expr -> IO ()
@@ -41,18 +49,44 @@ echo = Turtle.printf (Turtle.s Turtle.% "\n")
 echoStr :: Turtle.MonadIO m => String -> m ()
 echoStr = echo . Text.pack
 
+errorOnDuplicateHandler :: DuplicateHandler
+errorOnDuplicateHandler (kind, names) = error $ "Got more than one key for "++ show kind ++"! See:\n" <> show names
+
+skipDuplicatesHandler :: DuplicateHandler
+skipDuplicatesHandler = const Nothing
+
+parseOptions :: Parser Options
+parseOptions = Options <$> parseSkip <*> fileArg
+  where
+    parseSkip =
+      Options.Applicative.switch
+        (  Options.Applicative.long "skipDuplicates"
+        <> Options.Applicative.help "Skip types with the same name when aggregating types"
+        )
+    fileArg = Options.Applicative.strArgument
+            (  Options.Applicative.help "The swagger file to read"
+            <> Options.Applicative.metavar "FILE"
+            )
+
+-- | `ParserInfo` for the `Options` type
+parserInfoOptions :: ParserInfo Options
+parserInfoOptions =
+    Options.Applicative.info
+        (Options.Applicative.helper <*> parseOptions)
+        (   Options.Applicative.progDesc "Swagger to Dhall generator"
+        <>  Options.Applicative.fullDesc
+        )
 
 main :: IO ()
 main = do
+  options <- Options.Applicative.execParser parserInfoOptions
+  let duplicateHandler = if skipDuplicates options then skipDuplicatesHandler else errorOnDuplicateHandler
   -- Get the Swagger spec
-  args <- getArgs
-  Swagger{..} <- case args of
-    [file] -> do
-      swaggerFile <- decodeFileStrict file
-      case swaggerFile of
-        Nothing -> error "Unable to decode the Swagger file"
-        Just s  -> pure s
-    _ -> error "You need to provide a filename as first argument"
+  Swagger{..} <- do
+    swaggerFile <- decodeFileStrict $ filename options
+    case swaggerFile of
+      Nothing -> error "Unable to decode the Swagger file"
+      Just s  -> pure s
 
   -- Convert to Dhall types in a Map
   let types = Convert.toTypes
@@ -92,9 +126,9 @@ main = do
 
   -- Output the types record, the defaults record, and the giant union type
   let objectNames = Data.Map.keys types
-      typesMap = Convert.getImportsMap objectNames "types" $ Data.Map.keys types
-      defaultsMap = Convert.getImportsMap objectNames "defaults" $ Data.Map.keys defaults
-      schemasMap = Convert.getImportsMap objectNames "schemas" $ Data.Map.keys schemas
+      typesMap = Convert.getImportsMap duplicateHandler objectNames "types" $ Data.Map.keys types
+      defaultsMap = Convert.getImportsMap duplicateHandler objectNames "defaults" $ Data.Map.keys defaults
+      schemasMap = Convert.getImportsMap duplicateHandler objectNames "schemas" $ Data.Map.keys schemas
 
       typesRecordPath = "./types.dhall"
       typesUnionPath = "./typesUnion.dhall"
