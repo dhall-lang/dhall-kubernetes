@@ -19,6 +19,8 @@ type Expr = Dhall.Expr Dhall.Src Dhall.Import
 
 type DuplicateHandler = (Text, [ModelName]) -> Maybe ModelName
 
+type PrefixMap = Data.Map.Map Text Dhall.Import
+
 {-| Type for the Swagger specification.
 
 There is such a type defined in the `swagger2` package, but Kubernetes' OpenAPI
