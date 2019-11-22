@@ -61,47 +61,37 @@ In the following example, we:
 ```haskell
 -- examples/deploymentSimple.dhall
 
-let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
+let kubernetes =
+      ../schemas.dhall sha256:0a362a64a631fe7911f71438fa05acdcdf6469850cce4f910e4cf126315d1011
 
-let defaults =
-      ../defaults.dhall sha256:4450e23dc81975d111650e06c0238862944bf699537af6cbacac9c7e471dfabe
-
-let deployment
-    : types.Deployment
-    =     defaults.Deployment
-      //  { metadata =
-              defaults.ObjectMeta // { name = "nginx" }
-          , spec =
-              Some
-              (     defaults.DeploymentSpec
-                //  { replicas =
-                        Some 2
-                    , template =
-                            defaults.PodTemplateSpec
-                        //  { metadata =
-                                defaults.ObjectMeta // { name = "nginx" }
-                            , spec =
-                                Some
-                                (     defaults.PodSpec
-                                  //  { containers =
-                                          [     defaults.Container
-                                            //  { name =
-                                                    "nginx"
-                                                , image =
-                                                    Some "nginx:1.15.3"
-                                                , ports =
-                                                    [     defaults.ContainerPort
-                                                      //  { containerPort = 80 }
-                                                    ]
-                                                }
-                                          ]
-                                      }
-                                )
+let deployment =
+      kubernetes.Deployment::{
+      , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+      , spec =
+          Some
+            kubernetes.DeploymentSpec::{
+            , replicas = Some 2
+            , template =
+                kubernetes.PodTemplateSpec::{
+                , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+                , spec =
+                    Some
+                      kubernetes.PodSpec::{
+                      , containers =
+                          [ kubernetes.Container::{
+                            , name = "nginx"
+                            , image = Some "nginx:1.15.3"
+                            , ports =
+                                [ kubernetes.ContainerPort::{
+                                  , containerPort = 80
+                                  }
+                                ]
                             }
-                    }
-              )
-          }
+                          ]
+                      }
+                }
+            }
+      }
 
 in  deployment
 
@@ -165,84 +155,74 @@ Things to note in the following example:
 
 let Prelude = ../Prelude.dhall
 
-let map = Prelude.`List`.map
+let map = Prelude.List.map
 
 let kv = Prelude.JSON.keyText
 
 let types =
       ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
 
-let defaults =
-      ../defaults.dhall sha256:4450e23dc81975d111650e06c0238862944bf699537af6cbacac9c7e471dfabe
+let kubernetes =
+      ../schemas.dhall sha256:0a362a64a631fe7911f71438fa05acdcdf6469850cce4f910e4cf126315d1011
 
 let Service = { name : Text, host : Text, version : Text }
 
 let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 
 let makeTLS
-    : Service -> types.IngressTLS
-    =     \(service : Service)
-      ->  { hosts =
-              [ service.host ]
-          , secretName =
-              Some "${service.name}-certificate"
-          }
+    : Service → types.IngressTLS
+    =   λ(service : Service)
+      → { hosts = [ service.host ]
+        , secretName = Some "${service.name}-certificate"
+        }
 
 let makeRule
-    : Service -> types.IngressRule
-    =     \(service : Service)
-      ->  { host =
-              Some service.host
-          , http =
-              Some
+    : Service → types.IngressRule
+    =   λ(service : Service)
+      → { host = Some service.host
+        , http =
+            Some
               { paths =
                   [ { backend =
-                        { serviceName =
-                            service.name
-                        , servicePort =
-                            types.IntOrString.Int 80
+                        { serviceName = service.name
+                        , servicePort = types.IntOrString.Int 80
                         }
-                    , path =
-                        None Text
+                    , path = None Text
                     }
                   ]
               }
-          }
+        }
 
 let mkIngress
-    : List Service -> types.Ingress
-    =     \(inputServices : List Service)
-      ->  let annotations =
-                [ kv "kubernetes.io/ingress.class" "nginx"
-                , kv "kubernetes.io/ingress.allow-http" "false"
-                ]
-
-          let defaultService =
-                { name =
-                    "default"
-                , host =
-                    "default.example.com"
-                , version =
-                    " 1.0"
+    : List Service → types.Ingress
+    =   λ(inputServices : List Service)
+      → let annotations =
+              [ kv "kubernetes.io/ingress.class" "nginx"
+              , kv "kubernetes.io/ingress.allow-http" "false"
+              ]
+        
+        let defaultService =
+              { name = "default"
+              , host = "default.example.com"
+              , version = " 1.0"
+              }
+        
+        let ingressServices = inputServices # [ defaultService ]
+        
+        let spec =
+              kubernetes.IngressSpec::{
+              , tls = map Service types.IngressTLS makeTLS ingressServices
+              , rules = map Service types.IngressRule makeRule ingressServices
+              }
+        
+        in  kubernetes.Ingress::{
+            , metadata =
+                kubernetes.ObjectMeta::{
+                , name = "nginx"
+                , annotations = annotations
                 }
-
-          let ingressServices = inputServices # [ defaultService ]
-
-          let spec =
-                    defaults.IngressSpec
-                //  { tls =
-                        map Service types.IngressTLS makeTLS ingressServices
-                    , rules =
-                        map Service types.IngressRule makeRule ingressServices
-                    }
-
-          in      defaults.Ingress
-              //  { metadata =
-                          defaults.ObjectMeta
-                      //  { name = "nginx", annotations = annotations }
-                  , spec =
-                      Some spec
-                  }
+            , spec = Some spec
+            }
 
 in  mkIngress services
 
@@ -326,7 +306,7 @@ in
 ## Projects Using `dhall-kubernetes`
 
 * [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
-* [EarnestResearch/dhall-packages](https://github.com/EarnestResearch/dhall-packages): Provides dhall bindings for several dhall packages, including Kubernetes applications such as [argo](https://github.com/argoproj/argo), [argocd](https://github.com/argoproj/argo-cd), [ambassador](https://github.com/datawire/ambassador), [kubernetes-external-secrets](https://github.com/godaddy/kubernetes-external-secrets) and more.
+
 
 ## Development
 
