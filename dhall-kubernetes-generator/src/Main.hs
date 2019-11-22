@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedLists #-}
+{-# LANGUAGE RecordWildCards #-}
 
 module Main (main) where
 
@@ -16,7 +17,8 @@ import           Data.Bifunctor                        (bimap)
 import           Data.Foldable                         (for_)
 import           Data.Text                             (Text, pack)
 import qualified Options.Applicative
-import           Text.Megaparsec                       (some, optional, parse, (<|>), errorBundlePretty)
+import           Control.Applicative.Combinators       (sepBy1)
+import           Text.Megaparsec                       (some, parse, (<|>), errorBundlePretty)
 import           Text.Megaparsec.Char                  (char, alphaNumChar)
 
 import qualified Dhall.Kubernetes.Convert              as Convert
@@ -28,7 +30,7 @@ import           Dhall.Kubernetes.Types
 -- | Top-level program options
 data Options = Options
     { skipDuplicates :: Bool
-    , prefixMap :: PrefixMap
+    , prefixMap :: Data.Map.Map Prefix Dhall.Import
     , filename :: String
     }
 
@@ -62,7 +64,7 @@ parseImport :: String -> Expr -> Dhall.Parser.Parser Dhall.Import
 parseImport _ (Dhall.Note _ (Dhall.Embed l)) = pure l
 parseImport prefix e = fail $ "Expected a Dhall import for " <> prefix <> " not:\n" <> show e
 
-parsePrefixMap :: Options.Applicative.ReadM PrefixMap
+parsePrefixMap :: Options.Applicative.ReadM (Data.Map.Map Prefix Dhall.Import)
 parsePrefixMap =
   Options.Applicative.eitherReader $ \s ->
     bimap errorBundlePretty Data.Map.fromList $ result (pack s)
@@ -72,9 +74,8 @@ parsePrefixMap =
       char '='
       e <- Dhall.Parser.expr
       imp <- parseImport prefix e
-      optional $ char ','
       return (pack prefix, imp)
-    result = parse (some (Dhall.Parser.unParser parser)) "MAPPING"
+    result = parse (Dhall.Parser.unParser parser `sepBy1` char ',') "MAPPING"
 
 parseOptions :: Options.Applicative.Parser Options
 parseOptions = Options <$> parseSkip <*> parsePrefixMap' <*> fileArg
@@ -106,17 +107,17 @@ parserInfoOptions =
 
 main :: IO ()
 main = do
-  options <- Options.Applicative.execParser parserInfoOptions
-  let duplicateHandler = if skipDuplicates options then skipDuplicatesHandler else errorOnDuplicateHandler
+  Options{..} <- Options.Applicative.execParser parserInfoOptions
+  let duplicateHandler = if skipDuplicates then skipDuplicatesHandler else errorOnDuplicateHandler
   -- Get the Swagger spec
   Swagger{..} <- do
-    swaggerFile <- decodeFileStrict $ filename options
+    swaggerFile <- decodeFileStrict filename
     case swaggerFile of
       Nothing -> error "Unable to decode the Swagger file"
       Just s  -> pure s
 
   -- Convert to Dhall types in a Map
-  let types = Convert.toTypes (prefixMap options)
+  let types = Convert.toTypes prefixMap
         -- TODO: find a better way to deal with this cyclic import
          $ Data.Map.adjust patchCyclicImports
             (ModelName "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps")
@@ -129,7 +130,7 @@ main = do
     writeDhall path expr
 
   -- Convert from Dhall types to defaults
-  let defaults = Data.Map.mapMaybeWithKey (Convert.toDefault (prefixMap options) definitions types) types
+  let defaults = Data.Map.mapMaybeWithKey (Convert.toDefault prefixMap definitions types) types
 
   -- Output to defaults
   Turtle.mktree "defaults"
@@ -139,8 +140,8 @@ main = do
 
   let toSchema (ModelName key) _ _ =
         Dhall.RecordLit
-          [ ("Type", Dhall.Embed (Convert.mkImport (prefixMap options) ["types", ".."] (key <> ".dhall")))
-          , ("default", Dhall.Embed (Convert.mkImport (prefixMap options) ["defaults", ".."] (key <> ".dhall")))
+          [ ("Type", Dhall.Embed (Convert.mkImport prefixMap ["types", ".."] (key <> ".dhall")))
+          , ("default", Dhall.Embed (Convert.mkImport prefixMap ["defaults", ".."] (key <> ".dhall")))
           ]
 
   let schemas = Data.Map.intersectionWithKey toSchema types defaults
@@ -152,7 +153,7 @@ main = do
     writeDhall path expr
 
   -- Output the types record, the defaults record, and the giant union type
-  let getImportsMap = Convert.getImportsMap (prefixMap options) duplicateHandler objectNames
+  let getImportsMap = Convert.getImportsMap prefixMap duplicateHandler objectNames
       objectNames = Data.Map.keys types
       typesMap = getImportsMap "types" $ Data.Map.keys types
       defaultsMap = getImportsMap "defaults" $ Data.Map.keys defaults

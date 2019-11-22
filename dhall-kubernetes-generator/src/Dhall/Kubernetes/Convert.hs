@@ -64,11 +64,10 @@ pathFromRef (Ref r) = (Text.split (== '/') r) List.!! 2
 
 -- | Build an import from path components (note: they need to be in reverse order)
 --   and a filename
-mkImport :: PrefixMap -> [Text] -> Text -> Dhall.Import
+mkImport :: Data.Map.Map Prefix Dhall.Import -> [Text] -> Text -> Dhall.Import
 mkImport prefixMap components file =
   case Data.Map.toList filteredPrefixMap of
     []    -> localImport
-    [(_, imp)] -> imp <> localImport
     xs    -> (snd . head $ Sort.sortOn (Text.length . fst) xs) <> localImport
   where
     localImport = Dhall.Import{..}
@@ -98,7 +97,7 @@ toTextLit str = Dhall.TextLit (Dhall.Chunks [] str)
 --   Note: we cannot do 1-to-1 conversion and we need the whole Map because
 --   many types reference other types so we need to access them to decide things
 --   like "should this key be optional"
-toTypes :: PrefixMap -> Data.Map.Map ModelName Definition -> Data.Map.Map ModelName Expr
+toTypes :: Data.Map.Map Prefix Dhall.Import -> Data.Map.Map ModelName Definition -> Data.Map.Map ModelName Expr
 toTypes prefixMap definitions = memo
   where
     memo = Data.Map.mapWithKey (\k -> convertToType (Just k)) definitions
@@ -176,7 +175,7 @@ toTypes prefixMap definitions = memo
 
 -- | Convert a Dhall Type to its default value
 toDefault
-  :: PrefixMap                         -- ^ Mapping of prefixes to import roots
+  :: Data.Map.Map Prefix Dhall.Import  -- ^ Mapping of prefixes to import roots
   -> Data.Map.Map ModelName Definition -- ^ All the Swagger definitions
   -> Data.Map.Map ModelName Expr       -- ^ All the Dhall types generated from them
   -> ModelName                         -- ^ The name of the object we're converting
@@ -242,11 +241,11 @@ toDefault prefixMap definitions types modelName = go
 
 -- | Get a Dhall.Map filled with imports, for creating giant Records or Unions of types or defaults
 getImportsMap
-  :: PrefixMap               -- ^ Mapping of prefixes to import roots
-  -> DuplicateHandler        -- ^ Duplicate name handler
-  -> [ModelName]             -- ^ A list of all the object names
-  -> Text                    -- ^ The folder we should get imports from
-  -> [ModelName]             -- ^ List of the object names we want to include in the Map
+  :: Data.Map.Map Prefix Dhall.Import -- ^ Mapping of prefixes to import roots
+  -> DuplicateHandler                 -- ^ Duplicate name handler
+  -> [ModelName]                      -- ^ A list of all the object names
+  -> Text                             -- ^ The folder we should get imports from
+  -> [ModelName]                      -- ^ List of the object names we want to include in the Map
   -> Dhall.Map.Map Text Expr
 getImportsMap prefixMap duplicateNameHandler objectNames folder toInclude
   = Dhall.Map.fromList

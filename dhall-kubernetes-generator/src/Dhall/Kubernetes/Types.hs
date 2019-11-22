@@ -19,7 +19,7 @@ type Expr = Dhall.Expr Dhall.Src Dhall.Import
 
 type DuplicateHandler = (Text, [ModelName]) -> Maybe ModelName
 
-type PrefixMap = Data.Map.Map Text Dhall.Import
+type Prefix = Text
 
 {-| Type for the Swagger specification.
 
