@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Status.dhall
-, default =
-    ./../defaults/io.k8s.apimachinery.pkg.apis.meta.v1.Status.dhall
+{ Type = ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Status.dhall
+, default = ./../defaults/io.k8s.apimachinery.pkg.apis.meta.v1.Status.dhall
 }

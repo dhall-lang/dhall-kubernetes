@@ -1,5 +1,4 @@
-{ Type =
-    ./../types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall
+{ Type = ./../types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall
 , default =
     ./../defaults/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall
 }

@@ -30,13 +30,8 @@ or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
-**NOTE**: `dhall-kubernetes` requires at least version `1.23.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
-(version `7.0.0` of the language).
-
-You can install the latest version with the following [stack][stack] command:
-```bash
-stack install dhall-1.23.0 dhall-json-1.2.8 --resolver=nightly-2019-05-13
-```
+**NOTE**: `dhall-kubernetes` requires at least version `1.27.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
+(version `11.0.0` of the language).
 
 ## Quickstart - a simple Deployment
 
@@ -62,7 +57,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../schemas.dhall sha256:0a362a64a631fe7911f71438fa05acdcdf6469850cce4f910e4cf126315d1011
+      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
 
 let deployment =
       kubernetes.Deployment::{
@@ -109,19 +104,19 @@ And we get:
 
 apiVersion: apps/v1
 kind: Deployment
-spec:
-  template:
-    spec:
-      containers:
-      - image: nginx:1.15.3
-        name: nginx
-        ports:
-        - containerPort: 80
-    metadata:
-      name: nginx
-  replicas: 2
 metadata:
   name: nginx
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: nginx
+    spec:
+      containers:
+        - image: nginx:1.15.3
+          name: nginx
+          ports:
+            - containerPort: 80
 
 ```
 
@@ -163,7 +158,7 @@ let types =
       ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
 
 let kubernetes =
-      ../schemas.dhall sha256:0a362a64a631fe7911f71438fa05acdcdf6469850cce4f910e4cf126315d1011
+      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -240,32 +235,32 @@ Result:
 
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          servicePort: 80
-          serviceName: foo
-    host: foo.example.com
-  - http:
-      paths:
-      - backend:
-          servicePort: 80
-          serviceName: default
-    host: default.example.com
-  tls:
-  - hosts:
-    - foo.example.com
-    secretName: foo-certificate
-  - hosts:
-    - default.example.com
-    secretName: default-certificate
 metadata:
   annotations:
+    kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/ingress.class: nginx
-    kubernetes.io/ingress.allow-http: 'false'
   name: nginx
+spec:
+  rules:
+    - host: foo.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: foo
+              servicePort: 80
+    - host: default.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: default
+              servicePort: 80
+  tls:
+    - hosts:
+        - foo.example.com
+      secretName: foo-certificate
+    - hosts:
+        - default.example.com
+      secretName: default-certificate
 
 ```
 

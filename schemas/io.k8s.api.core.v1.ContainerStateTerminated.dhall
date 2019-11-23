@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.core.v1.ContainerStateTerminated.dhall
-, default =
-    ./../defaults/io.k8s.api.core.v1.ContainerStateTerminated.dhall
+{ Type = ./../types/io.k8s.api.core.v1.ContainerStateTerminated.dhall
+, default = ./../defaults/io.k8s.api.core.v1.ContainerStateTerminated.dhall
 }

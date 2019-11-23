@@ -1,5 +1,5 @@
 let kubernetes =
-      ../schemas.dhall sha256:0a362a64a631fe7911f71438fa05acdcdf6469850cce4f910e4cf126315d1011
+      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
 
 let deployment =
       kubernetes.Deployment::{
