@@ -6,4 +6,4 @@ else
     output="$1"
 fi
 
-LC_ALL=en_US.UTF-8 dhall-to-text <<< './docs/README.md.dhall' > $output
+LC_ALL=en_US.UTF-8 dhall text <<< './docs/README.md.dhall' > $output

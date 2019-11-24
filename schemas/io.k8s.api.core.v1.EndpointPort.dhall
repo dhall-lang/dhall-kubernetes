@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.core.v1.EndpointPort.dhall
-, default =
-    ./../defaults/io.k8s.api.core.v1.EndpointPort.dhall
+{ Type = ./../types/io.k8s.api.core.v1.EndpointPort.dhall
+, default = ./../defaults/io.k8s.api.core.v1.EndpointPort.dhall
 }

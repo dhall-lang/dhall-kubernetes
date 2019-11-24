@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.policy.v1beta1.AllowedFlexVolume.dhall
-, default =
-    ./../defaults/io.k8s.api.policy.v1beta1.AllowedFlexVolume.dhall
+{ Type = ./../types/io.k8s.api.policy.v1beta1.AllowedFlexVolume.dhall
+, default = ./../defaults/io.k8s.api.policy.v1beta1.AllowedFlexVolume.dhall
 }

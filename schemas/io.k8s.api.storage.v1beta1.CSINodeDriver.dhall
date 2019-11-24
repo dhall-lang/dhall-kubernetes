@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.storage.v1beta1.CSINodeDriver.dhall
-, default =
-    ./../defaults/io.k8s.api.storage.v1beta1.CSINodeDriver.dhall
+{ Type = ./../types/io.k8s.api.storage.v1beta1.CSINodeDriver.dhall
+, default = ./../defaults/io.k8s.api.storage.v1beta1.CSINodeDriver.dhall
 }

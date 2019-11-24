@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
-, default =
-    ./../defaults/io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
+{ Type = ./../types/io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
+, default = ./../defaults/io.k8s.api.coordination.v1beta1.LeaseSpec.dhall
 }

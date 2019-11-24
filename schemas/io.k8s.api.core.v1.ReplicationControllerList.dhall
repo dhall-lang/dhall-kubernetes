@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.core.v1.ReplicationControllerList.dhall
-, default =
-    ./../defaults/io.k8s.api.core.v1.ReplicationControllerList.dhall
+{ Type = ./../types/io.k8s.api.core.v1.ReplicationControllerList.dhall
+, default = ./../defaults/io.k8s.api.core.v1.ReplicationControllerList.dhall
 }
