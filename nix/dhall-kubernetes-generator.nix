@@ -8,7 +8,7 @@ mkDerivation {
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [
-    aeson base containers dhall prettyprinter text turtle vector
+    aeson base containers dhall prettyprinter text turtle vector sort
   ];
   homepage = "https://github.com/dhall-lang/dhall-kubernetes#readme";
   license = stdenv.lib.licenses.bsd3;

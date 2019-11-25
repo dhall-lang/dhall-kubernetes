@@ -17,6 +17,7 @@ let
           dhall-text = haskellPackagesNew.callPackage ./dhall-text-1.0.18.nix {};
           megaparsec = haskellPackagesNew.callPackage ./megaparsec-7.0.2.nix {};
           repline = haskellPackagesNew.callPackage ./repline-0.2.1.0.nix {};
+          sort = haskellPackagesNew.callPackage ./sort-1.0.0.0.nix {};
         };
       };
     };
