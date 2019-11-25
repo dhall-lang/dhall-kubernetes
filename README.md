@@ -30,13 +30,8 @@ or the [full tutorial][dhall-tutorial].
 
 ## Prerequisites
 
-**NOTE**: `dhall-kubernetes` requires at least version `1.23.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
-(version `7.0.0` of the language).
-
-You can install the latest version with the following [stack][stack] command:
-```bash
-stack install dhall-1.23.0 dhall-json-1.2.8 --resolver=nightly-2019-05-13
-```
+**NOTE**: `dhall-kubernetes` requires at least version `1.27.0` of [the interpreter](https://github.com/dhall-lang/dhall-haskell)
+(version `11.0.0` of the language).
 
 ## Quickstart - a simple Deployment
 
@@ -61,47 +56,37 @@ In the following example, we:
 ```haskell
 -- examples/deploymentSimple.dhall
 
-let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
+let kubernetes =
+      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
 
-let defaults =
-      ../defaults.dhall sha256:4450e23dc81975d111650e06c0238862944bf699537af6cbacac9c7e471dfabe
-
-let deployment
-    : types.Deployment
-    =     defaults.Deployment
-      //  { metadata =
-              defaults.ObjectMeta // { name = "nginx" }
-          , spec =
-              Some
-              (     defaults.DeploymentSpec
-                //  { replicas =
-                        Some 2
-                    , template =
-                            defaults.PodTemplateSpec
-                        //  { metadata =
-                                defaults.ObjectMeta // { name = "nginx" }
-                            , spec =
-                                Some
-                                (     defaults.PodSpec
-                                  //  { containers =
-                                          [     defaults.Container
-                                            //  { name =
-                                                    "nginx"
-                                                , image =
-                                                    Some "nginx:1.15.3"
-                                                , ports =
-                                                    [     defaults.ContainerPort
-                                                      //  { containerPort = 80 }
-                                                    ]
-                                                }
-                                          ]
-                                      }
-                                )
+let deployment =
+      kubernetes.Deployment::{
+      , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+      , spec =
+          Some
+            kubernetes.DeploymentSpec::{
+            , replicas = Some 2
+            , template =
+                kubernetes.PodTemplateSpec::{
+                , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+                , spec =
+                    Some
+                      kubernetes.PodSpec::{
+                      , containers =
+                          [ kubernetes.Container::{
+                            , name = "nginx"
+                            , image = Some "nginx:1.15.3"
+                            , ports =
+                                [ kubernetes.ContainerPort::{
+                                  , containerPort = 80
+                                  }
+                                ]
                             }
-                    }
-              )
-          }
+                          ]
+                      }
+                }
+            }
+      }
 
 in  deployment
 
@@ -119,19 +104,19 @@ And we get:
 
 apiVersion: apps/v1
 kind: Deployment
-spec:
-  template:
-    spec:
-      containers:
-      - image: nginx:1.15.3
-        name: nginx
-        ports:
-        - containerPort: 80
-    metadata:
-      name: nginx
-  replicas: 2
 metadata:
   name: nginx
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: nginx
+    spec:
+      containers:
+        - image: nginx:1.15.3
+          name: nginx
+          ports:
+            - containerPort: 80
 
 ```
 
@@ -165,84 +150,74 @@ Things to note in the following example:
 
 let Prelude = ../Prelude.dhall
 
-let map = Prelude.`List`.map
+let map = Prelude.List.map
 
 let kv = Prelude.JSON.keyText
 
 let types =
       ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
 
-let defaults =
-      ../defaults.dhall sha256:4450e23dc81975d111650e06c0238862944bf699537af6cbacac9c7e471dfabe
+let kubernetes =
+      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
 
 let Service = { name : Text, host : Text, version : Text }
 
 let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 
 let makeTLS
-    : Service -> types.IngressTLS
-    =     \(service : Service)
-      ->  { hosts =
-              [ service.host ]
-          , secretName =
-              Some "${service.name}-certificate"
-          }
+    : Service → types.IngressTLS
+    =   λ(service : Service)
+      → { hosts = [ service.host ]
+        , secretName = Some "${service.name}-certificate"
+        }
 
 let makeRule
-    : Service -> types.IngressRule
-    =     \(service : Service)
-      ->  { host =
-              Some service.host
-          , http =
-              Some
+    : Service → types.IngressRule
+    =   λ(service : Service)
+      → { host = Some service.host
+        , http =
+            Some
               { paths =
                   [ { backend =
-                        { serviceName =
-                            service.name
-                        , servicePort =
-                            types.IntOrString.Int 80
+                        { serviceName = service.name
+                        , servicePort = types.IntOrString.Int 80
                         }
-                    , path =
-                        None Text
+                    , path = None Text
                     }
                   ]
               }
-          }
+        }
 
 let mkIngress
-    : List Service -> types.Ingress
-    =     \(inputServices : List Service)
-      ->  let annotations =
-                [ kv "kubernetes.io/ingress.class" "nginx"
-                , kv "kubernetes.io/ingress.allow-http" "false"
-                ]
-
-          let defaultService =
-                { name =
-                    "default"
-                , host =
-                    "default.example.com"
-                , version =
-                    " 1.0"
+    : List Service → types.Ingress
+    =   λ(inputServices : List Service)
+      → let annotations =
+              [ kv "kubernetes.io/ingress.class" "nginx"
+              , kv "kubernetes.io/ingress.allow-http" "false"
+              ]
+        
+        let defaultService =
+              { name = "default"
+              , host = "default.example.com"
+              , version = " 1.0"
+              }
+        
+        let ingressServices = inputServices # [ defaultService ]
+        
+        let spec =
+              kubernetes.IngressSpec::{
+              , tls = map Service types.IngressTLS makeTLS ingressServices
+              , rules = map Service types.IngressRule makeRule ingressServices
+              }
+        
+        in  kubernetes.Ingress::{
+            , metadata =
+                kubernetes.ObjectMeta::{
+                , name = "nginx"
+                , annotations = annotations
                 }
-
-          let ingressServices = inputServices # [ defaultService ]
-
-          let spec =
-                    defaults.IngressSpec
-                //  { tls =
-                        map Service types.IngressTLS makeTLS ingressServices
-                    , rules =
-                        map Service types.IngressRule makeRule ingressServices
-                    }
-
-          in      defaults.Ingress
-              //  { metadata =
-                          defaults.ObjectMeta
-                      //  { name = "nginx", annotations = annotations }
-                  , spec =
-                      Some spec
-                  }
+            , spec = Some spec
+            }
 
 in  mkIngress services
 
@@ -260,32 +235,32 @@ Result:
 
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          servicePort: 80
-          serviceName: foo
-    host: foo.example.com
-  - http:
-      paths:
-      - backend:
-          servicePort: 80
-          serviceName: default
-    host: default.example.com
-  tls:
-  - hosts:
-    - foo.example.com
-    secretName: foo-certificate
-  - hosts:
-    - default.example.com
-    secretName: default-certificate
 metadata:
   annotations:
+    kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/ingress.class: nginx
-    kubernetes.io/ingress.allow-http: 'false'
   name: nginx
+spec:
+  rules:
+    - host: foo.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: foo
+              servicePort: 80
+    - host: default.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: default
+              servicePort: 80
+  tls:
+    - hosts:
+        - foo.example.com
+      secretName: foo-certificate
+    - hosts:
+        - default.example.com
+      secretName: default-certificate
 
 ```
 
@@ -326,7 +301,7 @@ in
 ## Projects Using `dhall-kubernetes`
 
 * [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
-* [EarnestResearch/dhall-packages](https://github.com/EarnestResearch/dhall-packages): Provides dhall bindings for several dhall packages, including Kubernetes applications such as [argo](https://github.com/argoproj/argo), [argocd](https://github.com/argoproj/argo-cd), [ambassador](https://github.com/datawire/ambassador), [kubernetes-external-secrets](https://github.com/godaddy/kubernetes-external-secrets) and more.
+
 
 ## Development
 

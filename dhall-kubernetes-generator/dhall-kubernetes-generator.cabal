@@ -23,7 +23,7 @@ executable dhall-kubernetes-generator
     base                 >= 4.8.2.0   && < 5    ,
     aeson                >= 1.0.0.0   && < 1.5  ,
     containers           >= 0.5.0.0   && < 0.7  ,
-    dhall                >= 1.22.0    && < 1.25 ,
+    dhall                >= 1.22.0    && < 1.28 ,
     megaparsec           >= 7.0       && < 7.1  ,
     optparse-applicative >= 0.14.3.0  && < 0.15 ,
     parser-combinators   >= 1.0.3     && < 1.1  ,

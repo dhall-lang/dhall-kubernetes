@@ -1,5 +1,3 @@
-{ disruptedPods =
-    [] : List { mapKey : Text, mapValue : Text }
-, observedGeneration =
-    None Natural
+{ disruptedPods = [] : List { mapKey : Text, mapValue : Text }
+, observedGeneration = None Natural
 }

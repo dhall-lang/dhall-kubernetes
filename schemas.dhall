@@ -171,13 +171,13 @@
 , JobStatus =
     ./schemas/io.k8s.api.batch.v1.JobStatus.dhall sha256:aac9bd4f987b2e8705d0795ebed197f46a8da1224c0f78c0391cc6ac93f373f2
 , CronJob =
-    ./schemas/io.k8s.api.batch.v2alpha1.CronJob.dhall sha256:c82f664aff720494dbed8a5bc266dd134eba53fa108249c0066261a30216c166
+    ./schemas/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:a2ac48a8c54d8a819c246de9d3d1e7b36eb7b86e0ae0384ac7666b44a9929eb7
 , CronJobList =
-    ./schemas/io.k8s.api.batch.v2alpha1.CronJobList.dhall sha256:026cb90781dad729b4c87342852e4a9b5a6424cbe6ecb7c07a62781ef278bbab
+    ./schemas/io.k8s.api.batch.v1beta1.CronJobList.dhall sha256:562b5facc451ed58a85a2bdcfa28bd0e3d42df3d92ebebb0f9be5325626da881
 , CronJobSpec =
-    ./schemas/io.k8s.api.batch.v2alpha1.CronJobSpec.dhall sha256:69f34f9fe253992194f7b1e3959eb86a19ce79c0d9e0d3a515b59f172b1f0603
+    ./schemas/io.k8s.api.batch.v1beta1.CronJobSpec.dhall sha256:69f34f9fe253992194f7b1e3959eb86a19ce79c0d9e0d3a515b59f172b1f0603
 , CronJobStatus =
-    ./schemas/io.k8s.api.batch.v2alpha1.CronJobStatus.dhall sha256:8a7e5324c4646d2bab98c167e1d852ddb57a3bb70b4b460e6afd3df1b5d8230f
+    ./schemas/io.k8s.api.batch.v1beta1.CronJobStatus.dhall sha256:8a7e5324c4646d2bab98c167e1d852ddb57a3bb70b4b460e6afd3df1b5d8230f
 , JobTemplateSpec =
     ./schemas/io.k8s.api.batch.v2alpha1.JobTemplateSpec.dhall sha256:01e88ecdafcf855134630456b6a75c4743eef4891e29ea857205ee8bfad7711c
 , CertificateSigningRequest =

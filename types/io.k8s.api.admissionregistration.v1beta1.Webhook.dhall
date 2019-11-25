@@ -1,17 +1,12 @@
-{ admissionReviewVersions :
-    List Text
+{ admissionReviewVersions : List Text
 , clientConfig :
     ./io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig.dhall
-, name :
-    Text
+, name : Text
 , rules :
     List ./io.k8s.api.admissionregistration.v1beta1.RuleWithOperations.dhall
-, failurePolicy :
-    Optional Text
+, failurePolicy : Optional Text
 , namespaceSelector :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
-, sideEffects :
-    Optional Text
-, timeoutSeconds :
-    Optional Natural
+, sideEffects : Optional Text
+, timeoutSeconds : Optional Natural
 }

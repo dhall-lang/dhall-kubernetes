@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.core.v1.PersistentVolume.dhall
-, default =
-    ./../defaults/io.k8s.api.core.v1.PersistentVolume.dhall
+{ Type = ./../types/io.k8s.api.core.v1.PersistentVolume.dhall
+, default = ./../defaults/io.k8s.api.core.v1.PersistentVolume.dhall
 }

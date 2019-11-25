@@ -1,7 +1,4 @@
-{ fsType =
-    None Text
-, storagePolicyID =
-    None Text
-, storagePolicyName =
-    None Text
+{ fsType = None Text
+, storagePolicyID = None Text
+, storagePolicyName = None Text
 }

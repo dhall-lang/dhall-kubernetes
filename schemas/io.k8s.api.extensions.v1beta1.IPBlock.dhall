@@ -1,5 +1,3 @@
-{ Type =
-    ./../types/io.k8s.api.extensions.v1beta1.IPBlock.dhall
-, default =
-    ./../defaults/io.k8s.api.extensions.v1beta1.IPBlock.dhall
+{ Type = ./../types/io.k8s.api.extensions.v1beta1.IPBlock.dhall
+, default = ./../defaults/io.k8s.api.extensions.v1beta1.IPBlock.dhall
 }

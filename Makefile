@@ -11,12 +11,13 @@ build:  README.md
 	dhall freeze --all --inplace ./types.dhall
 	dhall freeze --all --inplace ./typesUnion.dhall
 	dhall freeze --all --inplace ./defaults.dhall
+	dhall freeze --all --inplace ./schemas.dhall
 check: build
 	LC_ALL=en_US.UTF-8 ./scripts/check-source.py
 	mkdir -p tmp
 	LC_ALL=en_US.UTF-8 ./scripts/build-examples.py tmp
 install: build
-	cp -r types defaults "${out}"
-	cp types.dhall defaults.dhall typesUnion.dhall "${out}"
+	cp -r types defaults schemas "${out}"
+	cp types.dhall defaults.dhall typesUnion.dhall schemas.dhall "${out}"
 	cp README.md "${out}"
 
