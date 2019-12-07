@@ -1,8 +1,5 @@
-let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
-
 let kubernetes =
-      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
+      ../package.dhall sha256:3ea8628b704704de295261dfc7626c15247c589c10a266f970cade262543fdda
 
 let kv = (../Prelude.dhall).JSON.keyText
 
@@ -21,8 +18,8 @@ let deployment =
                   kubernetes.DeploymentStrategy::{
                   , type = Some "RollingUpdate"
                   , rollingUpdate =
-                      { maxSurge = Some (types.IntOrString.Int 5)
-                      , maxUnavailable = Some (types.IntOrString.Int 0)
+                      { maxSurge = Some (kubernetes.IntOrString.Int 5)
+                      , maxUnavailable = Some (kubernetes.IntOrString.Int 0)
                       }
                   }
             , template =
