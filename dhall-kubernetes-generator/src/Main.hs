@@ -18,7 +18,7 @@ import           Data.Bifunctor                        (bimap)
 import           Data.Foldable                         (for_)
 import           Data.Text                             (Text, pack)
 import qualified Options.Applicative
-import           Control.Applicative.Combinators       (sepBy1)
+import           Control.Applicative.Combinators       (sepBy1, option)
 import           Text.Megaparsec                       (some, parse, (<|>), errorBundlePretty)
 import           Text.Megaparsec.Char                  (char, alphaNumChar)
 
@@ -96,7 +96,7 @@ parseOptions = Options <$> parseSkip <*> parsePrefixMap' <*> fileArg
         <> Options.Applicative.help "Skip types with the same name when aggregating types"
         )
     parsePrefixMap' =
-      Options.Applicative.option parsePrefixMap
+      option Data.Map.empty $ Options.Applicative.option parsePrefixMap
         (  Options.Applicative.long "prefixMap"
         <> Options.Applicative.help "Specify prefix mappings as 'prefix1=importBase1,prefix2=importBase2,...'"
         <> Options.Applicative.metavar "MAPPING"
