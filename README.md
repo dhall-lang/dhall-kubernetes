@@ -38,26 +38,22 @@ or the [full tutorial][dhall-tutorial].
 Let's say we'd like to configure a Deployment exposing an `nginx` webserver.
 
 In the following example, we:
-1. Import the Kubernetes definitions as Dhall Types (the `types.dhall` file) from the local repo.
+1. Import the Kubernetes definitions as a Dhall package (the `package.dhall` file) from the local repo.
    In your case you will want to replace the local path with a remote one, e.g.
-   `https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/0a4f0b87fbdd4b679853c81ff804bde7b44336cf/types.dhall`.  
+   `https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall`
    Note: the `sha256:..` is applied to some imports so that:
      1. the import is cached locally after the first evaluation, with great time savings (and avoiding network calls)
      2. prevent execution if the content of the file changes. This is a security feature, and you
         can read more [in Dhall's "Security Guarantees" document][security-hashes]
-2. Import the defaults for the above types.  
-   Since _most_ of the fields in any definition are optional, for better ergonomics while 
-   coding Dhall we have generated default values for all types, so we can just use the `//`
-   operator (right-biased record merge) to add our data to the default configuration.  
-   The pattern looks something like this: `defaultValue // { ourDataHere = ..}` 
-3. Define the [Deployment][deployment] using this pattern (see the default [here][default-deployment])
-   and hardcoding the deployment details:
+   Note: instead of using the `package.dhall` from the `master` branch, you may want to use a tagged release,
+     as the contents of the `master` branch are liable to change without warning.
+2. Define the [Deployment][deployment] using the schema pattern and hardcoding the deployment details:
 
-```haskell
+```dhall
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
+      ../package.dhall sha256:3ea8628b704704de295261dfc7626c15247c589c10a266f970cade262543fdda
 
 let deployment =
       kubernetes.Deployment::{
@@ -134,7 +130,7 @@ and reuse those objects for configuring other things (e.g. configuring the servi
 templating documentation, configuring Terraform deployments, you name it).
 
 As an example of that, next we'll define an Ingress (an [Nginx Ingress][nginx-ingress] in this case),
-containing stuff like TLS certs and routes for every service - see the [type][Ingress] and [default][Ingress-default] for it.
+containing stuff like TLS certs and routes for every service - see the [schema][Ingress].
 
 Things to note in the following example:
 - we define the `Service` type inline in the file, but in your case you'll want to have a
@@ -145,7 +141,7 @@ Things to note in the following example:
   `mkIngress` function instead of applying it, so you can do something like
   `dhall-to-yaml --omitEmpty <<< "./mkIngress.dhall ./myServices.dhall"`
 
-```haskell
+```dhall
 -- examples/ingress.dhall
 
 let Prelude = ../Prelude.dhall
@@ -154,25 +150,22 @@ let map = Prelude.List.map
 
 let kv = Prelude.JSON.keyText
 
-let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
-
 let kubernetes =
-      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
+      ../package.dhall sha256:3ea8628b704704de295261dfc7626c15247c589c10a266f970cade262543fdda
 
 let Service = { name : Text, host : Text, version : Text }
 
 let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 
 let makeTLS
-    : Service → types.IngressTLS
+    : Service → kubernetes.IngressTLS.Type
     =   λ(service : Service)
       → { hosts = [ service.host ]
         , secretName = Some "${service.name}-certificate"
         }
 
 let makeRule
-    : Service → types.IngressRule
+    : Service → kubernetes.IngressRule.Type
     =   λ(service : Service)
       → { host = Some service.host
         , http =
@@ -180,7 +173,7 @@ let makeRule
               { paths =
                   [ { backend =
                         { serviceName = service.name
-                        , servicePort = types.IntOrString.Int 80
+                        , servicePort = kubernetes.IntOrString.Int 80
                         }
                     , path = None Text
                     }
@@ -189,7 +182,7 @@ let makeRule
         }
 
 let mkIngress
-    : List Service → types.Ingress
+    : List Service → kubernetes.Ingress.Type
     =   λ(inputServices : List Service)
       → let annotations =
               [ kv "kubernetes.io/ingress.class" "nginx"
@@ -206,8 +199,14 @@ let mkIngress
         
         let spec =
               kubernetes.IngressSpec::{
-              , tls = map Service types.IngressTLS makeTLS ingressServices
-              , rules = map Service types.IngressRule makeRule ingressServices
+              , tls =
+                  map Service kubernetes.IngressTLS.Type makeTLS ingressServices
+              , rules =
+                  map
+                    Service
+                    kubernetes.IngressRule.Type
+                    makeRule
+                    ingressServices
               }
         
         in  kubernetes.Ingress::{
@@ -284,7 +283,7 @@ it's possible to use it together with the [union type of all k8s types that we g
 
 So if we want to deploy e.g. a Deployment and a Service together, we can do:
 
-```haskell
+```dhall
 let k8s = ./typesUnion.dhall
 
 in 
@@ -344,10 +343,8 @@ to run this command afterwards.
 [kubernetes]: https://kubernetes.io/
 [normalization]: https://en.wikipedia.org/wiki/Normalization_property_(abstract_rewriting)
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
-[dhall-tutorial]: http://hackage.haskell.org/package/dhall-1.21.0/docs/Dhall-Tutorial.html
-[default-deployment]: ./defaults/io.k8s.api.apps.v1.Deployment.dhall
-[deployment]: ./types/io.k8s.api.apps.v1.Deployment.dhall
-[Ingress]: ./types/io.k8s.api.extensions.v1beta1.Ingress.dhall
-[Ingress-default]: ./default/io.k8s.api.extensions.v1beta1.Ingress.dhall
+[dhall-tutorial]: http://hackage.haskell.org/package/dhall-1.28.0/docs/Dhall-Tutorial.html
+[deployment]: ./schemas/io.k8s.api.apps.v1.Deployment.dhall
+[Ingress]: ./schemas/io.k8s.api.extensions.v1beta1.Ingress.dhall
 [prometheus-operator]: https://github.com/coreos/prometheus-operator
 [dhall-prometheus-operator]: https://github.com/coralogix/dhall-prometheus-operator

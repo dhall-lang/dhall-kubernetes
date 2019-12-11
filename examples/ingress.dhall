@@ -4,25 +4,22 @@ let map = Prelude.List.map
 
 let kv = Prelude.JSON.keyText
 
-let types =
-      ../types.dhall sha256:e48e21b807dad217a6c3e631fcaf3e950062310bfb4a8bbcecc330eb7b2f60ed
-
 let kubernetes =
-      ../schemas.dhall sha256:9704063d1e2d17050cb18afae199a24f4cd1264e6c8e696ca94781309e213785
+      ../package.dhall sha256:3ea8628b704704de295261dfc7626c15247c589c10a266f970cade262543fdda
 
 let Service = { name : Text, host : Text, version : Text }
 
 let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 
 let makeTLS
-    : Service → types.IngressTLS
+    : Service → kubernetes.IngressTLS.Type
     =   λ(service : Service)
       → { hosts = [ service.host ]
         , secretName = Some "${service.name}-certificate"
         }
 
 let makeRule
-    : Service → types.IngressRule
+    : Service → kubernetes.IngressRule.Type
     =   λ(service : Service)
       → { host = Some service.host
         , http =
@@ -30,7 +27,7 @@ let makeRule
               { paths =
                   [ { backend =
                         { serviceName = service.name
-                        , servicePort = types.IntOrString.Int 80
+                        , servicePort = kubernetes.IntOrString.Int 80
                         }
                     , path = None Text
                     }
@@ -39,7 +36,7 @@ let makeRule
         }
 
 let mkIngress
-    : List Service → types.Ingress
+    : List Service → kubernetes.Ingress.Type
     =   λ(inputServices : List Service)
       → let annotations =
               [ kv "kubernetes.io/ingress.class" "nginx"
@@ -56,8 +53,14 @@ let mkIngress
         
         let spec =
               kubernetes.IngressSpec::{
-              , tls = map Service types.IngressTLS makeTLS ingressServices
-              , rules = map Service types.IngressRule makeRule ingressServices
+              , tls =
+                  map Service kubernetes.IngressTLS.Type makeTLS ingressServices
+              , rules =
+                  map
+                    Service
+                    kubernetes.IngressRule.Type
+                    makeRule
+                    ingressServices
               }
         
         in  kubernetes.Ingress::{
