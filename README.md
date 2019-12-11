@@ -126,7 +126,7 @@ So in a more realistic deployment you'll probably want to define:
   by just applying these functions to `MyService` objects
 
 This is useful because then you can define your `Service`s separately from the Kubernetes logic,
-and reuse those objects for configuring other things (e.g. configuring the services themselves, 
+and reuse those objects for configuring other things (e.g. configuring the services themselves,
 templating documentation, configuring Terraform deployments, you name it).
 
 As an example of that, next we'll define an Ingress (an [Nginx Ingress][nginx-ingress] in this case),
@@ -188,15 +188,15 @@ let mkIngress
               [ kv "kubernetes.io/ingress.class" "nginx"
               , kv "kubernetes.io/ingress.allow-http" "false"
               ]
-        
+
         let defaultService =
               { name = "default"
               , host = "default.example.com"
               , version = " 1.0"
               }
-        
+
         let ingressServices = inputServices # [ defaultService ]
-        
+
         let spec =
               kubernetes.IngressSpec::{
               , tls =
@@ -208,7 +208,7 @@ let mkIngress
                     makeRule
                     ingressServices
               }
-        
+
         in  kubernetes.Ingress::{
             , metadata =
                 kubernetes.ObjectMeta::{
@@ -277,7 +277,7 @@ objects, and use the `--documents` flag, e.g.:
 dhall-to-yaml --documents --omitEmpty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
 ```
 
-If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
+If the objects are of different type, it's not possible to have separate documents in the same YAML file.
 However, since [k8s has a builtin `List` type for these cases](https://github.com/kubernetes/kubernetes/blob/master/hack/testdata/list.yaml),
 it's possible to use it together with the [union type of all k8s types that we generate][typesUnion].
 
@@ -286,10 +286,10 @@ So if we want to deploy e.g. a Deployment and a Service together, we can do:
 ```dhall
 let k8s = ./typesUnion.dhall
 
-in 
+in
 { apiVersion = "v1"
 , kind = "List"
-, items = 
+, items =
   [ k8s.Deployment ./my-deployment.dhall
   , k8s.Service ./my-service.dhall
   ]
@@ -309,7 +309,7 @@ in
 Run
 ```bash
 ./scripts/update-nixpkgs.sh
-./generate.sh
+./scripts/generate.sh
 ```
 If the tests fail, rollback. If they don't then you have sucessfully upgraded!
 
