@@ -320,6 +320,7 @@ toDefinition crd =
                 Data.Map.fromList [
                   ("apiVersion", (mkV1beta1JSONSchemaProps {v1beta1JSONSchemaPropsType = Just "string"}))
                 , ("kind", (mkV1beta1JSONSchemaProps {v1beta1JSONSchemaPropsType = Just "string"} ))
+                , ("metadata", mkV1beta1JSONSchemaProps {v1beta1JSONSchemaPropsType = Just "object", v1beta1JSONSchemaPropsRef = Just "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"} )
                 ]
               ))
             (v1beta1JSONSchemaPropsProperties schema)
