@@ -313,7 +313,18 @@ toDefinition crd =
         kind = crdKind,
         apiVersion = version
       }
-      pure  $ propsToDefinition schema (Just baseData)
+      let completeSchemaProperties = 
+            fmap 
+            (Data.Map.union
+              (
+                Data.Map.fromList [
+                  ("apiVersion", (mkV1beta1JSONSchemaProps {v1beta1JSONSchemaPropsType = Just "string"}))
+                , ("kind", (mkV1beta1JSONSchemaProps {v1beta1JSONSchemaPropsType = Just "string"} ))
+                ]
+              ))
+            (v1beta1JSONSchemaPropsProperties schema)
+      let completeSchema = schema { v1beta1JSONSchemaPropsProperties = completeSchemaProperties}
+      pure  $ propsToDefinition (completeSchema) (Just baseData)
     propsToDefinition :: V1beta1JSONSchemaProps -> Maybe BaseData -> Definition
     propsToDefinition schema basedata =
       Definition
