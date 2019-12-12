@@ -14,6 +14,7 @@ import qualified Data.Text              as Text
 import qualified Dhall.Core             as Dhall
 import qualified Dhall.Map
 
+import           Control.Applicative    ((<|>))
 import           Data.Aeson             
 import           Data.Aeson.Types       (parseMaybe)
 import           Data.Bifunctor         (first, second)
@@ -306,7 +307,15 @@ toDefinition crd =
     crdKind = (v1beta1CustomResourceDefinitionNamesKind . v1beta1CustomResourceDefinitionSpecNames) spec
     modelName = ModelName (group <> "." <> crdKind)
     definition = do
-      version <- v1beta1CustomResourceDefinitionSpecVersion spec 
+      let 
+        versionName xs = case xs of 
+          (x:_) -> Just (v1beta1CustomResourceDefinitionVersionName x)
+          _ -> Nothing
+      version <- 
+        v1beta1CustomResourceDefinitionSpecVersion spec 
+        <|> do 
+          versions <- v1beta1CustomResourceDefinitionSpecVersions spec 
+          versionName versions             
       validation <- v1beta1CustomResourceDefinitionSpecValidation spec
       schema <- v1beta1CustomResourceValidationOpenApiv3Schema validation
       let baseData = BaseData {
