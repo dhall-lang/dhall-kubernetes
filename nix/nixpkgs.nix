@@ -30,6 +30,9 @@ let
           generic-random =
             haskellPackagesNew.callPackage ./generic-random-1.3.0.0.nix {};
 
+          kubernetes-client-core =
+            haskellPackagesNew.callPackage ./kubernetes-client-core-0.1.0.1.nix {};
+
           megaparsec = haskellPackagesNew.callPackage ./megaparsec-7.0.2.nix {};
 
           repline = haskellPackagesNew.callPackage ./repline-0.2.1.0.nix {};
@@ -38,6 +41,9 @@ let
 
           th-lift-instances =
             haskellPackagesNew.callPackage ./th-lift-instances-0.1.14.nix {};
+
+          yaml =
+            haskellPackagesNew.callPackage ./yaml-0.11.2.0.nix {};
         };
       };
     };
