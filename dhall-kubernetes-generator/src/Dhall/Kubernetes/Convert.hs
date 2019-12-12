@@ -3,6 +3,7 @@ module Dhall.Kubernetes.Convert
   , toDefault
   , getImportsMap
   , mkImport
+  , toDefinition
   ) where
 
 import qualified Data.List              as List
@@ -13,6 +14,8 @@ import qualified Data.Text              as Text
 import qualified Dhall.Core             as Dhall
 import qualified Dhall.Map
 
+import           Data.Aeson             
+import           Data.Aeson.Types       (parseMaybe)
 import           Data.Bifunctor         (first, second)
 import           Data.Maybe             (fromMaybe, mapMaybe)
 import           Data.Set               (Set)
@@ -20,6 +23,7 @@ import           Data.Text              (Text)
 
 import           Dhall.Kubernetes.Data  (excludedModels)
 import           Dhall.Kubernetes.Types
+import           Kubernetes.OpenAPI.Model
 
 
 -- | Get all the required fields for a model
@@ -292,3 +296,36 @@ getImportsMap prefixMap duplicateNameHandler objectNames folder toInclude
         namespaced = case filter filterFn namespacedNames of
           [name] -> Just name
           names  -> duplicateNameHandler (kind, names)
+
+toDefinition :: V1beta1CustomResourceDefinition -> Maybe (ModelName, Definition)
+toDefinition crd = 
+    fmap (\d -> (modelName, d)) definition
+  where
+    spec = v1beta1CustomResourceDefinitionSpec crd
+    group = v1beta1CustomResourceDefinitionSpecGroup spec
+    crdKind = (v1beta1CustomResourceDefinitionNamesKind . v1beta1CustomResourceDefinitionSpecNames) spec
+    modelName = ModelName (group <> "." <> crdKind)
+    definition = do
+      version <- v1beta1CustomResourceDefinitionSpecVersion spec 
+      validation <- v1beta1CustomResourceDefinitionSpecValidation spec
+      schema <- v1beta1CustomResourceValidationOpenApiv3Schema validation
+      let baseData = BaseData {
+        kind = crdKind,
+        apiVersion = version
+      }
+      pure  $ propsToDefinition schema (Just baseData)
+    propsToDefinition :: V1beta1JSONSchemaProps -> Maybe BaseData -> Definition
+    propsToDefinition schema basedata =
+      Definition
+        { typ         = v1beta1JSONSchemaPropsType schema
+        , ref         = Ref <$> v1beta1JSONSchemaPropsRef schema
+        , format      = v1beta1JSONSchemaPropsFormat schema
+        , description = v1beta1JSONSchemaPropsDescription schema
+        , items       = v1beta1JSONSchemaPropsItems schema >>= parseMaybe parseJSON
+        , properties  = fmap toProperties (v1beta1JSONSchemaPropsProperties schema)
+        , required    = fmap (Set.fromList . fmap FieldName) (v1beta1JSONSchemaPropsRequired schema)
+        , baseData    = basedata
+        }
+    toProperties :: Data.Map.Map String V1beta1JSONSchemaProps -> Data.Map.Map ModelName Definition
+    toProperties props = 
+      (Data.Map.fromList . fmap (\(k, p) -> ((ModelName . Text.pack) k, propsToDefinition p Nothing)) . Data.Map.toList) props

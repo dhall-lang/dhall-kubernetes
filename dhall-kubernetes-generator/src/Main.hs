@@ -16,7 +16,9 @@ import qualified Turtle
 import           Data.Aeson                            (decodeFileStrict)
 import           Data.Bifunctor                        (bimap)
 import           Data.Foldable                         (for_)
+import           Data.Maybe                            (maybeToList)
 import           Data.Text                             (Text, pack)
+import           Data.Yaml
 import qualified Options.Applicative
 import           Control.Applicative.Combinators       (sepBy1, option)
 import           Text.Megaparsec                       (some, parse, (<|>), errorBundlePretty)
@@ -27,12 +29,12 @@ import           Dhall.Kubernetes.Data                 (patchCyclicImports)
 import qualified Dhall.Parser
 import           Dhall.Kubernetes.Types
 
-
 -- | Top-level program options
 data Options = Options
     { skipDuplicates :: Bool
     , prefixMap :: Data.Map.Map Prefix Dhall.Import
     , filename :: String
+    , crd :: Bool
     }
 
 -- | Write and format a Dhall expression to a file
@@ -88,7 +90,7 @@ parsePrefixMap =
     result = parse (Dhall.Parser.unParser parser `sepBy1` char ',') "MAPPING"
 
 parseOptions :: Options.Applicative.Parser Options
-parseOptions = Options <$> parseSkip <*> parsePrefixMap' <*> fileArg
+parseOptions = Options <$> parseSkip <*> parsePrefixMap' <*> fileArg <*> crdArg
   where
     parseSkip =
       Options.Applicative.switch
@@ -102,9 +104,13 @@ parseOptions = Options <$> parseSkip <*> parsePrefixMap' <*> fileArg
         <> Options.Applicative.metavar "MAPPING"
         )
     fileArg = Options.Applicative.strArgument
-            (  Options.Applicative.help "The swagger file to read"
+            (  Options.Applicative.help "The input file to read"
             <> Options.Applicative.metavar "FILE"
             )
+    crdArg = Options.Applicative.switch
+      (  Options.Applicative.long "crd"
+      <> Options.Applicative.help "The input file is a custom resource definition"
+      )
 
 -- | `ParserInfo` for the `Options` type
 parserInfoOptions :: Options.Applicative.ParserInfo Options
@@ -119,19 +125,24 @@ main :: IO ()
 main = do
   Options{..} <- Options.Applicative.execParser parserInfoOptions
   let duplicateHandler = if skipDuplicates then skipDuplicatesHandler else errorOnDuplicateHandler
-  -- Get the Swagger spec
-  Swagger{..} <- do
-    swaggerFile <- decodeFileStrict filename
-    case swaggerFile of
-      Nothing -> error "Unable to decode the Swagger file"
-      Just s  -> pure s
-
+  -- Get the Definitions
+  defs <-
+        if crd then do
+          crdFile <- decodeFileEither filename
+          case crdFile of
+            Left e -> error $ "Unable to decode the CRD file. " <> show e
+            Right s  -> (pure . Data.Map.fromList . maybeToList . Convert.toDefinition) s
+        else do
+            swaggerFile <- decodeFileStrict filename
+            case swaggerFile of
+              Nothing -> error "Unable to decode the Swagger file"
+              Just (Swagger{..})  -> pure definitions
   -- Convert to Dhall types in a Map
   let types = Convert.toTypes prefixMap
         -- TODO: find a better way to deal with this cyclic import
          $ Data.Map.adjust patchCyclicImports
             (ModelName "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps")
-            definitions
+            defs
 
   -- Output to types
   Turtle.mktree "types"
@@ -140,7 +151,7 @@ main = do
     writeDhall path expr
 
   -- Convert from Dhall types to defaults
-  let defaults = Data.Map.mapMaybeWithKey (Convert.toDefault prefixMap definitions types) types
+  let defaults = Data.Map.mapMaybeWithKey (Convert.toDefault prefixMap defs types) types
 
   -- Output to defaults
   Turtle.mktree "defaults"
