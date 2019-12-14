@@ -137,11 +137,14 @@ main = do
             case swaggerFile of
               Nothing -> error "Unable to decode the Swagger file"
               Just (Swagger{..})  -> pure definitions
+
+  let fix m = Data.Map.adjust patchCyclicImports (ModelName m)
+
   -- Convert to Dhall types in a Map
   let types = Convert.toTypes prefixMap
         -- TODO: find a better way to deal with this cyclic import
-         $ Data.Map.adjust patchCyclicImports
-            (ModelName "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps")
+         $ fix "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+         $ fix "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
             defs
 
   -- Output to types

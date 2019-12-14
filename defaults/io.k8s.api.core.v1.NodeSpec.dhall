@@ -1,4 +1,5 @@
 { configSource = ./io.k8s.api.core.v1.NodeConfigSource.dhall
+, podCIDRs = [] : List Text
 , taints = [] : List ./../types/io.k8s.api.core.v1.Taint.dhall
 , externalID = None Text
 , podCIDR = None Text

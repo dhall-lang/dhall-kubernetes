@@ -4,4 +4,5 @@
 , value : Natural
 , description : Optional Text
 , globalDefault : Optional Bool
+, preemptionPolicy : Optional Text
 }

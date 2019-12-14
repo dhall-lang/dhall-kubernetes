@@ -6,6 +6,7 @@
 , externalName : Optional Text
 , externalTrafficPolicy : Optional Text
 , healthCheckNodePort : Optional Natural
+, ipFamily : Optional Text
 , loadBalancerIP : Optional Text
 , publishNotReadyAddresses : Optional Bool
 , sessionAffinity : Optional Text

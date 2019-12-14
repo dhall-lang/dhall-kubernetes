@@ -18,6 +18,7 @@
 , patternProperties : List { mapKey : Text, mapValue : Text }
 , properties : List { mapKey : Text, mapValue : Text }
 , required : List Text
+, x-kubernetes-list-map-keys : List Text
 , `$ref` : Optional Text
 , `$schema` : Optional Text
 , description : Optional Text
@@ -39,4 +40,8 @@
 , title : Optional Text
 , type : Optional Text
 , uniqueItems : Optional Bool
+, x-kubernetes-embedded-resource : Optional Bool
+, x-kubernetes-int-or-string : Optional Bool
+, x-kubernetes-list-type : Optional Text
+, x-kubernetes-preserve-unknown-fields : Optional Bool
 }
