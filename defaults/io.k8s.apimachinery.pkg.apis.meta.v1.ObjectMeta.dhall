@@ -15,8 +15,6 @@
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , generateName = None Text
 , generation = None Natural
-, initializers =
-    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , namespace = None Text
 , resourceVersion = None Text
 , selfLink = None Text

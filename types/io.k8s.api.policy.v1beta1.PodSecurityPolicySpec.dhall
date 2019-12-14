@@ -23,4 +23,6 @@
 , readOnlyRootFilesystem : Optional Bool
 , runAsGroup :
     Optional ./io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions.dhall
+, runtimeClass :
+    Optional ./io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions.dhall
 }

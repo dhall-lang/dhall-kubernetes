@@ -1,4 +1,5 @@
 { seLinuxOptions : ./io.k8s.api.core.v1.SELinuxOptions.dhall
+, windowsOptions : ./io.k8s.api.core.v1.WindowsSecurityContextOptions.dhall
 , allowPrivilegeEscalation : Optional Bool
 , capabilities : Optional ./io.k8s.api.core.v1.Capabilities.dhall
 , privileged : Optional Bool

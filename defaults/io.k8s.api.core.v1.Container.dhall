@@ -5,6 +5,7 @@
 , livenessProbe = ./io.k8s.api.core.v1.Probe.dhall
 , ports = [] : List ./../types/io.k8s.api.core.v1.ContainerPort.dhall
 , readinessProbe = ./io.k8s.api.core.v1.Probe.dhall
+, startupProbe = ./io.k8s.api.core.v1.Probe.dhall
 , volumeDevices = [] : List ./../types/io.k8s.api.core.v1.VolumeDevice.dhall
 , volumeMounts = [] : List ./../types/io.k8s.api.core.v1.VolumeMount.dhall
 , image = None Text

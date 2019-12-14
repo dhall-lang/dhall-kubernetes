@@ -6,6 +6,7 @@
 , externalName = None Text
 , externalTrafficPolicy = None Text
 , healthCheckNodePort = None Natural
+, ipFamily = None Text
 , loadBalancerIP = None Text
 , publishNotReadyAddresses = None Bool
 , sessionAffinity = None Text

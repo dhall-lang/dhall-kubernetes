@@ -26,4 +26,6 @@
 , readOnlyRootFilesystem = None Bool
 , runAsGroup =
     None ./../types/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions.dhall
+, runtimeClass =
+    None ./../types/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions.dhall
 }
