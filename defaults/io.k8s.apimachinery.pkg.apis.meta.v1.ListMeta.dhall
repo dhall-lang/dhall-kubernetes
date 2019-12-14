@@ -1,1 +1,5 @@
-{ continue = None Text, resourceVersion = None Text, selfLink = None Text }
+{ continue = None Text
+, remainingItemCount = None Natural
+, resourceVersion = None Text
+, selfLink = None Text
+}

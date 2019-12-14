@@ -6,6 +6,7 @@
 , name : Text
 , ports : List ./io.k8s.api.core.v1.ContainerPort.dhall
 , readinessProbe : ./io.k8s.api.core.v1.Probe.dhall
+, startupProbe : ./io.k8s.api.core.v1.Probe.dhall
 , volumeDevices : List ./io.k8s.api.core.v1.VolumeDevice.dhall
 , volumeMounts : List ./io.k8s.api.core.v1.VolumeMount.dhall
 , image : Optional Text

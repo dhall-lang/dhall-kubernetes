@@ -1,4 +1,5 @@
-{ controllerPublishSecretRef : ./io.k8s.api.core.v1.SecretReference.dhall
+{ controllerExpandSecretRef : ./io.k8s.api.core.v1.SecretReference.dhall
+, controllerPublishSecretRef : ./io.k8s.api.core.v1.SecretReference.dhall
 , driver : Text
 , nodePublishSecretRef : ./io.k8s.api.core.v1.SecretReference.dhall
 , nodeStageSecretRef : ./io.k8s.api.core.v1.SecretReference.dhall

@@ -1,5 +1,5 @@
 let kubernetes =
-      ../package.dhall sha256:3ea8628b704704de295261dfc7626c15247c589c10a266f970cade262543fdda
+      ../package.dhall sha256:2c7ac35494f16b1f39afcf3467b2f3b0ab579edb0c711cddd2c93f1cbed358bd
 
 let release = "wintering-rodent"
 
