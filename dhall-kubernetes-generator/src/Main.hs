@@ -130,12 +130,12 @@ main = do
         if crd then do
           crdFile <- decodeFileEither filename
           case crdFile of
-            Left e -> error $ "Unable to decode the CRD file. " <> show e
+            Left e -> fail $ "Unable to decode the CRD file. " <> show e
             Right s  -> (pure . Data.Map.fromList . maybeToList . Convert.toDefinition) s
         else do
             swaggerFile <- decodeFileStrict filename
             case swaggerFile of
-              Nothing -> error "Unable to decode the Swagger file"
+              Nothing -> fail "Unable to decode the Swagger file"
               Just (Swagger{..})  -> pure definitions
 
   let fix m = Data.Map.adjust patchCyclicImports (ModelName m)
