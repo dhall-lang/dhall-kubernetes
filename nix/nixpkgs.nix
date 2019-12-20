@@ -13,40 +13,40 @@ let
       kubernetes-openapi-spec =
         pkgs.callPackage ./kubernetes-openapi-spec.nix {};
 
-      haskellPackages = pkgs.haskellPackages.override {
-        overrides = haskellPackagesNew: haskellPackagesOld: {
-          aeson-yaml =
-            haskellPackagesNew.callPackage ./aeson-yaml-1.0.4.0.nix {};
+      haskellPackages = pkgs.haskellPackages.override (old: {
+          overrides =
+             let
+               previous = old.overrides or (_: _: {});
 
-          dhall = haskellPackagesNew.callPackage ./dhall-1.27.0.nix {};
+               packages = pkgs.haskell.lib.packageSourceOverrides {
+                 dhall = "1.27.0";
 
-          dhall-json =
-            pkgs.haskell.lib.dontCheck
-              (haskellPackagesNew.callPackage ./dhall-json-1.5.0.nix {});
+                 dhall-json = "1.5.0";
 
-          dhall-kubernetes-generator =
-            haskellPackagesNew.callPackage ./dhall-kubernetes-generator.nix {};
+                 dhall-kubernetes-generator = ../dhall-kubernetes-generator;
 
-          generic-random =
-            haskellPackagesNew.callPackage ./generic-random-1.3.0.0.nix {};
+                 kubernetes-client-core = "0.1.0.1";
+               };
 
-          kubernetes-client-core =
-            haskellPackagesNew.callPackage ./kubernetes-client-core-0.1.0.1.nix {};
+               manual = haskellPackagesNew: haskellPackagesOld: {
+                 dhall = pkgs.haskell.lib.dontCheck haskellPackagesOld.dhall;
 
-          megaparsec =
-            pkgs.haskell.lib.dontCheck (haskellPackagesNew.callPackage ./megaparsec-7.0.2.nix {});
+                 dhall-json =
+                   pkgs.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
 
-          repline = haskellPackagesNew.callPackage ./repline-0.2.1.0.nix {};
-          sort = haskellPackagesNew.callPackage ./sort-1.0.0.0.nix {};
-          th-lift = haskellPackagesNew.callPackage ./th-lift-0.8.0.1.nix {};
+                 kubernetes-client-core =
+                   pkgs.haskell.lib.doJailbreak
+                     haskellPackagesOld.kubernetes-client-core;
+               };
 
-          th-lift-instances =
-            haskellPackagesNew.callPackage ./th-lift-instances-0.1.14.nix {};
-
-          yaml =
-            haskellPackagesNew.callPackage ./yaml-0.11.2.0.nix {};
-        };
-      };
+             in
+               pkgs.lib.fold pkgs.lib.composeExtensions (_: _: {})
+                 [ previous
+                   packages
+                   manual
+                 ];
+        }
+      );
     };
   };
 in
