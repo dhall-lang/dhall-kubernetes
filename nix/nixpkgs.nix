@@ -7,8 +7,17 @@ let
   };
 
   config = {
-    packageOverrides = pkgs: {
-      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+    packageOverrides = pkgs: rec {
+      make-dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+
+      dhall-kubernetes =
+        let
+          latestKubernetesRelease =
+            builtins.replaceStrings [ "\n" ] [ "" ]
+              (builtins.readFile ./preferred.txt);
+
+        in
+          make-dhall-kubernetes latestKubernetesRelease;
 
       kubernetes-openapi-spec =
         pkgs.callPackage ./kubernetes-openapi-spec.nix {};

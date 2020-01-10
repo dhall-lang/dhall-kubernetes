@@ -10,6 +10,8 @@
 , stdenv
 }:
 
+version:
+
 let 
   # Ignore generated files
   ignoreOutputs =
@@ -50,7 +52,7 @@ in
 
       ${coreutils}/bin/mkdir -p types defaults
 
-      ${haskellPackages.dhall-kubernetes-generator}/bin/dhall-kubernetes-generator '${kubernetes-openapi-spec}'
+      ${haskellPackages.dhall-kubernetes-generator}/bin/dhall-kubernetes-generator '${kubernetes-openapi-spec."${version}"}'
 
       for file in ./types.dhall ./typesUnion.dhall ./defaults.dhall ./schemas.dhall ./package.dhall ./examples/*.dhall; do
         echo "Freezing file '$file'"

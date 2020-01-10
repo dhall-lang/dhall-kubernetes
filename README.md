@@ -305,14 +305,20 @@ in
 
 ## Development
 
-### Updating the nixpkgs snapshot (and kubernetes version)
+### Adding a new Kubernetes releases
 
-Run
+To add a new supported release, run:
+
 ```bash
-./scripts/update-nixpkgs.sh
-./generate.sh
+./scripts/add-kubernetes-release.sh "${VERSION}"
 ```
-If the tests fail, rollback. If they don't then you have sucessfully upgraded!
+
+If you want to make a specific release the preferred release, run:
+
+```
+$ echo "${VERSION}" > ./nix/preferred.txt
+$ ./scripts/generate.sh
+```
 
 ### Tests
 

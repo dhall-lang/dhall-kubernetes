@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+VERSION="$1"
+
+nix-prefetch-url --unpack "https://github.com/kubernetes/kubernetes/archive/release-${VERSION}.tar.gz" > "nix/kubernetes/${VERSION}.txt"
