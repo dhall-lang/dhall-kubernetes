@@ -122,28 +122,28 @@
     ./defaults/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.dhall sha256:fcd839dac5487cfbcbfbe8eca4922bf484f7e6e46a6f88598e78bbe558bc3b9a
 , SubjectRulesReviewStatus =
     ./defaults/io.k8s.api.authorization.v1.SubjectRulesReviewStatus.dhall sha256:85e4fa1752fd9b86c8195b4fcefeea7a9d36e61c22db395f59fc9097162444f0
+, CrossVersionObjectReference =
+    ./defaults/io.k8s.api.autoscaling.v1.CrossVersionObjectReference.dhall sha256:9bb9dcb5bf6f795291686f59383bcd01c8e79b87fc3fb63351d46dea100ac51b
+, HorizontalPodAutoscaler =
+    ./defaults/io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler.dhall sha256:e3845fbf913dc1c05d3bcd814ad4ca19be57158acb5af73cd816600bf20b24ba
+, HorizontalPodAutoscalerList =
+    ./defaults/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerList.dhall sha256:5de497e492a0e355b763b179e6c0ad121c0f48248b27d42853aa71e1bc0256ee
+, HorizontalPodAutoscalerSpec =
+    ./defaults/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerSpec.dhall sha256:1091aeec18d68ae2ecd270860349efe392a6b0cfb2f90dfc6c8b32b1776e6d1e
+, HorizontalPodAutoscalerStatus =
+    ./defaults/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus.dhall sha256:323797f9c67ef3e9c5fde42347abcdf8a55fa9e7de0b62e1d141ce1e9fe21995
 , Scale =
     ./defaults/io.k8s.api.autoscaling.v1.Scale.dhall sha256:893084f6f23ddf4b8d849789edc182a68f91f4c42a2b6f15fe6802ac932fe476
 , ScaleSpec =
     ./defaults/io.k8s.api.autoscaling.v1.ScaleSpec.dhall sha256:62ed60d23f95d26219c64410857bba02b39e118e8ac106528eceb8ae1d8c93e3
 , ScaleStatus =
     ./defaults/io.k8s.api.autoscaling.v1.ScaleStatus.dhall sha256:378366369e27427f71184050ac6666edc8c423954510952d39248ebce88acc42
-, CrossVersionObjectReference =
-    ./defaults/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference.dhall sha256:9bb9dcb5bf6f795291686f59383bcd01c8e79b87fc3fb63351d46dea100ac51b
 , ExternalMetricSource =
     ./defaults/io.k8s.api.autoscaling.v2beta2.ExternalMetricSource.dhall sha256:48114ac50415ff4d051a4e57423a2f4e7b12398749825f5625697c3d2c8897ca
 , ExternalMetricStatus =
     ./defaults/io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus.dhall sha256:02e4e6fed3ab9c115a0907b2968148d606dc653c55817df20d3fc0261d4ebf5e
-, HorizontalPodAutoscaler =
-    ./defaults/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscaler.dhall sha256:7964da4e2878e0f5e556d3c30a39c3abe8822774e6caf1fd90d9183dcaa30e30
 , HorizontalPodAutoscalerCondition =
     ./defaults/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
-, HorizontalPodAutoscalerList =
-    ./defaults/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList.dhall sha256:24f5bb960da51a83664df42da3ccf9f95aed29214df0322d6fdc8b28ab406688
-, HorizontalPodAutoscalerSpec =
-    ./defaults/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerSpec.dhall sha256:fe6875b9e4725712d446702070da05d0bfc35fd735c2ec49f9320c35afabe5af
-, HorizontalPodAutoscalerStatus =
-    ./defaults/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerStatus.dhall sha256:cbff68bb1ea938da5f918d0e5680339980ba8376abece6f1953dd3bde2ecadea
 , MetricIdentifier =
     ./defaults/io.k8s.api.autoscaling.v2beta2.MetricIdentifier.dhall sha256:24b233185318f27e20efb775ea6e180fe9f85b972467cb291cf3721a13ce3d67
 , MetricSpec =
@@ -177,15 +177,15 @@
 , JobStatus =
     ./defaults/io.k8s.api.batch.v1.JobStatus.dhall sha256:a8d8e591e2fe1686c47015ccb1ec4d526b2556e393d2971d9df4f2d670c66f1e
 , CronJob =
-    ./defaults/io.k8s.api.batch.v2alpha1.CronJob.dhall sha256:2b36c2d2b7020a85d1733bdbc8f15e5371aebb9c8b3dc61be2b52f9b5b9b8b8a
+    ./defaults/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:2bef4189ab119a583247910482ff7d6c6ea39993be1db850eb17993efe6c9f55
 , CronJobList =
-    ./defaults/io.k8s.api.batch.v2alpha1.CronJobList.dhall sha256:26b1a6178d077df37f6c41e63db0b3a13f25be586eb3cafc112ba1215547ff26
+    ./defaults/io.k8s.api.batch.v1beta1.CronJobList.dhall sha256:7b8b56168421758c086940d5c603d40d45e69a6e8b2033078552ebd6f034822e
 , CronJobSpec =
-    ./defaults/io.k8s.api.batch.v2alpha1.CronJobSpec.dhall sha256:d201ac1de16f2ba23aa937ddc73cfcd36cd589e0b3b87e4e33674d3796458365
+    ./defaults/io.k8s.api.batch.v1beta1.CronJobSpec.dhall sha256:d201ac1de16f2ba23aa937ddc73cfcd36cd589e0b3b87e4e33674d3796458365
 , CronJobStatus =
-    ./defaults/io.k8s.api.batch.v2alpha1.CronJobStatus.dhall sha256:74d9ee0419f4a414496b1195a1fa782696a07d131edf8194fa2d3dae5253a70b
+    ./defaults/io.k8s.api.batch.v1beta1.CronJobStatus.dhall sha256:74d9ee0419f4a414496b1195a1fa782696a07d131edf8194fa2d3dae5253a70b
 , JobTemplateSpec =
-    ./defaults/io.k8s.api.batch.v2alpha1.JobTemplateSpec.dhall sha256:2aa234045f2a2860acab9030495473ebade2ab3afd0f7b70d10fd9f8f96cb6bd
+    ./defaults/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:2aa234045f2a2860acab9030495473ebade2ab3afd0f7b70d10fd9f8f96cb6bd
 , CertificateSigningRequest =
     ./defaults/io.k8s.api.certificates.v1beta1.CertificateSigningRequest.dhall sha256:0a30b01a87e0bf3f0e083ed5ed55eb6ba6f8d3f4b9c3fc29c1268268fe8ba9b9
 , CertificateSigningRequestCondition =
