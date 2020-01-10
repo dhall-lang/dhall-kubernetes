@@ -24,8 +24,6 @@ let
                  dhall-json = "1.5.0";
 
                  dhall-kubernetes-generator = ../dhall-kubernetes-generator;
-
-                 kubernetes-client-core = "0.1.0.1";
                };
 
                manual = haskellPackagesNew: haskellPackagesOld: {
@@ -33,10 +31,6 @@ let
 
                  dhall-json =
                    pkgs.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
-
-                 kubernetes-client-core =
-                   pkgs.haskell.lib.doJailbreak
-                     haskellPackagesOld.kubernetes-client-core;
                };
 
              in
