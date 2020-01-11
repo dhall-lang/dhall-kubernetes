@@ -1,16 +1,27 @@
 #!/bin/sh
-if dir=$(nix-build release.nix --attr "\"$(< ./nix/preferred.txt)\"" --no-out-link); then
-  rm -rf ./defaults ./types
-  cp -r "$dir"/defaults .
-  chmod u+w ./defaults
-  cp -r "$dir"/types .
-  chmod u+w ./types
-  cp -r "$dir"/schemas .
-  chmod u+w ./schemas
-  cp -r "$dir"/examples .
-  chmod u+w ./examples
-  cp "$dir"/types.dhall "$dir"/typesUnion.dhall "$dir"/defaults.dhall "$dir"/schemas.dhall "$dir"/package.dhall .
-  chmod u+w ./types.dhall ./typesUnion.dhall ./defaults.dhall ./schemas.dhall ./package.dhall
-  cp "$dir/README.md" README.md
-  chmod u+w ./README.md
+
+if [ -n "$1" ]; then
+    VERSION="$1"
+    BASE="$1"
+else
+    VERSION="$(< ./nix/preferred.txt)"
+    BASE="."
+fi
+
+mkdir -p "${BASE}"
+
+if DIR=$(nix-build release.nix --attr "\"${VERSION}\"" --no-out-link); then
+  rm -rf "${BASE}/defaults" "${BASE}/types" "${BASE}/schemas"
+  cp -r "${DIR}/defaults" "${BASE}"
+  chmod -R u+w "${BASE}/defaults"
+  cp -r "${DIR}/types" "${BASE}"
+  chmod -R u+w "${BASE}/types"
+  cp -r "${DIR}/schemas" "${BASE}"
+  chmod -R u+w "${BASE}/schemas"
+  cp -r "${DIR}/examples" "${BASE}"
+  chmod -R u+w "${BASE}/examples"
+  cp "${DIR}/types.dhall" "${DIR}/typesUnion.dhall" "${DIR}/defaults.dhall" "${DIR}/schemas.dhall" "${DIR}/package.dhall" "${BASE}"
+  chmod u+w "${BASE}/types.dhall" "${BASE}/typesUnion.dhall" "${BASE}/defaults.dhall" "${BASE}/schemas.dhall" "${BASE}/package.dhall"
+  cp "${DIR}/README.md" "${BASE}/README.md"
+  chmod u+w "${BASE}/README.md"
 fi

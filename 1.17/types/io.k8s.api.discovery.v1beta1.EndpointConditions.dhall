@@ -1,0 +1,1 @@
+{ ready : Optional Bool }
