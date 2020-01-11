@@ -735,19 +735,19 @@
 , CustomResourceConversion =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceConversion.dhall sha256:52f61f62579efc9b87e5fed9951acc40fddbdd8eecca922f6cc551a5588b3712
 , CustomResourceDefinition =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinition.dhall sha256:3bc3280d014370cc259768bf853fb0257db91ab9072de8d87967983970d35758
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinition.dhall sha256:cb1a053f9fc10c6f52a5f83c97e64a82352e2f3d7d2b2f73b6a3ec548801eb0e
 , CustomResourceDefinitionCondition =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 , CustomResourceDefinitionList =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList.dhall sha256:ac73aa4ab0fb2e9968aeea4d1aa8255d0971c63873a103aadd3bfeef860e0cf1
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList.dhall sha256:adfbed123664ac31d68dda0880a503436d784565958671a4b3e0c27a711aceaa
 , CustomResourceDefinitionNames =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionNames.dhall sha256:0278161a6b3294f036a73cd3c4dc3d0b304f683ba9de276a119c634ff73e9fb1
 , CustomResourceDefinitionSpec =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionSpec.dhall sha256:64f5e17c0be23ef0cc9cebde90d887a4ed50ea724a866596fe5f205269682aa7
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionSpec.dhall sha256:58465ddaeee8ef1d1ffc5105671dd69d5ab6001968627bdc6fce124fd8bc0535
 , CustomResourceDefinitionStatus =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionStatus.dhall sha256:9760548a849877dfd2a7411930d68a4974da897b83937d1e5c4c0e9bdf82d50f
 , CustomResourceDefinitionVersion =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionVersion.dhall sha256:4397e19113e06dff2dff0aa43dd97d87fc9305611e0e46bde9d2dbc44267ccd0
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionVersion.dhall sha256:0dff46037720814fafe44d019b8b16abf3195e2d7d6c27c89ba4a74f8b819d60
 , CustomResourceSubresourceScale =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceScale.dhall sha256:6733049a96431ae2b72e7d6b17a24204a0ef148aef08725e02f8da00339525a6
 , CustomResourceSubresourceStatus =
@@ -755,13 +755,13 @@
 , CustomResourceSubresources =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresources.dhall sha256:0581868225988fcffb65edf1f9e9c9edd9bb509b8821ffd6941728d00f976640
 , CustomResourceValidation =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation.dhall sha256:44ae4096d58f78fae63b89981954e142788fd7968be4738070b4fbdb8a7767dc
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation.dhall sha256:a7144e84a9a050ebd8768596da8c24b2f69dd30cc2374827025be2508b775136
 , ExternalDocumentation =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation.dhall sha256:75a79c871f43a432b402f8a5d52f277bb827f5170ecfed101ed356a91ccbce91
 , JSON =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON.dhall sha256:0912602a19e01dcff30f351958d2d9b69519c9be61b57b1b32a2a569bf8bf5f9
 , JSONSchemaProps =
-    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps.dhall sha256:32b8c3a4615735cbf9f5d9fe3f99b47a28e9ce4c6d2e11bbeaf1a925c7bdf3b4
+    ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps.dhall sha256:712211f2527ee07ca2a1f1dbbfdf7d1822d9844107aa170c37d67b4103d264cd
 , JSONSchemaPropsOrArray =
     ./types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray.dhall sha256:0912602a19e01dcff30f351958d2d9b69519c9be61b57b1b32a2a569bf8bf5f9
 , JSONSchemaPropsOrBool =

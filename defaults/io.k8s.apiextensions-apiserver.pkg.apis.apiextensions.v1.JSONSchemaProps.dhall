@@ -1,8 +1,4 @@
-{ additionalItems =
-    ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool.dhall
-, additionalProperties =
-    ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool.dhall
-, default =
+{ default =
     ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON.dhall
 , definitions = [] : List { mapKey : Text, mapValue : Text }
 , dependencies = [] : List { mapKey : Text, mapValue : Text }
@@ -13,8 +9,6 @@
     ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON.dhall
 , externalDocs =
     ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation.dhall
-, items =
-    ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray.dhall
 , patternProperties = [] : List { mapKey : Text, mapValue : Text }
 , properties = [] : List { mapKey : Text, mapValue : Text }
 , required = [] : List Text

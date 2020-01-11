@@ -7,11 +7,10 @@ let
   };
 
   config = {
-    packageOverrides = pkgs: {
-      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+    packageOverrides = pkgs: rec {
+      make-dhall-kubernetes = pkgs.callPackage ./make-dhall-kubernetes.nix {};
 
-      kubernetes-openapi-spec =
-        pkgs.callPackage ./kubernetes-openapi-spec.nix {};
+      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
 
       haskellPackages = pkgs.haskellPackages.override (old: {
           overrides =

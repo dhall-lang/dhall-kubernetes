@@ -1,83 +1,42 @@
-{ coreutils
-, dhall
-, dhall-json
-, dhallPackages
-, glibcLocales
-, haskellPackages
-, kubernetes-openapi-spec
-, lib
-, python3
-, stdenv
-}:
+{ fetchurl, make-dhall-kubernetes, lib, stdenv }:
 
-let 
-  # Ignore generated files
-  ignoreOutputs =
-    name: type:
-      !(lib.elem name
-        (map toString
-          [ ../README.md
-            ../types
-            ../defaults
-            ../schemas
-            ../defaults.dhall
-            ../types.dhall
-            ../typesUnion.dhall
-            ../schemas.dhall
-          ]
-        )
-      );
+let
+  kubernetesDirectory = ./kubernetes;
+
+  kubernetesPaths = builtins.readDir kubernetesDirectory;
+
+  toKeyValue =
+    file: _:
+      let
+        version = builtins.replaceStrings [ ".txt" ] [ "" ] file;
+
+      in
+        { name = version;
+
+          value =
+            let
+              spec =
+                stdenv.mkDerivation {
+                  name = "kubernetes-openapi-spec-${version}";
+
+                  src =
+                    fetchurl {
+                      url = "https://github.com/kubernetes/kubernetes/archive/release-${version}.tar.gz";
+
+                      sha256 =
+                        builtins.replaceStrings [ "\n" ] [ "" ]
+                          (builtins.readFile (kubernetesDirectory + "/${file}"));
+                    };
+
+                  phases = [ "unpackPhase" "installPhase" ];
+
+                  installPhase = ''
+                    cp api/openapi-spec/swagger.json $out
+                  '';
+                };
+            in
+              make-dhall-kubernetes spec;
+        };
 
 in
-  stdenv.mkDerivation {
-    name = "dhall-kubernetes";
-
-    DHALL_PRELUDE = "${dhallPackages.prelude}/package.dhall";
-
-    XDG_CACHE_HOME = ".";
-
-    buildInputs =
-      [ dhall
-        dhall-json
-        python3
-        glibcLocales
-      ];
-
-    buildPhase = ''
-      patchShebangs ./scripts/build-readme.sh
-
-      ./scripts/build-readme.sh
-
-      ${coreutils}/bin/mkdir -p types defaults
-
-      ${haskellPackages.dhall-kubernetes-generator}/bin/dhall-kubernetes-generator '${kubernetes-openapi-spec}'
-
-      for file in ./types.dhall ./typesUnion.dhall ./defaults.dhall ./schemas.dhall ./package.dhall ./examples/*.dhall; do
-        echo "Freezing file '$file'"
-
-        ${dhall}/bin/dhall freeze --all --inplace "$file"
-      done
-    '';
-
-    checkPhase = ''
-      patchShebangs ./scripts/build-examples.py
-
-      patchShebangs ./scripts/check-source.py
-
-      LC_ALL=en_US.UTF-8 ./scripts/check-source.py
-
-      mkdir -p tmp
-
-      LC_ALL=en_US.UTF-8 ./scripts/build-examples.py tmp
-    '';
-
-    installPhase = ''
-      ${coreutils}/bin/mkdir --parents "$out"
-
-      cp -r types defaults schemas examples types.dhall defaults.dhall typesUnion.dhall schemas.dhall package.dhall README.md "$out"
-    '';
-
-    src =
-      lib.cleanSourceWith
-        { filter = ignoreOutputs; src = lib.cleanSource ./..; };
-}
+  lib.mapAttrs' toKeyValue kubernetesPaths
