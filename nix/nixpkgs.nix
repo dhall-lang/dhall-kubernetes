@@ -8,19 +8,9 @@ let
 
   config = {
     packageOverrides = pkgs: rec {
-      make-dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+      make-dhall-kubernetes = pkgs.callPackage ./make-dhall-kubernetes.nix {};
 
-      dhall-kubernetes =
-        let
-          latestKubernetesRelease =
-            builtins.replaceStrings [ "\n" ] [ "" ]
-              (builtins.readFile ./preferred.txt);
-
-        in
-          make-dhall-kubernetes latestKubernetesRelease;
-
-      kubernetes-openapi-spec =
-        pkgs.callPackage ./kubernetes-openapi-spec.nix {};
+      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
 
       haskellPackages = pkgs.haskellPackages.override (old: {
           overrides =

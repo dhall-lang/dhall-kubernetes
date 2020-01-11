@@ -1,5 +1,5 @@
 #!/bin/sh
-if dir=$(nix-build release.nix --attr dhall-kubernetes --no-out-link); then
+if dir=$(nix-build release.nix --attr "\"$(< ./nix/preferred.txt)\"" --no-out-link); then
   rm -rf ./defaults ./types
   cp -r "$dir"/defaults .
   chmod u+w ./defaults
