@@ -16,10 +16,10 @@ let
   } // builtins.removeAttrs pkgs.dhall-kubernetes
          [ "override" "overrideDerivation" ];
 
-  aggregate = pkgs.releaseTools.aggregate {
+  dhall-kubernetes = pkgs.releaseTools.aggregate {
     name = "dhall-kubernetes-aggregate";
     constituents = pkgs.lib.mapAttrsToList (_: v: v) products;
   };
 
 in
-  products // { inherit aggregate; }
+  products // { inherit dhall-kubernetes; }
