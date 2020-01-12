@@ -1,1 +1,0 @@
-{ currentAverageUtilization = None Natural }

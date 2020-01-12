@@ -1,1 +1,0 @@
-{ target = ./io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference.dhall }

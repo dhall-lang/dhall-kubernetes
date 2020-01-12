@@ -1,1 +1,0 @@
-{ uid = None Text }

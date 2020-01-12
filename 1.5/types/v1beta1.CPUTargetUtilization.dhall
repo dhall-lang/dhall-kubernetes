@@ -1,1 +1,0 @@
-{ targetPercentage : Natural }

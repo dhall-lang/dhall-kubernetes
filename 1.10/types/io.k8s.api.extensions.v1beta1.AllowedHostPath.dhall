@@ -1,1 +1,0 @@
-{ pathPrefix : Optional Text }
