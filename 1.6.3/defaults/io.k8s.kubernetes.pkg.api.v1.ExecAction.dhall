@@ -1,1 +1,0 @@
-{ command = [] : List Text }

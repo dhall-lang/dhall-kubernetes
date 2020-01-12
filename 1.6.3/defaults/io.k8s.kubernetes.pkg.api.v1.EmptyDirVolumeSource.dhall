@@ -1,1 +1,0 @@
-{ medium = None Text }
