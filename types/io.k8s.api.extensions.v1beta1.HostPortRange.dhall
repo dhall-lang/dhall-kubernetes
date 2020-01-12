@@ -1,1 +1,0 @@
-{ max : Natural, min : Natural }

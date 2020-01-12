@@ -1,1 +1,0 @@
-{ finalizers = [] : List Text }
