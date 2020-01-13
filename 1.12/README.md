@@ -53,7 +53,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../package.dhall sha256:ab1c971ddeb178c1cfc5e749b211b4fe6fdb6fa1b68b10de62aeb543efcd60b3
+      ../package.dhall sha256:ce1e73deebf8c4eb513bfc736adfd924fe696ffee486f6f4bd81ed281bbf0f2a
 
 let deployment =
       kubernetes.Deployment::{
@@ -152,7 +152,7 @@ let map = Prelude.List.map
 let kv = Prelude.JSON.keyText
 
 let kubernetes =
-      ../package.dhall sha256:ab1c971ddeb178c1cfc5e749b211b4fe6fdb6fa1b68b10de62aeb543efcd60b3
+      ../package.dhall sha256:ce1e73deebf8c4eb513bfc736adfd924fe696ffee486f6f4bd81ed281bbf0f2a
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -233,7 +233,7 @@ Result:
 ```yaml
 ## examples/out/ingress.yaml
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:

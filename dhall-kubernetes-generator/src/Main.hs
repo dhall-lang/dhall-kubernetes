@@ -11,8 +11,9 @@ import Data.Maybe (maybeToList)
 import Data.Text (Text, pack)
 import Data.Void (Void)
 import Data.Yaml
+import Dhall.Core (Expr(..))
 import Dhall.Kubernetes.Data (patchCyclicImports)
-import Dhall.Kubernetes.Types
+import Dhall.Kubernetes.Types as Types
 import Numeric.Natural (Natural)
 import Text.Megaparsec (Parsec, some, parse, (<|>), errorBundlePretty)
 import Text.Megaparsec.Char (char, alphaNumChar)
@@ -43,7 +44,7 @@ data Options = Options
     }
 
 -- | Write and format a Dhall expression to a file
-writeDhall :: Turtle.FilePath -> Expr -> IO ()
+writeDhall :: Turtle.FilePath -> Types.Expr -> IO ()
 writeDhall path expr = do
   echoStr $ "Writing file '" <> Turtle.encodeString path <> "'"
   Turtle.writeTextFile path $ pretty expr <> "\n"
@@ -129,7 +130,7 @@ parseVersion = Megaparsec.try parseSuffix <|> parsePrefix
 getVersion :: ModelName -> Maybe Version
 getVersion ModelName{..} =
     case Megaparsec.parse parseVersion "" unModelName of
-        Left  errors  -> Nothing
+        Left  _       -> Nothing
         Right version -> Just version
 
 preferStableResource :: DuplicateHandler
@@ -139,7 +140,7 @@ preferStableResource (_, names) =
 skipDuplicatesHandler :: DuplicateHandler
 skipDuplicatesHandler = const Nothing
 
-parseImport :: String -> Expr -> Dhall.Parser.Parser Dhall.Import
+parseImport :: String -> Types.Expr -> Dhall.Parser.Parser Dhall.Import
 parseImport _ (Dhall.Note _ (Dhall.Embed l)) = pure l
 parseImport prefix e = fail $ "Expected a Dhall import for " <> prefix <> " not:\n" <> show e
 
@@ -242,6 +243,17 @@ main = do
 
   let schemas = Data.Map.intersectionWithKey toSchema types defaults
 
+  let package =
+        Combine
+          (Embed (Convert.mkImport prefixMap [ ] "schemas.dhall"))
+          (RecordLit
+              [ ( "IntOrString"
+                , Field (Embed (Convert.mkImport prefixMap [ ] "types.dhall")) "IntOrString"
+                )
+              , ( "Resource", Embed (Convert.mkImport prefixMap [ ] "typesUnion.dhall"))
+              ]
+          )
+
   -- Output schemas that combine both the types and defaults
   Turtle.mktree "schemas"
   for_ (Data.Map.toList schemas) $ \(ModelName name, expr) -> do
@@ -259,8 +271,10 @@ main = do
       typesUnionPath = "./typesUnion.dhall"
       defaultsRecordPath = "./defaults.dhall"
       schemasRecordPath = "./schemas.dhall"
+      packageRecordPath = "./package.dhall"
 
   writeDhall typesUnionPath (Dhall.Union $ fmap Just typesMap)
   writeDhall typesRecordPath (Dhall.RecordLit typesMap)
   writeDhall defaultsRecordPath (Dhall.RecordLit defaultsMap)
   writeDhall schemasRecordPath (Dhall.RecordLit schemasMap)
+  writeDhall packageRecordPath package

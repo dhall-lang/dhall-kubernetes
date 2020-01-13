@@ -1,4 +1,4 @@
-{ fetchurl, make-dhall-kubernetes, lib, stdenv }:
+{ fetchurl, make-dhall-kubernetes-package, lib, stdenv }:
 
 let
   kubernetesDirectory = ./kubernetes;
@@ -17,7 +17,7 @@ let
             let
               spec =
                 stdenv.mkDerivation {
-                  name = "kubernetes-openapi-spec-${version}";
+                  name = "kubernetes-${version}";
 
                   src =
                     fetchurl {
@@ -35,7 +35,7 @@ let
                   '';
                 };
             in
-              make-dhall-kubernetes spec;
+              make-dhall-kubernetes-package spec;
         };
 
 in
