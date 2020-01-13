@@ -33,9 +33,11 @@ import qualified Dhall.Kubernetes.Types                as Types
 import qualified Dhall.Parser
 import qualified Dhall.Pretty
 import qualified Dhall.Util
+import qualified GHC.IO.Encoding
 import qualified Options.Applicative
 import qualified Text.Megaparsec                       as Megaparsec
 import qualified Text.Megaparsec.Char.Lexer            as Megaparsec.Lexer
+import qualified System.IO
 import qualified Turtle
 
 -- | Top-level program options
@@ -194,6 +196,8 @@ parserInfoOptions =
 
 main :: IO ()
 main = do
+  GHC.IO.Encoding.setLocaleEncoding System.IO.utf8
+
   Options{..} <- Options.Applicative.execParser parserInfoOptions
 
   let duplicateHandler =
