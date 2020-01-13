@@ -13,10 +13,12 @@ import Data.Void (Void)
 import Data.Yaml
 import Dhall.Core (Expr(..))
 import Dhall.Kubernetes.Data (patchCyclicImports)
-import Dhall.Kubernetes.Types as Types
 import Numeric.Natural (Natural)
 import Text.Megaparsec (Parsec, some, parse, (<|>), errorBundlePretty)
 import Text.Megaparsec.Char (char, alphaNumChar)
+
+import Dhall.Kubernetes.Types
+    (DuplicateHandler, ModelName(..), Prefix, Swagger(..))
 
 import qualified Data.List                             as List
 import qualified Data.Map.Strict                       as Data.Map
@@ -27,6 +29,7 @@ import qualified Data.Text.Prettyprint.Doc.Render.Text as PrettyText
 import qualified Dhall.Core                            as Dhall
 import qualified Dhall.Format
 import qualified Dhall.Kubernetes.Convert              as Convert
+import qualified Dhall.Kubernetes.Types                as Types
 import qualified Dhall.Parser
 import qualified Dhall.Pretty
 import qualified Dhall.Util
