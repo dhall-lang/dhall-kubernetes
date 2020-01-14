@@ -6,41 +6,138 @@ let
     ref = "refs/heads/nixos-unstable";
   };
 
-  config = {
-    packageOverrides = pkgs: rec {
-      make-dhall-kubernetes = pkgs.callPackage ./make-dhall-kubernetes.nix {};
+  overlay = pkgsNew: pkgsOld: {
+    make-dhall-kubernetes =
+      spec:
+        pkgsNew.runCommand "dhall-${spec.name}" {} ''
+          ${pkgsNew.coreutils}/bin/mkdir -p $out
 
-      dhall-kubernetes = pkgs.callPackage ./dhall-kubernetes.nix {};
+          cd $out
 
-      haskellPackages = pkgs.haskellPackages.override (old: {
-          overrides =
-             let
-               previous = old.overrides or (_: _: {});
+          ${pkgsNew.haskellPackages.dhall-kubernetes-generator}/bin/dhall-kubernetes-generator '${spec}'
+        '';
 
-               packages = pkgs.haskell.lib.packageSourceOverrides {
-                 dhall = "1.27.0";
+    make-dhall-kubernetes-package =
+      spec:
+        let
+          drv = pkgsNew.make-dhall-kubernetes spec;
 
-                 dhall-json = "1.5.0";
+          kubernetesFiles = [
+            "defaults.dhall"
+            "package.dhall"
+            "schemas.dhall"
+            "types.dhall"
+            "typesUnion.dhall"
+          ];
 
-                 dhall-kubernetes-generator = ../dhall-kubernetes-generator;
-               };
+          examples = [
+            "aws-iam-authenticator-chart"
+            "deployment"
+            "deploymentSimple"
+            "ingress"
+            "service"
+          ];
 
-               manual = haskellPackagesNew: haskellPackagesOld: {
-                 dhall = pkgs.haskell.lib.dontCheck haskellPackagesOld.dhall;
+          exampleFiles =
+            let
+              exampleToLocal = example: "examples/${example}.dhall";
 
-                 dhall-json =
-                   pkgs.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
-               };
+            in
+              map exampleToLocal examples;
 
-             in
-               pkgs.lib.fold pkgs.lib.composeExtensions (_: _: {})
-                 [ previous
-                   packages
-                   manual
-                 ];
-        }
-      );
-    };
+          copiedFiles =
+            exampleFiles ++ [ "Prelude.dhall" "docs/README.md.dhall" ];
+
+          frozenFiles = kubernetesFiles ++ exampleFiles;
+
+          checkedFiles = frozenFiles;
+
+          copyKubernetes =
+            file:
+              "${pkgsNew.coreutils}/bin/cp ${drv}/${file} $out/${file}";
+
+          copyLocal =
+            file:
+              "${pkgsNew.coreutils}/bin/cp ${./.. + "/${file}"} $out/${file}";
+
+          freezeFile =
+            file:
+              ''echo 'Freezing ./${file}'
+                ${pkgsNew.dhall}/bin/dhall freeze --all --inplace $out/${file}
+              '';
+
+          buildExample =
+            example:
+              let
+                inputFile = "examples/${example}.dhall";
+
+                outputFile = "examples/out/${example}.yaml";
+
+              in
+                ''echo './${inputFile} → ./${outputFile}'
+                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --omitEmpty --file $out/${inputFile} > $out/${outputFile}
+              '';
+
+          checkFile =
+            file:
+              ''echo 'Checking ./${file}'
+                ${pkgsNew.dhall}/bin/dhall type --quiet --file $out/${file}
+              '';
+
+        in
+          pkgsNew.runCommand "package-${drv.name}" { XDG_CACHE_HOME="."; } ''
+            ${pkgsNew.coreutils}/bin/mkdir --parents "$out/examples/out"
+            ${pkgsNew.coreutils}/bin/mkdir --parents "$out/docs"
+            ${pkgsNew.rsync}/bin/rsync --recursive ${drv}/ $out/
+            ${pkgsNew.coreutils}/bin/chmod u+w $out/
+            ${pkgsNew.lib.concatMapStringsSep "\n" copyLocal copiedFiles}
+            ${pkgsNew.coreutils}/bin/chmod u+w --recursive $out/
+            ${pkgsNew.lib.concatMapStringsSep "\n" freezeFile frozenFiles}
+            ${pkgsNew.lib.concatMapStringsSep "\n" checkFile checkedFiles}
+            ${pkgsNew.lib.concatMapStringsSep "\n" buildExample examples}
+            ${let
+                inputFile = "docs/README.md.dhall";
+
+                outputFile = "README.md";
+
+              in
+                ''echo './${inputFile} → ./${outputFile}'
+                  ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} > $out/${outputFile}
+                ''
+            }
+          '';
+
+    dhall-kubernetes = pkgsNew.callPackage ./dhall-kubernetes.nix {};
+
+    haskellPackages = pkgsOld.haskellPackages.override (old: {
+        overrides =
+           let
+             previous = old.overrides or (_: _: {});
+
+             packages = pkgsNew.haskell.lib.packageSourceOverrides {
+               dhall = "1.27.0";
+
+               dhall-json = "1.5.0";
+
+               dhall-kubernetes-generator = ../dhall-kubernetes-generator;
+             };
+
+             manual = haskellPackagesNew: haskellPackagesOld: {
+               dhall = pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall;
+
+               dhall-json =
+                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
+             };
+
+           in
+             pkgsNew.lib.fold pkgsNew.lib.composeExtensions (_: _: {})
+               [ previous
+                 packages
+                 manual
+               ];
+      }
+    );
   };
+
 in
-  import nixpkgs { inherit config; }
+  import nixpkgs { config = {}; overlays = [ overlay ]; }

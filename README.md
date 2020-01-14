@@ -53,7 +53,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../package.dhall sha256:ab1c971ddeb178c1cfc5e749b211b4fe6fdb6fa1b68b10de62aeb543efcd60b3
+      ../package.dhall sha256:e9c55c7ff71f901314129e7ef100c3af5ec7a918dce25e06d83fa8c5472cb680
 
 let deployment =
       kubernetes.Deployment::{
@@ -152,7 +152,7 @@ let map = Prelude.List.map
 let kv = Prelude.JSON.keyText
 
 let kubernetes =
-      ../package.dhall sha256:ab1c971ddeb178c1cfc5e749b211b4fe6fdb6fa1b68b10de62aeb543efcd60b3
+      ../package.dhall sha256:e9c55c7ff71f901314129e7ef100c3af5ec7a918dce25e06d83fa8c5472cb680
 
 let Service = { name : Text, host : Text, version : Text }
 

@@ -20,8 +20,8 @@ if DIR=$(nix-build release.nix --attr "\"${VERSION}\"" --no-out-link); then
   chmod -R u+w "${BASE}/schemas"
   cp -r "${DIR}/examples" "${BASE}"
   chmod -R u+w "${BASE}/examples"
-  cp "${DIR}/types.dhall" "${DIR}/typesUnion.dhall" "${DIR}/defaults.dhall" "${DIR}/schemas.dhall" "${DIR}/package.dhall" "${BASE}"
-  chmod u+w "${BASE}/types.dhall" "${BASE}/typesUnion.dhall" "${BASE}/defaults.dhall" "${BASE}/schemas.dhall" "${BASE}/package.dhall"
+  cp "${DIR}/types.dhall" "${DIR}/typesUnion.dhall" "${DIR}/defaults.dhall" "${DIR}/schemas.dhall" "${DIR}/package.dhall" "${DIR}/Prelude.dhall" "${BASE}"
+  chmod u+w "${BASE}/types.dhall" "${BASE}/typesUnion.dhall" "${BASE}/defaults.dhall" "${BASE}/schemas.dhall" "${BASE}/package.dhall" "${BASE}/Prelude.dhall"
   cp "${DIR}/README.md" "${BASE}/README.md"
   chmod u+w "${BASE}/README.md"
 fi
