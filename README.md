@@ -91,7 +91,7 @@ in  deployment
 We then run this through `dhall-to-yaml` to generate our Kubernetes definition:
 
 ```bash
-dhall-to-yaml --omitEmpty < examples/deploymentSimple.dhall
+dhall-to-yaml --omit-empty < examples/deploymentSimple.dhall
 ```
 
 And we get:
@@ -139,7 +139,7 @@ Things to note in the following example:
   them over the list of services.
 - we also defined the list of `services` inline, but you should instead return the
   `mkIngress` function instead of applying it, so you can do something like
-  `dhall-to-yaml --omitEmpty <<< "./mkIngress.dhall ./myServices.dhall"`
+  `dhall-to-yaml --omit-empty <<< "./mkIngress.dhall ./myServices.dhall"`
 
 ```dhall
 -- examples/ingress.dhall
@@ -226,7 +226,7 @@ in  mkIngress services
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml --omitEmpty < examples/ingress.dhall
+dhall-to-yaml --omit-empty < examples/ingress.dhall
 ```
 
 Result:
@@ -275,7 +275,7 @@ If the objects have the same type, this is very easy: you return a Dhall list co
 objects, and use the `--documents` flag, e.g.:
 
 ```bash
-dhall-to-yaml --documents --omitEmpty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
+dhall-to-yaml --documents --omit-empty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
 ```
 
 If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
