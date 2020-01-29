@@ -75,7 +75,7 @@ let
 
               in
                 ''echo './${inputFile} → ./${outputFile}'
-                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --omitEmpty --file $out/${inputFile} > $out/${outputFile}
+                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --omit-empty --file $out/${inputFile} > $out/${outputFile}
               '';
 
           checkFile =
@@ -115,11 +115,13 @@ let
              previous = old.overrides or (_: _: {});
 
              packages = pkgsNew.haskell.lib.packageSourceOverrides {
-               dhall = "1.27.0";
-
                dhall-json = "1.5.0";
 
                dhall-kubernetes-generator = ../dhall-kubernetes-generator;
+             };
+
+             packagesFromDirectory = pkgsNew.haskell.lib.packagesFromDirectory {
+               directory = ./haskell;
              };
 
              manual = haskellPackagesNew: haskellPackagesOld: {
@@ -127,12 +129,16 @@ let
 
                dhall-json =
                  pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
+
+               prettyprinter =
+                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.prettyprinter;
              };
 
            in
              pkgsNew.lib.fold pkgsNew.lib.composeExtensions (_: _: {})
                [ previous
                  packages
+                 packagesFromDirectory
                  manual
                ];
       }
