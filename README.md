@@ -58,30 +58,21 @@ let kubernetes =
 let deployment =
       kubernetes.Deployment::{
       , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
-      , spec =
-          Some
-            kubernetes.DeploymentSpec::{
-            , replicas = Some 2
-            , template =
-                kubernetes.PodTemplateSpec::{
-                , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
-                , spec =
-                    Some
-                      kubernetes.PodSpec::{
-                      , containers =
-                          [ kubernetes.Container::{
-                            , name = "nginx"
-                            , image = Some "nginx:1.15.3"
-                            , ports =
-                                [ kubernetes.ContainerPort::{
-                                  , containerPort = 80
-                                  }
-                                ]
-                            }
-                          ]
-                      }
+      , spec = Some kubernetes.DeploymentSpec::{
+        , replicas = Some 2
+        , template = kubernetes.PodTemplateSpec::{
+          , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+          , spec = Some kubernetes.PodSpec::{
+            , containers =
+              [ kubernetes.Container::{
+                , name = "nginx"
+                , image = Some "nginx:1.15.3"
+                , ports = [ kubernetes.ContainerPort::{ containerPort = 80 } ]
                 }
+              ]
             }
+          }
+        }
       }
 
 in  deployment
@@ -169,17 +160,16 @@ let makeRule
     : Service → kubernetes.IngressRule.Type
     =   λ(service : Service)
       → { host = Some service.host
-        , http =
-            Some
-              { paths =
-                  [ { backend =
-                        { serviceName = service.name
-                        , servicePort = kubernetes.IntOrString.Int 80
-                        }
-                    , path = None Text
+        , http = Some
+            { paths =
+              [ { backend =
+                    { serviceName = service.name
+                    , servicePort = kubernetes.IntOrString.Int 80
                     }
-                  ]
-              }
+                , path = None Text
+                }
+              ]
+            }
         }
 
 let mkIngress
@@ -189,15 +179,15 @@ let mkIngress
               [ kv "kubernetes.io/ingress.class" "nginx"
               , kv "kubernetes.io/ingress.allow-http" "false"
               ]
-        
+
         let defaultService =
               { name = "default"
               , host = "default.example.com"
               , version = " 1.0"
               }
-        
+
         let ingressServices = inputServices # [ defaultService ]
-        
+
         let spec =
               kubernetes.IngressSpec::{
               , tls =
@@ -209,13 +199,12 @@ let mkIngress
                     makeRule
                     ingressServices
               }
-        
+
         in  kubernetes.Ingress::{
-            , metadata =
-                kubernetes.ObjectMeta::{
-                , name = "nginx"
-                , annotations = annotations
-                }
+            , metadata = kubernetes.ObjectMeta::{
+              , name = "nginx"
+              , annotations = annotations
+              }
             , spec = Some spec
             }
 

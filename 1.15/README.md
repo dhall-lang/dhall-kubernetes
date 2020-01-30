@@ -58,30 +58,21 @@ let kubernetes =
 let deployment =
       kubernetes.Deployment::{
       , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
-      , spec =
-          Some
-            kubernetes.DeploymentSpec::{
-            , replicas = Some 2
-            , template =
-                kubernetes.PodTemplateSpec::{
-                , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
-                , spec =
-                    Some
-                      kubernetes.PodSpec::{
-                      , containers =
-                          [ kubernetes.Container::{
-                            , name = "nginx"
-                            , image = Some "nginx:1.15.3"
-                            , ports =
-                                [ kubernetes.ContainerPort::{
-                                  , containerPort = 80
-                                  }
-                                ]
-                            }
-                          ]
-                      }
+      , spec = Some kubernetes.DeploymentSpec::{
+        , replicas = Some 2
+        , template = kubernetes.PodTemplateSpec::{
+          , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+          , spec = Some kubernetes.PodSpec::{
+            , containers =
+              [ kubernetes.Container::{
+                , name = "nginx"
+                , image = Some "nginx:1.15.3"
+                , ports = [ kubernetes.ContainerPort::{ containerPort = 80 } ]
                 }
+              ]
             }
+          }
+        }
       }
 
 in  deployment
@@ -91,7 +82,7 @@ in  deployment
 We then run this through `dhall-to-yaml` to generate our Kubernetes definition:
 
 ```bash
-dhall-to-yaml --omitEmpty < examples/deploymentSimple.dhall
+dhall-to-yaml --omit-empty < examples/deploymentSimple.dhall
 ```
 
 And we get:
@@ -139,7 +130,7 @@ Things to note in the following example:
   them over the list of services.
 - we also defined the list of `services` inline, but you should instead return the
   `mkIngress` function instead of applying it, so you can do something like
-  `dhall-to-yaml --omitEmpty <<< "./mkIngress.dhall ./myServices.dhall"`
+  `dhall-to-yaml --omit-empty <<< "./mkIngress.dhall ./myServices.dhall"`
 
 ```dhall
 -- examples/ingress.dhall
@@ -169,17 +160,16 @@ let makeRule
     : Service → kubernetes.IngressRule.Type
     =   λ(service : Service)
       → { host = Some service.host
-        , http =
-            Some
-              { paths =
-                  [ { backend =
-                        { serviceName = service.name
-                        , servicePort = kubernetes.IntOrString.Int 80
-                        }
-                    , path = None Text
+        , http = Some
+            { paths =
+              [ { backend =
+                    { serviceName = service.name
+                    , servicePort = kubernetes.IntOrString.Int 80
                     }
-                  ]
-              }
+                , path = None Text
+                }
+              ]
+            }
         }
 
 let mkIngress
@@ -189,15 +179,15 @@ let mkIngress
               [ kv "kubernetes.io/ingress.class" "nginx"
               , kv "kubernetes.io/ingress.allow-http" "false"
               ]
-        
+
         let defaultService =
               { name = "default"
               , host = "default.example.com"
               , version = " 1.0"
               }
-        
+
         let ingressServices = inputServices # [ defaultService ]
-        
+
         let spec =
               kubernetes.IngressSpec::{
               , tls =
@@ -209,13 +199,12 @@ let mkIngress
                     makeRule
                     ingressServices
               }
-        
+
         in  kubernetes.Ingress::{
-            , metadata =
-                kubernetes.ObjectMeta::{
-                , name = "nginx"
-                , annotations = annotations
-                }
+            , metadata = kubernetes.ObjectMeta::{
+              , name = "nginx"
+              , annotations = annotations
+              }
             , spec = Some spec
             }
 
@@ -226,7 +215,7 @@ in  mkIngress services
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml --omitEmpty < examples/ingress.dhall
+dhall-to-yaml --omit-empty < examples/ingress.dhall
 ```
 
 Result:
@@ -275,7 +264,7 @@ If the objects have the same type, this is very easy: you return a Dhall list co
 objects, and use the `--documents` flag, e.g.:
 
 ```bash
-dhall-to-yaml --documents --omitEmpty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
+dhall-to-yaml --documents --omit-empty <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
 ```
 
 If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
