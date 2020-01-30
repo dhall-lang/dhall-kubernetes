@@ -1,7 +1,7 @@
-{ default = [] : List { mapKey : Text, mapValue : Text }
-, defaultRequest = [] : List { mapKey : Text, mapValue : Text }
-, max = [] : List { mapKey : Text, mapValue : Text }
-, maxLimitRequestRatio = [] : List { mapKey : Text, mapValue : Text }
-, min = [] : List { mapKey : Text, mapValue : Text }
+{ default = None (List { mapKey : Text, mapValue : Text })
+, defaultRequest = None (List { mapKey : Text, mapValue : Text })
+, max = None (List { mapKey : Text, mapValue : Text })
+, maxLimitRequestRatio = None (List { mapKey : Text, mapValue : Text })
+, min = None (List { mapKey : Text, mapValue : Text })
 , type = None Text
 }

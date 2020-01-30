@@ -1,1 +1,1 @@
-{ hosts = [] : List Text, secretName = None Text }
+{ hosts = None (List Text), secretName = None Text }

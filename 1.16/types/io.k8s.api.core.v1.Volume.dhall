@@ -1,6 +1,4 @@
-{ emptyDir : ./io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
-, flocker : ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
-, name : Text
+{ name : Text
 , awsElasticBlockStore :
     Optional ./io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall
 , azureDisk : Optional ./io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
@@ -10,8 +8,10 @@
 , configMap : Optional ./io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
 , csi : Optional ./io.k8s.api.core.v1.CSIVolumeSource.dhall
 , downwardAPI : Optional ./io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
+, emptyDir : Optional ./io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
 , fc : Optional ./io.k8s.api.core.v1.FCVolumeSource.dhall
 , flexVolume : Optional ./io.k8s.api.core.v1.FlexVolumeSource.dhall
+, flocker : Optional ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
 , gcePersistentDisk :
     Optional ./io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall
 , gitRepo : Optional ./io.k8s.api.core.v1.GitRepoVolumeSource.dhall

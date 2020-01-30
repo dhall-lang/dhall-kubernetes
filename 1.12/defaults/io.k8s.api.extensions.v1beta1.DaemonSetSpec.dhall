@@ -1,5 +1,4 @@
-{ template = ./io.k8s.api.core.v1.PodTemplateSpec.dhall
-, minReadySeconds = None Natural
+{ minReadySeconds = None Natural
 , revisionHistoryLimit = None Natural
 , selector =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall

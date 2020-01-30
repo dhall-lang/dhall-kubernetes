@@ -1,1 +1,1 @@
-{ values = [] : List Text }
+{=}

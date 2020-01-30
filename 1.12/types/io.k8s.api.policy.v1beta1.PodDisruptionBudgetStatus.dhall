@@ -1,7 +1,7 @@
 { currentHealthy : Natural
 , desiredHealthy : Natural
-, disruptedPods : List { mapKey : Text, mapValue : Text }
 , disruptionsAllowed : Natural
 , expectedPods : Natural
+, disruptedPods : Optional (List { mapKey : Text, mapValue : Text })
 , observedGeneration : Optional Natural
 }

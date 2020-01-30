@@ -1,7 +1,7 @@
-{ categories : List Text
-, kind : Text
+{ kind : Text
 , plural : Text
-, shortNames : List Text
+, categories : Optional (List Text)
 , listKind : Optional Text
+, shortNames : Optional (List Text)
 , singular : Optional Text
 }

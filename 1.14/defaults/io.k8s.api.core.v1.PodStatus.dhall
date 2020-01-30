@@ -1,9 +1,9 @@
-{ conditions = [] : List ./../types/io.k8s.api.core.v1.PodCondition.dhall
+{ conditions = None (List ./../types/io.k8s.api.core.v1.PodCondition.dhall)
 , containerStatuses =
-    [] : List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall
-, initContainerStatuses =
-    [] : List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall
+    None (List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall)
 , hostIP = None Text
+, initContainerStatuses =
+    None (List ./../types/io.k8s.api.core.v1.ContainerStatus.dhall)
 , message = None Text
 , nominatedNodeName = None Text
 , phase = None Text

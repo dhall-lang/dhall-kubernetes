@@ -1,3 +1,3 @@
-{ postStart = ./io.k8s.api.core.v1.Handler.dhall
-, preStop = ./io.k8s.api.core.v1.Handler.dhall
+{ postStart = None ./../types/io.k8s.api.core.v1.Handler.dhall
+, preStop = None ./../types/io.k8s.api.core.v1.Handler.dhall
 }

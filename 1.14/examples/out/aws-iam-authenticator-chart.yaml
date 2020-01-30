@@ -8,6 +8,10 @@ metadata:
     release: wintering-rodent
   name: wintering-rodent-aws-iam-authenticator
 spec:
+  selector:
+    matchLabels:
+      app: aws-iam-authenticator
+      release: wintering-rodent
   template:
     metadata:
       annotations:

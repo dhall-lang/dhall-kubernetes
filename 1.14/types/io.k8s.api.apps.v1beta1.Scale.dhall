@@ -1,6 +1,6 @@
 { apiVersion : Text
 , kind : Text
 , metadata : ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
-, spec : ./io.k8s.api.apps.v1beta1.ScaleSpec.dhall
+, spec : Optional ./io.k8s.api.apps.v1beta1.ScaleSpec.dhall
 , status : Optional ./io.k8s.api.apps.v1beta1.ScaleStatus.dhall
 }

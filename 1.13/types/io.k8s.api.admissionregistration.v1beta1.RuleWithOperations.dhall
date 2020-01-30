@@ -1,5 +1,5 @@
-{ apiGroups : List Text
-, apiVersions : List Text
-, operations : List Text
-, resources : List Text
+{ apiGroups : Optional (List Text)
+, apiVersions : Optional (List Text)
+, operations : Optional (List Text)
+, resources : Optional (List Text)
 }

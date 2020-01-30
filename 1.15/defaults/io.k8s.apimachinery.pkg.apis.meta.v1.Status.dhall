@@ -1,6 +1,5 @@
 { apiVersion = "v1"
 , kind = "Status"
-, metadata = ./io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.dhall
 , code = None Natural
 , details =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.dhall

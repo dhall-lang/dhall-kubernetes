@@ -1,3 +1,3 @@
-{ selector = [] : List { mapKey : Text, mapValue : Text }
+{ selector = None (List { mapKey : Text, mapValue : Text })
 , targetSelector = None Text
 }

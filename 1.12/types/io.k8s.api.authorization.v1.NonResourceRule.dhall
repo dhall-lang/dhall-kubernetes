@@ -1,1 +1,1 @@
-{ nonResourceURLs : List Text, verbs : List Text }
+{ verbs : List Text, nonResourceURLs : Optional (List Text) }

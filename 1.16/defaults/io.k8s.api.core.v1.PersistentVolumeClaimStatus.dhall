@@ -1,6 +1,7 @@
-{ accessModes = [] : List Text
-, capacity = [] : List { mapKey : Text, mapValue : Text }
+{ accessModes = None (List Text)
+, capacity = None (List { mapKey : Text, mapValue : Text })
 , conditions =
-    [] : List ./../types/io.k8s.api.core.v1.PersistentVolumeClaimCondition.dhall
+    None
+      (List ./../types/io.k8s.api.core.v1.PersistentVolumeClaimCondition.dhall)
 , phase = None Text
 }

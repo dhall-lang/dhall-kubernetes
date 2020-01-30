@@ -3,10 +3,8 @@ let Prelude =
 
 let map = Prelude.List.map
 
-let kv = Prelude.JSON.keyText
-
 let kubernetes =
-      ../package.dhall sha256:ce1e73deebf8c4eb513bfc736adfd924fe696ffee486f6f4bd81ed281bbf0f2a
+      ../package.dhall sha256:d545c49903546ab1b4186886c78afec2c406200c42be38a33b15fd1c71acaa9d
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -15,7 +13,7 @@ let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 let makeTLS
     : Service → kubernetes.IngressTLS.Type
     =   λ(service : Service)
-      → { hosts = [ service.host ]
+      → { hosts = Some [ service.host ]
         , secretName = Some "${service.name}-certificate"
         }
 
@@ -39,9 +37,10 @@ let mkIngress
     : List Service → kubernetes.Ingress.Type
     =   λ(inputServices : List Service)
       → let annotations =
-              [ kv "kubernetes.io/ingress.class" "nginx"
-              , kv "kubernetes.io/ingress.allow-http" "false"
-              ]
+              toMap
+                { `kubernetes.io/ingress.class` = "nginx"
+                , `kubernetes.io/ingress.allow-http` = "false"
+                }
 
         let defaultService =
               { name = "default"
@@ -53,20 +52,26 @@ let mkIngress
 
         let spec =
               kubernetes.IngressSpec::{
-              , tls =
-                  map Service kubernetes.IngressTLS.Type makeTLS ingressServices
-              , rules =
-                  map
-                    Service
-                    kubernetes.IngressRule.Type
-                    makeRule
-                    ingressServices
+              , tls = Some
+                  ( map
+                      Service
+                      kubernetes.IngressTLS.Type
+                      makeTLS
+                      ingressServices
+                  )
+              , rules = Some
+                  ( map
+                      Service
+                      kubernetes.IngressRule.Type
+                      makeRule
+                      ingressServices
+                  )
               }
 
         in  kubernetes.Ingress::{
             , metadata = kubernetes.ObjectMeta::{
               , name = "nginx"
-              , annotations = annotations
+              , annotations = Some annotations
               }
             , spec = Some spec
             }

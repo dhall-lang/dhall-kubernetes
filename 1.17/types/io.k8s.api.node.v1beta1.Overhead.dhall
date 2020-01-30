@@ -1,1 +1,1 @@
-{ podFixed : List { mapKey : Text, mapValue : Text } }
+{ podFixed : Optional (List { mapKey : Text, mapValue : Text }) }

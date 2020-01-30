@@ -1,25 +1,24 @@
-{ affinity : ./io.k8s.api.core.v1.Affinity.dhall
-, containers : List ./io.k8s.api.core.v1.Container.dhall
-, hostAliases : List ./io.k8s.api.core.v1.HostAlias.dhall
-, imagePullSecrets : List ./io.k8s.api.core.v1.LocalObjectReference.dhall
-, initContainers : List ./io.k8s.api.core.v1.Container.dhall
-, nodeSelector : List { mapKey : Text, mapValue : Text }
-, readinessGates : List ./io.k8s.api.core.v1.PodReadinessGate.dhall
-, tolerations : List ./io.k8s.api.core.v1.Toleration.dhall
-, volumes : List ./io.k8s.api.core.v1.Volume.dhall
+{ containers : List ./io.k8s.api.core.v1.Container.dhall
 , activeDeadlineSeconds : Optional Natural
+, affinity : Optional ./io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken : Optional Bool
 , dnsConfig : Optional ./io.k8s.api.core.v1.PodDNSConfig.dhall
 , dnsPolicy : Optional Text
 , enableServiceLinks : Optional Bool
+, hostAliases : Optional (List ./io.k8s.api.core.v1.HostAlias.dhall)
 , hostIPC : Optional Bool
 , hostNetwork : Optional Bool
 , hostPID : Optional Bool
 , hostname : Optional Text
+, imagePullSecrets :
+    Optional (List ./io.k8s.api.core.v1.LocalObjectReference.dhall)
+, initContainers : Optional (List ./io.k8s.api.core.v1.Container.dhall)
 , nodeName : Optional Text
+, nodeSelector : Optional (List { mapKey : Text, mapValue : Text })
 , preemptionPolicy : Optional Text
 , priority : Optional Natural
 , priorityClassName : Optional Text
+, readinessGates : Optional (List ./io.k8s.api.core.v1.PodReadinessGate.dhall)
 , restartPolicy : Optional Text
 , runtimeClassName : Optional Text
 , schedulerName : Optional Text
@@ -29,4 +28,6 @@
 , shareProcessNamespace : Optional Bool
 , subdomain : Optional Text
 , terminationGracePeriodSeconds : Optional Natural
+, tolerations : Optional (List ./io.k8s.api.core.v1.Toleration.dhall)
+, volumes : Optional (List ./io.k8s.api.core.v1.Volume.dhall)
 }

@@ -1,1 +1,1 @@
-{ command = [] : List Text }
+{ command = None (List Text) }

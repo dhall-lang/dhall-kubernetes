@@ -1,1 +1,1 @@
-{ stages = [] : List Text }
+{ stages = None (List Text) }

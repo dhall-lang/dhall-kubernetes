@@ -1,5 +1,4 @@
-{ secretRef = ./io.k8s.api.core.v1.LocalObjectReference.dhall
-, fsType = None Text
+{ fsType = None Text
 , protectionDomain = None Text
 , readOnly = None Bool
 , sslEnabled = None Bool

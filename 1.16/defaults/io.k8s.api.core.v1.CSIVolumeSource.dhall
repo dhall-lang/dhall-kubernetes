@@ -1,5 +1,6 @@
-{ nodePublishSecretRef = ./io.k8s.api.core.v1.LocalObjectReference.dhall
-, volumeAttributes = [] : List { mapKey : Text, mapValue : Text }
-, fsType = None Text
+{ fsType = None Text
+, nodePublishSecretRef =
+    None ./../types/io.k8s.api.core.v1.LocalObjectReference.dhall
 , readOnly = None Bool
+, volumeAttributes = None (List { mapKey : Text, mapValue : Text })
 }

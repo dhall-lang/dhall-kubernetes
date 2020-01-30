@@ -1,14 +1,10 @@
-{ accessModes = [] : List Text
-, capacity = [] : List { mapKey : Text, mapValue : Text }
-, flocker = ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
-, mountOptions = [] : List Text
-, nodeAffinity = ./io.k8s.api.core.v1.VolumeNodeAffinity.dhall
-, storageos = ./io.k8s.api.core.v1.StorageOSPersistentVolumeSource.dhall
+{ accessModes = None (List Text)
 , awsElasticBlockStore =
     None ./../types/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall
 , azureDisk = None ./../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , azureFile =
     None ./../types/io.k8s.api.core.v1.AzureFilePersistentVolumeSource.dhall
+, capacity = None (List { mapKey : Text, mapValue : Text })
 , cephfs = None ./../types/io.k8s.api.core.v1.CephFSPersistentVolumeSource.dhall
 , cinder = None ./../types/io.k8s.api.core.v1.CinderPersistentVolumeSource.dhall
 , claimRef = None ./../types/io.k8s.api.core.v1.ObjectReference.dhall
@@ -16,13 +12,16 @@
 , fc = None ./../types/io.k8s.api.core.v1.FCVolumeSource.dhall
 , flexVolume =
     None ./../types/io.k8s.api.core.v1.FlexPersistentVolumeSource.dhall
+, flocker = None ./../types/io.k8s.api.core.v1.FlockerVolumeSource.dhall
 , gcePersistentDisk =
     None ./../types/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall
 , glusterfs = None ./../types/io.k8s.api.core.v1.GlusterfsVolumeSource.dhall
 , hostPath = None ./../types/io.k8s.api.core.v1.HostPathVolumeSource.dhall
 , iscsi = None ./../types/io.k8s.api.core.v1.ISCSIPersistentVolumeSource.dhall
 , local = None ./../types/io.k8s.api.core.v1.LocalVolumeSource.dhall
+, mountOptions = None (List Text)
 , nfs = None ./../types/io.k8s.api.core.v1.NFSVolumeSource.dhall
+, nodeAffinity = None ./../types/io.k8s.api.core.v1.VolumeNodeAffinity.dhall
 , persistentVolumeReclaimPolicy = None Text
 , photonPersistentDisk =
     None ./../types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall
@@ -32,6 +31,8 @@
 , scaleIO =
     None ./../types/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource.dhall
 , storageClassName = None Text
+, storageos =
+    None ./../types/io.k8s.api.core.v1.StorageOSPersistentVolumeSource.dhall
 , volumeMode = None Text
 , vsphereVolume =
     None ./../types/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource.dhall

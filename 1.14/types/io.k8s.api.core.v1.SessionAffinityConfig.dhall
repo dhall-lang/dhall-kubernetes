@@ -1,1 +1,1 @@
-{ clientIP : ./io.k8s.api.core.v1.ClientIPConfig.dhall }
+{ clientIP : Optional ./io.k8s.api.core.v1.ClientIPConfig.dhall }

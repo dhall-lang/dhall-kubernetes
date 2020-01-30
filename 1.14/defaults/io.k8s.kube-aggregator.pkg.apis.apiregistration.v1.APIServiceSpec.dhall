@@ -1,6 +1,4 @@
-{ service =
-    ./io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference.dhall
-, caBundle = None Text
+{ caBundle = None Text
 , group = None Text
 , insecureSkipTLSVerify = None Bool
 , version = None Text

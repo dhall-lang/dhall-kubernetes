@@ -1,1 +1,1 @@
-{ add = [] : List Text, drop = [] : List Text }
+{ add = None (List Text), drop = None (List Text) }

@@ -1,1 +1,1 @@
-{ command : List Text }
+{ command : Optional (List Text) }

@@ -1,6 +1,4 @@
-{ emptyDir = ./io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
-, flocker = ./io.k8s.api.core.v1.FlockerVolumeSource.dhall
-, awsElasticBlockStore =
+{ awsElasticBlockStore =
     None ./../types/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.dhall
 , azureDisk = None ./../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , azureFile = None ./../types/io.k8s.api.core.v1.AzureFileVolumeSource.dhall
@@ -8,8 +6,10 @@
 , cinder = None ./../types/io.k8s.api.core.v1.CinderVolumeSource.dhall
 , configMap = None ./../types/io.k8s.api.core.v1.ConfigMapVolumeSource.dhall
 , downwardAPI = None ./../types/io.k8s.api.core.v1.DownwardAPIVolumeSource.dhall
+, emptyDir = None ./../types/io.k8s.api.core.v1.EmptyDirVolumeSource.dhall
 , fc = None ./../types/io.k8s.api.core.v1.FCVolumeSource.dhall
 , flexVolume = None ./../types/io.k8s.api.core.v1.FlexVolumeSource.dhall
+, flocker = None ./../types/io.k8s.api.core.v1.FlockerVolumeSource.dhall
 , gcePersistentDisk =
     None ./../types/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.dhall
 , gitRepo = None ./../types/io.k8s.api.core.v1.GitRepoVolumeSource.dhall

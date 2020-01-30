@@ -1,4 +1,4 @@
-{ apiGroups = [] : List Text
-, apiVersions = [] : List Text
-, resources = [] : List Text
+{ apiGroups = None (List Text)
+, apiVersions = None (List Text)
+, resources = None (List Text)
 }

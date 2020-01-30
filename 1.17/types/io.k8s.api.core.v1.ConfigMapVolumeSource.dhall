@@ -1,5 +1,5 @@
-{ items : List ./io.k8s.api.core.v1.KeyToPath.dhall
-, defaultMode : Optional Natural
+{ defaultMode : Optional Natural
+, items : Optional (List ./io.k8s.api.core.v1.KeyToPath.dhall)
 , name : Optional Text
 , optional : Optional Bool
 }

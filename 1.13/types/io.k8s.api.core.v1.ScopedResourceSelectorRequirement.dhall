@@ -1,1 +1,1 @@
-{ operator : Text, scopeName : Text, values : List Text }
+{ operator : Text, scopeName : Text, values : Optional (List Text) }
