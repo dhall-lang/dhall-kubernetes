@@ -1,5 +1,4 @@
-{ template = ./io.k8s.api.core.v1.PodTemplateSpec.dhall
-, activeDeadlineSeconds = None Natural
+{ activeDeadlineSeconds = None Natural
 , backoffLimit = None Natural
 , completions = None Natural
 , manualSelector = None Bool

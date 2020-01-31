@@ -1,3 +1,3 @@
 { matchExpressions :
-    List ./io.k8s.api.core.v1.ScopedResourceSelectorRequirement.dhall
+    Optional (List ./io.k8s.api.core.v1.ScopedResourceSelectorRequirement.dhall)
 }

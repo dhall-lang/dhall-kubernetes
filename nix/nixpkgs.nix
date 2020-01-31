@@ -24,10 +24,10 @@ let
 
           kubernetesFiles = [
             "defaults.dhall"
-            "package.dhall"
-            "schemas.dhall"
             "types.dhall"
+            "schemas.dhall"
             "typesUnion.dhall"
+            "package.dhall"
           ];
 
           examples = [
@@ -64,6 +64,8 @@ let
             file:
               ''echo 'Freezing ./${file}'
                 ${pkgsNew.dhall}/bin/dhall freeze --all --inplace $out/${file}
+                echo 'Checking ./${file}'
+                ${pkgsNew.dhall}/bin/dhall type --quiet --file $out/${file}
               '';
 
           buildExample =
@@ -78,12 +80,6 @@ let
                   ${pkgsNew.dhall-json}/bin/dhall-to-yaml --omit-empty --file $out/${inputFile} > $out/${outputFile}
               '';
 
-          checkFile =
-            file:
-              ''echo 'Checking ./${file}'
-                ${pkgsNew.dhall}/bin/dhall type --quiet --file $out/${file}
-              '';
-
         in
           pkgsNew.runCommand "package-${drv.name}" { XDG_CACHE_HOME="."; } ''
             ${pkgsNew.coreutils}/bin/mkdir --parents "$out/examples/out"
@@ -93,7 +89,6 @@ let
             ${pkgsNew.lib.concatMapStringsSep "\n" copyLocal copiedFiles}
             ${pkgsNew.coreutils}/bin/chmod u+w --recursive $out/
             ${pkgsNew.lib.concatMapStringsSep "\n" freezeFile frozenFiles}
-            ${pkgsNew.lib.concatMapStringsSep "\n" checkFile checkedFiles}
             ${pkgsNew.lib.concatMapStringsSep "\n" buildExample examples}
             ${let
                 inputFile = "docs/README.md.dhall";

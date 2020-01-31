@@ -1,3 +1,3 @@
-{ limits : List { mapKey : Text, mapValue : Text }
-, requests : List { mapKey : Text, mapValue : Text }
+{ limits : Optional (List { mapKey : Text, mapValue : Text })
+, requests : Optional (List { mapKey : Text, mapValue : Text })
 }

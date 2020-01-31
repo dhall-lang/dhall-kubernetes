@@ -1,15 +1,13 @@
-{ args = [] : List Text
-, command = [] : List Text
-, env = [] : List ./../types/io.k8s.api.core.v1.EnvVar.dhall
-, envFrom = [] : List ./../types/io.k8s.api.core.v1.EnvFromSource.dhall
-, livenessProbe = ./io.k8s.api.core.v1.Probe.dhall
-, ports = [] : List ./../types/io.k8s.api.core.v1.ContainerPort.dhall
-, readinessProbe = ./io.k8s.api.core.v1.Probe.dhall
-, volumeDevices = [] : List ./../types/io.k8s.api.core.v1.VolumeDevice.dhall
-, volumeMounts = [] : List ./../types/io.k8s.api.core.v1.VolumeMount.dhall
+{ args = None (List Text)
+, command = None (List Text)
+, env = None (List ./../types/io.k8s.api.core.v1.EnvVar.dhall)
+, envFrom = None (List ./../types/io.k8s.api.core.v1.EnvFromSource.dhall)
 , image = None Text
 , imagePullPolicy = None Text
 , lifecycle = None ./../types/io.k8s.api.core.v1.Lifecycle.dhall
+, livenessProbe = None ./../types/io.k8s.api.core.v1.Probe.dhall
+, ports = None (List ./../types/io.k8s.api.core.v1.ContainerPort.dhall)
+, readinessProbe = None ./../types/io.k8s.api.core.v1.Probe.dhall
 , resources = None ./../types/io.k8s.api.core.v1.ResourceRequirements.dhall
 , securityContext = None ./../types/io.k8s.api.core.v1.SecurityContext.dhall
 , stdin = None Bool
@@ -17,5 +15,7 @@
 , terminationMessagePath = None Text
 , terminationMessagePolicy = None Text
 , tty = None Bool
+, volumeDevices = None (List ./../types/io.k8s.api.core.v1.VolumeDevice.dhall)
+, volumeMounts = None (List ./../types/io.k8s.api.core.v1.VolumeMount.dhall)
 , workingDir = None Text
 }

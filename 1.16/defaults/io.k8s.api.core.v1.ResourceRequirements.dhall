@@ -1,3 +1,3 @@
-{ limits = [] : List { mapKey : Text, mapValue : Text }
-, requests = [] : List { mapKey : Text, mapValue : Text }
+{ limits = None (List { mapKey : Text, mapValue : Text })
+, requests = None (List { mapKey : Text, mapValue : Text })
 }

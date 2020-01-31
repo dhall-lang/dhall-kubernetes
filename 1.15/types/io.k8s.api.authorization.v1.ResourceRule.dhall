@@ -1,5 +1,5 @@
-{ apiGroups : List Text
-, resourceNames : List Text
-, resources : List Text
-, verbs : List Text
+{ verbs : List Text
+, apiGroups : Optional (List Text)
+, resourceNames : Optional (List Text)
+, resources : Optional (List Text)
 }

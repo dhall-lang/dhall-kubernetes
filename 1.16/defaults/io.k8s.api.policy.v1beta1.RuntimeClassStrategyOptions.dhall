@@ -1,3 +1,1 @@
-{ allowedRuntimeClassNames = [] : List Text
-, defaultRuntimeClassName = None Text
-}
+{ defaultRuntimeClassName = None Text }

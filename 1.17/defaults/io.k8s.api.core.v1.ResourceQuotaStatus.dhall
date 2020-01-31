@@ -1,3 +1,3 @@
-{ hard = [] : List { mapKey : Text, mapValue : Text }
-, used = [] : List { mapKey : Text, mapValue : Text }
+{ hard = None (List { mapKey : Text, mapValue : Text })
+, used = None (List { mapKey : Text, mapValue : Text })
 }

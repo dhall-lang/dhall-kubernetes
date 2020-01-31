@@ -1,1 +1,2 @@
-{ ingress = [] : List ./../types/io.k8s.api.core.v1.LoadBalancerIngress.dhall }
+{ ingress = None (List ./../types/io.k8s.api.core.v1.LoadBalancerIngress.dhall)
+}

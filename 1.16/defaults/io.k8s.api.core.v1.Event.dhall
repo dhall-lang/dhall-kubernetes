@@ -1,9 +1,5 @@
 { apiVersion = "v1"
 , kind = "Event"
-, involvedObject = ./io.k8s.api.core.v1.ObjectReference.dhall
-, metadata = ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
-, series = ./io.k8s.api.core.v1.EventSeries.dhall
-, source = ./io.k8s.api.core.v1.EventSource.dhall
 , action = None Text
 , count = None Natural
 , eventTime =
@@ -17,5 +13,7 @@
 , related = None ./../types/io.k8s.api.core.v1.ObjectReference.dhall
 , reportingComponent = None Text
 , reportingInstance = None Text
+, series = None ./../types/io.k8s.api.core.v1.EventSeries.dhall
+, source = None ./../types/io.k8s.api.core.v1.EventSource.dhall
 , type = None Text
 }

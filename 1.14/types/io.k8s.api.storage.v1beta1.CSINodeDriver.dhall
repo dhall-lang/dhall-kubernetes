@@ -1,1 +1,1 @@
-{ name : Text, nodeID : Text, topologyKeys : List Text }
+{ name : Text, nodeID : Text, topologyKeys : Optional (List Text) }

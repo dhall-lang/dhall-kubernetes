@@ -1,4 +1,6 @@
 { conditions =
-    [] : List
-           ./../types/io.k8s.api.flowcontrol.v1alpha1.FlowSchemaCondition.dhall
+    None
+      ( List
+          ./../types/io.k8s.api.flowcontrol.v1alpha1.FlowSchemaCondition.dhall
+      )
 }

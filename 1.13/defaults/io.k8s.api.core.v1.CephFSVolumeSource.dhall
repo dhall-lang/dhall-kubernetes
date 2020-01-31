@@ -1,7 +1,6 @@
-{ monitors = [] : List Text
-, secretRef = ./io.k8s.api.core.v1.LocalObjectReference.dhall
-, path = None Text
+{ path = None Text
 , readOnly = None Bool
 , secretFile = None Text
+, secretRef = None ./../types/io.k8s.api.core.v1.LocalObjectReference.dhall
 , user = None Text
 }

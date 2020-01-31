@@ -2,5 +2,6 @@
 , kind : Text
 , metadata : ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , webhooks :
-    List ./io.k8s.api.admissionregistration.v1beta1.MutatingWebhook.dhall
+    Optional
+      (List ./io.k8s.api.admissionregistration.v1beta1.MutatingWebhook.dhall)
 }

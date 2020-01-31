@@ -1,8 +1,9 @@
 { apiVersion = "v1"
 , kind = "DeleteOptions"
-, dryRun = [] : List Text
-, preconditions = ./io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions.dhall
+, dryRun = None (List Text)
 , gracePeriodSeconds = None Natural
 , orphanDependents = None Bool
+, preconditions =
+    None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions.dhall
 , propagationPolicy = None Text
 }

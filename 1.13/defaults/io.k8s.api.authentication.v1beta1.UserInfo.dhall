@@ -1,5 +1,5 @@
-{ extra = [] : List { mapKey : Text, mapValue : Text }
-, groups = [] : List Text
+{ extra = None (List { mapKey : Text, mapValue : Text })
+, groups = None (List Text)
 , uid = None Text
 , username = None Text
 }

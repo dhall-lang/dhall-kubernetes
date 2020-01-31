@@ -1,4 +1,4 @@
 { replicas : Natural
-, selector : List { mapKey : Text, mapValue : Text }
+, selector : Optional (List { mapKey : Text, mapValue : Text })
 , targetSelector : Optional Text
 }

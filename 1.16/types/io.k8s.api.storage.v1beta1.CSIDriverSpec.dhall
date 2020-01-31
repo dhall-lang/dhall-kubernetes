@@ -1,4 +1,4 @@
-{ volumeLifecycleModes : List Text
-, attachRequired : Optional Bool
+{ attachRequired : Optional Bool
 , podInfoOnMount : Optional Bool
+, volumeLifecycleModes : Optional (List Text)
 }

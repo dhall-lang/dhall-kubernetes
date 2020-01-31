@@ -1,1 +1,1 @@
-{ names = [] : List Text, sizeBytes = None Natural }
+{ sizeBytes = None Natural }

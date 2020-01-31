@@ -1,6 +1,6 @@
-{ extra = [] : List { mapKey : Text, mapValue : Text }
-, groups = [] : List Text
-, usages = [] : List Text
+{ extra = None (List { mapKey : Text, mapValue : Text })
+, groups = None (List Text)
 , uid = None Text
+, usages = None (List Text)
 , username = None Text
 }

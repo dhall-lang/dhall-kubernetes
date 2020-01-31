@@ -1,7 +1,8 @@
-{ conditions =
-    [] : List ./../types/io.k8s.api.extensions.v1beta1.DeploymentCondition.dhall
-, availableReplicas = None Natural
+{ availableReplicas = None Natural
 , collisionCount = None Natural
+, conditions =
+    None
+      (List ./../types/io.k8s.api.extensions.v1beta1.DeploymentCondition.dhall)
 , observedGeneration = None Natural
 , readyReplicas = None Natural
 , replicas = None Natural

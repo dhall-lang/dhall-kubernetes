@@ -1,5 +1,5 @@
-{ active = ./io.k8s.api.core.v1.NodeConfigSource.dhall
-, assigned = ./io.k8s.api.core.v1.NodeConfigSource.dhall
-, lastKnownGood = ./io.k8s.api.core.v1.NodeConfigSource.dhall
+{ active = None ./../types/io.k8s.api.core.v1.NodeConfigSource.dhall
+, assigned = None ./../types/io.k8s.api.core.v1.NodeConfigSource.dhall
 , error = None Text
+, lastKnownGood = None ./../types/io.k8s.api.core.v1.NodeConfigSource.dhall
 }

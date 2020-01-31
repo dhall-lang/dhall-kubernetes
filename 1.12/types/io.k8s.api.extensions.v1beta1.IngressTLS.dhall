@@ -1,1 +1,1 @@
-{ hosts : List Text, secretName : Optional Text }
+{ hosts : Optional (List Text), secretName : Optional Text }

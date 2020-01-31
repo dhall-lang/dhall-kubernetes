@@ -1,6 +1,5 @@
-{ categories = [] : List Text
-, shortNames = [] : List Text
-, verbs = [] : List Text
+{ categories = None (List Text)
 , group = None Text
+, shortNames = None (List Text)
 , version = None Text
 }

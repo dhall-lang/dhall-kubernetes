@@ -1,9 +1,10 @@
-{ seLinuxOptions = ./io.k8s.api.core.v1.SELinuxOptions.dhall
-, supplementalGroups = [] : List Natural
-, sysctls = [] : List ./../types/io.k8s.api.core.v1.Sysctl.dhall
-, windowsOptions = ./io.k8s.api.core.v1.WindowsSecurityContextOptions.dhall
-, fsGroup = None Natural
+{ fsGroup = None Natural
 , runAsGroup = None Natural
 , runAsNonRoot = None Bool
 , runAsUser = None Natural
+, seLinuxOptions = None ./../types/io.k8s.api.core.v1.SELinuxOptions.dhall
+, supplementalGroups = None (List Natural)
+, sysctls = None (List ./../types/io.k8s.api.core.v1.Sysctl.dhall)
+, windowsOptions =
+    None ./../types/io.k8s.api.core.v1.WindowsSecurityContextOptions.dhall
 }

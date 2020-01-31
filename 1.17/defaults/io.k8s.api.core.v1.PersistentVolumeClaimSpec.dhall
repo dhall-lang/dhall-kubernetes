@@ -1,4 +1,4 @@
-{ accessModes = [] : List Text
+{ accessModes = None (List Text)
 , dataSource =
     None ./../types/io.k8s.api.core.v1.TypedLocalObjectReference.dhall
 , resources = None ./../types/io.k8s.api.core.v1.ResourceRequirements.dhall

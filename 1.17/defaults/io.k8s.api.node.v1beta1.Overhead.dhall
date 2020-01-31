@@ -1,1 +1,1 @@
-{ podFixed = [] : List { mapKey : Text, mapValue : Text } }
+{ podFixed = None (List { mapKey : Text, mapValue : Text }) }
