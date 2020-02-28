@@ -2,7 +2,7 @@ let Prelude =
       ../Prelude.dhall sha256:771c7131fc87e13eb18f770a27c59f9418879f7e230ba2a50e46f4461f43ec69
 
 let kubernetes =
-      ../package.dhall sha256:ae27a321191b4b24e68c8a4b91dd32711d1126a2afa4b73ccb7e58e9b80cbc70
+      ../package.dhall sha256:ecabb0ee29e25778fdabcf155c36485607ef655dc915750713fef1c84baf0c6a
 
 let spec =
       { selector = Some (toMap { app = "nginx" })
