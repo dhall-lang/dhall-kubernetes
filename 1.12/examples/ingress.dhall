@@ -4,7 +4,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      ../package.dhall sha256:742ddf1db2c3f1d0b5ac6e2a781db0877e6d89fa1129c16bd9ed689528477d8c
+      ../package.dhall sha256:f94bc36de9bc672f01cba5ef8fc2e12a2ad33a3a70e1d74abc88b15e14bc20d2
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -70,7 +70,7 @@ let mkIngress
 
         in  kubernetes.Ingress::{
             , metadata = kubernetes.ObjectMeta::{
-              , name = "nginx"
+              , name = Some "nginx"
               , annotations = Some annotations
               }
             , spec = Some spec

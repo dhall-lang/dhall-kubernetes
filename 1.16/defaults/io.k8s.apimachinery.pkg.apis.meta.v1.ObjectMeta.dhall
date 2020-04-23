@@ -14,6 +14,7 @@
       ( List
           ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry.dhall
       )
+, name = None Text
 , namespace = None Text
 , ownerReferences =
     None
