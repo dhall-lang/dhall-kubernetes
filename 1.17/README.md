@@ -53,18 +53,18 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../package.dhall sha256:d9eac5668d5ed9cb3364c0a39721d4694e4247dad16d8a82827e4619ee1d6188
+      ../package.dhall sha256:7150ac4309a091740321a3a3582e7695ee4b81732ce8f1ed1691c1c52791daa1
 
 let deployment =
       kubernetes.Deployment::{
-      , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+      , metadata = kubernetes.ObjectMeta::{ name = Some "nginx" }
       , spec = Some kubernetes.DeploymentSpec::{
         , selector = kubernetes.LabelSelector::{
           , matchLabels = Some (toMap { name = "nginx" })
           }
         , replicas = Some 2
         , template = kubernetes.PodTemplateSpec::{
-          , metadata = kubernetes.ObjectMeta::{ name = "nginx" }
+          , metadata = kubernetes.ObjectMeta::{ name = Some "nginx" }
           , spec = Some kubernetes.PodSpec::{
             , containers =
               [ kubernetes.Container::{
@@ -148,7 +148,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      ../package.dhall sha256:d9eac5668d5ed9cb3364c0a39721d4694e4247dad16d8a82827e4619ee1d6188
+      ../package.dhall sha256:7150ac4309a091740321a3a3582e7695ee4b81732ce8f1ed1691c1c52791daa1
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -214,7 +214,7 @@ let mkIngress
 
         in  kubernetes.Ingress::{
             , metadata = kubernetes.ObjectMeta::{
-              , name = "nginx"
+              , name = Some "nginx"
               , annotations = Some annotations
               }
             , spec = Some spec

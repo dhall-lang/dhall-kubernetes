@@ -1,5 +1,4 @@
-{ name : Text
-, annotations : Optional (List { mapKey : Text, mapValue : Text })
+{ annotations : Optional (List { mapKey : Text, mapValue : Text })
 , clusterName : Optional Text
 , creationTimestamp : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , deletionGracePeriodSeconds : Optional Natural
@@ -10,6 +9,7 @@
 , initializers :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , labels : Optional (List { mapKey : Text, mapValue : Text })
+, name : Optional Text
 , namespace : Optional Text
 , ownerReferences :
     Optional (List ./io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.dhall)

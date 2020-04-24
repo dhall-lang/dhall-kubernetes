@@ -1,5 +1,5 @@
 let kubernetes =
-      ../package.dhall sha256:742ddf1db2c3f1d0b5ac6e2a781db0877e6d89fa1129c16bd9ed689528477d8c
+      ../package.dhall sha256:f94bc36de9bc672f01cba5ef8fc2e12a2ad33a3a70e1d74abc88b15e14bc20d2
 
 let release = "wintering-rodent"
 
@@ -15,7 +15,7 @@ let heritage = "dhall"
 
 in  kubernetes.DaemonSet::{
     , metadata = kubernetes.ObjectMeta::{
-      , name = fullName
+      , name = Some fullName
       , labels = Some
           ( toMap
               { app = name
@@ -34,7 +34,7 @@ in  kubernetes.DaemonSet::{
         }
       , template = kubernetes.PodTemplateSpec::{
         , metadata = kubernetes.ObjectMeta::{
-          , name = name
+          , name = Some name
           , annotations = Some
               (toMap { `scheduler.alpha.kubernetes.io/critical-pod` = "" })
           , labels = Some (toMap { app = name, release = release })

@@ -11,6 +11,7 @@
 , initializers =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , labels = None (List { mapKey : Text, mapValue : Text })
+, name = None Text
 , namespace = None Text
 , ownerReferences =
     None
