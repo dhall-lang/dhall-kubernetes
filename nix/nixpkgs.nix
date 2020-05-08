@@ -77,7 +77,7 @@ let
 
               in
                 ''echo './${inputFile} → ./${outputFile}'
-                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --omit-empty --file $out/${inputFile} > $out/${outputFile}
+                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --file $out/${inputFile} > $out/${outputFile}
               '';
 
         in
