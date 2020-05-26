@@ -3,7 +3,6 @@ let
 
   nixpkgs = builtins.fetchGit {
     inherit (spec) url rev;
-    ref = "refs/heads/nixos-unstable";
   };
 
   overlay = pkgsNew: pkgsOld: {
