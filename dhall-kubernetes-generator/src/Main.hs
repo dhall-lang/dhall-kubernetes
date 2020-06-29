@@ -57,8 +57,9 @@ writeDhall path expr = do
 
   let censor = Dhall.Util.NoCensor
 
-  let formatMode =
-          Dhall.Format.Modify (Dhall.Util.InputFile (Turtle.encodeString path))
+  let outputMode = Dhall.Util.Write
+
+  let input = Dhall.Util.InputFile (Turtle.encodeString path)
 
   let formatOptions = Dhall.Format.Format{..}
 
@@ -278,6 +279,7 @@ main = do
 
   let package =
         Combine
+          Nothing
           (Embed (Convert.mkImport prefixMap [ ] "schemas.dhall"))
           (RecordLit
               [ ( "IntOrString"
