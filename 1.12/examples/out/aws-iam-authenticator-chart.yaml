@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       annotations:
-        scheduler.alpha.kubernetes.io/critical-pod: ""
+        scheduler.alpha.kubernetes.io/critical-pod: ''
       labels:
         app: aws-iam-authenticator
         release: wintering-rodent
@@ -38,7 +38,7 @@ spec:
               name: output
       hostNetwork: true
       nodeSelector:
-        node-role.kubernetes.io/master: ""
+        node-role.kubernetes.io/master: ''
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
