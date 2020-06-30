@@ -109,8 +109,6 @@ let
              previous = old.overrides or (_: _: {});
 
              packages = pkgsNew.haskell.lib.packageSourceOverrides {
-               dhall-json = "1.5.0";
-
                dhall-kubernetes-generator = ../dhall-kubernetes-generator;
              };
 
@@ -119,20 +117,16 @@ let
              };
 
              manual = haskellPackagesNew: haskellPackagesOld: {
-               dhall = pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall;
+               dhall = haskellPackagesOld.dhall_1_33_0;
 
-               dhall-json =
-                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall-json;
-
-               prettyprinter =
-                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.prettyprinter;
+               dhall-json = haskellPackagesOld.dhall-json_1_7_0;
              };
 
            in
              pkgsNew.lib.fold pkgsNew.lib.composeExtensions (_: _: {})
                [ previous
                  packages
-                 packagesFromDirectory
+#                packagesFromDirectory
                  manual
                ];
       }

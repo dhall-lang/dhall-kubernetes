@@ -71,7 +71,7 @@ let deployment =
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
                 , ports = Some
-                    [ kubernetes.ContainerPort::{ containerPort = 80 } ]
+                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
                 }
               ]
             }
@@ -143,7 +143,7 @@ Things to note in the following example:
 -- examples/ingress.dhall
 
 let Prelude =
-      ../Prelude.dhall sha256:771c7131fc87e13eb18f770a27c59f9418879f7e230ba2a50e46f4461f43ec69
+      ../Prelude.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
 
 let map = Prelude.List.map
 
@@ -156,31 +156,31 @@ let services = [ { name = "foo", host = "foo.example.com", version = "2.3" } ]
 
 let makeTLS
     : Service → kubernetes.IngressTLS.Type
-    =   λ(service : Service)
-      → { hosts = Some [ service.host ]
+    = λ(service : Service) →
+        { hosts = Some [ service.host ]
         , secretName = Some "${service.name}-certificate"
         }
 
 let makeRule
     : Service → kubernetes.IngressRule.Type
-    =   λ(service : Service)
-      → { host = Some service.host
+    = λ(service : Service) →
+        { host = Some service.host
         , http = Some
-            { paths =
-              [ { backend =
-                    { serviceName = service.name
-                    , servicePort = kubernetes.IntOrString.Int 80
-                    }
-                , path = None Text
+          { paths =
+            [ { backend =
+                { serviceName = service.name
+                , servicePort = kubernetes.IntOrString.Int 80
                 }
-              ]
-            }
+              , path = None Text
+              }
+            ]
+          }
         }
 
 let mkIngress
     : List Service → kubernetes.Ingress.Type
-    =   λ(inputServices : List Service)
-      → let annotations =
+    = λ(inputServices : List Service) →
+        let annotations =
               toMap
                 { `kubernetes.io/ingress.class` = "nginx"
                 , `kubernetes.io/ingress.allow-http` = "false"
@@ -238,7 +238,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: 'false'
     kubernetes.io/ingress.class: nginx
   name: nginx
 spec:
