@@ -117,7 +117,8 @@ let
              };
 
              manual = haskellPackagesNew: haskellPackagesOld: {
-               dhall = haskellPackagesOld.dhall_1_33_0;
+               dhall =
+                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall_1_33_0;
 
                dhall-json = haskellPackagesOld.dhall-json_1_7_0;
              };
