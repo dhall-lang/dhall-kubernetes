@@ -35,7 +35,7 @@ let
                   '';
                 };
             in
-              make-dhall-kubernetes-package spec;
+              make-dhall-kubernetes-package { inherit version spec; };
         };
 
 in

@@ -17,8 +17,15 @@ let
         '';
 
     make-dhall-kubernetes-package =
-      spec:
+      { version, spec }:
         let
+          preferredVersion =
+            let
+              preferredVersionText = builtins.readFile ./preferred.txt;
+
+            in
+              builtins.replaceStrings [ "\n" ] [ "" ] preferredVersionText;
+
           drv = pkgsNew.make-dhall-kubernetes spec;
 
           kubernetesFiles = [
@@ -29,7 +36,7 @@ let
             "package.dhall"
           ];
 
-          examples = [
+          examples = pkgsNew.lib.optionals (version == preferredVersion) [
             "aws-iam-authenticator-chart"
             "deployment"
             "deploymentSimple"
@@ -44,8 +51,12 @@ let
             in
               map exampleToLocal examples;
 
-          copiedFiles =
-            exampleFiles ++ [ "Prelude.dhall" "docs/README.md.dhall" ];
+          otherFiles = pkgsNew.lib.optionals (version == preferredVersion) [
+            "Prelude.dhall"
+            "docs/README.md.dhall"
+          ];
+
+          copiedFiles = exampleFiles ++ otherFiles;
 
           frozenFiles = kubernetesFiles ++ exampleFiles;
 
@@ -95,6 +106,7 @@ let
                 outputFile = "README.md";
 
               in
+                pkgsNew.lib.optionalString (version == preferredVersion)
                 ''echo './${inputFile} → ./${outputFile}'
                   ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} > $out/${outputFile}
                 ''
