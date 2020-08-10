@@ -5,8 +5,6 @@
 
 let
   products = {
-    inherit (pkgs.haskellPackages) dhall-kubernetes-generator;
-
     # Derivation that trivially depends on the input source code revision.
     # As this is included in the "dhall-lang" aggregate, it forces every
     # commit to have a corresponding GitHub status check, even if the
