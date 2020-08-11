@@ -13,7 +13,7 @@ let
 
           cd $out
 
-          ${pkgsNew.haskellPackages.dhall-kubernetes-generator}/bin/dhall-kubernetes-generator '${spec}'
+          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall '${spec}'
         '';
 
     make-dhall-kubernetes-package =
@@ -120,28 +120,25 @@ let
            let
              previous = old.overrides or (_: _: {});
 
-             packages = pkgsNew.haskell.lib.packageSourceOverrides {
-               dhall-kubernetes-generator = ../dhall-kubernetes-generator;
-             };
+             extension = haskellPackagesNew: haskellPackagesOld: {
+               dhall-openapi =
+                 let
+                   json =
+                     builtins.fromJSON (builtins.readFile ./dhall-haskell.json);
 
-             packagesFromDirectory = pkgsNew.haskell.lib.packagesFromDirectory {
-               directory = ./haskell;
-             };
+                   dhall-haskell = pkgsNew.fetchFromGitHub {
+                     owner = "dhall-lang";
+                     repo = "dhall-haskell";
+                     inherit (json) rev sha256 fetchSubmodules;
+                   };
 
-             manual = haskellPackagesNew: haskellPackagesOld: {
-               dhall =
-                 pkgsNew.haskell.lib.dontCheck haskellPackagesOld.dhall_1_33_0;
+                 in
+                   (import "${dhall-haskell}/default.nix").dhall-openapi;
 
-               dhall-json = haskellPackagesOld.dhall-json_1_7_0;
              };
 
            in
-             pkgsNew.lib.fold pkgsNew.lib.composeExtensions (_: _: {})
-               [ previous
-                 packages
-#                packagesFromDirectory
-                 manual
-               ];
+             pkgsNew.lib.composeExtensions (_: _: {}) extension;
       }
     );
   };
