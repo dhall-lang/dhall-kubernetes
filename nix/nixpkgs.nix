@@ -108,7 +108,7 @@ let
               in
                 pkgsNew.lib.optionalString (version == preferredVersion)
                 ''echo './${inputFile} → ./${outputFile}'
-                  ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} > $out/${outputFile}
+                  ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} | ${pkgsNew.gnused}/bin/sed 's_\.\./package.dhall_https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall_g' > $out/${outputFile}
                 ''
             }
           '';
