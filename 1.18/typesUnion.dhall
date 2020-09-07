@@ -57,13 +57,13 @@
 | RollingUpdateStatefulSetStrategy :
     ./types/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy.dhall sha256:dad33ff65dde525b0796a1d7e81a345d4ae973743e3267be3a1bd0722cf5ab4b
 | StatefulSet :
-    ./types/io.k8s.api.apps.v1.StatefulSet.dhall sha256:d1e192448c23496e74b34bcea1404d2534b642be162da7a1363ac0b09fa48214
+    ./types/io.k8s.api.apps.v1.StatefulSet.dhall sha256:1c882a7a2d5cb443bdcd2b30780723ab9de08f0aa62e244797a1da7b408e4270
 | StatefulSetCondition :
     ./types/io.k8s.api.apps.v1.StatefulSetCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 | StatefulSetList :
-    ./types/io.k8s.api.apps.v1.StatefulSetList.dhall sha256:48fd786f0143ed69c6b6dc940cf8d747bc43b7094759a683796c1f27ce388231
+    ./types/io.k8s.api.apps.v1.StatefulSetList.dhall sha256:109d1120983e226ba37afbfc62945e33dd9c61b2bd5a22a2f06967a1deea1d21
 | StatefulSetSpec :
-    ./types/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:603ed4bd2c22e8ee72f03d8204b5091a5de7fc15d35d924a87d25d51ba03733e
+    ./types/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:501f01e3cce1f36350606397c92e6b4e4b1725b8d59408d5713e561abdae1810
 | StatefulSetStatus :
     ./types/io.k8s.api.apps.v1.StatefulSetStatus.dhall sha256:d5a3a33833911b1885d22dd9d5a8a90cb93d106d31b0690c81159288005a7c06
 | StatefulSetUpdateStrategy :
@@ -409,11 +409,11 @@
 | PersistentVolume :
     ./types/io.k8s.api.core.v1.PersistentVolume.dhall sha256:5ad41c573b8fadd70e1ccf93de234fdd9a13f8b068691ba4fa12d3429a574b39
 | PersistentVolumeClaim :
-    ./types/io.k8s.api.core.v1.PersistentVolumeClaim.dhall sha256:8871db06b6afbd573730f5a093c4df5df7d9c418a2a7b3d0b4ecbe7e77aca10f
+    ./types/io.k8s.api.core.v1.PersistentVolumeClaim.dhall sha256:c0b22f68b129647faeda39a8643944b09c19c9e6cab8daf33a8d1076511a2462
 | PersistentVolumeClaimCondition :
     ./types/io.k8s.api.core.v1.PersistentVolumeClaimCondition.dhall sha256:253ee70013b7ce83570cd49d6e14c029e6f652e7e70b1fac3b10213619d42f05
 | PersistentVolumeClaimList :
-    ./types/io.k8s.api.core.v1.PersistentVolumeClaimList.dhall sha256:258de85bca191584d33034bfa751d87920b171a79292e57238f63b162b57fd74
+    ./types/io.k8s.api.core.v1.PersistentVolumeClaimList.dhall sha256:cc9a957d150fd98d26a9fd720c3664066961718e67890315027c597f83c5d857
 | PersistentVolumeClaimSpec :
     ./types/io.k8s.api.core.v1.PersistentVolumeClaimSpec.dhall sha256:21005ba2eea7e5a8172fba37e1bb64623aa1fbef02f6dfff2f891d00584d2a61
 | PersistentVolumeClaimStatus :
