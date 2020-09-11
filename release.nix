@@ -12,7 +12,8 @@ let
     # master in).
     rev = pkgs.runCommand "rev" {} ''echo "${src.rev}" > $out'';
   } // builtins.removeAttrs pkgs.dhall-kubernetes
-         [ "override" "overrideDerivation" ];
+         [ "override" "overrideDerivation" ]
+    // pkgs.dhall-kubernetes-tests;
 
   dhall-kubernetes = pkgs.releaseTools.aggregate {
     name = "dhall-kubernetes-aggregate";
