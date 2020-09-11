@@ -88,7 +88,7 @@ let
               in
                 ''echo './${inputFile} → ./${outputFile}'
                   ${pkgsNew.dhall-json}/bin/dhall-to-yaml --file $out/${inputFile} > $out/${outputFile}
-              '';
+                '';
 
         in
           pkgsNew.runCommand "package-${drv.name}" { XDG_CACHE_HOME="."; } ''
@@ -106,14 +106,39 @@ let
                 outputFile = "README.md";
 
               in
-                pkgsNew.lib.optionalString (version == preferredVersion)
-                ''echo './${inputFile} → ./${outputFile}'
-                  ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} | ${pkgsNew.gnused}/bin/sed 's_\.\./package.dhall_https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall_g' > $out/${outputFile}
-                ''
+                if (version == preferredVersion)
+                then
+                  ''echo './${inputFile} → ./${outputFile}'
+
+                    ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} | ${pkgsNew.gnused}/bin/sed 's_\.\./package.dhall_https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall_g' > $out/${outputFile}
+                  ''
+                else
+                  ''
+                    ${pkgsNew.coreutils}/bin/rm --recursive $out/examples
+                  ''
             }
+            ${pkgsNew.coreutils}/bin/rm --recursive $out/docs
           '';
 
     dhall-kubernetes = pkgsNew.callPackage ./dhall-kubernetes.nix {};
+
+    dhall-kubernetes-tests =
+      let
+        process = version: derivation: {
+          name = "${version}-test";
+          value =
+            pkgsNew.runCommand "test-dhall-kubernetes-${version}" {} ''
+              ${pkgsNew.rsync}/bin/rsync --archive ${derivation}/ ./${version}.expected
+              ${pkgsNew.rsync}/bin/rsync --archive ${../. + "/${version}"}/ ./${version}.actual
+
+              ${pkgsNew.diffutils}/bin/diff --recursive ./${version}.{actual,expected}
+
+              touch $out
+            '';
+        };
+
+      in
+        pkgsNew.lib.mapAttrs' process pkgsNew.dhall-kubernetes;
 
     haskellPackages = pkgsOld.haskellPackages.override (old: {
         overrides =
@@ -123,14 +148,7 @@ let
              extension = haskellPackagesNew: haskellPackagesOld: {
                dhall-openapi =
                  let
-                   json =
-                     builtins.fromJSON (builtins.readFile ./dhall-haskell.json);
-
-                   dhall-haskell = pkgsNew.fetchFromGitHub {
-                     owner = "dhall-lang";
-                     repo = "dhall-haskell";
-                     inherit (json) rev sha256 fetchSubmodules;
-                   };
+                   dhall-haskell = ~/proj/dhall-haskell;
 
                  in
                    (import "${dhall-haskell}/default.nix").dhall-openapi;
