@@ -4,7 +4,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      ../package.dhall sha256:7150ac4309a091740321a3a3582e7695ee4b81732ce8f1ed1691c1c52791daa1
+      ../package.dhall sha256:d541487f153cee9890ebe4145bae8899e91cd81e2f4a5b65b06dfc325fb1ae7e
 
 let Service = { name : Text, host : Text, version : Text }
 

@@ -55,13 +55,13 @@
 , RollingUpdateStatefulSetStrategy =
     ./defaults/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy.dhall sha256:4d9feb8034f9f58692aebeed06474c07c387e5b8bc11c40dc36ec6390a26fa63
 , StatefulSet =
-    ./defaults/io.k8s.api.apps.v1.StatefulSet.dhall sha256:5c61d3606340f75fca1b5d386be8b9e07a178730b62725c786651d34cf288f26
+    ./defaults/io.k8s.api.apps.v1.StatefulSet.dhall sha256:9983a7c1092367a2e0ba482e6e7c08b6572794a835e1d3812529e76842130206
 , StatefulSetCondition =
     ./defaults/io.k8s.api.apps.v1.StatefulSetCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
 , StatefulSetList =
     ./defaults/io.k8s.api.apps.v1.StatefulSetList.dhall sha256:8d569b37c7ccea14e75e2f6a3b0424afb4a35e4f2058b4c2dfe6cc0f3457d525
 , StatefulSetSpec =
-    ./defaults/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:f1ad1ff48db14f593ece388e2d064e505e4d6f721ed8f72f85678bf6cd233960
+    ./defaults/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:8cc04488f12b9c14dba5e88aec7e8a7f0c5ddee49ce1405dfa995e64b88d286e
 , StatefulSetStatus =
     ./defaults/io.k8s.api.apps.v1.StatefulSetStatus.dhall sha256:df00b00193ba5c81dc29f3f1f1ee7eeed0bb1ee64370e598d78528e7d5382981
 , StatefulSetUpdateStrategy =

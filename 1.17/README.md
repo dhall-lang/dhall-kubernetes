@@ -53,7 +53,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      ../package.dhall sha256:7150ac4309a091740321a3a3582e7695ee4b81732ce8f1ed1691c1c52791daa1
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:d541487f153cee9890ebe4145bae8899e91cd81e2f4a5b65b06dfc325fb1ae7e
 
 let deployment =
       kubernetes.Deployment::{
@@ -148,7 +148,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      ../package.dhall sha256:7150ac4309a091740321a3a3582e7695ee4b81732ce8f1ed1691c1c52791daa1
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:d541487f153cee9890ebe4145bae8899e91cd81e2f4a5b65b06dfc325fb1ae7e
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -305,6 +305,41 @@ in
 
 
 ## Development
+
+### Updating the `dhall-openapi` dependency
+
+The `dhall-openapi` dependency is a subproject of the `dhall-haskell`
+repository, so in order to upgrade `dhall-openapi` you need to update the
+reference to the `dhall-haskell` repository.
+
+To upgrade to the latest version of the `dhall-openapi` package, run:
+
+```bash
+nix-prefetch-git --fetch-submodules https://github.com/dhall-lang/dhall-haskell.git > ./nix/dhall-haskell.json
+```
+
+If you want to build against a local copy of `dhall-haskell`, then edit the
+Nix code like this:
+
+```diff
+diff --git a/nix/nixpkgs.nix b/nix/nixpkgs.nix
+index 832ae1a..810e966 100644
+--- a/nix/nixpkgs.nix
++++ b/nix/nixpkgs.nix
+@@ -126,11 +126,7 @@ let
+                    json =
+                      builtins.fromJSON (builtins.readFile ./dhall-haskell.json);
+ 
+-                   dhall-haskell = pkgsNew.fetchFromGitHub {
+-                     owner = "dhall-lang";
+-                     repo = "dhall-haskell";
+-                     inherit (json) rev sha256 fetchSubmodules;
+-                   };
++                   dhall-haskell = ~/path/to/dhall-haskell;
+ 
+                  in
+                    (import "${dhall-haskell}/default.nix").dhall-openapi;
+```
 
 ### Adding a new Kubernetes releases
 
