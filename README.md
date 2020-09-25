@@ -349,6 +349,8 @@ To add a new supported release, run:
 ./scripts/add-kubernetes-release.sh "${VERSION}"
 ```
 
+… and then create a pull request out of the generated files.
+
 If you want to make a specific release the preferred release, run:
 
 ```
