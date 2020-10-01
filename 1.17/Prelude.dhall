@@ -14,7 +14,7 @@
    variables and any attempt to import one will fall back to the next available
    import.  To learn more, read:
 
-   * https://github.com/dhall-lang/dhall-lang/wiki/Safety-guarantees#cross-site-scripting-xss
+   * https://docs.dhall-lang.org/discussions/Safety-guarantees.html#cross-site-scripting-xss
 
    This file also provides an import without the integrity check as a slower
    fallback if the user is using a different version of the Dhall interpreter.
