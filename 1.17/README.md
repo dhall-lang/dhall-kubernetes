@@ -86,7 +86,7 @@ in  deployment
 We then run this through `dhall-to-yaml` to generate our Kubernetes definition:
 
 ```bash
-dhall-to-yaml < examples/deploymentSimple.dhall
+dhall-to-yaml <<< ./examples/deploymentSimple.dhall
 ```
 
 And we get:
@@ -227,7 +227,7 @@ in  mkIngress services
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml < examples/ingress.dhall
+dhall-to-yaml <<< ./examples/ingress.dhall
 ```
 
 Result:
