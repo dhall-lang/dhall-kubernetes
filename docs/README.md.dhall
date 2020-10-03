@@ -103,7 +103,7 @@ ${../examples/ingress.dhall as Text}
 As before we get the yaml out by running:
 
 ```bash
-dhall-to-yaml < examples/ingress.dhall
+dhall-to-yaml <<< ./examples/ingress.dhall
 ```
 
 Result:
