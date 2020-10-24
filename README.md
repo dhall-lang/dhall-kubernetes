@@ -375,8 +375,8 @@ Running `scripts/generate.sh` will generate all dhall files from the kubernetes
 swagger specification, and copy them to `types` and `default`. It will also
 generate `README.md` from `docs/README.md.dhall`.
 
-If you make changes to `scripts/convert.py` or `docs/README.md.dhall`, you need
-to run this command afterwards.
+If you make changes to `docs/README.md.dhall`, you need to run this command
+afterwards.
 
 
 [stack]: https://haskellstack.org/
