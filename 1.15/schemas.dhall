@@ -391,7 +391,7 @@
 , PersistentVolume =
     ./schemas/io.k8s.api.core.v1.PersistentVolume.dhall sha256:08259faa56ec37881e3a86b2b103d9a1edf20c724dcda07eead46a52b98d37e9
 , PersistentVolumeClaim =
-    ./schemas/io.k8s.api.core.v1.PersistentVolumeClaim.dhall sha256:e54264416b22c380366d33cec378d5e69031fb7328df17728781f1d4155a4c89
+    ./schemas/io.k8s.api.core.v1.PersistentVolumeClaim.dhall sha256:88e36b3acfe36ff10c5117e0bf21bec84ab0b15366a7d5da071797df8573d54e
 , PersistentVolumeClaimCondition =
     ./schemas/io.k8s.api.core.v1.PersistentVolumeClaimCondition.dhall sha256:6d9583ad8e06d58d2ad644b0ed01b6514e879b734bc81a54cf029060cc3bf76d
 , PersistentVolumeClaimList =
