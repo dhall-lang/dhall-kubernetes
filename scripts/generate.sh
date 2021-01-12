@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PREFERRED_VERSION="$(< ./nix/preferred.txt)"
+PREFERRED_VERSION="$(cat ./nix/preferred.txt)"
 
 if [ -n "$1" ]; then
     VERSION="$1"
@@ -23,7 +23,7 @@ if DIR=$(nix-build release.nix --attr "\"${VERSION}\"" --no-out-link); then
   chmod -R u+w "${BASE}/schemas"
   cp "${DIR}/types.dhall" "${DIR}/typesUnion.dhall" "${DIR}/defaults.dhall" "${DIR}/schemas.dhall" "${DIR}/package.dhall" "${BASE}"
   chmod u+w "${BASE}/types.dhall" "${BASE}/typesUnion.dhall" "${BASE}/defaults.dhall" "${BASE}/schemas.dhall" "${BASE}/package.dhall"
-  if [ "${VERSION}" == "${PREFERRED_VERSION}" ]; then
+  if [ "${VERSION}" = "${PREFERRED_VERSION}" ]; then
     cp -r "${DIR}/examples" "${BASE}"
     chmod -R u+w "${BASE}/examples"
     cp "${DIR}/Prelude.dhall" "${DIR}/README.md" "${BASE}"
