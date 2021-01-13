@@ -22,7 +22,6 @@ let deployment =
           }
         , template = kubernetes.PodTemplateSpec::{
           , metadata = kubernetes.ObjectMeta::{
-            , name = Some "nginx"
             , labels = Some (toMap { app = "nginx" })
             }
           , spec = Some kubernetes.PodSpec::{

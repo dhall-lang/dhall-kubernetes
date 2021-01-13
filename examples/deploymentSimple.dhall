@@ -10,7 +10,9 @@ let deployment =
           }
         , replicas = Some 2
         , template = kubernetes.PodTemplateSpec::{
-          , metadata = kubernetes.ObjectMeta::{ name = Some "nginx" }
+          , metadata = kubernetes.ObjectMeta::{
+            , labels = Some (toMap { name = "nginx" })
+            }
           , spec = Some kubernetes.PodSpec::{
             , containers =
               [ kubernetes.Container::{
