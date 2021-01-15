@@ -1,4 +1,4 @@
-{ activeDeadlineSeconds = None Natural
+{ activeDeadlineSeconds = None Integer
 , affinity = None ./../types/io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken = None Bool
 , dnsConfig = None ./../types/io.k8s.api.core.v1.PodDNSConfig.dhall
@@ -18,7 +18,7 @@
 , nodeSelector = None (List { mapKey : Text, mapValue : Text })
 , overhead = None (List { mapKey : Text, mapValue : Text })
 , preemptionPolicy = None Text
-, priority = None Natural
+, priority = None Integer
 , priorityClassName = None Text
 , readinessGates =
     None (List ./../types/io.k8s.api.core.v1.PodReadinessGate.dhall)
@@ -30,7 +30,7 @@
 , serviceAccountName = None Text
 , shareProcessNamespace = None Bool
 , subdomain = None Text
-, terminationGracePeriodSeconds = None Natural
+, terminationGracePeriodSeconds = None Integer
 , tolerations = None (List ./../types/io.k8s.api.core.v1.Toleration.dhall)
 , topologySpreadConstraints =
     None (List ./../types/io.k8s.api.core.v1.TopologySpreadConstraint.dhall)

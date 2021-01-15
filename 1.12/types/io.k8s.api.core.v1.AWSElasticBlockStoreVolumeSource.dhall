@@ -1,5 +1,5 @@
 { volumeID : Text
 , fsType : Optional Text
-, partition : Optional Natural
+, partition : Optional Integer
 , readOnly : Optional Bool
 }

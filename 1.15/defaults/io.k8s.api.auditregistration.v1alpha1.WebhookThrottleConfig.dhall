@@ -1,1 +1,1 @@
-{ burst = None Natural, qps = None Natural }
+{ burst = None Integer, qps = None Integer }

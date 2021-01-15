@@ -1,1 +1,1 @@
-{ fsType = None Text, partition = None Natural, readOnly = None Bool }
+{ fsType = None Text, partition = None Integer, readOnly = None Bool }

@@ -3,7 +3,7 @@
 , kind : Text
 , metadata : ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , action : Optional Text
-, count : Optional Natural
+, count : Optional Integer
 , eventTime : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
 , firstTimestamp : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , lastTimestamp : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall

@@ -1,5 +1,5 @@
-{ groupPriorityMinimum : Natural
-, versionPriority : Natural
+{ groupPriorityMinimum : Integer
+, versionPriority : Integer
 , caBundle : Optional Text
 , group : Optional Text
 , insecureSkipTLSVerify : Optional Bool

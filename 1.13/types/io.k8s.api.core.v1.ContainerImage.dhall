@@ -1,1 +1,1 @@
-{ names : List Text, sizeBytes : Optional Natural }
+{ names : List Text, sizeBytes : Optional Integer }

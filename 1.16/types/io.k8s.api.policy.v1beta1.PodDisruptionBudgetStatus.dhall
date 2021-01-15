@@ -1,7 +1,7 @@
-{ currentHealthy : Natural
-, desiredHealthy : Natural
-, disruptionsAllowed : Natural
-, expectedPods : Natural
+{ currentHealthy : Integer
+, desiredHealthy : Integer
+, disruptionsAllowed : Integer
+, expectedPods : Integer
 , disruptedPods : Optional (List { mapKey : Text, mapValue : Text })
-, observedGeneration : Optional Natural
+, observedGeneration : Optional Integer
 }

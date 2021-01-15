@@ -2,7 +2,7 @@
 , externalIPs : Optional (List Text)
 , externalName : Optional Text
 , externalTrafficPolicy : Optional Text
-, healthCheckNodePort : Optional Natural
+, healthCheckNodePort : Optional Integer
 , ipFamily : Optional Text
 , loadBalancerIP : Optional Text
 , loadBalancerSourceRanges : Optional (List Text)

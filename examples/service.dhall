@@ -10,7 +10,7 @@ let spec =
       , ports = Some
         [ kubernetes.ServicePort::{
           , targetPort = Some (kubernetes.IntOrString.Int 80)
-          , port = 80
+          , port = +80
           }
         ]
       }

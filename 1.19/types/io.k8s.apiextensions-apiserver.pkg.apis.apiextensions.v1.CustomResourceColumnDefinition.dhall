@@ -3,5 +3,5 @@
 , type : Text
 , description : Optional Text
 , format : Optional Text
-, priority : Optional Natural
+, priority : Optional Integer
 }

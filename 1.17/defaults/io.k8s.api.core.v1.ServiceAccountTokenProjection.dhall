@@ -1,1 +1,1 @@
-{ audience = None Text, expirationSeconds = None Natural }
+{ audience = None Text, expirationSeconds = None Integer }

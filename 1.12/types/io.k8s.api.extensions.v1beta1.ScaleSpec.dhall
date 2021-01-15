@@ -1,1 +1,1 @@
-{ replicas : Optional Natural }
+{ replicas : Optional Integer }

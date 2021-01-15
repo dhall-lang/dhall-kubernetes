@@ -1,1 +1,1 @@
-{ name = None Text, number = None Natural }
+{ name = None Text, number = None Integer }

@@ -1,4 +1,4 @@
-{ handSize : Optional Natural
-, queueLengthLimit : Optional Natural
-, queues : Optional Natural
+{ handSize : Optional Integer
+, queueLengthLimit : Optional Integer
+, queues : Optional Integer
 }

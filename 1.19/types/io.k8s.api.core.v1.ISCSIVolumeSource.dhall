@@ -1,5 +1,5 @@
 { iqn : Text
-, lun : Natural
+, lun : Integer
 , targetPortal : Text
 , chapAuthDiscovery : Optional Bool
 , chapAuthSession : Optional Bool

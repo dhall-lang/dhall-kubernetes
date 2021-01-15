@@ -1,1 +1,1 @@
-{ count = None Natural }
+{ count = None Integer }

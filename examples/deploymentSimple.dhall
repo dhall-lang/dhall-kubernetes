@@ -8,7 +8,7 @@ let deployment =
         , selector = kubernetes.LabelSelector::{
           , matchLabels = Some (toMap { name = "nginx" })
           }
-        , replicas = Some 2
+        , replicas = Some +2
         , template = kubernetes.PodTemplateSpec::{
           , metadata = Some kubernetes.ObjectMeta::{ name = Some "nginx" }
           , spec = Some kubernetes.PodSpec::{
@@ -17,7 +17,7 @@ let deployment =
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
                 , ports = Some
-                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
+                  [ kubernetes.ContainerPort::{ containerPort = +80 } ]
                 }
               ]
             }

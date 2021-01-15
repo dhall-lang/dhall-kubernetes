@@ -1,5 +1,5 @@
 { appProtocol : Optional Text
 , name : Optional Text
-, port : Optional Natural
+, port : Optional Integer
 , protocol : Optional Text
 }

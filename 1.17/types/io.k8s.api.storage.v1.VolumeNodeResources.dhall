@@ -1,1 +1,1 @@
-{ count : Optional Natural }
+{ count : Optional Integer }

@@ -1,1 +1,1 @@
-{ name : Optional Text, namespace : Optional Text, port : Optional Natural }
+{ name : Optional Text, namespace : Optional Text, port : Optional Integer }

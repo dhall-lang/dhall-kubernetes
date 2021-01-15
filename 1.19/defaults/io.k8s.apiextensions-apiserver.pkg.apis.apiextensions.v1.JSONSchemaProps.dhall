@@ -21,13 +21,13 @@
       ./../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation.dhall
 , format = None Text
 , id = None Text
-, maxItems = None Natural
-, maxLength = None Natural
-, maxProperties = None Natural
+, maxItems = None Integer
+, maxLength = None Integer
+, maxProperties = None Integer
 , maximum = None Double
-, minItems = None Natural
-, minLength = None Natural
-, minProperties = None Natural
+, minItems = None Integer
+, minLength = None Integer
+, minProperties = None Integer
 , minimum = None Double
 , multipleOf = None Double
 , nullable = None Bool

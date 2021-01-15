@@ -53,7 +53,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:3ae2db78413714b7f7c5b2b3d92c78599a2be8e5371f567593eb0b3170c57656
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:7989d5b6cc77b1a453e5f4aa62c1b18a1ae019161e27e3c3061e70ff514a4f9f
 
 let deployment =
       kubernetes.Deployment::{
@@ -62,7 +62,7 @@ let deployment =
         , selector = kubernetes.LabelSelector::{
           , matchLabels = Some (toMap { name = "nginx" })
           }
-        , replicas = Some 2
+        , replicas = Some +2
         , template = kubernetes.PodTemplateSpec::{
           , metadata = Some kubernetes.ObjectMeta::{ name = Some "nginx" }
           , spec = Some kubernetes.PodSpec::{
@@ -71,7 +71,7 @@ let deployment =
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
                 , ports = Some
-                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
+                  [ kubernetes.ContainerPort::{ containerPort = +80 } ]
                 }
               ]
             }
@@ -148,7 +148,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:3ae2db78413714b7f7c5b2b3d92c78599a2be8e5371f567593eb0b3170c57656
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:7989d5b6cc77b1a453e5f4aa62c1b18a1ae019161e27e3c3061e70ff514a4f9f
 
 let Service = { name : Text, host : Text, version : Text }
 

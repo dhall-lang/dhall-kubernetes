@@ -1,1 +1,1 @@
-{ key : Text, path : Text, mode : Optional Natural }
+{ key : Text, path : Text, mode : Optional Integer }

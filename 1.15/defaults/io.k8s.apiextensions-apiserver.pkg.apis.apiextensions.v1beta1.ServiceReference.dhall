@@ -1,1 +1,1 @@
-{ path = None Text, port = None Natural }
+{ path = None Text, port = None Integer }

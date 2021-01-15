@@ -1,3 +1,3 @@
 { disruptedPods = None (List { mapKey : Text, mapValue : Text })
-, observedGeneration = None Natural
+, observedGeneration = None Integer
 }

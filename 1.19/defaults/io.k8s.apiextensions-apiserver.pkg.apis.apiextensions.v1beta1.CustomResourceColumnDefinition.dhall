@@ -1,1 +1,1 @@
-{ description = None Text, format = None Text, priority = None Natural }
+{ description = None Text, format = None Text, priority = None Integer }
