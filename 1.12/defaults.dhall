@@ -23,7 +23,7 @@
 , ControllerRevisionList =
     ./defaults/io.k8s.api.apps.v1.ControllerRevisionList.dhall sha256:2343b690c1c4d49b5e1fe09da5a71fc9e8c74f2a9975764b0ad41cf597b6b616
 , DaemonSet =
-    ./defaults/io.k8s.api.apps.v1.DaemonSet.dhall sha256:059f8dce8d03567d610ba7863258d1854b91b256b1225aff0043d566b3028b0b
+    ./defaults/io.k8s.api.apps.v1.DaemonSet.dhall sha256:7cb364d49b6d8c19afb26102ce697cfa2461989d524ae9d4143b3552a958854d
 , DaemonSetCondition =
     ./defaults/io.k8s.api.apps.v1.DaemonSetCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
 , DaemonSetList =
@@ -35,7 +35,7 @@
 , DaemonSetUpdateStrategy =
     ./defaults/io.k8s.api.apps.v1.DaemonSetUpdateStrategy.dhall sha256:0267659f9e8647bbf2e9f9073536c4c0c60b8ff1c076523cd7773b05e8d1c270
 , Deployment =
-    ./defaults/io.k8s.api.apps.v1.Deployment.dhall sha256:a52d7b28fc1d0713e1d2d5be2b231d3036d7ff7654eebd869c217d2eaf6e626e
+    ./defaults/io.k8s.api.apps.v1.Deployment.dhall sha256:f3daed0c286c800c248870e6cbcfa3a98f48a57edd3053eacc12e75fb734824a
 , DeploymentCondition =
     ./defaults/io.k8s.api.apps.v1.DeploymentCondition.dhall sha256:006ebe956ae6e2918eb18beed3f6378d0f79437bfc449f4b6c7852206a7c7e5d
 , DeploymentList =
@@ -47,13 +47,13 @@
 , DeploymentStrategy =
     ./defaults/io.k8s.api.apps.v1.DeploymentStrategy.dhall sha256:e5ba779274cb5a0b72069647e1aa8b257380ddb3b183aef45233028c399f65b9
 , ReplicaSet =
-    ./defaults/io.k8s.api.apps.v1.ReplicaSet.dhall sha256:1bbda4033041eb56831a3741bf1ea96bbc0c598c03d8e44275cfb6f7e7c16bb6
+    ./defaults/io.k8s.api.apps.v1.ReplicaSet.dhall sha256:c507987242fd912de78201a7b5dbd215d0db3abd99d9035d5e0891fd9494d7d9
 , ReplicaSetCondition =
     ./defaults/io.k8s.api.apps.v1.ReplicaSetCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
 , ReplicaSetList =
     ./defaults/io.k8s.api.apps.v1.ReplicaSetList.dhall sha256:e57739bf261dfcdaec492632f1986b57c7d7bc45a4ba7be145beb64b739fe70f
 , ReplicaSetSpec =
-    ./defaults/io.k8s.api.apps.v1.ReplicaSetSpec.dhall sha256:f0f154a3f75bed435079855401b80f2e3a842e0254db77a7f6883c6481f03aac
+    ./defaults/io.k8s.api.apps.v1.ReplicaSetSpec.dhall sha256:0f681963ef0045b595b2b4fdfc4a0501977a1c67ffdefdf6c5309ccea09be2de
 , ReplicaSetStatus =
     ./defaults/io.k8s.api.apps.v1.ReplicaSetStatus.dhall sha256:c92e3262f4bec0334f8a9abeccf3c6bab9f98c3a5a09cfb6b95c48a45a2c895d
 , RollingUpdateDaemonSet =
@@ -63,7 +63,7 @@
 , RollingUpdateStatefulSetStrategy =
     ./defaults/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy.dhall sha256:4d9feb8034f9f58692aebeed06474c07c387e5b8bc11c40dc36ec6390a26fa63
 , StatefulSet =
-    ./defaults/io.k8s.api.apps.v1.StatefulSet.dhall sha256:1cd2a37ff9e72803b67f266ef0a0074eb7a060fe7f332a6079d0b3234e28fd49
+    ./defaults/io.k8s.api.apps.v1.StatefulSet.dhall sha256:60aad5054a26fa1886e2498b9f2311977359f59f0e3e2c7370a437ce6e22ad1a
 , StatefulSetCondition =
     ./defaults/io.k8s.api.apps.v1.StatefulSetCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
 , StatefulSetList =
@@ -153,7 +153,7 @@
 , ResourceMetricStatus =
     ./defaults/io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus.dhall sha256:9bb9dcb5bf6f795291686f59383bcd01c8e79b87fc3fb63351d46dea100ac51b
 , Job =
-    ./defaults/io.k8s.api.batch.v1.Job.dhall sha256:bbea978a7fa433c81e938451e96a31b623df66cee6d4b8b9eaea810792c0bd6e
+    ./defaults/io.k8s.api.batch.v1.Job.dhall sha256:d3d2e83231ffa788f98ebcf24a02aed9d05f75d417c1d78bdd8847ff67b088fc
 , JobCondition =
     ./defaults/io.k8s.api.batch.v1.JobCondition.dhall sha256:d7a55966e74169d85d6a02388fd65f2759da9f8005cc0be8bee6bed7398af0eb
 , JobList =
@@ -163,7 +163,7 @@
 , JobStatus =
     ./defaults/io.k8s.api.batch.v1.JobStatus.dhall sha256:acf4f792ff1e56e53cb6d00ddc60f6ade85c44289efcbbfd2e5b81e1ac0347fc
 , CronJob =
-    ./defaults/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:8d0a7f7482d98c1e0cefd64dd25032381e86d976026016edcfc5d3e61dc08744
+    ./defaults/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:c88a7306457299af2d412431badcdee443d421246c5ae3857a0625fc9d1bad8d
 , CronJobList =
     ./defaults/io.k8s.api.batch.v1beta1.CronJobList.dhall sha256:d6f792b6d1f5cc8e862708490973d8b46eeb2d7adf4f3be3170a93ce2b70be7a
 , CronJobSpec =
@@ -171,7 +171,7 @@
 , CronJobStatus =
     ./defaults/io.k8s.api.batch.v1beta1.CronJobStatus.dhall sha256:751a6c74f8753d8467f43f76bc3b0661655a65daf9f907f6f814f01ade0fcd70
 , JobTemplateSpec =
-    ./defaults/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:742ca338555765280ecd38497e67b0350c9010c13a04ac283b5ba63cda7e8d03
+    ./defaults/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:774abc24b7fcd1a00324613e45a4c86d2332301a6b18405a07026c0974d234a1
 , CertificateSigningRequest =
     ./defaults/io.k8s.api.certificates.v1beta1.CertificateSigningRequest.dhall sha256:fc1ae5e4b43cbc3d6410fce82d6859e180c77ce5b9c643b2562588f85e1ab780
 , CertificateSigningRequestCondition =
@@ -425,11 +425,11 @@
 , PodStatus =
     ./defaults/io.k8s.api.core.v1.PodStatus.dhall sha256:bfe78f7e337e9b29e89d26cb8e8a0cf9565e1fae36a61f0623f53d44f5dfcb4f
 , PodTemplate =
-    ./defaults/io.k8s.api.core.v1.PodTemplate.dhall sha256:8aeaa42695f3d1f84f47a98205eb0644850ba2df9ccbd8a9371120d8510ed6f7
+    ./defaults/io.k8s.api.core.v1.PodTemplate.dhall sha256:84af6f7ec6bdcc46b0ea304adc97a6c4fbd414c40deeebbc9e656e7328dca2be
 , PodTemplateList =
     ./defaults/io.k8s.api.core.v1.PodTemplateList.dhall sha256:51ca93c255c7ab48ec42245f8b34a4effdd072cd019931f37ef304d8b46d6e6f
 , PodTemplateSpec =
-    ./defaults/io.k8s.api.core.v1.PodTemplateSpec.dhall sha256:ce18592c51325d0cf18e0f6c1fcf59e3ce760ceab779e7c66883d066204f94a9
+    ./defaults/io.k8s.api.core.v1.PodTemplateSpec.dhall sha256:630c6fd49236cc7c8f2e0e825b709c819c38937a3158c24e959ba25c26890dc3
 , PortworxVolumeSource =
     ./defaults/io.k8s.api.core.v1.PortworxVolumeSource.dhall sha256:5d8e73366d928941a81088f57aaf538a8c3a8d171086228dcefe3aa8084e6a0a
 , PreferredSchedulingTerm =
@@ -445,13 +445,13 @@
 , RBDVolumeSource =
     ./defaults/io.k8s.api.core.v1.RBDVolumeSource.dhall sha256:0c1b0c6ed400fe9c63c9a97d77d6d6a69463137e0e43687c4087b7e8cce747c3
 , ReplicationController =
-    ./defaults/io.k8s.api.core.v1.ReplicationController.dhall sha256:aa39589bcc7e7ce27ef4b2e36d7d36166b072541a3b0619fe8790500b19f7135
+    ./defaults/io.k8s.api.core.v1.ReplicationController.dhall sha256:68c1847ec8b47a47ef550d2736c42455b0f2cbd6280b7bcf03379e6866e8dbb2
 , ReplicationControllerCondition =
     ./defaults/io.k8s.api.core.v1.ReplicationControllerCondition.dhall sha256:fef63958bc998f900417bd68974df7936535249af83edf1183721637fa3e7257
 , ReplicationControllerList =
     ./defaults/io.k8s.api.core.v1.ReplicationControllerList.dhall sha256:e7dcae86af1b284f62a6f26fe1e432a6a27a9fa5c3100acdad84794ac21ed769
 , ReplicationControllerSpec =
-    ./defaults/io.k8s.api.core.v1.ReplicationControllerSpec.dhall sha256:ba50ee773c10bcd75613b003af8ed51e25f6699ed68c990ee8adf532a6b79686
+    ./defaults/io.k8s.api.core.v1.ReplicationControllerSpec.dhall sha256:be106b4f05455198a0822cbff4bdec3d0056bb2f45feb3cb85016818bfcfdc2e
 , ReplicationControllerStatus =
     ./defaults/io.k8s.api.core.v1.ReplicationControllerStatus.dhall sha256:c92e3262f4bec0334f8a9abeccf3c6bab9f98c3a5a09cfb6b95c48a45a2c895d
 , ResourceFieldSelector =
