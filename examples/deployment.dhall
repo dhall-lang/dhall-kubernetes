@@ -2,7 +2,7 @@ let Prelude =
       ../Prelude.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
 
 let kubernetes =
-      ../package.dhall sha256:d541487f153cee9890ebe4145bae8899e91cd81e2f4a5b65b06dfc325fb1ae7e
+      ../package.dhall sha256:3ae2db78413714b7f7c5b2b3d92c78599a2be8e5371f567593eb0b3170c57656
 
 let deployment =
       kubernetes.Deployment::{
@@ -21,7 +21,7 @@ let deployment =
             }
           }
         , template = kubernetes.PodTemplateSpec::{
-          , metadata = kubernetes.ObjectMeta::{
+          , metadata = Some kubernetes.ObjectMeta::{
             , name = Some "nginx"
             , labels = Some (toMap { app = "nginx" })
             }
