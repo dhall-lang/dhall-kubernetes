@@ -1,12 +1,12 @@
-{ currentNumberScheduled : Natural
-, desiredNumberScheduled : Natural
-, numberMisscheduled : Natural
-, numberReady : Natural
-, collisionCount : Optional Natural
+{ currentNumberScheduled : Integer
+, desiredNumberScheduled : Integer
+, numberMisscheduled : Integer
+, numberReady : Integer
+, collisionCount : Optional Integer
 , conditions :
     Optional (List ./io.k8s.api.apps.v1beta2.DaemonSetCondition.dhall)
-, numberAvailable : Optional Natural
-, numberUnavailable : Optional Natural
-, observedGeneration : Optional Natural
-, updatedNumberScheduled : Optional Natural
+, numberAvailable : Optional Integer
+, numberUnavailable : Optional Integer
+, observedGeneration : Optional Integer
+, updatedNumberScheduled : Optional Integer
 }

@@ -1,5 +1,5 @@
 let kubernetes =
-      ../package.dhall sha256:3ae2db78413714b7f7c5b2b3d92c78599a2be8e5371f567593eb0b3170c57656
+      ../package.dhall sha256:532e110f424ea8a9f960a13b2ca54779ddcac5d5aa531f86d82f41f8f18d7ef1
 
 let deployment =
       kubernetes.Deployment::{
@@ -8,7 +8,7 @@ let deployment =
         , selector = kubernetes.LabelSelector::{
           , matchLabels = Some (toMap { name = "nginx" })
           }
-        , replicas = Some 2
+        , replicas = Some +2
         , template = kubernetes.PodTemplateSpec::{
           , metadata = Some kubernetes.ObjectMeta::{ name = Some "nginx" }
           , spec = Some kubernetes.PodSpec::{
@@ -17,7 +17,7 @@ let deployment =
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
                 , ports = Some
-                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
+                  [ kubernetes.ContainerPort::{ containerPort = +80 } ]
                 }
               ]
             }

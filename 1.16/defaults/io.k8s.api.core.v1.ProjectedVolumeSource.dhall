@@ -1,1 +1,1 @@
-{ defaultMode = None Natural }
+{ defaultMode = None Integer }

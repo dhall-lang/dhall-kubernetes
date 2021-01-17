@@ -1,7 +1,7 @@
-{ groupPriorityMinimum : Natural
+{ groupPriorityMinimum : Integer
 , service :
     ./io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.ServiceReference.dhall
-, versionPriority : Natural
+, versionPriority : Integer
 , caBundle : Optional Text
 , group : Optional Text
 , insecureSkipTLSVerify : Optional Bool

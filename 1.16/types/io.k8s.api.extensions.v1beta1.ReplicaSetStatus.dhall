@@ -1,8 +1,8 @@
-{ replicas : Natural
-, availableReplicas : Optional Natural
+{ replicas : Integer
+, availableReplicas : Optional Integer
 , conditions :
     Optional (List ./io.k8s.api.extensions.v1beta1.ReplicaSetCondition.dhall)
-, fullyLabeledReplicas : Optional Natural
-, observedGeneration : Optional Natural
-, readyReplicas : Optional Natural
+, fullyLabeledReplicas : Optional Integer
+, observedGeneration : Optional Integer
+, readyReplicas : Optional Integer
 }

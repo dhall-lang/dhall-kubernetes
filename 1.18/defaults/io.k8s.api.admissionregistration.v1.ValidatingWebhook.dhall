@@ -9,5 +9,5 @@
       ( List
           ./../types/io.k8s.api.admissionregistration.v1.RuleWithOperations.dhall
       )
-, timeoutSeconds = None Natural
+, timeoutSeconds = None Integer
 }

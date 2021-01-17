@@ -1,5 +1,5 @@
 { containers : List ./io.k8s.api.core.v1.Container.dhall
-, activeDeadlineSeconds : Optional Natural
+, activeDeadlineSeconds : Optional Integer
 , affinity : Optional ./io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken : Optional Bool
 , dnsConfig : Optional ./io.k8s.api.core.v1.PodDNSConfig.dhall
@@ -15,7 +15,7 @@
 , initContainers : Optional (List ./io.k8s.api.core.v1.Container.dhall)
 , nodeName : Optional Text
 , nodeSelector : Optional (List { mapKey : Text, mapValue : Text })
-, priority : Optional Natural
+, priority : Optional Integer
 , priorityClassName : Optional Text
 , readinessGates : Optional (List ./io.k8s.api.core.v1.PodReadinessGate.dhall)
 , restartPolicy : Optional Text
@@ -26,7 +26,7 @@
 , serviceAccountName : Optional Text
 , shareProcessNamespace : Optional Bool
 , subdomain : Optional Text
-, terminationGracePeriodSeconds : Optional Natural
+, terminationGracePeriodSeconds : Optional Integer
 , tolerations : Optional (List ./io.k8s.api.core.v1.Toleration.dhall)
 , volumes : Optional (List ./io.k8s.api.core.v1.Volume.dhall)
 }

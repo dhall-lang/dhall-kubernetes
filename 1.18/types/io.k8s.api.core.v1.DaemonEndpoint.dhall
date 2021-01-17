@@ -1,1 +1,1 @@
-{ Port : Natural }
+{ Port : Integer }

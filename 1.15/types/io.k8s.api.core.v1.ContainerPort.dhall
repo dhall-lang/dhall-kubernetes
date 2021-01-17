@@ -1,6 +1,6 @@
-{ containerPort : Natural
+{ containerPort : Integer
 , hostIP : Optional Text
-, hostPort : Optional Natural
+, hostPort : Optional Integer
 , name : Optional Text
 , protocol : Optional Text
 }

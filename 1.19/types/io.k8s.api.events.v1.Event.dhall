@@ -3,7 +3,7 @@
 , kind : Text
 , metadata : ./io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.dhall
 , action : Optional Text
-, deprecatedCount : Optional Natural
+, deprecatedCount : Optional Integer
 , deprecatedFirstTimestamp :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , deprecatedLastTimestamp :

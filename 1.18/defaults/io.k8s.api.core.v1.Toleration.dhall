@@ -1,6 +1,6 @@
 { effect = None Text
 , key = None Text
 , operator = None Text
-, tolerationSeconds = None Natural
+, tolerationSeconds = None Integer
 , value = None Text
 }

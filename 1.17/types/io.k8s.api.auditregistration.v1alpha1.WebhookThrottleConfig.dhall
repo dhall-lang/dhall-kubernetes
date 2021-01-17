@@ -1,1 +1,1 @@
-{ burst : Optional Natural, qps : Optional Natural }
+{ burst : Optional Integer, qps : Optional Integer }

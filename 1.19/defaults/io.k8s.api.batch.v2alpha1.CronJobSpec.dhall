@@ -1,6 +1,6 @@
 { concurrencyPolicy = None Text
-, failedJobsHistoryLimit = None Natural
-, startingDeadlineSeconds = None Natural
-, successfulJobsHistoryLimit = None Natural
+, failedJobsHistoryLimit = None Integer
+, startingDeadlineSeconds = None Integer
+, successfulJobsHistoryLimit = None Integer
 , suspend = None Bool
 }

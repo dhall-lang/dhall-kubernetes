@@ -1,6 +1,6 @@
 { podManagementPolicy = None Text
-, replicas = None Natural
-, revisionHistoryLimit = None Natural
+, replicas = None Integer
+, revisionHistoryLimit = None Integer
 , updateStrategy =
     None ./../types/io.k8s.api.apps.v1.StatefulSetUpdateStrategy.dhall
 , volumeClaimTemplates =

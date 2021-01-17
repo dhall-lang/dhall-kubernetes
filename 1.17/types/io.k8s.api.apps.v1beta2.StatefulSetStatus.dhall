@@ -1,11 +1,11 @@
-{ replicas : Natural
-, collisionCount : Optional Natural
+{ replicas : Integer
+, collisionCount : Optional Integer
 , conditions :
     Optional (List ./io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall)
-, currentReplicas : Optional Natural
+, currentReplicas : Optional Integer
 , currentRevision : Optional Text
-, observedGeneration : Optional Natural
-, readyReplicas : Optional Natural
+, observedGeneration : Optional Integer
+, readyReplicas : Optional Integer
 , updateRevision : Optional Text
-, updatedReplicas : Optional Natural
+, updatedReplicas : Optional Integer
 }

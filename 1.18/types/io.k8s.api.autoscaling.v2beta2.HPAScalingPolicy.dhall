@@ -1,1 +1,1 @@
-{ periodSeconds : Natural, type : Text, value : Natural }
+{ periodSeconds : Integer, type : Text, value : Integer }

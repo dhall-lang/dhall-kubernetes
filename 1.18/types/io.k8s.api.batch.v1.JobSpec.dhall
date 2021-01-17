@@ -1,9 +1,9 @@
 { template : ./io.k8s.api.core.v1.PodTemplateSpec.dhall
-, activeDeadlineSeconds : Optional Natural
-, backoffLimit : Optional Natural
-, completions : Optional Natural
+, activeDeadlineSeconds : Optional Integer
+, backoffLimit : Optional Integer
+, completions : Optional Integer
 , manualSelector : Optional Bool
-, parallelism : Optional Natural
+, parallelism : Optional Integer
 , selector : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
-, ttlSecondsAfterFinished : Optional Natural
+, ttlSecondsAfterFinished : Optional Integer
 }

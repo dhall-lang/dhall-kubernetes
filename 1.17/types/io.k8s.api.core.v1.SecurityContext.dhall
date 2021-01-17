@@ -3,9 +3,9 @@
 , privileged : Optional Bool
 , procMount : Optional Text
 , readOnlyRootFilesystem : Optional Bool
-, runAsGroup : Optional Natural
+, runAsGroup : Optional Integer
 , runAsNonRoot : Optional Bool
-, runAsUser : Optional Natural
+, runAsUser : Optional Integer
 , seLinuxOptions : Optional ./io.k8s.api.core.v1.SELinuxOptions.dhall
 , windowsOptions :
     Optional ./io.k8s.api.core.v1.WindowsSecurityContextOptions.dhall

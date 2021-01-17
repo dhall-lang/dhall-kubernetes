@@ -12,5 +12,5 @@
 , rules :
     Optional
       (List ./io.k8s.api.admissionregistration.v1.RuleWithOperations.dhall)
-, timeoutSeconds : Optional Natural
+, timeoutSeconds : Optional Integer
 }

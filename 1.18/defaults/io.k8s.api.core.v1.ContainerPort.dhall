@@ -1,5 +1,5 @@
 { hostIP = None Text
-, hostPort = None Natural
+, hostPort = None Integer
 , name = None Text
 , protocol = None Text
 }

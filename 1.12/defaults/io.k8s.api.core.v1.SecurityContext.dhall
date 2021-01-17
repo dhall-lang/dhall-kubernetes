@@ -3,8 +3,8 @@
 , privileged = None Bool
 , procMount = None Text
 , readOnlyRootFilesystem = None Bool
-, runAsGroup = None Natural
+, runAsGroup = None Integer
 , runAsNonRoot = None Bool
-, runAsUser = None Natural
+, runAsUser = None Integer
 , seLinuxOptions = None ./../types/io.k8s.api.core.v1.SELinuxOptions.dhall
 }

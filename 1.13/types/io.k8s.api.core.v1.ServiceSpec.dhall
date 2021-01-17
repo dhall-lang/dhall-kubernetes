@@ -2,7 +2,7 @@
 , externalIPs : Optional (List Text)
 , externalName : Optional Text
 , externalTrafficPolicy : Optional Text
-, healthCheckNodePort : Optional Natural
+, healthCheckNodePort : Optional Integer
 , loadBalancerIP : Optional Text
 , loadBalancerSourceRanges : Optional (List Text)
 , ports : Optional (List ./io.k8s.api.core.v1.ServicePort.dhall)

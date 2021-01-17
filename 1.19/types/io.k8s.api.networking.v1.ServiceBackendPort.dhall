@@ -1,1 +1,1 @@
-{ name : Optional Text, number : Optional Natural }
+{ name : Optional Text, number : Optional Integer }

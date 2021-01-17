@@ -1,1 +1,1 @@
-{ sizeBytes = None Natural }
+{ sizeBytes = None Integer }

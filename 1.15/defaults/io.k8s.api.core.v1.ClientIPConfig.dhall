@@ -1,1 +1,1 @@
-{ timeoutSeconds = None Natural }
+{ timeoutSeconds = None Integer }

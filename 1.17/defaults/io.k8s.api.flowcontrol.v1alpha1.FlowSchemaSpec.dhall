@@ -1,7 +1,7 @@
 { distinguisherMethod =
     None
       ./../types/io.k8s.api.flowcontrol.v1alpha1.FlowDistinguisherMethod.dhall
-, matchingPrecedence = None Natural
+, matchingPrecedence = None Integer
 , rules =
     None
       ( List

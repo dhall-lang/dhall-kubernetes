@@ -3,6 +3,6 @@
 , group : Optional Text
 , kind : Optional Text
 , name : Optional Text
-, retryAfterSeconds : Optional Natural
+, retryAfterSeconds : Optional Integer
 , uid : Optional Text
 }
