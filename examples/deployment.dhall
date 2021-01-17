@@ -2,7 +2,7 @@ let Prelude =
       ../Prelude.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
 
 let kubernetes =
-      ../package.dhall sha256:3ae2db78413714b7f7c5b2b3d92c78599a2be8e5371f567593eb0b3170c57656
+      ../package.dhall sha256:7989d5b6cc77b1a453e5f4aa62c1b18a1ae019161e27e3c3061e70ff514a4f9f
 
 let deployment =
       kubernetes.Deployment::{
@@ -16,8 +16,8 @@ let deployment =
         , strategy = Some kubernetes.DeploymentStrategy::{
           , type = Some "RollingUpdate"
           , rollingUpdate = Some
-            { maxSurge = Some (kubernetes.IntOrString.Int 5)
-            , maxUnavailable = Some (kubernetes.IntOrString.Int 0)
+            { maxSurge = Some (kubernetes.IntOrString.Int +5)
+            , maxUnavailable = Some (kubernetes.IntOrString.Int +0)
             }
           }
         , template = kubernetes.PodTemplateSpec::{
