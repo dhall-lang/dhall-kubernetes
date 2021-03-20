@@ -1,0 +1,71 @@
+#!/bin/sh
+
+set -e
+
+kubernetes_version () {
+    VERSION="${1}"
+
+    DIR="$(nix-build release.nix --attr "\"${VERSION}\"" --no-out-link)"
+
+    rm -r "${VERSION}"
+    mkdir -p "${VERSION}"
+
+    for FILE in defaults types schemas types.dhall typesUnion.dhall defaults.dhall schemas.dhall package.dhall; do
+      cp -r "${DIR}/${FILE}" "${VERSION}"
+
+      chmod -R u+w "${VERSION}/${FILE}"
+    done
+}
+
+kubernetes () {
+  for KUBERNETES_FILE in ./nix/kubernetes/*.txt; do
+    KUBERNETES_FILE_WITHOUT_EXTENSION="${KUBERNETES_FILE%.txt}"
+
+    VERSION="${KUBERNETES_FILE_WITHOUT_EXTENSION#./nix/kubernetes/}"
+
+    kubernetes_version "${VERSION}"
+  done
+}
+
+examples () {
+  DIR="$(nix-build release.nix --attr examples)"
+
+  rm -r ./examples
+
+  cp -r "${DIR}/" ./examples
+  chmod -R u+w ./examples
+}
+
+readme () {
+  FILE="$(nix-build release.nix --attr readme)"
+
+  cp "${FILE}" README.md
+  chmod u+w README.md
+}
+
+preferred () {
+  PREFERRED_VERSION="$(cat ./nix/preferred.txt)"
+
+  kubernetes_version "${PREFERRED_VERSION}"
+
+  for FILE in {package,types,defaults,schemas,typesUnion}.dhall; do
+    echo "./${PREFERRED_VERSION}/${FILE}" > "${FILE}"
+  done
+
+  examples
+
+  readme
+}
+
+if [ -n "$1" ]; then
+  case "$1" in
+    kubernetes) kubernetes;;
+    examples) examples;;
+    readme) readme;;
+  esac
+else
+  kubernetes
+  examples
+  readme
+  preferred
+fi

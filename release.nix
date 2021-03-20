@@ -11,6 +11,8 @@ let
     # commit doesn't make any changes (which can happen when merging
     # master in).
     rev = pkgs.runCommand "rev" {} ''echo "${src.rev}" > $out'';
+
+    inherit (pkgs) examples readme;
   } // builtins.removeAttrs pkgs.dhall-kubernetes
          [ "override" "overrideDerivation" ]
     // builtins.removeAttrs pkgs.dhall-kubernetes-tests

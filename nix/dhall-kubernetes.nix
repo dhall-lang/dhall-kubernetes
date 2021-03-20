@@ -1,4 +1,4 @@
-{ fetchurl, make-dhall-kubernetes-package, lib, stdenv }:
+{ fetchurl, make-dhall-kubernetes, lib, stdenv }:
 
 let
   kubernetesDirectory = ./kubernetes;
@@ -35,7 +35,7 @@ let
                   '';
                 };
             in
-              make-dhall-kubernetes-package { inherit version spec; };
+              make-dhall-kubernetes spec;
         };
 
 in

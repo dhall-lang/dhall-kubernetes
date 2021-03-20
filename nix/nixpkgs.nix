@@ -6,119 +6,101 @@ let
   };
 
   overlay = pkgsNew: pkgsOld: {
-    make-dhall-kubernetes =
-      spec:
-        pkgsNew.runCommand "dhall-${spec.name}" {} ''
-          ${pkgsNew.coreutils}/bin/mkdir -p $out
+    make-dhall-kubernetes = spec:
+      let
+        frozenFiles = [
+          "defaults.dhall"
+          "types.dhall"
+          "schemas.dhall"
+          "typesUnion.dhall"
+          "package.dhall"
+        ];
 
-          cd $out
-
-          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall '${spec}'
+        freeze = file: ''
+          echo 'Freezing ./${file}'
+          ${pkgsNew.coreutils}/bin/chmod u+w "$out/${file}"
+          ${pkgsNew.dhall}/bin/dhall freeze --all --inplace "$out/${file}"
+          echo 'Checking ./${file}'
+          ${pkgsNew.dhall}/bin/dhall type --quiet --file "$out/${file}"
         '';
 
-    make-dhall-kubernetes-package =
-      { version, spec }:
-        let
-          preferredVersion =
+      in
+        pkgsNew.runCommand "dhall-${spec.name}" { XDG_CACHE_HOME=".cache"; } ''
+          ${pkgsNew.coreutils}/bin/mkdir "$out"
+          cd $out
+          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall '${spec}'
+          ${pkgsNew.lib.concatMapStringsSep "\n" freeze frozenFiles}
+          ${pkgsNew.coreutils}/bin/rm --recursive .cache
+        '';
+
+    examples =
+      let
+        preferredVersion =
+          let
+            preferredVersionText = builtins.readFile ./preferred.txt;
+
+          in
+            builtins.replaceStrings [ "\n" ] [ "" ] preferredVersionText;
+
+        examplePaths =
+          pkgsNew.lib.filterAttrs (name: _: name != "out")
+            (builtins.readDir ../examples);
+
+        exampleNames =
+          pkgsNew.lib.mapAttrsToList
+            (name: _: builtins.replaceStrings [ ".dhall" ] [ "" ] name)
+            examplePaths;
+
+        copyExample =
+          example: "${pkgsNew.coreutils}/bin/cp ${./../examples + "/${example}.dhall"} ./examples/${example}.dhall";
+
+        freeze = example:
+          let
+            file = "./examples/${example}.dhall";
+
+          in
+            ''
+            echo 'Freezing ${file}'
+            ${pkgsNew.coreutils}/bin/chmod u+w ${file}
+            ${pkgsNew.dhall}/bin/dhall freeze --all --inplace ${file}
+            echo 'Checking ${file}'
+            ${pkgsNew.dhall}/bin/dhall type --quiet --file ${file}
+            '';
+
+
+        buildExample =
+          example:
             let
-              preferredVersionText = builtins.readFile ./preferred.txt;
+              inputFile = "./examples/${example}.dhall";
+
+              outputFile = "./examples/out/${example}.yaml";
 
             in
-              builtins.replaceStrings [ "\n" ] [ "" ] preferredVersionText;
-
-          drv = pkgsNew.make-dhall-kubernetes spec;
-
-          kubernetesFiles = [
-            "defaults.dhall"
-            "types.dhall"
-            "schemas.dhall"
-            "typesUnion.dhall"
-            "package.dhall"
-          ];
-
-          examples = pkgsNew.lib.optionals (version == preferredVersion) [
-            "aws-iam-authenticator-chart"
-            "deployment"
-            "deploymentSimple"
-            "ingress"
-            "service"
-          ];
-
-          exampleFiles =
-            let
-              exampleToLocal = example: "examples/${example}.dhall";
-
-            in
-              map exampleToLocal examples;
-
-          otherFiles = pkgsNew.lib.optionals (version == preferredVersion) [
-            "Prelude.dhall"
-            "docs/README.md.dhall"
-          ];
-
-          copiedFiles = exampleFiles ++ otherFiles;
-
-          frozenFiles = kubernetesFiles ++ exampleFiles;
-
-          checkedFiles = frozenFiles;
-
-          copyKubernetes =
-            file:
-              "${pkgsNew.coreutils}/bin/cp ${drv}/${file} $out/${file}";
-
-          copyLocal =
-            file:
-              "${pkgsNew.coreutils}/bin/cp ${./.. + "/${file}"} $out/${file}";
-
-          freezeFile =
-            file:
-              ''echo 'Freezing ./${file}'
-                ${pkgsNew.dhall}/bin/dhall freeze --all --inplace $out/${file}
-                echo 'Checking ./${file}'
-                ${pkgsNew.dhall}/bin/dhall type --quiet --file $out/${file}
+              ''
+              echo '${inputFile} → ${outputFile}'
+              ${pkgsNew.dhall-json}/bin/dhall-to-yaml --file ${inputFile} > ${outputFile}
               '';
 
-          buildExample =
-            example:
-              let
-                inputFile = "examples/${example}.dhall";
+      in
+        pkgsNew.runCommand "examples" { XDG_CACHE_HOME=".cache"; } ''
+          ${pkgsNew.coreutils}/bin/mkdir --parents ./examples/out
+          ${pkgsNew.lib.concatMapStringsSep "\n" copyExample exampleNames}
+          ${pkgsNew.coreutils}/bin/cp ${../Prelude.dhall} ./Prelude.dhall
+          ${pkgsNew.rsync}/bin/rsync --recursive ${pkgsNew.dhall-kubernetes."${preferredVersion}"}/ ./
+          ${pkgsNew.lib.concatMapStringsSep "\n" freeze exampleNames}
+          ${pkgsNew.lib.concatMapStringsSep "\n" buildExample exampleNames}
+          ${pkgsNew.coreutils}/bin/mkdir "$out"
+          ${pkgsNew.rsync}/bin/rsync --recursive ./examples/ $out/
+        '';
 
-                outputFile = "examples/out/${example}.yaml";
+    readme =
+      pkgsNew.runCommand "README.md" {} ''
+        ${pkgsNew.coreutils}/bin/mkdir ./docs
+        ${pkgsNew.coreutils}/bin/ln --symbolic ${pkgsNew.examples} ./examples
+        ${pkgsNew.coreutils}/bin/ln --symbolic ${../docs/README.md.dhall} ./docs/README.md.dhall
 
-              in
-                ''echo './${inputFile} → ./${outputFile}'
-                  ${pkgsNew.dhall-json}/bin/dhall-to-yaml --file $out/${inputFile} > $out/${outputFile}
-                '';
-
-        in
-          pkgsNew.runCommand "package-${drv.name}" { XDG_CACHE_HOME="."; } ''
-            ${pkgsNew.coreutils}/bin/mkdir --parents "$out/examples/out"
-            ${pkgsNew.coreutils}/bin/mkdir --parents "$out/docs"
-            ${pkgsNew.rsync}/bin/rsync --recursive ${drv}/ $out/
-            ${pkgsNew.coreutils}/bin/chmod u+w $out/
-            ${pkgsNew.lib.concatMapStringsSep "\n" copyLocal copiedFiles}
-            ${pkgsNew.coreutils}/bin/chmod u+w --recursive $out/
-            ${pkgsNew.lib.concatMapStringsSep "\n" freezeFile frozenFiles}
-            ${pkgsNew.lib.concatMapStringsSep "\n" buildExample examples}
-            ${let
-                inputFile = "docs/README.md.dhall";
-
-                outputFile = "README.md";
-
-              in
-                if (version == preferredVersion)
-                then
-                  ''echo './${inputFile} → ./${outputFile}'
-
-                    ${pkgsNew.dhall}/bin/dhall text --file $out/${inputFile} | ${pkgsNew.gnused}/bin/sed 's_\.\./package.dhall_https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall_g' > $out/${outputFile}
-                  ''
-                else
-                  ''
-                    ${pkgsNew.coreutils}/bin/rm --recursive $out/examples
-                  ''
-            }
-            ${pkgsNew.coreutils}/bin/rm --recursive $out/docs
-          '';
+        ${pkgsNew.dhall}/bin/dhall text --file "./docs/README.md.dhall" | ${pkgsNew.gnused}/bin/sed 's_\.\./package.dhall_https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall_g' > "$out"
+      '';
 
     dhall-kubernetes = pkgsNew.callPackage ./dhall-kubernetes.nix {};
 
