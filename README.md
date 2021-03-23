@@ -298,13 +298,63 @@ in
 }
 ```
 
-
 ## Projects Using `dhall-kubernetes`
 
 * [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
 
-
 ## Development
+
+You will need to install Nix in order to run the file-generation scripts
+provided by this repository.  You can obtain Nix by following the instructions
+here:
+
+* [`nixos.org` - Getting Nix](https://nixos.org/download.html)
+
+### Updating the `README.md`
+
+The top-level `README.md` is generated from `./docs/README.md.dhall` so that
+the examples within the `./examples` directory stay in sync with the
+`README.md`.  That means that in order to update the `README.md` you need to
+first edit `./docs/README.md.dhall` and then run:
+
+```bash
+$ ./scripts/generate readme
+```
+
+### Updating the examples
+
+If you want to author new examples, add them to the `./examples` directory and
+run:
+
+```bash
+$ ./scripts/generate examples
+```
+
+… which will freeze and type-check each example and generate the matching YAML
+output.
+
+The `./examples` directory is only built against one version of the Kubernetes
+API (the "preferred" version).  To change the preferred version, run:
+
+```bash
+$ echo "${VERSION}" > ./nix/preferred.txt
+```
+
+… and then re-run the example generation script:
+
+```bash
+$ ./scripts/generate examples
+```
+
+### Adding a new Kubernetes releases
+
+To add a new supported Kubernetes release, run:
+
+```bash
+./scripts/add-kubernetes-release "${VERSION}"
+```
+
+### Changing how the Kubernetes bindings are generated
 
 The logic for generating the Dhall code doesn't reside within this
 repository but actually resides within the
@@ -324,27 +374,26 @@ then CI will reject the pull request since it verifies that the Dhall code
 stored in version control matches what `dhall-openapi` would generate from the
 Kubernetes OpenAPI specification.
 
+Once you update the `dhall-openapi` dependency you can regenerate the
+Kubernetes bindings by running:
+
+```bash
+$ ./scripts/generate kubernetes
+```
+
 ### Updating the `dhall-openapi` dependency
 
 The `dhall-openapi` dependency is a subproject of the `dhall-haskell`
 repository, so in order to upgrade `dhall-openapi` you need to update the
 reference to the `dhall-haskell` repository.
 
-To upgrade to the latest version of the `dhall-openapi` package, run:
-
-```bash
-nix-prefetch-git --fetch-submodules https://github.com/dhall-lang/dhall-haskell.git > ./nix/dhall-haskell.json
-```
-
-If you want to build against a local copy of `dhall-haskell`, then edit the
-Nix code like this:
+If you're not prepared to make a pull request to change the `dhall-haskell`
+project then you can generate code for this project using a local checkout of
+the `dhall-haskell` repository by editing the Nix code like this:
 
 ```diff
-diff --git a/nix/nixpkgs.nix b/nix/nixpkgs.nix
-index 832ae1a..810e966 100644
 --- a/nix/nixpkgs.nix
 +++ b/nix/nixpkgs.nix
-@@ -126,11 +126,7 @@ let
                     json =
                       builtins.fromJSON (builtins.readFile ./dhall-haskell.json);
  
@@ -359,21 +408,28 @@ index 832ae1a..810e966 100644
                     (import "${dhall-haskell}/default.nix").dhall-openapi;
 ```
 
-### Adding a new Kubernetes releases
-
-To add a new supported release, run:
+Once you do change the upstream `dhall-openapi` project, then you can pick up
+the change here by runing:
 
 ```bash
-./scripts/add-kubernetes-release.sh "${VERSION}"
+$ nix-prefetch-git --fetch-submodules https://github.com/dhall-lang/dhall-haskell.git > ./nix/dhall-haskell.json
 ```
 
-… and then create a pull request out of the generated files.
+### Generating everything
 
-If you want to make a specific release the preferred release, run:
+If you're not sure what files you need to regenerate then you can generate
+everything by running the `generate` script with no arguments:
 
+```bash
+$ ./scripts/generate
 ```
-$ echo "${VERSION}" > ./nix/preferred.txt
-$ ./scripts/generate.sh
+
+### Upgrading Nixpkgs
+
+If you want to upgrade to a newer revision of Nixpkgs, then run:
+
+```bash
+$ nix-prefetch-git https://github.com/NixOS/nixpkgs.git "${REVISION}" > ./nix/nixpkgs.json
 ```
 
 ### Tests
@@ -386,16 +442,6 @@ You can run the tests locally with the following command:
 ```bash
 nix build --file ./release.nix
 ```
-
-### Generating `types` `default` and `README.md`
-
-Running `scripts/generate.sh` will generate all dhall files from the kubernetes
-swagger specification, and copy them to `types` and `default`. It will also
-generate `README.md` from `docs/README.md.dhall`.
-
-If you make changes to `docs/README.md.dhall`, you need to run this command
-afterwards.
-
 
 [stack]: https://haskellstack.org/
 [hydra-project]: http://hydra.dhall-lang.org/project/dhall-kubernetes
