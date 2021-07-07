@@ -7,7 +7,7 @@ kubernetes_version () {
 
     DIR="$(nix-build release.nix --attr "\"${VERSION}\"" --no-out-link)"
 
-    rm -r "${VERSION}"
+    rm -r -f -- "${VERSION}"
     mkdir -p "${VERSION}"
 
     for FILE in defaults types schemas types.dhall typesUnion.dhall defaults.dhall schemas.dhall package.dhall; do
@@ -30,7 +30,7 @@ kubernetes () {
 examples () {
   DIR="$(nix-build release.nix --attr examples)"
 
-  rm -r ./examples
+  rm -r -f -- ./examples
 
   cp -r "${DIR}/" ./examples
   chmod -R u+w ./examples
