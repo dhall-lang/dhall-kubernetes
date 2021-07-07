@@ -1,0 +1,1 @@
+{ max : Integer, min : Integer }
