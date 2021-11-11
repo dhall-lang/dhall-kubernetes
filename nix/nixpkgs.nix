@@ -28,7 +28,7 @@ let
         pkgsNew.runCommand "dhall-${spec.name}" { XDG_CACHE_HOME=".cache"; } ''
           ${pkgsNew.coreutils}/bin/mkdir "$out"
           cd $out
-          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall '${spec}'
+          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall --preferNaturalInt --natIntExceptions ContainerStateTerminated.exitCode,ContainerStateTerminated.signal,PodSpec.priority,PriorityClass.value,CustomResourceColumnDefinition.priority '${spec}'
           ${pkgsNew.lib.concatMapStringsSep "\n" freeze frozenFiles}
           ${pkgsNew.coreutils}/bin/rm --recursive .cache
         '';
