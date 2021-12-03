@@ -3,8 +3,6 @@
 , default :
     Optional
       ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON.dhall
-, definitions : Optional (List { mapKey : Text, mapValue : Text })
-, dependencies : Optional (List { mapKey : Text, mapValue : Text })
 , description : Optional Text
 , enum :
     Optional
@@ -31,8 +29,6 @@
 , minimum : Optional Double
 , multipleOf : Optional Double
 , pattern : Optional Text
-, patternProperties : Optional (List { mapKey : Text, mapValue : Text })
-, properties : Optional (List { mapKey : Text, mapValue : Text })
 , required : Optional (List Text)
 , title : Optional Text
 , type : Optional Text

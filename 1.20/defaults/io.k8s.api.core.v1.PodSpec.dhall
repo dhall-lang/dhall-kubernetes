@@ -16,7 +16,14 @@
 , initContainers = None (List ./../types/io.k8s.api.core.v1.Container.dhall)
 , nodeName = None Text
 , nodeSelector = None (List { mapKey : Text, mapValue : Text })
-, overhead = None (List { mapKey : Text, mapValue : Text })
+, overhead =
+    None
+      ( List
+          { mapKey : Text
+          , mapValue :
+              ./../types/io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
 , preemptionPolicy = None Text
 , priority = None Integer
 , priorityClassName = None Text

@@ -17,7 +17,13 @@
 , initContainers : Optional (List ./io.k8s.api.core.v1.Container.dhall)
 , nodeName : Optional Text
 , nodeSelector : Optional (List { mapKey : Text, mapValue : Text })
-, overhead : Optional (List { mapKey : Text, mapValue : Text })
+, overhead :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
 , preemptionPolicy : Optional Text
 , priority : Optional Integer
 , priorityClassName : Optional Text

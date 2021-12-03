@@ -1,1 +1,1 @@
-./1.22/package.dhall
+./1.17/package.dhall
