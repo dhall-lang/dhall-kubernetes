@@ -1,9 +1,10 @@
 {
   "url": "https://github.com/dhall-lang/dhall-haskell.git",
-  "rev": "68bf5d731cae1d3578b12d0919838447d7643e8d",
-  "date": "2021-12-02T18:03:38-08:00",
-  "path": "/nix/store/wgsl4gic1lza2lq2hi0vg2pgbv819hrv-dhall-haskell-68bf5d7",
+  "rev": "d50094d8aefc96746cf772aa8521caafa21f0356",
+  "date": "2021-12-03T07:47:25-08:00",
+  "path": "/nix/store/5ylx6jisk110hbp619qngm60w3p1hyhk-dhall-haskell-d50094d",
   "sha256": "1240rf9msi5li6ghya56r6is9x4f785labmmrziq3qmgq7yc1bib",
+  "fetchLFS": false,
   "fetchSubmodules": true,
   "deepClone": false,
   "leaveDotGit": false
