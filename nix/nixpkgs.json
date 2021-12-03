@@ -1,11 +1,7 @@
 {
-  "url": "https://github.com/dhall-lang/dhall-haskell.git",
-  "rev": "d50094d8aefc96746cf772aa8521caafa21f0356",
-  "date": "2021-12-03T07:47:25-08:00",
-  "path": "/nix/store/g6i7r0l92i8vx6pkigsxw5csynvhphgb-dhall-haskell",
-  "sha256": "1240rf9msi5li6ghya56r6is9x4f785labmmrziq3qmgq7yc1bib",
-  "fetchLFS": false,
-  "fetchSubmodules": true,
-  "deepClone": false,
-  "leaveDotGit": false
+  "url": "https://github.com/NixOS/nixpkgs.git",
+  "rev": "ae66c3e40486c0e88a6cefc8d275c248fc6a696c",
+  "date": "2021-02-19T13:13:16+10:00",
+  "sha256": "1gw4kdlkmxyil8capnagv41hqmh31hkibidjgy3bxhlljr8xgfkc",
+  "fetchSubmodules": false
 }
