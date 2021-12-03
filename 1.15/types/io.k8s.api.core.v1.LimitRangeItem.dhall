@@ -1,7 +1,37 @@
-{ default : Optional (List { mapKey : Text, mapValue : Text })
-, defaultRequest : Optional (List { mapKey : Text, mapValue : Text })
-, max : Optional (List { mapKey : Text, mapValue : Text })
-, maxLimitRequestRatio : Optional (List { mapKey : Text, mapValue : Text })
-, min : Optional (List { mapKey : Text, mapValue : Text })
+{ default :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
+, defaultRequest :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
+, max :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
+, maxLimitRequestRatio :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
+, min :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
 , type : Optional Text
 }

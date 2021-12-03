@@ -4,6 +4,12 @@
 , expectedPods : Integer
 , conditions :
     Optional (List ./io.k8s.apimachinery.pkg.apis.meta.v1.Condition.dhall)
-, disruptedPods : Optional (List { mapKey : Text, mapValue : Text })
+, disruptedPods :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
+          }
+      )
 , observedGeneration : Optional Integer
 }

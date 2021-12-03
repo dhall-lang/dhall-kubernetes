@@ -4,7 +4,14 @@
 , azureDisk = None ./../types/io.k8s.api.core.v1.AzureDiskVolumeSource.dhall
 , azureFile =
     None ./../types/io.k8s.api.core.v1.AzureFilePersistentVolumeSource.dhall
-, capacity = None (List { mapKey : Text, mapValue : Text })
+, capacity =
+    None
+      ( List
+          { mapKey : Text
+          , mapValue :
+              ./../types/io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
 , cephfs = None ./../types/io.k8s.api.core.v1.CephFSPersistentVolumeSource.dhall
 , cinder = None ./../types/io.k8s.api.core.v1.CinderPersistentVolumeSource.dhall
 , claimRef = None ./../types/io.k8s.api.core.v1.ObjectReference.dhall

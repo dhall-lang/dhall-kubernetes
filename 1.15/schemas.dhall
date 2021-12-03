@@ -81,15 +81,15 @@
 , WebhookThrottleConfig =
     ./schemas/io.k8s.api.auditregistration.v1alpha1.WebhookThrottleConfig.dhall sha256:dbfb3f446b6cc3171c956713a2f72730a3a3a340be57b1cbd53ce97cda50d122
 , TokenReview =
-    ./schemas/io.k8s.api.authentication.v1.TokenReview.dhall sha256:0234f5397e296a171a9d34d9f2a4cc62662a560fb5f62ae2ba5fd98879a94de3
+    ./schemas/io.k8s.api.authentication.v1.TokenReview.dhall sha256:5a4a1c7c0e3b20dbe3af8bac2a2deb1304032d06ef61de2771b428a9cf2e08a9
 , TokenReviewSpec =
     ./schemas/io.k8s.api.authentication.v1.TokenReviewSpec.dhall sha256:428f0c35f9f69b81d7258ab964c9f62fb410407acee34305eb700fdc0222b754
 , TokenReviewStatus =
-    ./schemas/io.k8s.api.authentication.v1.TokenReviewStatus.dhall sha256:ab838188bfdce596265fa4fd132ba81e20c1275eb72fdff7c4b57714e33bf060
+    ./schemas/io.k8s.api.authentication.v1.TokenReviewStatus.dhall sha256:7fd44e91d320d40da3b7b15228595637fbf78ae4e515b7f91bbf13403c5f4d92
 , UserInfo =
-    ./schemas/io.k8s.api.authentication.v1.UserInfo.dhall sha256:16ddb3cbf6b0df920524c21dfc7df9472faef897bac68bda323f98c40f846eb3
+    ./schemas/io.k8s.api.authentication.v1.UserInfo.dhall sha256:281c90c948e430d8b92d9a3f7f46dddc378a27a0645d0b1041cf0caa68551a6e
 , LocalSubjectAccessReview =
-    ./schemas/io.k8s.api.authorization.v1.LocalSubjectAccessReview.dhall sha256:ac4a0d093a65c5b467cb7c914b6c8a324aa08a61534117533d4b87e8c95647b2
+    ./schemas/io.k8s.api.authorization.v1.LocalSubjectAccessReview.dhall sha256:454636cba024e437e14b056bcc4515ac262bfe36f322368236ae359ceca6cd3b
 , NonResourceAttributes =
     ./schemas/io.k8s.api.authorization.v1.NonResourceAttributes.dhall sha256:7bf3ab171bea0865f1727ddbf319053050b52b6d19121815d6fd102faf06be66
 , NonResourceRule =
@@ -107,9 +107,9 @@
 , SelfSubjectRulesReviewSpec =
     ./schemas/io.k8s.api.authorization.v1.SelfSubjectRulesReviewSpec.dhall sha256:5220c1cbe32aac92571fdf0ac19738b1e46db4367e0181374116320efd0688d5
 , SubjectAccessReview =
-    ./schemas/io.k8s.api.authorization.v1.SubjectAccessReview.dhall sha256:a32b4810f54e2a718dd511876cc477125d0ca7f49b8aa3d9f79b4c7ff5033c69
+    ./schemas/io.k8s.api.authorization.v1.SubjectAccessReview.dhall sha256:302a486ee30466c846d4652a2a8466ffcb5887dcb1c30b017676ae40d9588e5d
 , SubjectAccessReviewSpec =
-    ./schemas/io.k8s.api.authorization.v1.SubjectAccessReviewSpec.dhall sha256:df8358804fd5dccfd40c9146391a06713a6cae7ca368d168e6770f0aafbf83be
+    ./schemas/io.k8s.api.authorization.v1.SubjectAccessReviewSpec.dhall sha256:e18ad6c97f49b5b5a30476d7c505b86850b311c8b735be5010bee524b471783d
 , SubjectAccessReviewStatus =
     ./schemas/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.dhall sha256:aa1517a18a2e66eef91f514a94a860c16d2147e870623acd32130c7610860feb
 , SubjectRulesReviewStatus =
@@ -179,13 +179,13 @@
 , JobTemplateSpec =
     ./schemas/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:67f24825270f39487cee6fb4fb23477e47564287a816a17a0734f3480b0d4e5e
 , CertificateSigningRequest =
-    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequest.dhall sha256:d97bd4d815e13f6dd285f8fa0c6fd32a9117b6f6a0430ca27c7f8e51f8534ae3
+    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequest.dhall sha256:ac12a1fe5fa52f95a0276f4e5a472290163706d35f6a9aa795e11e92e08908c5
 , CertificateSigningRequestCondition =
     ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition.dhall sha256:5ef5174b5271ef47eac728620d1170462ce76210e12a3341a6c29b94e95cfd20
 , CertificateSigningRequestList =
-    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestList.dhall sha256:a5df63557607878f8f2315208e44c442db27bfb0b0e3c9c4ff836471f9cbe289
+    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestList.dhall sha256:b4c2fa828dc215f24262cf6d476c9e6414ea35fef2670c7d53ee80fa0713ed9c
 , CertificateSigningRequestSpec =
-    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestSpec.dhall sha256:73c468fb15800205bbb995a6db2799307eda9e26f56bf0152ba5d53bf8249654
+    ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestSpec.dhall sha256:02f9df7b267045b10b70285d3e7b5ff155aad318b4ec85c893d03be174b8afa9
 , CertificateSigningRequestStatus =
     ./schemas/io.k8s.api.certificates.v1beta1.CertificateSigningRequestStatus.dhall sha256:6241e989f410b1c3770ae63d6c19b4fc5f34f8966462d381ce0963dc3dd48621
 , Lease =
@@ -705,31 +705,31 @@
 , CustomResourceConversion =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceConversion.dhall sha256:6954ef5ec8697f85936def124ecb04ade0f0ef7d62ccd4f61b43568c38a2140c
 , CustomResourceDefinition =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition.dhall sha256:19f6ea4560996f4415b47b142b262fef6cdf1c510d564fd2d2477eaf183df8fe
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition.dhall sha256:89f7870049bca0ed2122a1b8253317a789aae3bba14791967a34f8bf10ab329c
 , CustomResourceDefinitionCondition =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionCondition.dhall sha256:47ec59edf7c6f9429301ee78bfdfc84bbfdbf494fe3b461db05ae03de8c6817d
 , CustomResourceDefinitionList =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionList.dhall sha256:9009ed31df89e5f747f7ab397ff15d47a336b2a97a5566e114fe61eaf29e47cd
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionList.dhall sha256:a10d405bab7d8d1bad3fa91bdf28aeb46c8a57fe8bf445d084bbaa9ce566c9d9
 , CustomResourceDefinitionNames =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames.dhall sha256:e118bca661bce0073cedc12db0fca4818e8efdc50ec5eba8edcb1d61d84b870a
 , CustomResourceDefinitionSpec =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec.dhall sha256:c3feca74aed49fd9f21d1c0b9f8a187be21b41ee5f905456332426c1686c996d
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec.dhall sha256:c03a12f747b752c16d2cbf638b855c79a39818fc3fd474c49690c913b9e6fab7
 , CustomResourceDefinitionStatus =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus.dhall sha256:4df2470993ff58ba8cc0fb35797bfb46bd4580849d57899c4f318be2bf4760d9
 , CustomResourceDefinitionVersion =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion.dhall sha256:8c1dbe805d7894563d603d0fd44fd7ae0016f911ff5190d94f4fb8f7e92d9f42
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion.dhall sha256:b41b72680ae2b2df60cdf32c89ae597388d8125db9ffca93b144fcaf90837927
 , CustomResourceSubresourceScale =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresourceScale.dhall sha256:f88ea71fc0f62e1bdbf5dfa141837e4be12f302248528b61d20c0adf0b5cff63
 , CustomResourceSubresources =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources.dhall sha256:d58996e029e6bafb5f84f2395c5d06c9fa84c4b17c3a5f39832f564dbb63f5aa
 , CustomResourceValidation =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation.dhall sha256:b9629a403b1a95e793d228c005efc563d1f9824b78024fb708dd58dc5090c564
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation.dhall sha256:00014d41b1f8aae0970ecc08e67fe748fa593030d6cddcac55eb501c8ab6e125
 , ExternalDocumentation =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation.dhall sha256:d028dfb12958fddb9658597805976d8e72509c0b058970e7f9be3519c91f37d0
 , JSON =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON.dhall sha256:81a1bf11fb9dc588941bd83400ed571298585a700a53e858456806f7ea3b8ce2
 , JSONSchemaProps =
-    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall sha256:eec89151a7f90ea1688d81c1f9bafc8021402decaea18a0f90857b885ff9d605
+    ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.dhall sha256:e18dde49a0dd5b9ee35bac414813fc7b1e1d0d01dd66e50ac30e6c47ff5ed553
 , JSONSchemaPropsOrArray =
     ./schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray.dhall sha256:81a1bf11fb9dc588941bd83400ed571298585a700a53e858456806f7ea3b8ce2
 , JSONSchemaPropsOrBool =
