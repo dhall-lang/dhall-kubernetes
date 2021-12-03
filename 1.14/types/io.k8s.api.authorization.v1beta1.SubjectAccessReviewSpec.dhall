@@ -1,4 +1,4 @@
-{ extra : Optional (List { mapKey : Text, mapValue : Text })
+{ extra : Optional (List { mapKey : Text, mapValue : List Text })
 , group : Optional (List Text)
 , nonResourceAttributes :
     Optional ./io.k8s.api.authorization.v1beta1.NonResourceAttributes.dhall
