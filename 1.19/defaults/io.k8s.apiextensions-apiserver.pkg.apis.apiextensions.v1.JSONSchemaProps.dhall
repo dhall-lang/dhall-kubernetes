@@ -3,8 +3,6 @@
 , default =
     None
       ./../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON.dhall
-, definitions = None (List { mapKey : Text, mapValue : Text })
-, dependencies = None (List { mapKey : Text, mapValue : Text })
 , description = None Text
 , enum =
     None
@@ -32,8 +30,6 @@
 , multipleOf = None Double
 , nullable = None Bool
 , pattern = None Text
-, patternProperties = None (List { mapKey : Text, mapValue : Text })
-, properties = None (List { mapKey : Text, mapValue : Text })
 , required = None (List Text)
 , title = None Text
 , type = None Text

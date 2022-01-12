@@ -1,6 +1,18 @@
 { addresses : Optional (List ./io.k8s.api.core.v1.NodeAddress.dhall)
-, allocatable : Optional (List { mapKey : Text, mapValue : Text })
-, capacity : Optional (List { mapKey : Text, mapValue : Text })
+, allocatable :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
+, capacity :
+    Optional
+      ( List
+          { mapKey : Text
+          , mapValue : ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
+          }
+      )
 , conditions : Optional (List ./io.k8s.api.core.v1.NodeCondition.dhall)
 , config : Optional ./io.k8s.api.core.v1.NodeConfigStatus.dhall
 , daemonEndpoints : Optional ./io.k8s.api.core.v1.NodeDaemonEndpoints.dhall
