@@ -35,7 +35,7 @@ let
                   '';
                 };
             in
-              make-dhall-kubernetes spec;
+              make-dhall-kubernetes spec version;
         };
 
 in
