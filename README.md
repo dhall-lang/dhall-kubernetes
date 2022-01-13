@@ -354,6 +354,12 @@ To add a new supported Kubernetes release, run:
 ./scripts/add-kubernetes-release "${VERSION}"
 ```
 
+You will need to edit the `make-dhall-kubernetes()` function in
+`nix/nixpkgs.nix` to add the list of exceptions to the default conversion of
+integer types in the openapi definition to Dhall Natural. See [this
+PR](https://github.com/dhall-lang/dhall-haskell/pull/2316) for more
+information.
+
 ### Changing how the Kubernetes bindings are generated
 
 The logic for generating the Dhall code doesn't reside within this
