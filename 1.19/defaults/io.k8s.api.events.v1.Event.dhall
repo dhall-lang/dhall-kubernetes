@@ -1,7 +1,7 @@
 { apiVersion = "events.k8s.io/v1"
 , kind = "Event"
 , action = None Text
-, deprecatedCount = None Integer
+, deprecatedCount = None Natural
 , deprecatedFirstTimestamp =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , deprecatedLastTimestamp =

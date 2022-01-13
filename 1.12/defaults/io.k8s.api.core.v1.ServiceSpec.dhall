@@ -2,7 +2,7 @@
 , externalIPs = None (List Text)
 , externalName = None Text
 , externalTrafficPolicy = None Text
-, healthCheckNodePort = None Integer
+, healthCheckNodePort = None Natural
 , loadBalancerIP = None Text
 , loadBalancerSourceRanges = None (List Text)
 , ports = None (List ./../types/io.k8s.api.core.v1.ServicePort.dhall)

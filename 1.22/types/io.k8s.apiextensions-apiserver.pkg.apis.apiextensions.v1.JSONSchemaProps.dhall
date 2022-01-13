@@ -19,13 +19,13 @@
       ./io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation.dhall
 , format : Optional Text
 , id : Optional Text
-, maxItems : Optional Integer
-, maxLength : Optional Integer
-, maxProperties : Optional Integer
+, maxItems : Optional Natural
+, maxLength : Optional Natural
+, maxProperties : Optional Natural
 , maximum : Optional Double
-, minItems : Optional Integer
-, minLength : Optional Integer
-, minProperties : Optional Integer
+, minItems : Optional Natural
+, minLength : Optional Natural
+, minProperties : Optional Natural
 , minimum : Optional Double
 , multipleOf : Optional Double
 , nullable : Optional Bool

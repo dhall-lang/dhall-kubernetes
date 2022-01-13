@@ -1,1 +1,1 @@
-{ partition : Optional Integer }
+{ partition : Optional Natural }

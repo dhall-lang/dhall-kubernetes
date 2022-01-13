@@ -4,7 +4,7 @@
 , externalIPs : Optional (List Text)
 , externalName : Optional Text
 , externalTrafficPolicy : Optional Text
-, healthCheckNodePort : Optional Integer
+, healthCheckNodePort : Optional Natural
 , internalTrafficPolicy : Optional Text
 , ipFamilies : Optional (List Text)
 , ipFamilyPolicy : Optional Text

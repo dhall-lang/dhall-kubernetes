@@ -6,5 +6,5 @@
               ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
           }
       )
-, observedGeneration = None Integer
+, observedGeneration = None Natural
 }

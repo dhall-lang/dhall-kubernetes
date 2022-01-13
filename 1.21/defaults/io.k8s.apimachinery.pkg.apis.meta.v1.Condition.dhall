@@ -1,1 +1,1 @@
-{ observedGeneration = None Integer }
+{ observedGeneration = None Natural }

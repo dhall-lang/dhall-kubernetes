@@ -1,7 +1,7 @@
 { apiVersion = "v1"
 , kind = "Event"
 , action = None Text
-, count = None Integer
+, count = None Natural
 , eventTime =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime.dhall
 , firstTimestamp =

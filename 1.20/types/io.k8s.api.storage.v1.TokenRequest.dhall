@@ -1,1 +1,1 @@
-{ audience : Text, expirationSeconds : Optional Integer }
+{ audience : Text, expirationSeconds : Optional Natural }

@@ -1,4 +1,4 @@
-{ maxSkew : Integer
+{ maxSkew : Natural
 , topologyKey : Text
 , whenUnsatisfiable : Text
 , labelSelector :

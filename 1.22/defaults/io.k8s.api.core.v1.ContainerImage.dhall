@@ -1,1 +1,1 @@
-{ names = None (List Text), sizeBytes = None Integer }
+{ names = None (List Text), sizeBytes = None Natural }

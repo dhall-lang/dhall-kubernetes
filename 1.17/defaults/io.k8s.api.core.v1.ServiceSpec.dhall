@@ -2,7 +2,7 @@
 , externalIPs = None (List Text)
 , externalName = None Text
 , externalTrafficPolicy = None Text
-, healthCheckNodePort = None Integer
+, healthCheckNodePort = None Natural
 , ipFamily = None Text
 , loadBalancerIP = None Text
 , loadBalancerSourceRanges = None (List Text)

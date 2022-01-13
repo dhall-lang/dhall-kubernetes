@@ -1,10 +1,10 @@
-{ availableReplicas : Optional Integer
-, collisionCount : Optional Integer
+{ availableReplicas : Optional Natural
+, collisionCount : Optional Natural
 , conditions :
     Optional (List ./io.k8s.api.apps.v1beta2.DeploymentCondition.dhall)
-, observedGeneration : Optional Integer
-, readyReplicas : Optional Integer
-, replicas : Optional Integer
-, unavailableReplicas : Optional Integer
-, updatedReplicas : Optional Integer
+, observedGeneration : Optional Natural
+, readyReplicas : Optional Natural
+, replicas : Optional Natural
+, unavailableReplicas : Optional Natural
+, updatedReplicas : Optional Natural
 }

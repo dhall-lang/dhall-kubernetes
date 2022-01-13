@@ -1,5 +1,5 @@
 { appProtocol = None Text
 , name = None Text
-, port = None Integer
+, port = None Natural
 , protocol = None Text
 }

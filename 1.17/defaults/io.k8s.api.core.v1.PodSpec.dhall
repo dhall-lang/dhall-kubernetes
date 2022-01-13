@@ -1,4 +1,4 @@
-{ activeDeadlineSeconds = None Integer
+{ activeDeadlineSeconds = None Natural
 , affinity = None ./../types/io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken = None Bool
 , dnsConfig = None ./../types/io.k8s.api.core.v1.PodDNSConfig.dhall
@@ -37,7 +37,7 @@
 , serviceAccountName = None Text
 , shareProcessNamespace = None Bool
 , subdomain = None Text
-, terminationGracePeriodSeconds = None Integer
+, terminationGracePeriodSeconds = None Natural
 , tolerations = None (List ./../types/io.k8s.api.core.v1.Toleration.dhall)
 , topologySpreadConstraints =
     None (List ./../types/io.k8s.api.core.v1.TopologySpreadConstraint.dhall)

@@ -3,5 +3,5 @@
 , reason : Text
 , status : Text
 , type : Text
-, observedGeneration : Optional Integer
+, observedGeneration : Optional Natural
 }

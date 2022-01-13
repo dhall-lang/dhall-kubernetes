@@ -1,1 +1,1 @@
-{ path : Text, audience : Optional Text, expirationSeconds : Optional Integer }
+{ path : Text, audience : Optional Text, expirationSeconds : Optional Natural }

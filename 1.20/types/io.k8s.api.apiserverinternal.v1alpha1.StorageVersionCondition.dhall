@@ -4,5 +4,5 @@
 , lastTransitionTime :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , message : Optional Text
-, observedGeneration : Optional Integer
+, observedGeneration : Optional Natural
 }

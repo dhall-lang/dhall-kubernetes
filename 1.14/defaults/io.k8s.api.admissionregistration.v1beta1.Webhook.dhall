@@ -8,5 +8,5 @@
           ./../types/io.k8s.api.admissionregistration.v1beta1.RuleWithOperations.dhall
       )
 , sideEffects = None Text
-, timeoutSeconds = None Integer
+, timeoutSeconds = None Natural
 }

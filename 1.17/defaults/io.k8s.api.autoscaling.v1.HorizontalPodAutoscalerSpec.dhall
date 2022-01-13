@@ -1,1 +1,1 @@
-{ minReplicas = None Integer, targetCPUUtilizationPercentage = None Integer }
+{ minReplicas = None Natural, targetCPUUtilizationPercentage = None Natural }

@@ -4,6 +4,6 @@
 , group = None Text
 , kind = None Text
 , name = None Text
-, retryAfterSeconds = None Integer
+, retryAfterSeconds = None Natural
 , uid = None Text
 }

@@ -1,5 +1,5 @@
 { continue = None Text
-, remainingItemCount = None Integer
+, remainingItemCount = None Natural
 , resourceVersion = None Text
 , selfLink = None Text
 }

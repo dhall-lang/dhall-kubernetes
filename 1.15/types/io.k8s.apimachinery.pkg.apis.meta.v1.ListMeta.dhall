@@ -1,5 +1,5 @@
 { continue : Optional Text
-, remainingItemCount : Optional Integer
+, remainingItemCount : Optional Natural
 , resourceVersion : Optional Text
 , selfLink : Optional Text
 }
