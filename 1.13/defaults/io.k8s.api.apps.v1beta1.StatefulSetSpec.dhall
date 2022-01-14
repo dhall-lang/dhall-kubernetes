@@ -1,6 +1,6 @@
 { podManagementPolicy = None Text
-, replicas = None Integer
-, revisionHistoryLimit = None Integer
+, replicas = None Natural
+, revisionHistoryLimit = None Natural
 , selector =
     None ./../types/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 , updateStrategy =

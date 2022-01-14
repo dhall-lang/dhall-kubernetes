@@ -1,10 +1,10 @@
-{ collisionCount = None Integer
+{ collisionCount = None Natural
 , conditions =
     None (List ./../types/io.k8s.api.apps.v1beta2.StatefulSetCondition.dhall)
-, currentReplicas = None Integer
+, currentReplicas = None Natural
 , currentRevision = None Text
-, observedGeneration = None Integer
-, readyReplicas = None Integer
+, observedGeneration = None Natural
+, readyReplicas = None Natural
 , updateRevision = None Text
-, updatedReplicas = None Integer
+, updatedReplicas = None Natural
 }

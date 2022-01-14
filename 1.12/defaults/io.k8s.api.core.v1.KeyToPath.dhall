@@ -1,1 +1,1 @@
-{ mode = None Integer }
+{ mode = None Natural }

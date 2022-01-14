@@ -1,11 +1,11 @@
-{ fsGroup : Optional Integer
+{ fsGroup : Optional Natural
 , fsGroupChangePolicy : Optional Text
-, runAsGroup : Optional Integer
+, runAsGroup : Optional Natural
 , runAsNonRoot : Optional Bool
-, runAsUser : Optional Integer
+, runAsUser : Optional Natural
 , seLinuxOptions : Optional ./io.k8s.api.core.v1.SELinuxOptions.dhall
 , seccompProfile : Optional ./io.k8s.api.core.v1.SeccompProfile.dhall
-, supplementalGroups : Optional (List Integer)
+, supplementalGroups : Optional (List Natural)
 , sysctls : Optional (List ./io.k8s.api.core.v1.Sysctl.dhall)
 , windowsOptions :
     Optional ./io.k8s.api.core.v1.WindowsSecurityContextOptions.dhall

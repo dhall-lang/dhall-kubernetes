@@ -1,1 +1,1 @@
-{ replicas : Integer, selector : Optional Text }
+{ replicas : Natural, selector : Optional Text }

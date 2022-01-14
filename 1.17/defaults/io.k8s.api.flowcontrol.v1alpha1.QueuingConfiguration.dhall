@@ -1,4 +1,4 @@
-{ handSize = None Integer
-, queueLengthLimit = None Integer
-, queues = None Integer
+{ handSize = None Natural
+, queueLengthLimit = None Natural
+, queues = None Natural
 }

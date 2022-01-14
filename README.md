@@ -62,7 +62,7 @@ let deployment =
         , selector = kubernetes.LabelSelector::{
           , matchLabels = Some (toMap { name = "nginx" })
           }
-        , replicas = Some +2
+        , replicas = Some 2
         , template = kubernetes.PodTemplateSpec::{
           , metadata = Some kubernetes.ObjectMeta::{ name = Some "nginx" }
           , spec = Some kubernetes.PodSpec::{
@@ -71,7 +71,7 @@ let deployment =
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
                 , ports = Some
-                  [ kubernetes.ContainerPort::{ containerPort = +80 } ]
+                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
                 }
               ]
             }
@@ -353,6 +353,12 @@ To add a new supported Kubernetes release, run:
 ```bash
 ./scripts/add-kubernetes-release "${VERSION}"
 ```
+
+You will need to edit the `make-dhall-kubernetes()` function in
+`nix/nixpkgs.nix` to add the list of exceptions to the default conversion of
+integer types in the openapi definition to Dhall Natural. See [this
+PR](https://github.com/dhall-lang/dhall-haskell/pull/2316) for more
+information.
 
 ### Changing how the Kubernetes bindings are generated
 

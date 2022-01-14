@@ -4,7 +4,7 @@
 , externalIPs = None (List Text)
 , externalName = None Text
 , externalTrafficPolicy = None Text
-, healthCheckNodePort = None Integer
+, healthCheckNodePort = None Natural
 , internalTrafficPolicy = None Text
 , ipFamilies = None (List Text)
 , ipFamilyPolicy = None Text

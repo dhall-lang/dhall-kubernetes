@@ -1,9 +1,9 @@
 { exec : Optional ./io.k8s.api.core.v1.ExecAction.dhall
-, failureThreshold : Optional Integer
+, failureThreshold : Optional Natural
 , httpGet : Optional ./io.k8s.api.core.v1.HTTPGetAction.dhall
-, initialDelaySeconds : Optional Integer
-, periodSeconds : Optional Integer
-, successThreshold : Optional Integer
+, initialDelaySeconds : Optional Natural
+, periodSeconds : Optional Natural
+, successThreshold : Optional Natural
 , tcpSocket : Optional ./io.k8s.api.core.v1.TCPSocketAction.dhall
-, timeoutSeconds : Optional Integer
+, timeoutSeconds : Optional Natural
 }

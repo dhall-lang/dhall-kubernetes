@@ -1,1 +1,1 @@
-{ revision : Optional Integer }
+{ revision : Optional Natural }

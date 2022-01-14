@@ -1,5 +1,5 @@
 { containers : List ./io.k8s.api.core.v1.Container.dhall
-, activeDeadlineSeconds : Optional Integer
+, activeDeadlineSeconds : Optional Natural
 , affinity : Optional ./io.k8s.api.core.v1.Affinity.dhall
 , automountServiceAccountToken : Optional Bool
 , dnsConfig : Optional ./io.k8s.api.core.v1.PodDNSConfig.dhall
@@ -36,7 +36,7 @@
 , serviceAccountName : Optional Text
 , shareProcessNamespace : Optional Bool
 , subdomain : Optional Text
-, terminationGracePeriodSeconds : Optional Integer
+, terminationGracePeriodSeconds : Optional Natural
 , tolerations : Optional (List ./io.k8s.api.core.v1.Toleration.dhall)
 , topologySpreadConstraints :
     Optional (List ./io.k8s.api.core.v1.TopologySpreadConstraint.dhall)

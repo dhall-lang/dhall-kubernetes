@@ -1,5 +1,5 @@
 { name : Text
-, targetAverageUtilization : Optional Integer
+, targetAverageUtilization : Optional Natural
 , targetAverageValue :
     Optional ./io.k8s.apimachinery.pkg.api.resource.Quantity.dhall
 }

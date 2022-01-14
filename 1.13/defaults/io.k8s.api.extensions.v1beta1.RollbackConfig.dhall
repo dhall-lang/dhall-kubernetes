@@ -1,1 +1,1 @@
-{ revision = None Integer }
+{ revision = None Natural }

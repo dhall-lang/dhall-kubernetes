@@ -1,7 +1,7 @@
-{ minReadySeconds = None Integer
+{ minReadySeconds = None Natural
 , paused = None Bool
-, progressDeadlineSeconds = None Integer
-, replicas = None Integer
-, revisionHistoryLimit = None Integer
+, progressDeadlineSeconds = None Natural
+, replicas = None Natural
+, revisionHistoryLimit = None Natural
 , strategy = None ./../types/io.k8s.api.apps.v1.DeploymentStrategy.dhall
 }

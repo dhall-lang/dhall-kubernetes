@@ -1,1 +1,1 @@
-{ expirationSeconds = None Integer }
+{ expirationSeconds = None Natural }

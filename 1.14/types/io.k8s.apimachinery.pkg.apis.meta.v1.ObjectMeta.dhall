@@ -1,11 +1,11 @@
 { annotations : Optional (List { mapKey : Text, mapValue : Text })
 , clusterName : Optional Text
 , creationTimestamp : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
-, deletionGracePeriodSeconds : Optional Integer
+, deletionGracePeriodSeconds : Optional Natural
 , deletionTimestamp : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
 , finalizers : Optional (List Text)
 , generateName : Optional Text
-, generation : Optional Integer
+, generation : Optional Natural
 , initializers :
     Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.Initializers.dhall
 , labels : Optional (List { mapKey : Text, mapValue : Text })

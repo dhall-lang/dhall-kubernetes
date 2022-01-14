@@ -1,5 +1,5 @@
-{ maxReplicas : Integer
+{ maxReplicas : Natural
 , scaleTargetRef : ./io.k8s.api.autoscaling.v1.CrossVersionObjectReference.dhall
-, minReplicas : Optional Integer
-, targetCPUUtilizationPercentage : Optional Integer
+, minReplicas : Optional Natural
+, targetCPUUtilizationPercentage : Optional Natural
 }

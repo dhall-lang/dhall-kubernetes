@@ -1,1 +1,1 @@
-{ name = None Text, port = None Integer, protocol = None Text }
+{ name = None Text, port = None Natural, protocol = None Text }

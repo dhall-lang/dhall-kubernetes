@@ -1,6 +1,6 @@
 { request : Text
 , signerName : Text
-, expirationSeconds : Optional Integer
+, expirationSeconds : Optional Natural
 , extra : Optional (List { mapKey : Text, mapValue : List Text })
 , groups : Optional (List Text)
 , uid : Optional Text

@@ -1,7 +1,7 @@
-{ currentHealthy : Integer
-, desiredHealthy : Integer
-, disruptionsAllowed : Integer
-, expectedPods : Integer
+{ currentHealthy : Natural
+, desiredHealthy : Natural
+, disruptionsAllowed : Natural
+, expectedPods : Natural
 , conditions :
     Optional (List ./io.k8s.apimachinery.pkg.apis.meta.v1.Condition.dhall)
 , disruptedPods :
@@ -11,5 +11,5 @@
           , mapValue : ./io.k8s.apimachinery.pkg.apis.meta.v1.Time.dhall
           }
       )
-, observedGeneration : Optional Integer
+, observedGeneration : Optional Natural
 }

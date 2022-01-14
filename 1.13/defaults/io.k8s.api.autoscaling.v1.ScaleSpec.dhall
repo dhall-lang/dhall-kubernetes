@@ -1,1 +1,1 @@
-{ replicas = None Integer }
+{ replicas = None Natural }

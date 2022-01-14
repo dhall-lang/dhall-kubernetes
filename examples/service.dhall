@@ -2,7 +2,7 @@ let Prelude =
       ../Prelude.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
 
 let kubernetes =
-      ../package.dhall sha256:6bd75ef5494072c018014642c0cf3d7cbc6fbe6ec9ea3be8ef5a4e34430ca109
+      ../package.dhall sha256:e58b91c89c16e68a1989e961151fcaf2ea380de0cd21e7c044d05e88358ea159
 
 let spec =
       { selector = Some (toMap { app = "nginx" })
@@ -10,7 +10,7 @@ let spec =
       , ports = Some
         [ kubernetes.ServicePort::{
           , targetPort = Some (kubernetes.IntOrString.Int +80)
-          , port = +80
+          , port = 80
           }
         ]
       }

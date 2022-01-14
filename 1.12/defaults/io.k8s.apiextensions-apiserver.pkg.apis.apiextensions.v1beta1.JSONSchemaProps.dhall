@@ -19,13 +19,13 @@
       ./../types/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation.dhall
 , format = None Text
 , id = None Text
-, maxItems = None Integer
-, maxLength = None Integer
-, maxProperties = None Integer
+, maxItems = None Natural
+, maxLength = None Natural
+, maxProperties = None Natural
 , maximum = None Double
-, minItems = None Integer
-, minLength = None Integer
-, minProperties = None Integer
+, minItems = None Natural
+, minLength = None Natural
+, minProperties = None Natural
 , minimum = None Double
 , multipleOf = None Double
 , pattern = None Text

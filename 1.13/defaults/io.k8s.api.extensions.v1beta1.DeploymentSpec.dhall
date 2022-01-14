@@ -1,8 +1,8 @@
-{ minReadySeconds = None Integer
+{ minReadySeconds = None Natural
 , paused = None Bool
-, progressDeadlineSeconds = None Integer
-, replicas = None Integer
-, revisionHistoryLimit = None Integer
+, progressDeadlineSeconds = None Natural
+, replicas = None Natural
+, revisionHistoryLimit = None Natural
 , rollbackTo =
     None ./../types/io.k8s.api.extensions.v1beta1.RollbackConfig.dhall
 , selector =
