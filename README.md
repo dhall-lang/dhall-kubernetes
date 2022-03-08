@@ -53,7 +53,7 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:6bd75ef5494072c018014642c0cf3d7cbc6fbe6ec9ea3be8ef5a4e34430ca109
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:0d7e7c321164921d742e2b23c5cc79e59ff02bd77106b799322bb14f12c29f91
 
 let deployment =
       kubernetes.Deployment::{
@@ -148,7 +148,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:6bd75ef5494072c018014642c0cf3d7cbc6fbe6ec9ea3be8ef5a4e34430ca109
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:0d7e7c321164921d742e2b23c5cc79e59ff02bd77106b799322bb14f12c29f91
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -169,7 +169,7 @@ let makeRule
           { paths =
             [ { backend =
                 { serviceName = service.name
-                , servicePort = kubernetes.IntOrString.Int +80
+                , servicePort = kubernetes.NatOrString.Nat 80
                 }
               , path = None Text
               }
@@ -353,12 +353,6 @@ To add a new supported Kubernetes release, run:
 ```bash
 ./scripts/add-kubernetes-release "${VERSION}"
 ```
-
-You will need to edit the `make-dhall-kubernetes()` function in
-`nix/nixpkgs.nix` to add the list of exceptions to the default conversion of
-integer types in the openapi definition to Dhall Natural. See [this
-PR](https://github.com/dhall-lang/dhall-haskell/pull/2316) for more
-information.
 
 ### Changing how the Kubernetes bindings are generated
 

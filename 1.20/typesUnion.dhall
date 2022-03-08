@@ -29,53 +29,53 @@
 | ControllerRevisionList :
     ./types/io.k8s.api.apps.v1.ControllerRevisionList.dhall sha256:209723e7a750dc2b67fb355e9847f70439fecc3d68e97ae2d20d9b0f33f1c643
 | DaemonSet :
-    ./types/io.k8s.api.apps.v1.DaemonSet.dhall sha256:0bea95fa249b1fae2e740389814d181f6ae23756d4e0c0ca1d1cabdbe919f6ca
+    ./types/io.k8s.api.apps.v1.DaemonSet.dhall sha256:e13526c4b78d5da2bdfbefe0bc5310827e746f3b90e25ce8b6802173fa009ad1
 | DaemonSetCondition :
     ./types/io.k8s.api.apps.v1.DaemonSetCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 | DaemonSetList :
-    ./types/io.k8s.api.apps.v1.DaemonSetList.dhall sha256:3adae20d667ae58ee64be5251d4862719a82ddbe472052222bdcfb85c7ac03fe
+    ./types/io.k8s.api.apps.v1.DaemonSetList.dhall sha256:ccd6dd882bd571fed54cd853a1c5a7491443b98b9e2a7caedb5f6070b31fe23d
 | DaemonSetSpec :
-    ./types/io.k8s.api.apps.v1.DaemonSetSpec.dhall sha256:cf6c4c5d07ce09ef578b02285dd1497fbe7f5c57369fa915ffe5fff30321c7ce
+    ./types/io.k8s.api.apps.v1.DaemonSetSpec.dhall sha256:916895f60aea0310d748b6ca1a5d297f7f630e43561ea78d1f8e5b052c281dc0
 | DaemonSetStatus :
     ./types/io.k8s.api.apps.v1.DaemonSetStatus.dhall sha256:8df7934b5710e2cd7436b009df0b714ede641037aaa5d5757e257f4f285515e8
 | DaemonSetUpdateStrategy :
-    ./types/io.k8s.api.apps.v1.DaemonSetUpdateStrategy.dhall sha256:838b3710de00ccee072859cebadd46d3cc3fddcdf10dc5f3ef7e560e441e6d23
+    ./types/io.k8s.api.apps.v1.DaemonSetUpdateStrategy.dhall sha256:c2d023cb99ccdc4e7b56bb862f8e8d5f576c0fef700ab5e12b76e3dbb130764e
 | Deployment :
-    ./types/io.k8s.api.apps.v1.Deployment.dhall sha256:eef106585988fca5191b5bcd6b94d90b540d52236286b136b58dad394924e928
+    ./types/io.k8s.api.apps.v1.Deployment.dhall sha256:56741e2b661a8bd615eb7e62788cbea5d07d2cd08396362aca8b7f28d23589f9
 | DeploymentCondition :
     ./types/io.k8s.api.apps.v1.DeploymentCondition.dhall sha256:7454a3ace769a8acf66bee0a25a9558dee6ff2dc7343d87e38524e7d3f1c8baa
 | DeploymentList :
-    ./types/io.k8s.api.apps.v1.DeploymentList.dhall sha256:49bf2a8ab8d5ef5f66784e318e3fabec2d806b8269d6756a5fc9d1e3cb19f7a8
+    ./types/io.k8s.api.apps.v1.DeploymentList.dhall sha256:8fe7fd83dac4487e9319dc79f6c9c536e0d2a16b919a52257c63c3044d69f6b1
 | DeploymentSpec :
-    ./types/io.k8s.api.apps.v1.DeploymentSpec.dhall sha256:43b089bbfda86e921dc85242b6c1e171a49ab68cdaf50023c6476c3a97dc1331
+    ./types/io.k8s.api.apps.v1.DeploymentSpec.dhall sha256:d0dfcc24fc162b2b6081ae5a1c539b1b453b1d38a28b2d7d05daa7fbcad1f9c0
 | DeploymentStatus :
     ./types/io.k8s.api.apps.v1.DeploymentStatus.dhall sha256:9c3ae8b25a14bc2fdfe3bbfe292ee0c4b2ed3023dda4515d6c815e8ff41363ed
 | DeploymentStrategy :
-    ./types/io.k8s.api.apps.v1.DeploymentStrategy.dhall sha256:baefcbaa5303f6d96e0c5255ee44a53a1fe03baa69c2aaec2676a234fbdc1384
+    ./types/io.k8s.api.apps.v1.DeploymentStrategy.dhall sha256:45b7abbd4397f3a7cfb95a903a1809857ac1958d56b09cb137695174fb56245a
 | ReplicaSet :
-    ./types/io.k8s.api.apps.v1.ReplicaSet.dhall sha256:fb74018aebd80065834504942b33ee3c1113fd9b8c67e752a2d282baa72e1faa
+    ./types/io.k8s.api.apps.v1.ReplicaSet.dhall sha256:94eac4b1f293f439ae97ebdcf1ade1e3052c8f2ffc73b3ddc0a8b5b82f4aba63
 | ReplicaSetCondition :
     ./types/io.k8s.api.apps.v1.ReplicaSetCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 | ReplicaSetList :
-    ./types/io.k8s.api.apps.v1.ReplicaSetList.dhall sha256:df2c22c9133b8130b670fdb5a06c197a60f6962b16c503e3c97157b401e12f90
+    ./types/io.k8s.api.apps.v1.ReplicaSetList.dhall sha256:d629d47b5f0d0bd9e97dbac13f9c58301bdc471df078cb5f0f80914f74d84f76
 | ReplicaSetSpec :
-    ./types/io.k8s.api.apps.v1.ReplicaSetSpec.dhall sha256:daf062c152318153de93179d458d42b77e5cf86db810f603133e55e77c750343
+    ./types/io.k8s.api.apps.v1.ReplicaSetSpec.dhall sha256:85bcbb6303b52b3a22dc077d4b42d80af21353faebb4e93231c6b6d23771884d
 | ReplicaSetStatus :
     ./types/io.k8s.api.apps.v1.ReplicaSetStatus.dhall sha256:079fb913272c088967f80c8404e28b1b15756edf6ad3de056947f268ff4303da
 | RollingUpdateDaemonSet :
-    ./types/io.k8s.api.apps.v1.RollingUpdateDaemonSet.dhall sha256:e6e7fd5a5d7e251def493e4134b4a6c9e9987706f804e2c78f2217386b02978d
+    ./types/io.k8s.api.apps.v1.RollingUpdateDaemonSet.dhall sha256:d1b74c925ddd032c54960adc5508faba3337f3667d864e5e0f0a6fefa20df18a
 | RollingUpdateDeployment :
-    ./types/io.k8s.api.apps.v1.RollingUpdateDeployment.dhall sha256:575401047375dfc5e8df9233f31eae86989f2227146fcb2933d4e23977affa69
+    ./types/io.k8s.api.apps.v1.RollingUpdateDeployment.dhall sha256:5e6700bd62ec1a2282fed2df5a7b4ff68b42b8649965a646ad0922f718e5eb4a
 | RollingUpdateStatefulSetStrategy :
     ./types/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy.dhall sha256:dad33ff65dde525b0796a1d7e81a345d4ae973743e3267be3a1bd0722cf5ab4b
 | StatefulSet :
-    ./types/io.k8s.api.apps.v1.StatefulSet.dhall sha256:7a754449de9e97b847c8e7673f51485bae226c13bf8ff43ccde7635b71b96f2f
+    ./types/io.k8s.api.apps.v1.StatefulSet.dhall sha256:03de121b99ff4c2cc747c99b8990b4d5dae34e35193f385bea231dd02af56201
 | StatefulSetCondition :
     ./types/io.k8s.api.apps.v1.StatefulSetCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 | StatefulSetList :
-    ./types/io.k8s.api.apps.v1.StatefulSetList.dhall sha256:392f63ace09116348b77f0721b8571f2dc252d7e38bd218361cf23b0857c3b45
+    ./types/io.k8s.api.apps.v1.StatefulSetList.dhall sha256:ddcd3e64c2683ed21003f7adb28b475d56c17534aa9ecb872a47fc021a0607bf
 | StatefulSetSpec :
-    ./types/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:949cf7f85ee7750d6e1d246204879838f0ee5017ecccc7a3db9b9be0b3bcfe5f
+    ./types/io.k8s.api.apps.v1.StatefulSetSpec.dhall sha256:45f37df55fefd2757acf859e1bde0382cc48b170ca1f381cb546d1617f015a6e
 | StatefulSetStatus :
     ./types/io.k8s.api.apps.v1.StatefulSetStatus.dhall sha256:d5a3a33833911b1885d22dd9d5a8a90cb93d106d31b0690c81159288005a7c06
 | StatefulSetUpdateStrategy :
@@ -175,25 +175,25 @@
 | ResourceMetricStatus :
     ./types/io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus.dhall sha256:a76c3a909d13359ed7595df585a9092d7e05b564a139abe9fe611bbfefaff84f
 | Job :
-    ./types/io.k8s.api.batch.v1.Job.dhall sha256:50a11539949619eda9d660fce5df9911c62dd2d882bbf02c6db012a571625c04
+    ./types/io.k8s.api.batch.v1.Job.dhall sha256:57d4c052f3ac082252f70b6cd5859835474cba6ed488bb771ce7b1aadfa2d7cb
 | JobCondition :
     ./types/io.k8s.api.batch.v1.JobCondition.dhall sha256:253ee70013b7ce83570cd49d6e14c029e6f652e7e70b1fac3b10213619d42f05
 | JobList :
-    ./types/io.k8s.api.batch.v1.JobList.dhall sha256:1ba18ee0ed11e82569070703dd18801a2d9f3e92b20fe339f8a4697c436cc731
+    ./types/io.k8s.api.batch.v1.JobList.dhall sha256:ac2c7196832acc733eac7db6ad401917cc2fcfcaac17f4c5f6f4c452afde3ba5
 | JobSpec :
-    ./types/io.k8s.api.batch.v1.JobSpec.dhall sha256:aa2ac9eb8cb0eb5b79805a9de9dcde66ff269253661db486c89803d9a5bce383
+    ./types/io.k8s.api.batch.v1.JobSpec.dhall sha256:68f1adebcbb6c44d8419f2ea3b69ea79ca235a781423e7e8d7b8e400ffd98ff8
 | JobStatus :
     ./types/io.k8s.api.batch.v1.JobStatus.dhall sha256:359a0ae893c3951a17a95b44bd5c11707217055b227d331b71cd890db3ac201d
 | CronJob :
-    ./types/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:ab03b2a1dc9ca511ad92c6a1971bc797c7eb35226c29a23729036e5936cafbb0
+    ./types/io.k8s.api.batch.v1beta1.CronJob.dhall sha256:46226f0505bd4e5574a1acb77111bdbc2006db80f71320937d4aa7be65f84d57
 | CronJobList :
-    ./types/io.k8s.api.batch.v1beta1.CronJobList.dhall sha256:941755a94727d37e74c33dee79fb594e08a9207534203abbddd4b39aaf20341e
+    ./types/io.k8s.api.batch.v1beta1.CronJobList.dhall sha256:02c4c940d54eac145c0c501b1165fb3001ad02229d304a04bc9a65e17f65587e
 | CronJobSpec :
-    ./types/io.k8s.api.batch.v1beta1.CronJobSpec.dhall sha256:a9beba5e70b0a6d99286b34bf819c8b20ac1c72cab7ea59b8b8637fde56f4640
+    ./types/io.k8s.api.batch.v1beta1.CronJobSpec.dhall sha256:895158986f0d487801065669144445c118ad63bda9f5eed52fdef5a89e03287e
 | CronJobStatus :
     ./types/io.k8s.api.batch.v1beta1.CronJobStatus.dhall sha256:a72616aa1127fdd7dcc66b891dad1550f2830325b7c4d3b88ac1bbfde394a5ea
 | JobTemplateSpec :
-    ./types/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:3bd68530f4619b85f09fbf51a1df61a1199051b6c5fc84a2a12b92fa6def3ad9
+    ./types/io.k8s.api.batch.v1beta1.JobTemplateSpec.dhall sha256:433d703c136076729d247735b0f0bf32b10912b2a3fc00b21fa69b68d85cec21
 | CertificateSigningRequest :
     ./types/io.k8s.api.certificates.v1.CertificateSigningRequest.dhall sha256:abe1a474964f7f02048ffecd5792f526d48e16f12e58f3b5061b60501c950b48
 | CertificateSigningRequestCondition :
@@ -261,7 +261,7 @@
 | ConfigMapVolumeSource :
     ./types/io.k8s.api.core.v1.ConfigMapVolumeSource.dhall sha256:ca17a0474608f919001f642901c11d3e60324a4245879c0bf540eca0ed22357d
 | Container :
-    ./types/io.k8s.api.core.v1.Container.dhall sha256:160ba6f684b7d76876d35178bd170bdc517dce927eb2066a6961c98298e63f6f
+    ./types/io.k8s.api.core.v1.Container.dhall sha256:2f59c8cf2a6e92ce31ccf7c1597b6861bf93467a4ec6dd3fd5c4e8062d422613
 | ContainerImage :
     ./types/io.k8s.api.core.v1.ContainerImage.dhall sha256:48998e9b43b9d1c5b27bf20fb906ca4707f5de51298f8f2ebbc7671aca0eaa37
 | ContainerPort :
@@ -303,7 +303,7 @@
 | EnvVarSource :
     ./types/io.k8s.api.core.v1.EnvVarSource.dhall sha256:1e75b5cf6e7babc3b4fe3c39de06ee0604186208454f414203140c9a8eb89b31
 | EphemeralContainer :
-    ./types/io.k8s.api.core.v1.EphemeralContainer.dhall sha256:579e6015d1f8bf911a98f6a840833e23290e3ae094cb070ef7f652e3603ab176
+    ./types/io.k8s.api.core.v1.EphemeralContainer.dhall sha256:c249c9a20301cd20fc93a17e4a43f4db459dce533fa2a047a6599ced7b98dd2f
 | EphemeralVolumeSource :
     ./types/io.k8s.api.core.v1.EphemeralVolumeSource.dhall sha256:6a3d5128cd37eee879d6747066b41ec9a909677b058ff5206137fa38a3f77fd9
 | EventSource :
@@ -327,11 +327,11 @@
 | GlusterfsVolumeSource :
     ./types/io.k8s.api.core.v1.GlusterfsVolumeSource.dhall sha256:1436b3d8c0b9d5d832cfaf22d06c8c2cf09238e39a08a418ebe41c07ed7e87c6
 | HTTPGetAction :
-    ./types/io.k8s.api.core.v1.HTTPGetAction.dhall sha256:e3afdc1006b7ea2a86b9d2e6ad50fdd592a5708347700e448e0d488f1699f2e4
+    ./types/io.k8s.api.core.v1.HTTPGetAction.dhall sha256:f357d36c6237b6f46528dede0bb2dcaec0a547dea569d7b57bd577f2a315b758
 | HTTPHeader :
     ./types/io.k8s.api.core.v1.HTTPHeader.dhall sha256:b8c3c0c4ceb36ba4e6674df5de20ad1d97e120b93b9ce9914a41d0036770dcc4
 | Handler :
-    ./types/io.k8s.api.core.v1.Handler.dhall sha256:41c75ed2ee8eb112cdf8f55da811f89137100d38ce3385daa32228012e64ab63
+    ./types/io.k8s.api.core.v1.Handler.dhall sha256:b45d28b9d3645362e831059807f5370961b9de7d8f536b3bc254ed28ab7bcccc
 | HostAlias :
     ./types/io.k8s.api.core.v1.HostAlias.dhall sha256:c7383b6bdc4212f9b4e47a91944e529a10bdfe8334143944e32bc56c4ccc2e0f
 | HostPathVolumeSource :
@@ -343,7 +343,7 @@
 | KeyToPath :
     ./types/io.k8s.api.core.v1.KeyToPath.dhall sha256:2428bb641aff90886b7bb34b92328df6ce59ad4e5c613952df6bd8f7fc73d3e2
 | Lifecycle :
-    ./types/io.k8s.api.core.v1.Lifecycle.dhall sha256:68b42e890078309297113c05701503a4d25778620bf338533eff4c8066d0995b
+    ./types/io.k8s.api.core.v1.Lifecycle.dhall sha256:c0c3665b67dce843b89d4235033b42569d447c8ce2f7584f09f02cac84e246a0
 | LimitRange :
     ./types/io.k8s.api.core.v1.LimitRange.dhall sha256:1f976062fac819a53d4d4be478331a1bf9797f80faed7d8c74feb9a3415fae56
 | LimitRangeItem :
@@ -429,7 +429,7 @@
 | PhotonPersistentDiskVolumeSource :
     ./types/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.dhall sha256:4786a2549b98aca430620201a7cee2c505470a70bd1722a7019a4aa163e07ec7
 | Pod :
-    ./types/io.k8s.api.core.v1.Pod.dhall sha256:80ce4ccad7d538c3661d1c78611be0a013e305cde9e6d9e5fe6601be1ab228d0
+    ./types/io.k8s.api.core.v1.Pod.dhall sha256:c55503127877a339ba707fac7439a0b73416f45231c905435ec936a0f05f45c9
 | PodAffinity :
     ./types/io.k8s.api.core.v1.PodAffinity.dhall sha256:820f3019e862a32dd7b9c222e21ccfeed1ad8da94441be7358be74ccf6be97f5
 | PodAffinityTerm :
@@ -445,21 +445,21 @@
 | PodIP :
     ./types/io.k8s.api.core.v1.PodIP.dhall sha256:690ddd3c7ed236568205794ef055f237828e3463dc1c54637b8133693985bb82
 | PodList :
-    ./types/io.k8s.api.core.v1.PodList.dhall sha256:34d5db84cea3b7988f3e8a598f72d231e8f707694b341a247f6f1cf1728846e0
+    ./types/io.k8s.api.core.v1.PodList.dhall sha256:7588e0f6b015946b6dc4602dc32b9c9ff59cf081f37e58818bcd8463816bab67
 | PodReadinessGate :
     ./types/io.k8s.api.core.v1.PodReadinessGate.dhall sha256:3acaaaae3422906803d0be01f596cf0db6de147d1585268c9e976e30f4250486
 | PodSecurityContext :
     ./types/io.k8s.api.core.v1.PodSecurityContext.dhall sha256:3ac25500d106134dc9684807a15a2c0e646f79d63cde8e6780a79b1bea08d8d0
 | PodSpec :
-    ./types/io.k8s.api.core.v1.PodSpec.dhall sha256:52a4194df65f208bd1bf42110c0932dbd0ceb3990bb6f9270c7ed5047169c228
+    ./types/io.k8s.api.core.v1.PodSpec.dhall sha256:e1c4d919bf06899b3c7c4b673a58d8ef853e67bab147cf0b2bfd19e1f7c377b1
 | PodStatus :
     ./types/io.k8s.api.core.v1.PodStatus.dhall sha256:2b35ded0c14cf9b09a75f4b5941d7d17399787ca77a9717b60c096c5a0736b22
 | PodTemplate :
-    ./types/io.k8s.api.core.v1.PodTemplate.dhall sha256:52a4e5c78d7bb25fd9121f4542936561d08f9c84808dc8ac2c6fcc96e0820cf7
+    ./types/io.k8s.api.core.v1.PodTemplate.dhall sha256:28ceaed3f53e56f8d12a8857b16b799228ae4b07c5b9dcbbe83db613a6e4c4c8
 | PodTemplateList :
-    ./types/io.k8s.api.core.v1.PodTemplateList.dhall sha256:5a9831267d87bc2d265daac9f4de92ced7bc924f7d4bf93dca3879b3794f98dd
+    ./types/io.k8s.api.core.v1.PodTemplateList.dhall sha256:d33cbd2d8405a7b2cd62e776c30930b01cbb903fe64246f98d58c9d3300cbf27
 | PodTemplateSpec :
-    ./types/io.k8s.api.core.v1.PodTemplateSpec.dhall sha256:c8e582326d59bd39e3755e9ccde6106444c9602f0e5567f482c1f713d575a9db
+    ./types/io.k8s.api.core.v1.PodTemplateSpec.dhall sha256:2ab0eb054e6f4c03ef68cb1106f784b4413bda8d081b57863e27c517a4b9bde7
 | PortStatus :
     ./types/io.k8s.api.core.v1.PortStatus.dhall sha256:5a346ae3e0d2d34335bf38056a2fce4a8246cd78ffe1aaff2a189c410db86463
 | PortworxVolumeSource :
@@ -467,7 +467,7 @@
 | PreferredSchedulingTerm :
     ./types/io.k8s.api.core.v1.PreferredSchedulingTerm.dhall sha256:90e8630891329b48e6a3e824d384e2c7bb0f3afa4123a06f378f10c04429a493
 | Probe :
-    ./types/io.k8s.api.core.v1.Probe.dhall sha256:49681e57153dba430d398ce983b839b70016612ebe0df1cf9243fc7592929c40
+    ./types/io.k8s.api.core.v1.Probe.dhall sha256:c91d935ba057ffd7142f2eaac69062e3f1be1932446c898c94b34ad7094729f5
 | ProjectedVolumeSource :
     ./types/io.k8s.api.core.v1.ProjectedVolumeSource.dhall sha256:b90336940b65e45154c4528f1fdd509a43da18e8226aa597a274e1ac45d7d880
 | QuobyteVolumeSource :
@@ -477,13 +477,13 @@
 | RBDVolumeSource :
     ./types/io.k8s.api.core.v1.RBDVolumeSource.dhall sha256:a3c3dbc95b50cb4e5438e48b4e583cf8cbec5f6b3daf694335f1b1b1b0f80972
 | ReplicationController :
-    ./types/io.k8s.api.core.v1.ReplicationController.dhall sha256:b4797ea1a92e798af678e837a0d064ec424e534634c43b0ab433337ac4246151
+    ./types/io.k8s.api.core.v1.ReplicationController.dhall sha256:63eed597b0271223ed17d7428655d9e3b89cc05abd27a63c2bb21c5f00032eca
 | ReplicationControllerCondition :
     ./types/io.k8s.api.core.v1.ReplicationControllerCondition.dhall sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 | ReplicationControllerList :
-    ./types/io.k8s.api.core.v1.ReplicationControllerList.dhall sha256:c3241a4260f48e0207c403b8670c234648d66690b9730db8950b494b27afb960
+    ./types/io.k8s.api.core.v1.ReplicationControllerList.dhall sha256:7033b9423bd3dfe92f3cd4cda919b06538fcf0a4cc32b98d7e54e4ce1866a6ba
 | ReplicationControllerSpec :
-    ./types/io.k8s.api.core.v1.ReplicationControllerSpec.dhall sha256:92d5a582a5075cc841453f8a3ca649af53d44627f3db3942c197f1db2268633c
+    ./types/io.k8s.api.core.v1.ReplicationControllerSpec.dhall sha256:103fc5569c2c660bce94db81aff1bf0d798252b3d1259f54d732a028b964dcff
 | ReplicationControllerStatus :
     ./types/io.k8s.api.core.v1.ReplicationControllerStatus.dhall sha256:079fb913272c088967f80c8404e28b1b15756edf6ad3de056947f268ff4303da
 | ResourceFieldSelector :
@@ -527,7 +527,7 @@
 | SecurityContext :
     ./types/io.k8s.api.core.v1.SecurityContext.dhall sha256:231eb05121199a5bbd5e8f8d7af96d5ef99b6f0bef3fa28bf50955d00feb452d
 | Service :
-    ./types/io.k8s.api.core.v1.Service.dhall sha256:aab4a0046d30589a87e69f839bc7836e0c4439d3e05daf1a922361637f8a82e4
+    ./types/io.k8s.api.core.v1.Service.dhall sha256:7e0a5c18bf263b41cb1c5d8d9150fa622869d3974db7541aea4446a0efb43f77
 | ServiceAccount :
     ./types/io.k8s.api.core.v1.ServiceAccount.dhall sha256:0cda45d7d55cda9c16cd39d392e30e1514a3300d4bfa45b843c2d610bbdc957b
 | ServiceAccountList :
@@ -535,11 +535,11 @@
 | ServiceAccountTokenProjection :
     ./types/io.k8s.api.core.v1.ServiceAccountTokenProjection.dhall sha256:a34c4621eb6be8c65301ebe8b3858a930bbaba922f96d348a4155d42d854fe90
 | ServiceList :
-    ./types/io.k8s.api.core.v1.ServiceList.dhall sha256:d2fed2ba3ed7511dcdeed661a1d673d45f069906fe19175e78a45f4a1c99ef64
+    ./types/io.k8s.api.core.v1.ServiceList.dhall sha256:71295bbb415cd9cbe7a09c30fda3d898c4353c4d40d1f488dd523b011a8163de
 | ServicePort :
-    ./types/io.k8s.api.core.v1.ServicePort.dhall sha256:d6c44d06f120657c9aa0a10f1921e6e2558d38ed1dcd6d29aad22c6ccb0abb0c
+    ./types/io.k8s.api.core.v1.ServicePort.dhall sha256:fbe6742ffe5531e0f07f31c1e0d92b6281c2155280b1cdef04dd8a6dc5dfe390
 | ServiceSpec :
-    ./types/io.k8s.api.core.v1.ServiceSpec.dhall sha256:8abe95d9c7ad9ae4e449057eb9ac483885fc5abdbe9de6e625c2f8e93533e26c
+    ./types/io.k8s.api.core.v1.ServiceSpec.dhall sha256:c2879a93eb88db466fa90b9531638669e1a191ac39d353f208a60d21744b58d9
 | ServiceStatus :
     ./types/io.k8s.api.core.v1.ServiceStatus.dhall sha256:c84b119a489c6cf72d2c014a87f28852b917051ac02ff91845d65909b58f73d7
 | SessionAffinityConfig :
@@ -551,7 +551,7 @@
 | Sysctl :
     ./types/io.k8s.api.core.v1.Sysctl.dhall sha256:b8c3c0c4ceb36ba4e6674df5de20ad1d97e120b93b9ce9914a41d0036770dcc4
 | TCPSocketAction :
-    ./types/io.k8s.api.core.v1.TCPSocketAction.dhall sha256:b98b87eac7cf62f6233ad2048d5b1f7005b697b901847694ff871b2e3fc01cb2
+    ./types/io.k8s.api.core.v1.TCPSocketAction.dhall sha256:0df72cafa500a545926aefafd161e0e67ef5bb7c8524b2656dd1ba251cd4bbab
 | Taint :
     ./types/io.k8s.api.core.v1.Taint.dhall sha256:9acf25f6b6dfcc3fec40a88e6c9c01f511c4f30ada42992b2a63dfd3010598e8
 | Toleration :
@@ -665,19 +665,19 @@
 | IngressTLS :
     ./types/io.k8s.api.networking.v1.IngressTLS.dhall sha256:a7f38221e7395a5109afb666e039e205c8b162ed1a74743b4257d65b5103a34b
 | NetworkPolicy :
-    ./types/io.k8s.api.networking.v1.NetworkPolicy.dhall sha256:7804e59cc597f93ab640a913db4bd2fe2696d1d78c892811ad54be60070ad05d
+    ./types/io.k8s.api.networking.v1.NetworkPolicy.dhall sha256:e6806f5ca25afa8ead3d0eccc41a102f9ed6ba7e9a5315761eedf95fc2e6f105
 | NetworkPolicyEgressRule :
-    ./types/io.k8s.api.networking.v1.NetworkPolicyEgressRule.dhall sha256:f50c3530070ddcf7270d2d77cc25c3f2f3ac5c8dee87393c9c0b07995e5b1886
+    ./types/io.k8s.api.networking.v1.NetworkPolicyEgressRule.dhall sha256:3ae13155a28b68a55abfba0351db37c956943c9c9cce974f258dda3a45443ce9
 | NetworkPolicyIngressRule :
-    ./types/io.k8s.api.networking.v1.NetworkPolicyIngressRule.dhall sha256:f1c3b99f43a90ffff7f028e027ae38cd7df9f2ddd6afbe18135e198097bd565f
+    ./types/io.k8s.api.networking.v1.NetworkPolicyIngressRule.dhall sha256:d41f9a49fc62a1b61ecc60c9419f44af8c36ea6761b62f61806ba1c98a32397e
 | NetworkPolicyList :
-    ./types/io.k8s.api.networking.v1.NetworkPolicyList.dhall sha256:98b59ad02477de8485a2bf561f4be1df6bda6bbf57cb7eaddce889064f5535bd
+    ./types/io.k8s.api.networking.v1.NetworkPolicyList.dhall sha256:361dede2e443bfb4257b1f7b3a937ebd9e13c002c506286c65416d48c64f210e
 | NetworkPolicyPeer :
     ./types/io.k8s.api.networking.v1.NetworkPolicyPeer.dhall sha256:a0655595f5254c2540a54ba5dd98f94dcb404ee0b438ddcef5d10b2f959dbcd2
 | NetworkPolicyPort :
-    ./types/io.k8s.api.networking.v1.NetworkPolicyPort.dhall sha256:84d42e41bcb497c60e50063bb0e8c0963cbc0224cf6a9bc606b296adec8bcce4
+    ./types/io.k8s.api.networking.v1.NetworkPolicyPort.dhall sha256:deb9aa7daf4642b669de2aa0560d8ded6de58adb6f58a92ffc88021b1e2ca877
 | NetworkPolicySpec :
-    ./types/io.k8s.api.networking.v1.NetworkPolicySpec.dhall sha256:eaa0eaeb8f078518698a181e9b1cbfccbbfd4aae4854ef66f8695b7cbffc21d1
+    ./types/io.k8s.api.networking.v1.NetworkPolicySpec.dhall sha256:2f77f44fccce4569edfa53214f1804e897e6aa036c02c0f2ba0b07961bb5b7c5
 | ServiceBackendPort :
     ./types/io.k8s.api.networking.v1.ServiceBackendPort.dhall sha256:383d1a1054d5fe1b17858e51cae44a39e854926c509a57e61dc48a279642da58
 | Overhead :
@@ -705,11 +705,11 @@
 | IDRange :
     ./types/io.k8s.api.policy.v1beta1.IDRange.dhall sha256:179073df1d50b91df18d6ef21e42af1e3f8bbf4479495c7d2eb057a987e79a32
 | PodDisruptionBudget :
-    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudget.dhall sha256:7e08fc8be3a9d6925a32b88b7bbc0df3a3e8e25692ae5cbf820194e0440ac54d
+    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudget.dhall sha256:92ffb7622d1bade570a6cc45b17f7e0d26ed2e918fb4dff77cb9857db4feb1be
 | PodDisruptionBudgetList :
-    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList.dhall sha256:786415ca90e42edb0d2e6498351cf3af6083f76bfb881bbe6c75dfbb9450da43
+    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList.dhall sha256:2c913c7fa1606c3893208b7a5e4384ca0d0d10c6c0576ccd090c2e32af64c7b2
 | PodDisruptionBudgetSpec :
-    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec.dhall sha256:abd5f13bacacf4c23aba5a2188446709d9e429035747c73fa85a79093181fe36
+    ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec.dhall sha256:62f09c9b8bb649448b44cc86abdac3bd2e34b54d883970f71e4b1c6239941433
 | PodDisruptionBudgetStatus :
     ./types/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.dhall sha256:f41d614e38f6c1ff78ecc7a17f32d3346120af17843fb0b5a3fd8787f709852e
 | PodSecurityPolicy :
@@ -886,6 +886,8 @@
     ./types/io.k8s.apimachinery.pkg.runtime.RawExtension.dhall sha256:e73a2ec07449acffe1a4ba9cd261b845a8beb8f81fbc1415575639e99da668e6
 | IntOrString :
     ./types/io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall sha256:81f61a4fd869961e44c8559da4375a14e097d2a36dc4aba03bf81f457a7ab268
+| NatOrString :
+    ./types/io.k8s.apimachinery.pkg.util.intstr.NatOrString.dhall sha256:eb2751b0aa2aeabb5c529c870663ceeffceb1c825c8cec02baa08492a58bc697
 | Info :
     ./types/io.k8s.apimachinery.pkg.version.Info.dhall sha256:147ae32c3822f64203e115e007aeb18be88282f73bc02fcbce4cb04fff2d3a6f
 | APIService :
