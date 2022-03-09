@@ -1,6 +1,6 @@
 { maxUnavailable :
-    Optional ./io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
+    Optional ./io.k8s.apimachinery.pkg.util.intstr.NatOrString.dhall
 , minAvailable :
-    Optional ./io.k8s.apimachinery.pkg.util.intstr.IntOrString.dhall
+    Optional ./io.k8s.apimachinery.pkg.util.intstr.NatOrString.dhall
 , selector : Optional ./io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.dhall
 }

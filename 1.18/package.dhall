@@ -1,7 +1,10 @@
-  ./schemas.dhall sha256:76efe43db4bdb0668ca50a09f5dcd97809ffb30ef8a5f9cee11993eeddb5d1d8
+  ./schemas.dhall sha256:12b5a5921f818608b4cf69176ca45580fc20c4ab2891a7503415a61908ab0990
 ∧ { IntOrString =
-      ( ./types.dhall sha256:e58ff96ae004dfc239a6616021d79d6d293f9afd358358a7e717abba08c09acb
+      ( ./types.dhall sha256:21ad1c632a33dd199f2540de57cfebf486e405c8344c5c11c2562bcae794af92
       ).IntOrString
+  , NatOrString =
+      ( ./types.dhall sha256:21ad1c632a33dd199f2540de57cfebf486e405c8344c5c11c2562bcae794af92
+      ).NatOrString
   , Resource =
-      ./typesUnion.dhall sha256:9e737dd4fe05c360dfc688aa7357deb6a353097e1fab03c06e6c148b14f1f47c
+      ./typesUnion.dhall sha256:93c0ab7dcbe607dc178bac95405b861dfa9e412eeb6097cc36c32deceba725c1
   }
