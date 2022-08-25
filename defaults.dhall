@@ -1,1 +1,1 @@
-./1.22/defaults.dhall
+./1.25/defaults.dhall

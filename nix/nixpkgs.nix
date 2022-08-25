@@ -36,8 +36,11 @@ let
           "1.20"
           "1.21"
           "1.22"
+          "1.23"
+          "1.24"
+          "1.25"
         ] then
-          "ContainerStateTerminated.exitCode,PodSpec.priority,PriorityClass.value,CustomResourceColumnDefinition.priority"
+          "--natIntExceptions 'ContainerStateTerminated.exitCode,PodSpec.priority,PriorityClass.value,CustomResourceColumnDefinition.priority'"
         else
           "";
 
@@ -45,7 +48,7 @@ let
         pkgsNew.runCommand "dhall-${spec.name}" { XDG_CACHE_HOME=".cache"; } ''
           ${pkgsNew.coreutils}/bin/mkdir "$out"
           cd $out
-          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall --preferNaturalInt --natIntExceptions '${natIntExceptions}' '${spec}'
+          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall --preferNaturalInt ${natIntExceptions} '${spec}'
           ${pkgsNew.lib.concatMapStringsSep "\n" freeze frozenFiles}
           ${pkgsNew.coreutils}/bin/rm --recursive .cache
         '';
