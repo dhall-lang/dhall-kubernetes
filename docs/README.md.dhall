@@ -117,33 +117,29 @@ ${../examples/out/ingress.yaml as Text}
 
 #### Can I generate a YAML file with many objects in it?
 
-It is usual for k8s YAML files to include multiple objects separated by `---` ("documents" in YAML lingo),
-so you might want to do it too.
-
-If the objects have the same type, this is very easy: you return a Dhall list containing the
-objects, and use the `--documents` flag, e.g.:
-
-```bash
-dhall-to-yaml --documents <<< "let a = ./examples/deploymentSimple.dhall in [a, a]"
-```
-
-If the objects are of different type, it's not possible to have separate documents in the same YAML file.  
-However, since [k8s has a builtin `List` type for these cases](https://github.com/kubernetes/kubernetes/blob/master/hack/testdata/list.yaml),
-it's possible to use it together with the [union type of all k8s types that we generate][typesUnion].
-
-So if we want to deploy e.g. a Deployment and a Service together, we can do:
+Kubernetes YAML files commonly include multiple resources as documents separated
+by `---`.  To generate a single file with a different resource type per
+document, you'll need to produce a `List Resource` (where `Resource` is a
+union provided by `dhall-kubernetes` that can wrap any resource type), like
+this:
 
 ```dhall
-let k8s = ./typesUnion.dhall
+let k8s = ./package.dhall
 
-in 
-{ apiVersion = "v1"
-, kind = "List"
-, items = 
-  [ k8s.Deployment ./my-deployment.dhall
-  , k8s.Service ./my-service.dhall
-  ]
-}
+in  [ k8s.Resource.Deployment k8s.Deployment::{
+        , …
+        }
+    , k8s.Resource.Service k8s.Service::{
+        , …
+        }
+    ]
+```
+
+… and then render the `List` of `Resource`s using the `--documents` flag, like
+this:
+
+```bash
+dhall-to-yaml --documents --file ./resources.dhall
 ```
 
 ## Projects Using `dhall-kubernetes`
