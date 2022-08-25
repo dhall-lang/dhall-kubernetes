@@ -1,1 +1,1 @@
-./1.17/package.dhall
+./1.25/package.dhall
