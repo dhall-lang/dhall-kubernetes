@@ -4,7 +4,7 @@ let Prelude =
 let map = Prelude.List.map
 
 let kubernetes =
-      ../package.dhall sha256:0d7e7c321164921d742e2b23c5cc79e59ff02bd77106b799322bb14f12c29f91
+      ../package.dhall sha256:53c03eb6a2cf118b3608f81253293993308a11f46b4463a18e376d343163bb21
 
 let Service = { name : Text, host : Text, version : Text }
 
@@ -23,11 +23,16 @@ let makeRule
         { host = Some service.host
         , http = Some
           { paths =
-            [ { backend =
-                { serviceName = service.name
-                , servicePort = kubernetes.NatOrString.Nat 80
+            [ kubernetes.HTTPIngressPath::{
+              , backend = kubernetes.IngressBackend::{
+                , service = Some kubernetes.IngressServiceBackend::{
+                  , name = service.name
+                  , port = Some kubernetes.ServiceBackendPort::{
+                    , number = Some 80
+                    }
+                  }
                 }
-              , path = None Text
+              , pathType = "Exact"
               }
             ]
           }

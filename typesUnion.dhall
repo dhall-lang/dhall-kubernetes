@@ -1,1 +1,1 @@
-./1.17/typesUnion.dhall
+./1.22/typesUnion.dhall

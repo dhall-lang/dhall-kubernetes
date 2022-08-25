@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -11,14 +11,20 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: foo
-              servicePort: 80
+              service:
+                name: foo
+                port:
+                  number: 80
+            pathType: Exact
     - host: default.example.com
       http:
         paths:
           - backend:
-              serviceName: default
-              servicePort: 80
+              service:
+                name: default
+                port:
+                  number: 80
+            pathType: Exact
   tls:
     - hosts:
         - foo.example.com
