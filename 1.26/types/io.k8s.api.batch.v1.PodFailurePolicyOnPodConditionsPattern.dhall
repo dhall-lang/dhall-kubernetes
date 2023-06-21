@@ -1,0 +1,1 @@
+{ status : Text, type : Text }

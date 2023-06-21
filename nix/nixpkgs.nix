@@ -3,6 +3,7 @@ let
 
   nixpkgs = builtins.fetchGit {
     inherit (spec) url rev;
+    allRefs = true;
   };
 
   overlay = pkgsNew: pkgsOld: {

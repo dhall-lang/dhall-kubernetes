@@ -53,7 +53,8 @@ In the following example, we:
 -- examples/deploymentSimple.dhall
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:705f7bd1c157c5544143ab5917bdc3972fe941300ce4189a8ea89e6ddd9c1875
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall
+        sha256:705f7bd1c157c5544143ab5917bdc3972fe941300ce4189a8ea89e6ddd9c1875
 
 let deployment =
       kubernetes.Deployment::{
@@ -143,12 +144,14 @@ Things to note in the following example:
 -- examples/ingress.dhall
 
 let Prelude =
-      ../Prelude.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
+      ../Prelude.dhall
+        sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
 
 let map = Prelude.List.map
 
 let kubernetes =
-      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall sha256:705f7bd1c157c5544143ab5917bdc3972fe941300ce4189a8ea89e6ddd9c1875
+      https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/master/package.dhall
+        sha256:705f7bd1c157c5544143ab5917bdc3972fe941300ce4189a8ea89e6ddd9c1875
 
 let Service = { name : Text, host : Text, version : Text }
 
