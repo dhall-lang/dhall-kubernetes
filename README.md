@@ -308,6 +308,43 @@ this:
 dhall-to-yaml --documents --file ./resources.dhall
 ```
 
+#### Can I use my existing charts as a starting point?
+
+You can turn any YAML document into Dhall code with `yaml-to-dhall`.
+However, you need a clean YAML file without Helm's templating logic.
+You can execute the templating logic locally with `helm template`
+or get the installed manifest with `helm get manifest`.
+
+Once you have a clean YAML file, you can convert it to Dhall like so:
+```bash
+yaml-to-dhall --file deployment.yaml --output deployment.dhall
+```
+
+However, the result will not be of type `k8s.Deployment.Type` because any optional
+properties that are missing from the YAML document will be missing from the
+Dhall code as well. In other words, this will most likely fail:
+```bash
+echo "./deployment.dhall : (./package.dhall).Deployment.Type" | dhall
+```
+
+The missing properties need to be translated to empty optionals instead.
+`yaml-to-dhall` needs to know which fields exist in the type to achieve this.
+You can specify the target type like so:
+```bash
+yaml-to-dhall '(./package.dhall).Deployment.Type' --file deployment.yaml --output deployment.dhall
+```
+
+Now the type-check above should succeed.
+However, the generated Dhall file will be very large and filled with redundant
+information. The schemas in `dhall-kubernetes` specify plenty of default values
+and we would like to use those to keep our own code short.
+We can rewrite the code with schemas like so:
+```bash
+dhall rewrite-with-schemas --schemas '(./schemas.dhall)' --inplace deployment.dhall
+```
+
+Now the Dhall code should be correct and compact.
+
 ## Projects Using `dhall-kubernetes`
 
 * [dhall-prometheus-operator][dhall-prometheus-operator]: Provides types and default records for [Prometheus Operators][prometheus-operator].
