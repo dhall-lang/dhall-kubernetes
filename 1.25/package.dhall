@@ -1,14 +1,14 @@
   ./schemas.dhall
-    sha256:c64e7a98bc9119195166b0ebef96eb6d9efa6dcbd47c85a1aebccfaf72a11c47
+    sha256:2580fc78bb51a99f39f526e2ef13d26a21293440a57b08fe8ab67f55475e69e2
 ∧ { IntOrString =
       ( ./types.dhall
-          sha256:b337440ff13b8a5f3946132a38cf57c576b7e43ee34d5a61785982cabc4ab4d8
+          sha256:375caa97f438849b595d758ee556265021b362b6a5beea8bdf01d7556f823880
       ).IntOrString
   , NatOrString =
       ( ./types.dhall
-          sha256:b337440ff13b8a5f3946132a38cf57c576b7e43ee34d5a61785982cabc4ab4d8
+          sha256:375caa97f438849b595d758ee556265021b362b6a5beea8bdf01d7556f823880
       ).NatOrString
   , Resource =
       ./typesUnion.dhall
-        sha256:762fa7857b7150a22c0ff13fbe19adcf00460e9ad2f468c183577d744a90908e
+        sha256:2c426e35c6e961e5f1878c8a2c0953de587db330b8e5876eb41e940da8e9d691
   }

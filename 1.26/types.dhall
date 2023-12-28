@@ -226,21 +226,6 @@
 , SubjectRulesReviewStatus =
     ./types/io.k8s.api.authorization.v1.SubjectRulesReviewStatus.dhall
       sha256:04530d2b081a1f465ba6e969b650c39d68963f5c21811588e8f12c5b89229b2f
-, CrossVersionObjectReference =
-    ./types/io.k8s.api.autoscaling.v1.CrossVersionObjectReference.dhall
-      sha256:686a8f9a56cb0e403746b5c80b3e8238f51e16138f95e7fd8c3a59f75912fb2d
-, HorizontalPodAutoscaler =
-    ./types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler.dhall
-      sha256:5870adbd282575d6194a847fbad5a005789224b1452555cd90816af4c2fdf8e3
-, HorizontalPodAutoscalerList =
-    ./types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerList.dhall
-      sha256:287542f449350b2f7d7756155baa449356f203a88f240bfdd9fa8d00903aa501
-, HorizontalPodAutoscalerSpec =
-    ./types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerSpec.dhall
-      sha256:b4692ebca6d40939232c62f1f36ae93af89f950e86fbf643faf1064d10273db2
-, HorizontalPodAutoscalerStatus =
-    ./types/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus.dhall
-      sha256:ffdb1a0a7fb8f47a133137b49e971e2d368094b68ae60bdcb2c55b55d349e7cf
 , Scale =
     ./types/io.k8s.api.autoscaling.v1.Scale.dhall
       sha256:a6521302cb97c3170df42d823fffc975cb64c89dae3195efffc94ac039f62796
@@ -256,6 +241,9 @@
 , ContainerResourceMetricStatus =
     ./types/io.k8s.api.autoscaling.v2.ContainerResourceMetricStatus.dhall
       sha256:767b644ff3d3493573fa7fb4337b766a9e8fcb092b70c03e29424110615ec7bd
+, CrossVersionObjectReference =
+    ./types/io.k8s.api.autoscaling.v2.CrossVersionObjectReference.dhall
+      sha256:686a8f9a56cb0e403746b5c80b3e8238f51e16138f95e7fd8c3a59f75912fb2d
 , ExternalMetricSource =
     ./types/io.k8s.api.autoscaling.v2.ExternalMetricSource.dhall
       sha256:558b1d019bb7684640820a97bc0140534705a099ae6773d15cb6c459458b411d
@@ -268,12 +256,24 @@
 , HPAScalingRules =
     ./types/io.k8s.api.autoscaling.v2.HPAScalingRules.dhall
       sha256:83f98e95649ea8cc44556dba95e71ef6e9ffee78a5ed0de47d652ed81661905a
+, HorizontalPodAutoscaler =
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler.dhall
+      sha256:f633a822d5c6cd3f0dd10157176ccd028591abc1dc745ef8a6457a2d9a030624
 , HorizontalPodAutoscalerBehavior =
     ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior.dhall
       sha256:78306e919b5a909c2c4bf5724963f36aea3fc948fd41be8fe4404963bd424e9c
 , HorizontalPodAutoscalerCondition =
     ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerCondition.dhall
       sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
+, HorizontalPodAutoscalerList =
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerList.dhall
+      sha256:f06021ab4456f962962be04240b79c49096e5c5e9d8de70b340a7848d4828716
+, HorizontalPodAutoscalerSpec =
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerSpec.dhall
+      sha256:b0e129dc0cb6ea27cb54b6e96f2aa0dfdff0914b03cfa7758c8f218552b45386
+, HorizontalPodAutoscalerStatus =
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerStatus.dhall
+      sha256:a8c411695d82de0e89f9dc66a256e075410629a2caf6a39314d31a45581a2f84
 , MetricIdentifier =
     ./types/io.k8s.api.autoscaling.v2.MetricIdentifier.dhall
       sha256:741008bebbc428229112067a8b8ce6e2e14999cd879329648d9de3b46a24323f
@@ -309,37 +309,37 @@
       sha256:a76c3a909d13359ed7595df585a9092d7e05b564a139abe9fe611bbfefaff84f
 , CronJob =
     ./types/io.k8s.api.batch.v1.CronJob.dhall
-      sha256:4410441febb3b457ce18c7f1498a724937a9662ca259d67d425e8fb883eedc35
+      sha256:b1de8f0fb1cb71310062793846bc1c5c2ba3c651f95a85fc099d35f06510c17c
 , CronJobList =
     ./types/io.k8s.api.batch.v1.CronJobList.dhall
-      sha256:17d558838367764ec463f5a71aa619e3c5da1540887fc6fc8074764c55d7b6c3
+      sha256:852106d751cca0a558bc69e350d8649cbde7f764cb704b82795b9dc5e22d59e5
 , CronJobSpec =
     ./types/io.k8s.api.batch.v1.CronJobSpec.dhall
-      sha256:abcae1d07d8d890d0441f39068419b10bd956e7c0bd3409d370fbf2991ca21ba
+      sha256:d1f21f71fb026e4723b7a5484fd6779b6ad234e3aa1b4eb7da0942f47c7b1b93
 , CronJobStatus =
     ./types/io.k8s.api.batch.v1.CronJobStatus.dhall
       sha256:9b8e3c84d094e905de2f0b1a35ddbb36e155fd91cf8881ef2053a118f9de563e
 , Job =
     ./types/io.k8s.api.batch.v1.Job.dhall
-      sha256:ae0d9f9745daf2e036e760e75e7edc56c223200ba968e121f3f52c7ab7229571
+      sha256:3d6605217ea4c5fa47f261ff33d41923920d96027abf3fa36eb0d77a9f5ed096
 , JobCondition =
     ./types/io.k8s.api.batch.v1.JobCondition.dhall
       sha256:253ee70013b7ce83570cd49d6e14c029e6f652e7e70b1fac3b10213619d42f05
 , JobList =
     ./types/io.k8s.api.batch.v1.JobList.dhall
-      sha256:9ae4c166fb1475fdebb73870b8e5d77321419d3c6d6766eabb1b7f70bf17aa52
+      sha256:04741e0110b307500d3f839880467dfc4ef05db3b21857a99c04bac4910cef94
 , JobSpec =
     ./types/io.k8s.api.batch.v1.JobSpec.dhall
-      sha256:733150c4633a649435055e84f8ae01d150059039fc4dd3fbe1b278a21145ebd6
+      sha256:38bb48d33ad6d7caea5a060e835c1d19066010cf7efa33432133faf28d3c0ef5
 , JobStatus =
     ./types/io.k8s.api.batch.v1.JobStatus.dhall
       sha256:e4e81d8eeb147604f14e8e3e0e1cb40aa664ab38597e37fea05a75257c990493
 , JobTemplateSpec =
     ./types/io.k8s.api.batch.v1.JobTemplateSpec.dhall
-      sha256:1fcb818692353c42778046bba02c79873302107540a2eea37deb09fff29f3ce3
+      sha256:296b3e92b160828be0ced73274ccdd8ecec8e3dd81d907cf386f72afb51d37db
 , PodFailurePolicy =
     ./types/io.k8s.api.batch.v1.PodFailurePolicy.dhall
-      sha256:06e1c2d41091cd26c69fcdc435c7a536114329fa52d97bf7d6cedca449df5fa2
+      sha256:6c580418eb0faa2f0687c1594155ac9eb47a0e6dfec02d07395b85c84a02d2ed
 , PodFailurePolicyOnExitCodesRequirement =
     ./types/io.k8s.api.batch.v1.PodFailurePolicyOnExitCodesRequirement.dhall
       sha256:d4a392b0b061905e6fc0af2308194edda6e41292a38b78516b04f2a656a55268
@@ -348,7 +348,7 @@
       sha256:43b53130399326f040043a4d653487a35df9c35342e94f97ece4dc13e66667cf
 , PodFailurePolicyRule =
     ./types/io.k8s.api.batch.v1.PodFailurePolicyRule.dhall
-      sha256:70e2c37a714711506e1abb32a0a4d49d89998ae0f66bd59fc4b62b64faad421c
+      sha256:e72ba8e8401635ead7a9cd4847f034500493c1dec35f1e0ccad2998c336cade8
 , UncountedTerminatedPods =
     ./types/io.k8s.api.batch.v1.UncountedTerminatedPods.dhall
       sha256:3912761a94b260f7643ce02f72fa247a79d9a2c6a575749cc43641eb2d8ef764

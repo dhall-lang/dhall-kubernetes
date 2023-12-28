@@ -194,110 +194,110 @@
     ./types/io.k8s.api.autoscaling.v1.ScaleStatus.dhall
       sha256:d76d78afa568044a4282306ada81504a5d800bc79be897cef1d388fc40903cdb
 , ContainerResourceMetricSource =
-    ./types/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricSource.dhall
+    ./types/io.k8s.api.autoscaling.v2.ContainerResourceMetricSource.dhall
       sha256:d761dd52e0d1d11ab9ffb28979fa2ff7e01051b1b08ab3624810e7048a653686
 , ContainerResourceMetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.ContainerResourceMetricStatus.dhall
       sha256:767b644ff3d3493573fa7fb4337b766a9e8fcb092b70c03e29424110615ec7bd
 , CrossVersionObjectReference =
-    ./types/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference.dhall
+    ./types/io.k8s.api.autoscaling.v2.CrossVersionObjectReference.dhall
       sha256:686a8f9a56cb0e403746b5c80b3e8238f51e16138f95e7fd8c3a59f75912fb2d
 , ExternalMetricSource =
-    ./types/io.k8s.api.autoscaling.v2beta2.ExternalMetricSource.dhall
+    ./types/io.k8s.api.autoscaling.v2.ExternalMetricSource.dhall
       sha256:558b1d019bb7684640820a97bc0140534705a099ae6773d15cb6c459458b411d
 , ExternalMetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.ExternalMetricStatus.dhall
       sha256:5d11c23db9ca057f4bb098633f9e6c4653dec870dc3657ad1b8ef0aee2d4cc68
 , HPAScalingPolicy =
-    ./types/io.k8s.api.autoscaling.v2beta2.HPAScalingPolicy.dhall
+    ./types/io.k8s.api.autoscaling.v2.HPAScalingPolicy.dhall
       sha256:5792aa8931dc20e3fbb0fbc7b90ac64b3d6699c27d80177168188426c6e4b2b0
 , HPAScalingRules =
-    ./types/io.k8s.api.autoscaling.v2beta2.HPAScalingRules.dhall
+    ./types/io.k8s.api.autoscaling.v2.HPAScalingRules.dhall
       sha256:83f98e95649ea8cc44556dba95e71ef6e9ffee78a5ed0de47d652ed81661905a
 , HorizontalPodAutoscaler =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscaler.dhall
-      sha256:8ae199939af07d554a3ea1bd669745e8a3f9e021bbb95af1dca11830846a6ba7
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler.dhall
+      sha256:f633a822d5c6cd3f0dd10157176ccd028591abc1dc745ef8a6457a2d9a030624
 , HorizontalPodAutoscalerBehavior =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerBehavior.dhall
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior.dhall
       sha256:78306e919b5a909c2c4bf5724963f36aea3fc948fd41be8fe4404963bd424e9c
 , HorizontalPodAutoscalerCondition =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerCondition.dhall
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerCondition.dhall
       sha256:10de5e5aed3f6e1721f79bd8e2f9ffcecb92658fbe7442e6eaf74c6780b4779d
 , HorizontalPodAutoscalerList =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList.dhall
-      sha256:8163f4d8782b2bb2009cb885c814048acc175c77274f9d625a99cb15ae9475a6
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerList.dhall
+      sha256:f06021ab4456f962962be04240b79c49096e5c5e9d8de70b340a7848d4828716
 , HorizontalPodAutoscalerSpec =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerSpec.dhall
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerSpec.dhall
       sha256:b0e129dc0cb6ea27cb54b6e96f2aa0dfdff0914b03cfa7758c8f218552b45386
 , HorizontalPodAutoscalerStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerStatus.dhall
-      sha256:675d444e0ddc06a7bf0b3b4d4d28394d0c6ac670a7331ac51848896ff571fe82
+    ./types/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerStatus.dhall
+      sha256:a8c411695d82de0e89f9dc66a256e075410629a2caf6a39314d31a45581a2f84
 , MetricIdentifier =
-    ./types/io.k8s.api.autoscaling.v2beta2.MetricIdentifier.dhall
+    ./types/io.k8s.api.autoscaling.v2.MetricIdentifier.dhall
       sha256:741008bebbc428229112067a8b8ce6e2e14999cd879329648d9de3b46a24323f
 , MetricSpec =
-    ./types/io.k8s.api.autoscaling.v2beta2.MetricSpec.dhall
+    ./types/io.k8s.api.autoscaling.v2.MetricSpec.dhall
       sha256:6cba72b61855a81623f01466169a6ded6f89d5b838b1644991daac284bb0e536
 , MetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.MetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.MetricStatus.dhall
       sha256:18b773c6aed1cb379b13b9425d8b56bfd881a6e167f77de96ebc3742fa30578a
 , MetricTarget =
-    ./types/io.k8s.api.autoscaling.v2beta2.MetricTarget.dhall
+    ./types/io.k8s.api.autoscaling.v2.MetricTarget.dhall
       sha256:d4d74e0604de0d8f2f8aaca8effd873d84d2c1713b2715a6fbac77f3c77121f5
 , MetricValueStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.MetricValueStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.MetricValueStatus.dhall
       sha256:727bb14d4e87444e89ddba893b699c36600c6758ba0546ea468a61c4a2791d59
 , ObjectMetricSource =
-    ./types/io.k8s.api.autoscaling.v2beta2.ObjectMetricSource.dhall
+    ./types/io.k8s.api.autoscaling.v2.ObjectMetricSource.dhall
       sha256:5b41279b44559ad98a1b79c3d5c5c7a9b5056f80ac44ab84f5dae89f35a5f1d6
 , ObjectMetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.ObjectMetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.ObjectMetricStatus.dhall
       sha256:9cc9ccb303bee6e50625a232ed6e385e23c9055ef7ab6449dc66313014bd6e53
 , PodsMetricSource =
-    ./types/io.k8s.api.autoscaling.v2beta2.PodsMetricSource.dhall
+    ./types/io.k8s.api.autoscaling.v2.PodsMetricSource.dhall
       sha256:558b1d019bb7684640820a97bc0140534705a099ae6773d15cb6c459458b411d
 , PodsMetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.PodsMetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.PodsMetricStatus.dhall
       sha256:5d11c23db9ca057f4bb098633f9e6c4653dec870dc3657ad1b8ef0aee2d4cc68
 , ResourceMetricSource =
-    ./types/io.k8s.api.autoscaling.v2beta2.ResourceMetricSource.dhall
+    ./types/io.k8s.api.autoscaling.v2.ResourceMetricSource.dhall
       sha256:9348a553be2edd12c07b60261e671d694617b2288451f8644b09f003ccc2c47b
 , ResourceMetricStatus =
-    ./types/io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus.dhall
+    ./types/io.k8s.api.autoscaling.v2.ResourceMetricStatus.dhall
       sha256:a76c3a909d13359ed7595df585a9092d7e05b564a139abe9fe611bbfefaff84f
 , CronJob =
     ./types/io.k8s.api.batch.v1.CronJob.dhall
-      sha256:e1b1fad6d1aa53634c0f159e4e7ed07d9c2a43b2ad65dcf0b95b310a2072c9bd
+      sha256:3fdcf8c9dd48c70824e2b5f02c18b8156acedefe1a30aa4dc05da99313e6f5c2
 , CronJobList =
     ./types/io.k8s.api.batch.v1.CronJobList.dhall
-      sha256:ce93bf0b3f3bfb95b103d934a37dbf7709838872ca1c92f16e6b98ca8983932f
+      sha256:e681f6d0a640f90c129719b71780578a62e1e7ef53073fc289f8b4b00205565b
 , CronJobSpec =
     ./types/io.k8s.api.batch.v1.CronJobSpec.dhall
-      sha256:79bd2848bd20a9f003103bbd517f093d39d87892c4f17cd505ad0a6d1a92e4bb
+      sha256:894f62e9cc1cba83b4c9559957d1491f6624be60c2d5811dcc065f9c1fe67ce7
 , CronJobStatus =
     ./types/io.k8s.api.batch.v1.CronJobStatus.dhall
       sha256:9b8e3c84d094e905de2f0b1a35ddbb36e155fd91cf8881ef2053a118f9de563e
 , Job =
     ./types/io.k8s.api.batch.v1.Job.dhall
-      sha256:585aa093b7a7b6969c263052546cd1f13f05c52dc3b0d5a4e34373e630c89b11
+      sha256:ed7f2688a7c2c1b5b3f083e1457963d0f70c0d8d95cdf5d4ebf6644df7f35e1f
 , JobCondition =
     ./types/io.k8s.api.batch.v1.JobCondition.dhall
       sha256:253ee70013b7ce83570cd49d6e14c029e6f652e7e70b1fac3b10213619d42f05
 , JobList =
     ./types/io.k8s.api.batch.v1.JobList.dhall
-      sha256:205fee232d295925c631660d56ecbbe0acf429072a1e134ad417216ebb255a6c
+      sha256:2a73b4c4b685196af13bd1a3455c382305084a2852bb80dbe3ad9ab540abec24
 , JobSpec =
     ./types/io.k8s.api.batch.v1.JobSpec.dhall
-      sha256:0270f0f6747c9aeeac3948b5f55e7ababc022b40bf06c0e9396230a4b66b8e35
+      sha256:daff98fab93c447d2ba10152306a0a5da9d4e69b45214be957be1aa9256ae7e4
 , JobStatus =
     ./types/io.k8s.api.batch.v1.JobStatus.dhall
       sha256:e4e81d8eeb147604f14e8e3e0e1cb40aa664ab38597e37fea05a75257c990493
 , JobTemplateSpec =
     ./types/io.k8s.api.batch.v1.JobTemplateSpec.dhall
-      sha256:0e4f5eff4a1e59f33da173508ea198883a5a9bce6117ee6932826f20a4ea3c2d
+      sha256:f48885341128a82329dc6d990e35b2ccbba29e789e1e02ff1b9497c21bf20f14
 , PodFailurePolicy =
     ./types/io.k8s.api.batch.v1.PodFailurePolicy.dhall
-      sha256:06e1c2d41091cd26c69fcdc435c7a536114329fa52d97bf7d6cedca449df5fa2
+      sha256:6c580418eb0faa2f0687c1594155ac9eb47a0e6dfec02d07395b85c84a02d2ed
 , PodFailurePolicyOnExitCodesRequirement =
     ./types/io.k8s.api.batch.v1.PodFailurePolicyOnExitCodesRequirement.dhall
       sha256:d4a392b0b061905e6fc0af2308194edda6e41292a38b78516b04f2a656a55268
@@ -306,7 +306,7 @@
       sha256:43b53130399326f040043a4d653487a35df9c35342e94f97ece4dc13e66667cf
 , PodFailurePolicyRule =
     ./types/io.k8s.api.batch.v1.PodFailurePolicyRule.dhall
-      sha256:70e2c37a714711506e1abb32a0a4d49d89998ae0f66bd59fc4b62b64faad421c
+      sha256:e72ba8e8401635ead7a9cd4847f034500493c1dec35f1e0ccad2998c336cade8
 , UncountedTerminatedPods =
     ./types/io.k8s.api.batch.v1.UncountedTerminatedPods.dhall
       sha256:3912761a94b260f7643ce02f72fa247a79d9a2c6a575749cc43641eb2d8ef764
