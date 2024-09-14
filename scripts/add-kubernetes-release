@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash --packages bash jq nix-prefetch-github
 
 set -eu
 
 VERSION="$1"
 
-nix-prefetch-url "https://github.com/kubernetes/kubernetes/archive/release-${VERSION}.tar.gz" > "nix/kubernetes/${VERSION}.txt"
+nix-prefetch-github kubernetes kubernetes --rev "release-${VERSION}" | jq --raw-output .hash > "nix/kubernetes/${VERSION}.txt"
 ./scripts/generate preferred

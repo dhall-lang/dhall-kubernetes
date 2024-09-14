@@ -25,31 +25,14 @@ let
           ${pkgsNew.dhall}/bin/dhall type --quiet --file "$out/${file}"
         '';
 
-        natIntExceptions = if builtins.elem version [
-          "1.12"
-          "1.13"
-          "1.14"
-          "1.15"
-          "1.16"
-          "1.17"
-          "1.18"
-          "1.19"
-          "1.20"
-          "1.21"
-          "1.22"
-          "1.23"
-          "1.24"
-          "1.25"
-        ] then
-          "--natIntExceptions 'ContainerStateTerminated.exitCode,PodSpec.priority,PriorityClass.value,CustomResourceColumnDefinition.priority'"
-        else
-          "";
+        natIntExceptions =
+          "--natIntExceptions 'ContainerStateTerminated.exitCode,PodSpec.priority,PriorityClass.value,CustomResourceColumnDefinition.priority'";
 
       in
         pkgsNew.runCommand "dhall-${spec.name}" { XDG_CACHE_HOME=".cache"; } ''
           ${pkgsNew.coreutils}/bin/mkdir "$out"
           cd $out
-          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall --preferNaturalInt ${natIntExceptions} '${spec}'
+          ${pkgsNew.haskellPackages.dhall-openapi}/bin/openapi-to-dhall --preferNaturalInt ${natIntExceptions} '${spec}/api/openapi-spec/swagger.json'
           ${pkgsNew.lib.concatMapStringsSep "\n" freeze frozenFiles}
           ${pkgsNew.coreutils}/bin/rm --recursive .cache
         '';

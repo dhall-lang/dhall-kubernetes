@@ -1,4 +1,4 @@
-{ fetchurl, make-dhall-kubernetes, lib, stdenv }:
+{ fetchFromGitHub, make-dhall-kubernetes, lib, stdenv }:
 
 let
   kubernetesDirectory = ./kubernetes;
@@ -15,25 +15,18 @@ let
 
           value =
             let
-              spec =
-                stdenv.mkDerivation {
-                  name = "kubernetes-${version}";
+              spec = fetchFromGitHub {
+                owner = "kubernetes";
 
-                  src =
-                    fetchurl {
-                      url = "https://github.com/kubernetes/kubernetes/archive/release-${version}.tar.gz";
+                repo = "kubernetes";
 
-                      sha256 =
-                        builtins.replaceStrings [ "\n" ] [ "" ]
-                          (builtins.readFile (kubernetesDirectory + "/${file}"));
-                    };
+                rev = "release-${version}";
 
-                  phases = [ "unpackPhase" "installPhase" ];
+                hash =
+                  builtins.replaceStrings [ "\n" ] [ "" ]
+                    (builtins.readFile (kubernetesDirectory + "/${file}"));
+              };
 
-                  installPhase = ''
-                    cp api/openapi-spec/swagger.json $out
-                  '';
-                };
             in
               make-dhall-kubernetes spec version;
         };
